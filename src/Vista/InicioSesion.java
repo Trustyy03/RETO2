@@ -7,9 +7,9 @@ import java.awt.*;
 
 public class InicioSesion extends JPanel {
 
-    public JLabel usuario,contrasenya;
-    public JTextField rellenarUsuario,rellenarContrasenya;
-    public JButton entrar;
+    public static JLabel usuario,contrasenya;
+    public static JTextField rellenarUsuario,rellenarContrasenya;
+    public static JButton entrar;
     GridBagConstraints constraints;
 
     public InicioSesion(){
@@ -18,6 +18,11 @@ public class InicioSesion extends JPanel {
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         constraints = new GridBagConstraints();
+
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.insets = new Insets(20,0,20,0);
+
+
 
         usuario = new JLabel(lenguaje.getProperty("usuarioInicio"));
         rellenarUsuario = new JTextField(15);
@@ -34,32 +39,23 @@ public class InicioSesion extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weighty = 2.0;
         add (usuario, constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 0;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
         add (rellenarUsuario, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
         add (contrasenya, constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
         add (rellenarContrasenya, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        constraints.gridwidth = 1;
+        constraints.gridwidth = 4;
         constraints.gridheight = 1;
         add (entrar, constraints);
     }

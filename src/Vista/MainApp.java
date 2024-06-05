@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.MainPanelController;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -34,6 +35,8 @@ public FramePrincipal(){
 }
 
 class PanelPrincipal extends JPanel {
+
+    MainPanelController mainPanelController;
     JMenuBar menuBar;
     JMenu menuLeng;
     JMenuItem itemEsp, itemEngl;
@@ -67,6 +70,8 @@ class PanelPrincipal extends JPanel {
 
         add(centerPanel, BorderLayout.CENTER);
 
+        mainPanelController = new MainPanelController(centerPanel,inicioSesionPanel);
+
         itemEsp.addActionListener(e -> cambiarLenguaje(Lenguaje.spanish));
         itemEngl.addActionListener(e -> cambiarLenguaje(Lenguaje.english));
     }
@@ -76,7 +81,9 @@ class PanelPrincipal extends JPanel {
         menuLeng.setText(lenguaje.getProperty("menuLeng"));
         itemEsp.setText(lenguaje.getProperty("itemEsp"));
         itemEngl.setText(lenguaje.getProperty("itemEngl"));
-
+        InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
+        InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
+        InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));
 
 
     }

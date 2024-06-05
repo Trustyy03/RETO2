@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.MainPanelController;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -10,20 +11,19 @@ public class InicioSesion extends JPanel {
     public static JLabel usuario,contrasenya;
     public static JTextField rellenarUsuario,rellenarContrasenya;
     public static JButton entrar;
+
     GridBagConstraints constraints;
 
     public InicioSesion(){
         this.setLayout(new GridBagLayout());
-
-
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+
+        OpcionesPanel opcionesPanel = new OpcionesPanel();
 
         constraints = new GridBagConstraints();
 
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(10,10,10,10);
-
-
 
         usuario = new JLabel(lenguaje.getProperty("usuarioInicio"));
         rellenarUsuario = new JTextField(15);
@@ -34,6 +34,7 @@ public class InicioSesion extends JPanel {
         entrar = new JButton(lenguaje.getProperty("entrarInicio"));
         colocarComponentes();
 
+
     }
 
     public void colocarComponentes() {
@@ -42,7 +43,7 @@ public class InicioSesion extends JPanel {
         constraints.gridy = 0;
         add (usuario, constraints);
 
-        constraints.gridx = 1;
+        constraints.gridx = 2;
         constraints.gridy = 0;
         add (rellenarUsuario, constraints);
 
@@ -50,7 +51,7 @@ public class InicioSesion extends JPanel {
         constraints.gridy = 1;
         add (contrasenya, constraints);
 
-        constraints.gridx = 1;
+        constraints.gridx = 2;
         constraints.gridy = 1;
         add (rellenarContrasenya, constraints);
 

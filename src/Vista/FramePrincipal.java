@@ -6,17 +6,11 @@ import Vista.Idioma.Lenguaje;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainApp {
+public class FramePrincipal extends JFrame{
 
     public static void main(String[] args) {
-        FramePrincipal framePrincipal = new FramePrincipal();
+        new FramePrincipal();
     }
-
-
-}
-
-class FramePrincipal extends JFrame{
-
 
 public FramePrincipal(){
 
@@ -28,7 +22,6 @@ public FramePrincipal(){
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
     setVisible(true);
-
 }
 
 
@@ -85,8 +78,6 @@ class PanelPrincipal extends JPanel {
         InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
         InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
         InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));
-
-
     }
 }
 

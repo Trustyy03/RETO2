@@ -15,12 +15,13 @@ public class InicioSesion extends JPanel {
     public InicioSesion(){
         this.setLayout(new GridBagLayout());
 
+
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         constraints = new GridBagConstraints();
 
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.insets = new Insets(20,0,20,0);
+        constraints.insets = new Insets(10,10,10,10);
 
 
 

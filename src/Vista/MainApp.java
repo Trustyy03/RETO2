@@ -51,11 +51,12 @@ class PanelPrincipal extends JPanel {
         itemEsp = new JMenuItem(lenguaje.getProperty("itemEsp"));
         itemEngl = new JMenuItem(lenguaje.getProperty("itemEngl"));
 
+        JPanel northPanel = new JPanel(new BorderLayout());
+        northPanel.setPreferredSize(new Dimension(800, 50));
+
         menuLeng.add(itemEsp);
         menuLeng.add(itemEngl);
         menuBar.add(menuLeng);
-        JPanel northPanel = new JPanel(new GridLayout(1,8));
-        northPanel.setSize(800,200);
 
         northPanel.add(menuBar);
 

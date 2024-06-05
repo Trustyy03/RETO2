@@ -4,6 +4,28 @@ import javax.swing.*;
 import java.awt.*;
 
 public class InicioSesion extends JFrame {
+
+
+    public InicioSesion(){
+
+        inicioSesionPanel inicioSesionPanel = new inicioSesionPanel();
+        add(inicioSesionPanel);
+        setTitle("INICIO SESIÓN"); //Cuando se realice el inicio de sesión, cambiar el titulo al panel en el que esten
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new InicioSesion();
+    }
+
+
+}
+
+class inicioSesionPanel extends JPanel{
+
     boolean idiomaBotonPresionado = true;
     JLabel usuario;
     JLabel contrasenya;
@@ -14,13 +36,9 @@ public class InicioSesion extends JFrame {
     JButton idioma;
     JPanel posicionIdioma;
 
-    public InicioSesion(){
+    public inicioSesionPanel(){
 
-        setTitle("INICIO SESIÓN"); //Cuando se realice el inicio de sesión, cambiar el titulo al panel en el que esten
-        setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
 
         posicionCampos = new JPanel(new GridLayout(3,2));
         posicionIdioma = new JPanel();
@@ -54,11 +72,6 @@ public class InicioSesion extends JFrame {
 
         posicionIdioma.add(idioma);
 
-        setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new InicioSesion();
     }
 
 }

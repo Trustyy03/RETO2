@@ -9,6 +9,8 @@ public class OpcionesPanel extends JPanel {
 
     public static JButton btnEmpresas,btnFct,btnProfesores,btnTrabajadores;
 
+    InicioSesion inicioSesionn;
+
     GridBagConstraints constraints;
 
     public OpcionesPanel(){
@@ -17,7 +19,7 @@ public class OpcionesPanel extends JPanel {
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
-    //    InicioSesion inicioSesion = new InicioSesion();
+        inicioSesionn   = new InicioSesion();
 
         constraints = new GridBagConstraints();
 
@@ -30,6 +32,8 @@ public class OpcionesPanel extends JPanel {
 
 
 
+
+
     }
 
     public void colocarComponentes(){
@@ -38,16 +42,16 @@ public class OpcionesPanel extends JPanel {
         constraints.gridy = 0;
         add(btnEmpresas, constraints);
 
-        constraints.gridx = 2;
-        constraints.gridy = 0;
+        constraints.gridx = 0;
+        constraints.gridy = 1;
         add (btnFct, constraints);
 
         constraints.gridx = 0;
-        constraints.gridy = 1;
+        constraints.gridy = 2;
         add (btnTrabajadores, constraints);
 
-        constraints.gridx = 2;
-        constraints.gridy = 1;
+        constraints.gridx = 0;
+        constraints.gridy = 3;
         add (btnProfesores, constraints);
 
 

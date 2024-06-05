@@ -29,11 +29,13 @@ public FramePrincipal(){
 
 class PanelPrincipal extends JPanel {
 
-    MainPanelController mainPanelController;
+    JPanel centerPanel = new JPanel();
+    InicioSesion inicioSesionPanel = new InicioSesion();
+    public MainPanelController mainPanelController = new MainPanelController(centerPanel,inicioSesionPanel);
     JMenuBar menuBar;
     JMenu menuLeng;
     JMenuItem itemEsp, itemEngl;
-    InicioSesion inicioSesionPanel;
+
 
     public PanelPrincipal() {
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
@@ -55,17 +57,11 @@ class PanelPrincipal extends JPanel {
 
         add(northPanel, BorderLayout.NORTH);
 
-        inicioSesionPanel = new InicioSesion();
-
-        JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
         centerPanel.add(inicioSesionPanel);
 
         add(centerPanel, BorderLayout.CENTER);
-
-        mainPanelController = new MainPanelController(centerPanel,inicioSesionPanel);
-
         itemEsp.addActionListener(e -> cambiarLenguaje(Lenguaje.spanish));
         itemEngl.addActionListener(e -> cambiarLenguaje(Lenguaje.english));
     }

@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class MainPanelController {
 
-    public JPanel panelActivo, panelPadre;
+    public static JPanel panelActivo, panelPadre;
 
     public MainPanelController(JPanel panelPad , JPanel panelActi){
 
@@ -14,7 +14,7 @@ public class MainPanelController {
 
     }
 
-    public void nuevoPanelActivo(JPanel nuevoPanel){
+    public static void nuevoPanelActivo(JPanel nuevoPanel){
 
         panelPadre.remove(panelActivo);
         panelPadre.add(nuevoPanel);

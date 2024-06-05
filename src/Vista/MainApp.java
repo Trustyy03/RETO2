@@ -51,7 +51,11 @@ class PanelPrincipal extends JPanel {
         menuLeng.add(itemEsp);
         menuLeng.add(itemEngl);
         menuBar.add(menuLeng);
-        add(menuBar, BorderLayout.NORTH);
+        JPanel northPanel = new JPanel();
+
+        northPanel.add(menuBar);
+
+        add(northPanel, BorderLayout.NORTH);
 
         inicioSesionPanel = new InicioSesion();
 

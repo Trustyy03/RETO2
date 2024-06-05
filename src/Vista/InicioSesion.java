@@ -36,7 +36,7 @@ public class InicioSesion extends JPanel {
         constraints.gridy = 0;
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
-        constraints.weighty = 1.0;
+        constraints.weighty = 2.0;
         add (usuario, constraints);
 
         constraints.gridx = 1;

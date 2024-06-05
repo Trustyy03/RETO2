@@ -57,6 +57,7 @@ class PanelPrincipal extends JPanel {
 
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+
         centerPanel.add(inicioSesionPanel);
 
         add(centerPanel, BorderLayout.CENTER);
@@ -70,6 +71,9 @@ class PanelPrincipal extends JPanel {
         menuLeng.setText(lenguaje.getProperty("menuLeng"));
         itemEsp.setText(lenguaje.getProperty("itemEsp"));
         itemEngl.setText(lenguaje.getProperty("itemEngl"));
+
+
+
     }
 }
 

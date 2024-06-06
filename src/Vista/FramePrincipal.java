@@ -89,8 +89,8 @@ class PanelPrincipal extends JPanel {
         menuLeng.setText(lenguaje.getProperty("menuLeng"));
         itemEsp.setText(lenguaje.getProperty("itemEsp"));
         itemEngl.setText(lenguaje.getProperty("itemEngl"));
-        OpcionesPanel.btnFct.setText(lenguaje.getProperty("btnEmpresas"));
-        OpcionesPanel.btnEmpresas.setText(lenguaje.getProperty("btnFct"));
+        OpcionesPanel.btnFct.setText(lenguaje.getProperty("btnFct"));
+        OpcionesPanel.btnEmpresas.setText(lenguaje.getProperty("btnEmpresas"));
         OpcionesPanel.btnProfesores.setText(lenguaje.getProperty("btnProfesores"));
         OpcionesPanel.btnTrabajadores.setText(lenguaje.getProperty("btnTrabajadores"));
         InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));

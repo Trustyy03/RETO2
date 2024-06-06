@@ -1,10 +1,7 @@
 package Vista.Profesores;
 
 import Controlador.MainPanelController;
-import Vista.Empresas.BuscarEmpresa;
-import Vista.Empresas.BuscarEmpresaPorPractica;
-import Vista.Empresas.GestionarEmpresas;
-import Vista.EstiloBoton;
+import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -12,11 +9,9 @@ import java.awt.*;
 
 public class OpcionesProfesores extends JPanel {
 
-    JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas;
-    BuscarEmpresa buscarEmpresaApartado;
-    BuscarEmpresaPorPractica buscarEmpresaPorPracticaApartado;
-    GestionarEmpresas gestionarEmpresasApartado;
-
+    JButton gestionarProfesores,buscarTutores;
+    BuscarTutores buscarTutoresApartado;
+    GestionarTutores gestionarTutoresApartado;
     GridBagConstraints constraints;
 
     public OpcionesProfesores(){
@@ -25,56 +20,32 @@ public class OpcionesProfesores extends JPanel {
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
-        buscarEmpresaApartado = new BuscarEmpresa();
-        buscarEmpresaPorPracticaApartado = new BuscarEmpresaPorPractica();
-        gestionarEmpresasApartado = new GestionarEmpresas();
+        buscarTutoresApartado = new BuscarTutores();
+        gestionarTutoresApartado = new GestionarTutores();
 
         constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        gestionarEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty("btnGestionarEmpresas"));
-        gestionarEmpresa.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(gestionarEmpresasApartado);
+        gestionarProfesores = Estilo.botonBonito(lenguaje.getProperty(""));
+        gestionarProfesores.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(gestionarTutoresApartado);
         });
-        buscarEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
-        buscarEmpresa.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(buscarEmpresaApartado);
+        buscarTutores = Estilo.botonBonito(lenguaje.getProperty(""));
+        buscarTutores.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(buscarTutoresApartado);
         });
-        buscarEmpresaPorPracticas = EstiloBoton.botonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
-        buscarEmpresaPorPracticas.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(buscarEmpresaPorPracticaApartado);
-        });
-
         colocarComponentes();
     }
-
-    private static JButton crearBotonBonito(String text) { //modifica la interfaz de los botones
-        JButton button = new JButton(text);
-
-        button.setBackground(new Color(70, 130, 180));
-        button.setForeground(Color.WHITE);
-
-        button.setFont(new Font("Arial", Font.BOLD, 30));
-
-        button.setFocusPainted(false);
-
-        return button;
-    }
-
     public void colocarComponentes(){
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        add(gestionarEmpresa, constraints);
+        add(gestionarProfesores, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
-        add (buscarEmpresa, constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        add (buscarEmpresaPorPracticas, constraints);
+        add (buscarTutores, constraints);
 
     }
 

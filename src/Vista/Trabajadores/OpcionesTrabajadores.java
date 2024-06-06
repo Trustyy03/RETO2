@@ -1,10 +1,7 @@
 package Vista.Trabajadores;
 
 import Controlador.MainPanelController;
-import Vista.Empresas.BuscarEmpresa;
-import Vista.Empresas.BuscarEmpresaPorPractica;
-import Vista.Empresas.GestionarEmpresas;
-import Vista.EstiloBoton;
+import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -33,15 +30,15 @@ public class OpcionesTrabajadores extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        btngestionarTrabajadores = EstiloBoton.botonBonito(lenguaje.getProperty(""));
+        btngestionarTrabajadores = Estilo.botonBonito(lenguaje.getProperty(""));
         btngestionarTrabajadores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(gestionarTrabajadoresApartado);
         });
-        btnbuscarPorEmpresaCurso = EstiloBoton.botonBonito(lenguaje.getProperty(""));
+        btnbuscarPorEmpresaCurso = Estilo.botonBonito(lenguaje.getProperty(""));
         btnbuscarPorEmpresaCurso.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaCursoApartado);
         });
-        btnhistorialContactosPorEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty(""));
+        btnhistorialContactosPorEmpresa = Estilo.botonBonito(lenguaje.getProperty(""));
         btnhistorialContactosPorEmpresa.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(historialContactosEmpresaApartado);
         });

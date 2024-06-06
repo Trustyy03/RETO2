@@ -1,4 +1,6 @@
 package Vista.Empresas;
 
-public class BuscarEmpresaPorPractica {
+import javax.swing.*;
+
+public class BuscarEmpresaPorPractica extends JPanel {
 }

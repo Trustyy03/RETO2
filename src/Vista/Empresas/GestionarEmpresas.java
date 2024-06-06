@@ -1,4 +1,6 @@
 package Vista.Empresas;
 
-public class GestionarEmpresas {
+import javax.swing.*;
+
+public class GestionarEmpresas extends JPanel {
 }

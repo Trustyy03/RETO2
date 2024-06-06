@@ -11,9 +11,11 @@ import java.awt.*;
 
 public class OpcionesEmpresa extends JPanel {
 
-    JButton gestionarEmpresa;
-    JButton buscarEmpresa;
-    JButton buscarEmpresaPorPracticas;
+    JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas;
+    BuscarEmpresa buscarEmpresaApartado;
+    BuscarEmpresaPorPractica buscarEmpresaPorPracticaApartado;
+    GestionarEmpresas gestionarEmpresasApartado;
+
     GridBagConstraints constraints;
 
     public OpcionesEmpresa(){
@@ -22,30 +24,25 @@ public class OpcionesEmpresa extends JPanel {
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
-        opcionesEmpresa = new OpcionesEmpresa();
-        opcionesFCT = new OpcionesFCT();
-        opcionesProfesores = new OpcionesProfesores();
-        opcionesTrabajadores = new OpcionesTrabajadores();
+        buscarEmpresaApartado = new BuscarEmpresa();
+        buscarEmpresaPorPracticaApartado = new BuscarEmpresaPorPractica();
+        gestionarEmpresasApartado = new GestionarEmpresas();
 
         constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        btnEmpresas = crearBotonBonito(lenguaje.getProperty("btnEmpresas"));
-        btnEmpresas.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(opcionesEmpresa);
+        gestionarEmpresa = crearBotonBonito(lenguaje.getProperty("btnGestionarEmpresas"));
+        gestionarEmpresa.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(gestionarEmpresasApartado);
         });
-        btnFct = crearBotonBonito(lenguaje.getProperty("btnFct"));
-        btnFct.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(opcionesFCT);
+        buscarEmpresa = crearBotonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
+        buscarEmpresa.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(buscarEmpresaApartado);
         });
-        btnProfesores = crearBotonBonito(lenguaje.getProperty("btnProfesores"));
-        btnProfesores.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(opcionesProfesores);
-        });
-        btnTrabajadores = crearBotonBonito(lenguaje.getProperty("btnTrabajadores"));
-        btnTrabajadores.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(opcionesTrabajadores);
+        buscarEmpresaPorPracticas = crearBotonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
+        buscarEmpresaPorPracticas.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(buscarEmpresaPorPracticaApartado);
         });
 
         colocarComponentes();
@@ -68,21 +65,15 @@ public class OpcionesEmpresa extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        add(btnEmpresas, constraints);
+        add(gestionarEmpresa, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
-        add (btnFct, constraints);
+        add (buscarEmpresa, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        add (btnTrabajadores, constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 3;
-        add (btnProfesores, constraints);
-
-
+        add (buscarEmpresaPorPracticas, constraints);
 
     }
 

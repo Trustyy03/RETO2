@@ -89,6 +89,10 @@ class PanelPrincipal extends JPanel {
         menuLeng.setText(lenguaje.getProperty("menuLeng"));
         itemEsp.setText(lenguaje.getProperty("itemEsp"));
         itemEngl.setText(lenguaje.getProperty("itemEngl"));
+        OpcionesPanel.btnFct.setText(lenguaje.getProperty("btnEmpresas"));
+        OpcionesPanel.btnEmpresas.setText(lenguaje.getProperty("btnFct"));
+        OpcionesPanel.btnProfesores.setText(lenguaje.getProperty("btnProfesores"));
+        OpcionesPanel.btnTrabajadores.setText(lenguaje.getProperty("btnTrabajadores"));
         InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
         InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
         InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));
@@ -98,11 +102,11 @@ class PanelPrincipal extends JPanel {
         OpcionesEmpresa.btnBuscarEmpresaPorTecnologia.setText(lenguaje.getProperty("btnEmpresasPorTecnologia"));
         OpcionesFCT.gestionarFCT.setText(lenguaje.getProperty("btnGestionarFCT"));
         OpcionesFCT.buscarFCT.setText(lenguaje.getProperty("btnBuscarFCT"));
-        OpcionesProfesores.gestionarProfesores.setText("btnGestionarTutores");
-        OpcionesProfesores.buscarTutores.setText("btnBuscarTutores");
-        OpcionesTrabajadores.btngestionarTrabajadores.setText("btnGestionarTrabajadores");
-        OpcionesTrabajadores.btnbuscarPorEmpresaCurso.setText("btnBuscarPorEmpresaCUrso");
-        OpcionesTrabajadores.btnhistorialContactosPorEmpresa.setText("btnhistorialContactosPorEmpresa");
+        OpcionesProfesores.gestionarProfesores.setText(lenguaje.getProperty("btnGestionarTutores"));
+        OpcionesProfesores.buscarTutores.setText(lenguaje.getProperty("btnBuscarTutores"));
+        OpcionesTrabajadores.btngestionarTrabajadores.setText(lenguaje.getProperty("btnGestionarTrabajadores"));
+        OpcionesTrabajadores.btnbuscarPorEmpresaCurso.setText(lenguaje.getProperty("btnBuscarPorEmpresaCUrso"));
+        OpcionesTrabajadores.btnhistorialContactosPorEmpresa.setText(lenguaje.getProperty("btnhistorialContactosPorEmpresa"));
 
     }
 }

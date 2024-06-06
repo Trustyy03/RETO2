@@ -21,6 +21,7 @@ public class Estilo {
     public static JLabel textoBonito(String text){
         JLabel label = new JLabel(text);
 
+        label.setOpaque(true);
         label.setBackground(new Color(70, 130, 180));
         label.setForeground(Color.WHITE);
 

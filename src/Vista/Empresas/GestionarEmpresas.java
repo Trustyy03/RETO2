@@ -74,7 +74,9 @@ public class GestionarEmpresas extends JPanel {
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        empresaSeleccionada = (Empresa) listadoEmpresas.getSelectedItem();
+
+        listadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) listadoEmpresas.getSelectedItem();
+        rellenarDatos(empresaSeleccionada);});
 
     }
 
@@ -91,8 +93,8 @@ public class GestionarEmpresas extends JPanel {
         rellenarCif.setText(empresa.getCif());
         rellenarNombre.setText(empresa.getNombre());
         rellenarTelefono.setText(empresa.getTelefono());
-
-
-
+        rellenarNumEmpleados.setText(String.valueOf(empresa.getNumEmpleados()));
+        rellenarSector.setText(empresa.getSector());
+        rellenarDireccion.setText(empresa.getDireccion());
     }
 }

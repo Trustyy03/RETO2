@@ -11,8 +11,8 @@ import java.util.List;
 
 public class OperacionesEntidades {
     static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
-    public static List<Empresa> consultarEmpresas() {
-        List<Empresa> empresas = new ArrayList<>();
+    public static ArrayList<Empresa> consultarEmpresas() {
+        ArrayList<Empresa> empresas = new ArrayList<>();
         try {
             Statement st = con.createStatement();
             String consultaEmpresas = "SELECT * FROM EMPRESA";

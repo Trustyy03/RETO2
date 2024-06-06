@@ -2,12 +2,14 @@ package Vista.Empresas;
 
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.EmrpesasMentira;
+import Modelo.Entidades.OperacionesEntidades;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GestionarEmpresas extends JPanel {
 
@@ -31,7 +33,8 @@ public class GestionarEmpresas extends JPanel {
 
         JPanel panelNorte = new JPanel();
         listadoEmpresas = new JComboBox<>();
-        listaEmpresas = EmrpesasMentira.getListaEmpresas();
+       // listaEmpresas = EmrpesasMentira.getListaEmpresas();
+        listaEmpresas = OperacionesEntidades.consultarEmpresas();
         for (Empresa empresa : listaEmpresas) {
             listadoEmpresas.addItem(empresa);
         }

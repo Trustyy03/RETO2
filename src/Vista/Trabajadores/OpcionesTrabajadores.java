@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class OpcionesTrabajadores extends JPanel {
 
-    JButton btngestionarTrabajadores,btnbuscarPorEmpresaCurso,btnhistorialContactosPorEmpresa;
+    public static JButton btngestionarTrabajadores,btnbuscarPorEmpresaCurso,btnhistorialContactosPorEmpresa;
     BuscarEmpresaCurso buscarEmpresaCursoApartado;
     GestionarTrabajadores gestionarTrabajadoresApartado;
     HistorialContactosEmpresa historialContactosEmpresaApartado;

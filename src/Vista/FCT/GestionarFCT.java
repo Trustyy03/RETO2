@@ -1,4 +1,6 @@
 package Vista.FCT;
 
-public class GestionarFCT {
+import javax.swing.*;
+
+public class GestionarFCT extends JPanel {
 }

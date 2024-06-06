@@ -1,4 +1,6 @@
 package Vista.Profesores;
 
-public class GestionarTutores {
+import javax.swing.*;
+
+public class GestionarTutores extends JPanel {
 }

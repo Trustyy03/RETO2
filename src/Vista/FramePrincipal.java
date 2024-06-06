@@ -1,7 +1,11 @@
 package Vista;
 
 import Controlador.MainPanelController;
+import Vista.Empresas.OpcionesEmpresa;
+import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
+import Vista.Profesores.OpcionesProfesores;
+import Vista.Trabajadores.OpcionesTrabajadores;
 
 import javax.swing.*;
 import java.awt.*;
@@ -74,6 +78,10 @@ class PanelPrincipal extends JPanel {
 
         itemEsp.addActionListener(e -> cambiarLenguaje(Lenguaje.spanish));
         itemEngl.addActionListener(e -> cambiarLenguaje(Lenguaje.english));
+        inicio.addActionListener(e -> {
+            MainPanelController.volverInicio();
+        });
+        atras.addActionListener(e -> MainPanelController.antiguoPanel());
     }
 
     public void cambiarLenguaje(int newLang) {
@@ -81,9 +89,25 @@ class PanelPrincipal extends JPanel {
         menuLeng.setText(lenguaje.getProperty("menuLeng"));
         itemEsp.setText(lenguaje.getProperty("itemEsp"));
         itemEngl.setText(lenguaje.getProperty("itemEngl"));
+        OpcionesPanel.btnFct.setText(lenguaje.getProperty("btnFct"));
+        OpcionesPanel.btnEmpresas.setText(lenguaje.getProperty("btnEmpresas"));
+        OpcionesPanel.btnProfesores.setText(lenguaje.getProperty("btnProfesores"));
+        OpcionesPanel.btnTrabajadores.setText(lenguaje.getProperty("btnTrabajadores"));
         InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
         InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
         InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));
+        OpcionesEmpresa.gestionarEmpresa.setText(lenguaje.getProperty("btnGestionarEmpresas"));
+        OpcionesEmpresa.buscarEmpresa.setText(lenguaje.getProperty("btnBuscarEmpresas"));
+        OpcionesEmpresa.buscarEmpresaPorPracticas.setText(lenguaje.getProperty("btnEmpresasPorPracticas"));
+        OpcionesEmpresa.btnBuscarEmpresaPorTecnologia.setText(lenguaje.getProperty("btnEmpresasPorTecnologia"));
+        OpcionesFCT.gestionarFCT.setText(lenguaje.getProperty("btnGestionarFCT"));
+        OpcionesFCT.buscarFCT.setText(lenguaje.getProperty("btnBuscarFCT"));
+        OpcionesProfesores.gestionarProfesores.setText(lenguaje.getProperty("btnGestionarTutores"));
+        OpcionesProfesores.buscarTutores.setText(lenguaje.getProperty("btnBuscarTutores"));
+        OpcionesTrabajadores.btngestionarTrabajadores.setText(lenguaje.getProperty("btnGestionarTrabajadores"));
+        OpcionesTrabajadores.btnbuscarPorEmpresaCurso.setText(lenguaje.getProperty("btnBuscarPorEmpresaCUrso"));
+        OpcionesTrabajadores.btnhistorialContactosPorEmpresa.setText(lenguaje.getProperty("btnhistorialContactosPorEmpresa"));
+
     }
 }
 

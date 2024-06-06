@@ -33,4 +33,9 @@ public class Empresa {
     public String getSector() {
         return sector;
     }
+
+    @Override
+    public String toString() {
+        return nombre; // Puedes ajustar esto para mostrar más información si es necesario
+    }
 }

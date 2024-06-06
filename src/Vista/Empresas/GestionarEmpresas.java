@@ -1,29 +1,40 @@
 package Vista.Empresas;
 
+import Modelo.Entidades.Empresa;
+import Modelo.Entidades.EmrpesasMentira;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GestionarEmpresas extends JPanel {
 
+    public static ArrayList<Empresa> listaEmpresas;
     public static JLabel cif, nombre, telefono, numEmpleados, sector, direccion;
     public static JTextField rellenarCif, rellenarNombre, rellenarTelefono,
             rellenarNumEmpleados, rellenarSector, rellenarDireccion;
 
     public static JButton btnGuardarEmpresa, btnBorrarEmpresa, btnAgregarEmpresa;
 
-    public static JComboBox<String> listadoEmpresas;
+    public static JComboBox<Empresa> listadoEmpresas;
+
+    static Empresa empresaSeleccionada;
 
     public GestionarEmpresas() {
 
         this.setLayout(new BorderLayout());
 
+        EmrpesasMentira emrpesasMentira = new EmrpesasMentira();
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         JPanel panelNorte = new JPanel();
         listadoEmpresas = new JComboBox<>();
+        listaEmpresas = EmrpesasMentira.getListaEmpresas();
+        for (Empresa empresa : listaEmpresas) {
+            listadoEmpresas.addItem(empresa);
+        }
         panelNorte.add(listadoEmpresas);
 
         JPanel panelCentral = new JPanel(new GridBagLayout());
@@ -62,6 +73,9 @@ public class GestionarEmpresas extends JPanel {
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
+
+        empresaSeleccionada = (Empresa) listadoEmpresas.getSelectedItem();
+
     }
 
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -70,5 +84,15 @@ public class GestionarEmpresas extends JPanel {
         panel.add(label, gbc);
         gbc.gridx = 1;
         panel.add(textField, gbc);
+    }
+
+    public static void rellenarDatos(Empresa empresa){
+
+        rellenarCif.setText(empresa.getCif());
+        rellenarNombre.setText(empresa.getNombre());
+        rellenarTelefono.setText(empresa.getTelefono());
+
+
+
     }
 }

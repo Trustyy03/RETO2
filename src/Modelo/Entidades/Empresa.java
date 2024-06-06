@@ -6,12 +6,15 @@ public class Empresa {
     private String telefono;
     private int numEmpleados;
     private String sector;
-    public Empresa(String cif, String nombre, String telefono, int numEmpleados, String sector) {
+
+    private String direccion;
+    public Empresa(String cif, String nombre, String telefono, int numEmpleados, String sector,String direccion) {
         this.cif = cif;
         this.nombre = nombre;
         this.telefono = telefono;
         this.numEmpleados = numEmpleados;
         this.sector = sector;
+        this.direccion = direccion;
     }
 
     public String getCif() {
@@ -32,5 +35,11 @@ public class Empresa {
 
     public String getSector() {
         return sector;
+    }
+
+    public String getDireccion(){return direccion;}
+    @Override
+    public String toString() {
+        return nombre; // Puedes ajustar esto para mostrar más información si es necesario
     }
 }

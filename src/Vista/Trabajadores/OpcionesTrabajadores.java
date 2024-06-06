@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class OpcionesTrabajadores extends JPanel {
 
-    JButton btngestionarTrabajadores,btnbuscarPorEmpresaCurso,btnhistorialContactosPorEmpresa;
+    public static JButton btngestionarTrabajadores,btnbuscarPorEmpresaCurso,btnhistorialContactosPorEmpresa;
     BuscarEmpresaCurso buscarEmpresaCursoApartado;
     GestionarTrabajadores gestionarTrabajadoresApartado;
     HistorialContactosEmpresa historialContactosEmpresaApartado;
@@ -30,15 +30,15 @@ public class OpcionesTrabajadores extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        btngestionarTrabajadores = Estilo.botonBonito(lenguaje.getProperty(""));
+        btngestionarTrabajadores = Estilo.botonBonito(lenguaje.getProperty("btnGestionarTrabajadores"));
         btngestionarTrabajadores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(gestionarTrabajadoresApartado);
         });
-        btnbuscarPorEmpresaCurso = Estilo.botonBonito(lenguaje.getProperty(""));
+        btnbuscarPorEmpresaCurso = Estilo.botonBonito(lenguaje.getProperty("btnBuscarPorEmpresaCUrso"));
         btnbuscarPorEmpresaCurso.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaCursoApartado);
         });
-        btnhistorialContactosPorEmpresa = Estilo.botonBonito(lenguaje.getProperty(""));
+        btnhistorialContactosPorEmpresa = Estilo.botonBonito(lenguaje.getProperty("btnhistorialContactosPorEmpresa"));
         btnhistorialContactosPorEmpresa.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(historialContactosEmpresaApartado);
         });

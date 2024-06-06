@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class OpcionesProfesores extends JPanel {
 
-    JButton gestionarProfesores,buscarTutores;
+    public static JButton gestionarProfesores,buscarTutores;
     BuscarTutores buscarTutoresApartado;
     GestionarTutores gestionarTutoresApartado;
     GridBagConstraints constraints;
@@ -27,11 +27,11 @@ public class OpcionesProfesores extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        gestionarProfesores = Estilo.botonBonito(lenguaje.getProperty(""));
+        gestionarProfesores = Estilo.botonBonito(lenguaje.getProperty("btnGestionarTutores"));
         gestionarProfesores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(gestionarTutoresApartado);
         });
-        buscarTutores = Estilo.botonBonito(lenguaje.getProperty(""));
+        buscarTutores = Estilo.botonBonito(lenguaje.getProperty("btnBuscarTutores"));
         buscarTutores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarTutoresApartado);
         });

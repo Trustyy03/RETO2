@@ -1,4 +1,6 @@
 package Vista.Profesores;
 
-public class BuscarTutores {
+import javax.swing.*;
+
+public class BuscarTutores extends JPanel {
 }

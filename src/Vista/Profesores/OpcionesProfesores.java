@@ -4,6 +4,7 @@ import Controlador.MainPanelController;
 import Vista.Empresas.BuscarEmpresa;
 import Vista.Empresas.BuscarEmpresaPorPractica;
 import Vista.Empresas.GestionarEmpresas;
+import Vista.EstiloBoton;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -32,15 +33,15 @@ public class OpcionesProfesores extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        gestionarEmpresa = crearBotonBonito(lenguaje.getProperty("btnGestionarEmpresas"));
+        gestionarEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty("btnGestionarEmpresas"));
         gestionarEmpresa.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(gestionarEmpresasApartado);
         });
-        buscarEmpresa = crearBotonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
+        buscarEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
         buscarEmpresa.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaApartado);
         });
-        buscarEmpresaPorPracticas = crearBotonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
+        buscarEmpresaPorPracticas = EstiloBoton.botonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
         buscarEmpresaPorPracticas.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaPorPracticaApartado);
         });

@@ -34,39 +34,25 @@ public class OpcionesPanel extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        btnEmpresas = crearBotonBonito(lenguaje.getProperty("btnEmpresas"));
+        btnEmpresas = EstiloBoton.botonBonito(lenguaje.getProperty("btnEmpresas"));
         btnEmpresas.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(opcionesEmpresa);
         });
-        btnFct = crearBotonBonito(lenguaje.getProperty("btnFct"));
+        btnFct = EstiloBoton.botonBonito(lenguaje.getProperty("btnFct"));
         btnFct.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(opcionesFCT);
         });
-        btnProfesores = crearBotonBonito(lenguaje.getProperty("btnProfesores"));
+        btnProfesores = EstiloBoton.botonBonito(lenguaje.getProperty("btnProfesores"));
         btnProfesores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(opcionesProfesores);
         });
-        btnTrabajadores = crearBotonBonito(lenguaje.getProperty("btnTrabajadores"));
+        btnTrabajadores = EstiloBoton.botonBonito(lenguaje.getProperty("btnTrabajadores"));
         btnTrabajadores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(opcionesTrabajadores);
         });
 
         colocarComponentes();
     }
-
-    private static JButton crearBotonBonito(String text) { //modifica la interfaz de los botones
-        JButton button = new JButton(text);
-
-        button.setBackground(new Color(70, 130, 180));
-        button.setForeground(Color.WHITE);
-
-        button.setFont(new Font("Arial", Font.BOLD, 30));
-
-        button.setFocusPainted(false);
-
-        return button;
-    }
-
     public void colocarComponentes(){
 
         constraints.gridx = 0;

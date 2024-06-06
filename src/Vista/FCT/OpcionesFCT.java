@@ -1,6 +1,7 @@
 package Vista.FCT;
 
 import Controlador.MainPanelController;
+import Vista.EstiloBoton;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -26,29 +27,16 @@ public class OpcionesFCT extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        gestionarFCT = crearBotonBonito(lenguaje.getProperty("btnGestionarFCT"));
+        gestionarFCT = EstiloBoton.botonBonito(lenguaje.getProperty("btnGestionarFCT"));
         gestionarFCT.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(gestionarFCTApartado);
         });
-        buscarFCT = crearBotonBonito(lenguaje.getProperty("btnBuscarFCT"));
+        buscarFCT = EstiloBoton.botonBonito(lenguaje.getProperty("btnBuscarFCT"));
         buscarFCT.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarFCTApartado);
         });
 
         colocarComponentes();
-    }
-
-    private static JButton crearBotonBonito(String text) { //modifica la interfaz de los botones
-        JButton button = new JButton(text);
-
-        button.setBackground(new Color(70, 130, 180));
-        button.setForeground(Color.WHITE);
-
-        button.setFont(new Font("Arial", Font.BOLD, 30));
-
-        button.setFocusPainted(false);
-
-        return button;
     }
 
     public void colocarComponentes(){

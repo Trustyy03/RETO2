@@ -1,0 +1,5 @@
+host = "jdbc:mysql://192.168.203.110:33060/gestion_fct2";
+username = "Administrador";
+password = "Virtual01";
+
+jar de conexión mysql: https://dev.mysql.com/downloads/file/?id=527658

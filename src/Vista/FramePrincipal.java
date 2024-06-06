@@ -75,7 +75,7 @@ class PanelPrincipal extends JPanel {
         itemEsp.addActionListener(e -> cambiarLenguaje(Lenguaje.spanish));
         itemEngl.addActionListener(e -> cambiarLenguaje(Lenguaje.english));
         inicio.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(inicioSesionPanel);
+            MainPanelController.volverInicio();
         });
         atras.addActionListener(e -> MainPanelController.antiguoPanel());
     }

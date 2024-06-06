@@ -1,64 +1,69 @@
 package Vista;
 
+import Controlador.MainPanelController;
+import Vista.Idioma.Lenguaje;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class InicioSesion extends JFrame {
-    boolean idiomaBotonPresionado = true;
-    JLabel usuario;
-    JLabel contrasenya;
-    JTextField rellenarUsuario;
-    JTextField rellenarContrasenya;
-    JPanel posicionCampos;
-    JButton entrar;
-    JButton idioma;
-    JPanel posicionIdioma;
+public class InicioSesion extends JPanel {
 
-    public InicioSesion(){
+    public static JLabel usuario,contrasenya;
+    public static JTextField rellenarUsuario,rellenarContrasenya;
+    public static JButton entrar;
 
-        setTitle("INICIO SESIÓN"); //Cuando se realice el inicio de sesión, cambiar el titulo al panel en el que esten
-        setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        this.setLayout(new BorderLayout());
+    GridBagConstraints constraints;
 
-        posicionCampos = new JPanel(new GridLayout(3,2));
-        posicionIdioma = new JPanel();
-        add(posicionCampos, BorderLayout.CENTER);
+    public InicioSesion(FramePrincipal framePrincipal){
 
-        usuario = new JLabel("Usuario: ");
-        rellenarUsuario = new JTextField();
-        contrasenya = new JLabel("Contraseña: ");
-        rellenarContrasenya = new JTextField();
-        entrar = new JButton("ENTRAR");
+        this.setLayout(new GridBagLayout());
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
-        posicionCampos.add(usuario);
-        posicionCampos.add(rellenarUsuario);
-        posicionCampos.add(contrasenya);
-        posicionCampos.add(rellenarContrasenya);
-        posicionCampos.add(entrar);
+        OpcionesPanel opcionesPanel = new OpcionesPanel();
 
-        add(posicionIdioma,BorderLayout.NORTH);
+        constraints = new GridBagConstraints();
 
-        idioma = new JButton("ENGLISH");
-        idioma.addActionListener(a -> { //actionListener Visual
-            if (a.getSource() == idioma){
-                if (idiomaBotonPresionado) {
-                    idioma.setText("ESPAÑOL");
-                } else {
-                    idioma.setText("ENGLISH");
-                }
-                idiomaBotonPresionado = !idiomaBotonPresionado;
-            }
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.insets = new Insets(10,10,10,10);
+
+        usuario = new JLabel(lenguaje.getProperty("usuarioInicio"));
+        rellenarUsuario = new JTextField(15);
+
+        contrasenya = new JLabel(lenguaje.getProperty("contrasenyaInico"));
+        rellenarContrasenya = new JTextField(15);
+
+        entrar = new JButton(lenguaje.getProperty("entrarInicio"));
+        colocarComponentes();
+
+        entrar.addActionListener(e->{
+            MainPanelController.nuevoPanelActivo(opcionesPanel);
+            framePrincipal.setTitle("OPCIONES");
         });
 
-        posicionIdioma.add(idioma);
-
-        setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new InicioSesion();
-    }
+    public void colocarComponentes() {
 
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        add (usuario, constraints);
+
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        add (rellenarUsuario, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        add (contrasenya, constraints);
+
+        constraints.gridx = 2;
+        constraints.gridy = 1;
+        add (rellenarContrasenya, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        constraints.gridwidth = 4;
+        constraints.gridheight = 1;
+        add (entrar, constraints);
+    }
 }

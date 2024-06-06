@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class OpcionesProfesores extends JPanel {
 
-    JButton gestionarProfesores,buscarTutores;
+    public static JButton gestionarProfesores,buscarTutores;
     BuscarTutores buscarTutoresApartado;
     GestionarTutores gestionarTutoresApartado;
     GridBagConstraints constraints;

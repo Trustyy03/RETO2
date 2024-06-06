@@ -2,7 +2,10 @@ package Vista;
 
 import Controlador.MainPanelController;
 import Vista.Empresas.OpcionesEmpresa;
+import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
+import Vista.Profesores.OpcionesProfesores;
+import Vista.Trabajadores.OpcionesTrabajadores;
 
 import javax.swing.*;
 import java.awt.*;
@@ -92,6 +95,14 @@ class PanelPrincipal extends JPanel {
         OpcionesEmpresa.gestionarEmpresa.setText(lenguaje.getProperty("btnGestionarEmpresas"));
         OpcionesEmpresa.buscarEmpresa.setText(lenguaje.getProperty("btnBuscarEmpresas"));
         OpcionesEmpresa.buscarEmpresaPorPracticas.setText(lenguaje.getProperty("btnEmpresasPorPracticas"));
+        OpcionesEmpresa.btnBuscarEmpresaPorTecnologia.setText(lenguaje.getProperty("btnEmpresasPorTecnologia"));
+        OpcionesFCT.gestionarFCT.setText(lenguaje.getProperty("btnGestionarFCT"));
+        OpcionesFCT.buscarFCT.setText(lenguaje.getProperty("btnBuscarFCT"));
+        OpcionesProfesores.gestionarProfesores.setText("btnGestionarTutores");
+        OpcionesProfesores.buscarTutores.setText("btnBuscarTutores");
+        OpcionesTrabajadores.btngestionarTrabajadores.setText("btnGestionarTrabajadores");
+        OpcionesTrabajadores.btnbuscarPorEmpresaCurso.setText("btnBuscarPorEmpresaCUrso");
+        OpcionesTrabajadores.btnhistorialContactosPorEmpresa.setText("btnhistorialContactosPorEmpresa");
 
     }
 }

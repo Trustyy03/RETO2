@@ -1,11 +1,8 @@
 package Vista.Empresas;
 
 import Controlador.MainPanelController;
-import Vista.EstiloBoton;
-import Vista.FCT.OpcionesFCT;
+import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
-import Vista.Profesores.OpcionesProfesores;
-import Vista.Trabajadores.OpcionesTrabajadores;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,19 +32,19 @@ public class OpcionesEmpresa extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        gestionarEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty("btnGestionarEmpresas"));
+        gestionarEmpresa = Estilo.botonBonito(lenguaje.getProperty("btnGestionarEmpresas"));
         gestionarEmpresa.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(gestionarEmpresasApartado);
         });
-        buscarEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
+        buscarEmpresa = Estilo.botonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
         buscarEmpresa.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaApartado);
         });
-        buscarEmpresaPorPracticas = EstiloBoton.botonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
+        buscarEmpresaPorPracticas = Estilo.botonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
         buscarEmpresaPorPracticas.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaPorPracticaApartado);
         });
-        btnBuscarEmpresaPorTecnologia = EstiloBoton.botonBonito(lenguaje.getProperty("btnEmpresasPorTecnologia"));
+        btnBuscarEmpresaPorTecnologia = Estilo.botonBonito(lenguaje.getProperty("btnEmpresasPorTecnologia"));
         btnBuscarEmpresaPorTecnologia.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaPorTecnologiaApartado);
         });

@@ -1,7 +1,7 @@
 package Vista.FCT;
 
 import Controlador.MainPanelController;
-import Vista.EstiloBoton;
+import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -27,11 +27,11 @@ public class OpcionesFCT extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        gestionarFCT = EstiloBoton.botonBonito(lenguaje.getProperty("btnGestionarFCT"));
+        gestionarFCT = Estilo.botonBonito(lenguaje.getProperty("btnGestionarFCT"));
         gestionarFCT.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(gestionarFCTApartado);
         });
-        buscarFCT = EstiloBoton.botonBonito(lenguaje.getProperty("btnBuscarFCT"));
+        buscarFCT = Estilo.botonBonito(lenguaje.getProperty("btnBuscarFCT"));
         buscarFCT.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarFCTApartado);
         });

@@ -34,19 +34,19 @@ public class OpcionesPanel extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        btnEmpresas = EstiloBoton.botonBonito(lenguaje.getProperty("btnEmpresas"));
+        btnEmpresas = Estilo.botonBonito(lenguaje.getProperty("btnEmpresas"));
         btnEmpresas.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(opcionesEmpresa);
         });
-        btnFct = EstiloBoton.botonBonito(lenguaje.getProperty("btnFct"));
+        btnFct = Estilo.botonBonito(lenguaje.getProperty("btnFct"));
         btnFct.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(opcionesFCT);
         });
-        btnProfesores = EstiloBoton.botonBonito(lenguaje.getProperty("btnProfesores"));
+        btnProfesores = Estilo.botonBonito(lenguaje.getProperty("btnProfesores"));
         btnProfesores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(opcionesProfesores);
         });
-        btnTrabajadores = EstiloBoton.botonBonito(lenguaje.getProperty("btnTrabajadores"));
+        btnTrabajadores = Estilo.botonBonito(lenguaje.getProperty("btnTrabajadores"));
         btnTrabajadores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(opcionesTrabajadores);
         });

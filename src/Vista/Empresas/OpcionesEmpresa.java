@@ -1,6 +1,7 @@
 package Vista.Empresas;
 
 import Controlador.MainPanelController;
+import Vista.EstiloBoton;
 import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
 import Vista.Profesores.OpcionesProfesores;
@@ -11,10 +12,11 @@ import java.awt.*;
 
 public class OpcionesEmpresa extends JPanel {
 
-    JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas;
+    public static JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas,btnBuscarEmpresaPorTecnologia;
     BuscarEmpresa buscarEmpresaApartado;
     BuscarEmpresaPorPractica buscarEmpresaPorPracticaApartado;
     GestionarEmpresas gestionarEmpresasApartado;
+    BuscarEmpresaPorTecnologia buscarEmpresaPorTecnologiaApartado;
 
     GridBagConstraints constraints;
 
@@ -27,38 +29,30 @@ public class OpcionesEmpresa extends JPanel {
         buscarEmpresaApartado = new BuscarEmpresa();
         buscarEmpresaPorPracticaApartado = new BuscarEmpresaPorPractica();
         gestionarEmpresasApartado = new GestionarEmpresas();
+        buscarEmpresaPorTecnologiaApartado = new BuscarEmpresaPorTecnologia();
 
         constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        gestionarEmpresa = crearBotonBonito(lenguaje.getProperty("btnGestionarEmpresas"));
+        gestionarEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty("btnGestionarEmpresas"));
         gestionarEmpresa.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(gestionarEmpresasApartado);
         });
-        buscarEmpresa = crearBotonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
+        buscarEmpresa = EstiloBoton.botonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
         buscarEmpresa.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaApartado);
         });
-        buscarEmpresaPorPracticas = crearBotonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
+        buscarEmpresaPorPracticas = EstiloBoton.botonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
         buscarEmpresaPorPracticas.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaPorPracticaApartado);
         });
+        btnBuscarEmpresaPorTecnologia = EstiloBoton.botonBonito(lenguaje.getProperty("btnEmpresasPorTecnologia"));
+        btnBuscarEmpresaPorTecnologia.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(buscarEmpresaPorTecnologiaApartado);
+        });
 
         colocarComponentes();
-    }
-
-    private static JButton crearBotonBonito(String text) { //modifica la interfaz de los botones
-        JButton button = new JButton(text);
-
-        button.setBackground(new Color(70, 130, 180));
-        button.setForeground(Color.WHITE);
-
-        button.setFont(new Font("Arial", Font.BOLD, 30));
-
-        button.setFocusPainted(false);
-
-        return button;
     }
 
     public void colocarComponentes(){

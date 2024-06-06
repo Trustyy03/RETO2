@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.MainPanelController;
+import Vista.Empresas.OpcionesEmpresa;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -88,6 +89,9 @@ class PanelPrincipal extends JPanel {
         InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
         InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
         InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));
+        OpcionesEmpresa.gestionarEmpresa.setText(lenguaje.getProperty("btnGestionarEmpresas"));
+        OpcionesEmpresa.buscarEmpresa.setText(lenguaje.getProperty("btnBuscarEmpresas"));
+        OpcionesEmpresa.buscarEmpresaPorPracticas.setText(lenguaje.getProperty("btnEmpresasPorPracticas"));
 
     }
 }

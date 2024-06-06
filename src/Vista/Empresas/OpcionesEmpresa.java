@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class OpcionesEmpresa extends JPanel {
 
-    JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas;
+    public static JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas;
     BuscarEmpresa buscarEmpresaApartado;
     BuscarEmpresaPorPractica buscarEmpresaPorPracticaApartado;
     GestionarEmpresas gestionarEmpresasApartado;

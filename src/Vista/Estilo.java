@@ -25,6 +25,7 @@ public class Estilo {
         label.setForeground(Color.WHITE);
 
         label.setFont(new Font("Arial", Font.BOLD, 30));
+        label.setVisible(true);
 
         return label;
     }

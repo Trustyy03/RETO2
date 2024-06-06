@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class OpcionesFCT extends JPanel {
 
-    JButton gestionarFCT,buscarFCT;
+    public static JButton gestionarFCT,buscarFCT;
     BuscarFCT buscarFCTApartado;
     GestionarFCT gestionarFCTApartado;
     GridBagConstraints constraints;

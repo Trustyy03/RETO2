@@ -1,4 +1,9 @@
 package Vista.Trabajadores;
 
-public class OpcionesTrabajadores {
+import javax.swing.*;
+
+public class OpcionesTrabajadores extends JPanel {
+
+
+
 }

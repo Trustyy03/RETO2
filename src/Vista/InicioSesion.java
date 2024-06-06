@@ -14,7 +14,7 @@ public class InicioSesion extends JPanel {
 
     GridBagConstraints constraints;
 
-    public InicioSesion(){
+    public InicioSesion(FramePrincipal framePrincipal){
 
         this.setLayout(new GridBagLayout());
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
@@ -35,7 +35,10 @@ public class InicioSesion extends JPanel {
         entrar = new JButton(lenguaje.getProperty("entrarInicio"));
         colocarComponentes();
 
-        entrar.addActionListener(e-> MainPanelController.nuevoPanelActivo(opcionesPanel));
+        entrar.addActionListener(e->{
+            MainPanelController.nuevoPanelActivo(opcionesPanel);
+            framePrincipal.setTitle("OPCIONES");
+        });
 
     }
 

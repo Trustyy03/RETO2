@@ -1,6 +1,11 @@
 package Vista;
 
+import Controlador.MainPanelController;
+import Vista.Empresas.OpcionesEmpresa;
+import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
+import Vista.Profesores.OpcionesProfesores;
+import Vista.Trabajadores.OpcionesTrabajadores;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,10 +13,11 @@ import java.awt.*;
 public class OpcionesPanel extends JPanel {
 
     public static JButton btnEmpresas,btnFct,btnProfesores,btnTrabajadores;
-
-    InicioSesion inicioSesionn;
-
     GridBagConstraints constraints;
+    OpcionesEmpresa opcionesEmpresa;
+    OpcionesFCT opcionesFCT;
+    OpcionesProfesores opcionesProfesores;
+    OpcionesTrabajadores opcionesTrabajadores;
 
     public OpcionesPanel(){
 
@@ -19,21 +25,46 @@ public class OpcionesPanel extends JPanel {
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
-        inicioSesionn   = new InicioSesion();
+        opcionesEmpresa = new OpcionesEmpresa();
+        opcionesFCT = new OpcionesFCT();
+        opcionesProfesores = new OpcionesProfesores();
+        opcionesTrabajadores = new OpcionesTrabajadores();
 
         constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.insets = new Insets(10,10,10,10);
 
-        btnEmpresas = new JButton(lenguaje.getProperty("btnEmpresas"));
-        btnFct = new JButton(lenguaje.getProperty("btnFct"));
-        btnProfesores = new JButton(lenguaje.getProperty("btnProfesores"));
-        btnTrabajadores = new JButton(lenguaje.getProperty("btnTrabajadores"));
+        btnEmpresas = crearBotonBonito(lenguaje.getProperty("btnEmpresas"));
+        btnEmpresas.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(opcionesEmpresa);
+        });
+        btnFct = crearBotonBonito(lenguaje.getProperty("btnFct"));
+        btnFct.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(opcionesFCT);
+        });
+        btnProfesores = crearBotonBonito(lenguaje.getProperty("btnProfesores"));
+        btnProfesores.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(opcionesProfesores);
+        });
+        btnTrabajadores = crearBotonBonito(lenguaje.getProperty("btnTrabajadores"));
+        btnTrabajadores.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(opcionesTrabajadores);
+        });
 
         colocarComponentes();
+    }
 
+    private static JButton crearBotonBonito(String text) { //modifica la interfaz de los botones
+        JButton button = new JButton(text);
 
+        button.setBackground(new Color(70, 130, 180));
+        button.setForeground(Color.WHITE);
 
+        button.setFont(new Font("Arial", Font.BOLD, 30));
 
+        button.setFocusPainted(false);
 
+        return button;
     }
 
     public void colocarComponentes(){

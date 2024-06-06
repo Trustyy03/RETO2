@@ -1,4 +1,6 @@
 package Vista.Profesores;
 
-public class OpcionesProfesores {
+import javax.swing.*;
+
+public class OpcionesProfesores extends JPanel {
 }

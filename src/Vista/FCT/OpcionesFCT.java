@@ -1,4 +1,6 @@
 package Vista.FCT;
 
-public class OpcionesFCT {
+import javax.swing.*;
+
+public class OpcionesFCT extends JPanel {
 }

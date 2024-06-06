@@ -1,4 +1,6 @@
 package Vista.FCT;
 
-public class BuscarFCT {
+import javax.swing.*;
+
+public class BuscarFCT extends JPanel {
 }

@@ -29,13 +29,13 @@ public class OpcionesFCT extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10,10,10,10);
 
-        buscarEmpresa = crearBotonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
-        buscarEmpresa.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(buscarEmpresaApartado);
+        gestionarFCT = crearBotonBonito(lenguaje.getProperty("btnBuscarEmpresas"));
+        gestionarFCT.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(gestionarFCTApartado);
         });
-        buscarEmpresaPorPracticas = crearBotonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
-        buscarEmpresaPorPracticas.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(buscarEmpresaPorPracticaApartado);
+        buscarFCT = crearBotonBonito(lenguaje.getProperty("btnEmpresasPorPracticas"));
+        buscarFCT.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(buscarFCTApartado);
         });
 
         colocarComponentes();
@@ -58,15 +58,11 @@ public class OpcionesFCT extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        add(gestionarEmpresa, constraints);
+        add(gestionarFCT, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
-        add (buscarEmpresa, constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        add (buscarEmpresaPorPracticas, constraints);
+        add (buscarFCT, constraints);
 
     }
 

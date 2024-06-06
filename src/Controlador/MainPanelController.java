@@ -12,8 +12,6 @@ public class MainPanelController {
 
     static Stack<JPanel> listaPaneles = new Stack<>();
 
-    static int contador = 0;
-
     public MainPanelController(JPanel panelPad , JPanel panelActi){
 
         panelPadre = panelPad;
@@ -53,8 +51,7 @@ public class MainPanelController {
                 panelPadre.revalidate();
                 panelPadre.repaint();
             }
-
-        }K
+        }
 
 
     }

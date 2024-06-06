@@ -76,7 +76,4 @@ public class OpcionesEmpresa extends JPanel {
         add (buscarEmpresaPorPracticas, constraints);
 
     }
-
-
-
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class OperacionesEntidades {
     static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
-    public List<Empresa> consultarEmpresas() {
+    public static List<Empresa> consultarEmpresas() {
         List<Empresa> empresas = new ArrayList<>();
         try {
             Statement st = con.createStatement();
@@ -22,6 +22,8 @@ public class OperacionesEntidades {
                 Empresa empresa =  new Empresa(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6));
                 empresas.add(empresa);
             }
+            st.close();
+            rs.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

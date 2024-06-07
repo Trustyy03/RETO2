@@ -3,8 +3,10 @@ package Controlador;
 import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.FCT;
+import Modelo.Entidades.Tutor;
 
 import javax.swing.*;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,6 +44,23 @@ public class FCTController {
             st.execute(borrarFCT);
             st.close();
             JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","FCT eliminada",JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
+
+    public static void modificarFCT(FCT FCTNueva, FCT FCTVieja) {
+        try {
+            String modificarTutor = "UPDATE GRUPO_FCT_EMPRESA SET CIF = ?, idGrupo = ?, cursoEscolar = ?, " +
+                    "numAlumnos = ? WHERE CIF = ? AND idGrupo = ? AND cursoEscolar = ?;";
+            PreparedStatement pst = con.prepareStatement(modificarTutor);
+            pst.setString(1, FCTNueva.getCif());
+            pst.setString(2, FCTNueva.getIdGrupo());
+            pst.setString(3, FCTNueva.getCursoEscolar());
+            pst.setInt(4, FCTNueva.getNumAlumnos());
+            pst.setString(5, FCTVieja.getCif());
+            pst.setString(6, FCTVieja.getIdGrupo());
+            pst.setString(7, FCTVieja.getCursoEscolar());
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

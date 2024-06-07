@@ -51,7 +51,7 @@ public class TrabajadorController {
     public static void modificarTrabajador(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
         try {
             String modificarTrabajador = "UPDATE TRABAJADORES_INTERES SET idEmpleado = ?, CIF = ?, " +
-                    "nombre = ?, apellidos = ?, correo = ?, cargo = ?, telefono = ? WHERE idEmpleado = ?";
+                    "nombre = ?, apellidos = ?, correo = ?, cargo = ?, telefono = ? WHERE idEmpleado = ?;";
             PreparedStatement pst = con.prepareStatement(modificarTrabajador);
             pst.setInt(1, trabajadorNuevo.getId());
             pst.setString(2, trabajadorNuevo.getCif());

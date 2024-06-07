@@ -48,7 +48,7 @@ public class TutorController {
 
     public static void modificarTutor(Tutor tutorNuevo, Tutor tutorViejo) {
         try {
-            String modificarTutor = "UPDATE TUTOR_FCT SET nombre = ?, apellido = ?, idTutor = ? WHERE idTutor = ?";
+            String modificarTutor = "UPDATE TUTOR_FCT SET nombre = ?, apellido = ?, idTutor = ? WHERE idTutor = ?;";
             PreparedStatement pst = con.prepareStatement(modificarTutor);
             pst.setString(1, tutorNuevo.getNombre());
             pst.setString(2, tutorNuevo.getApellidos());

@@ -48,7 +48,7 @@ public class EmpresaController {
     public static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja) {
         try {
             String modificarTrabajador = "UPDATE EMPRESA SET CIF = ?, nombre = ?, " +
-                    "telefono = ?, numEmpleados = ?, sector = ?, direccion = ? WHERE CIF = ?";
+                    "telefono = ?, numEmpleados = ?, sector = ?, direccion = ? WHERE CIF = ?;";
             PreparedStatement pst = con.prepareStatement(modificarTrabajador);
             pst.setString(1, empresaNueva.getCif());
             pst.setString(2, empresaNueva.getNombre());

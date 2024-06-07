@@ -1,33 +1,28 @@
 package Vista.Trabajadores;
 
-
 import Controlador.MainPanelController;
 import Controlador.TrabajadorController;
-
 import Modelo.Entidades.Trabajador;
-
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.util.List;
 
 public class GestionarTrabajadores extends JPanel {
 
     public static List<Trabajador> listaTrabajadores;
-    public static JLabel idTrabajador,cifTrabajador, nombreTrabajador,
-            apellidosTrabajador, correoTrabajador,cargoTrabajador,telefonoTrabajador;
-    public static JTextField rellenarId,rellenarCif, rellenarNombreTrabajador, rellenarApellidosTrabajador,
-            rellenarCorreoTrabajador, rellenarCargoTrabajador,rellenarTelefonoTrabajador;
-    public static JButton btnGuardarTrabajador,btnBorrarTrabajador,btnAgregarTrabajador;
+    public static JLabel idTrabajador, cifTrabajador, nombreTrabajador,
+            apellidosTrabajador, correoTrabajador, cargoTrabajador, telefonoTrabajador;
+    public static JTextField rellenarId, rellenarCif, rellenarNombreTrabajador, rellenarApellidosTrabajador,
+            rellenarCorreoTrabajador, rellenarCargoTrabajador, rellenarTelefonoTrabajador;
+    public static JButton btnGuardarTrabajador, btnBorrarTrabajador, btnAgregarTrabajador;
 
     public static JComboBox<Trabajador> CBlistadoTrabajadores;
-    static Trabajador trabajadorSeleccionado;
+    static Trabajador trabajadorSeleccionado, trabajadorNuevo;
 
-    public GestionarTrabajadores(){
-
+    public GestionarTrabajadores() {
         this.setLayout(new BorderLayout());
 
         AgregarTrabajador agregarTrabajadorPanel = new AgregarTrabajador();
@@ -37,7 +32,6 @@ public class GestionarTrabajadores extends JPanel {
         JPanel panelNorte = new JPanel();
         CBlistadoTrabajadores = new JComboBox<>();
         agregarTrabajadores();
-
 
         btnBorrarTrabajador = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarTrabajador = new JButton(lenguaje.getProperty("btnAgregar"));
@@ -61,9 +55,9 @@ public class GestionarTrabajadores extends JPanel {
         correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoEmpleado"));
         rellenarCorreoTrabajador = new JTextField(20);
         cargoTrabajador = Estilo.textoBonito(lenguaje.getProperty("cargoTrabajador"));
-        rellenarCargoTrabajador  = new JTextField(20);
+        rellenarCargoTrabajador = new JTextField(20);
         telefonoTrabajador = Estilo.textoBonito(lenguaje.getProperty("telefonoTrabajador"));
-        rellenarTelefonoTrabajador  = new JTextField(20);
+        rellenarTelefonoTrabajador = new JTextField(20);
 
         configurarCoordenadas(panelCentral, gbc, idTrabajador, rellenarId, 0);
         configurarCoordenadas(panelCentral, gbc, cifTrabajador, rellenarCif, 1);
@@ -81,13 +75,21 @@ public class GestionarTrabajadores extends JPanel {
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        CBlistadoTrabajadores.addActionListener(e-> {trabajadorSeleccionado =(Trabajador) CBlistadoTrabajadores.getSelectedItem();
-            rellenarDatos(trabajadorSeleccionado);});
+        CBlistadoTrabajadores.addActionListener(e -> {
+            trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
+            rellenarDatos(trabajadorSeleccionado);
+        });
 
-        btnAgregarTrabajador.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarTrabajadorPanel));
-        btnBorrarTrabajador.addActionListener(e-> {trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
-            eliminarTrabajador(trabajadorSeleccionado);});
-
+        btnAgregarTrabajador.addActionListener(e -> MainPanelController.nuevoPanelActivo(agregarTrabajadorPanel));
+        btnBorrarTrabajador.addActionListener(e -> {
+            trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
+            eliminarTrabajador(trabajadorSeleccionado);
+        });
+        btnGuardarTrabajador.addActionListener(e -> {
+            trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
+            guardarDatos();
+            modificarTrabajador(trabajadorSeleccionado, trabajadorNuevo);
+        });
     }
 
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -98,29 +100,52 @@ public class GestionarTrabajadores extends JPanel {
         panel.add(textField, gbc);
     }
 
-    private static void rellenarDatos(Trabajador trabajador){
-
-        rellenarId.setText(String.valueOf(trabajador.getId()));
-        rellenarCif.setText(trabajador.getCif());
-        rellenarNombreTrabajador.setText(trabajador.getNombre());
-        rellenarApellidosTrabajador.setText(trabajador.getApellidos());
-        rellenarCorreoTrabajador.setText(trabajador.getCorreo());
-        rellenarCargoTrabajador.setText(trabajador.getCargo());
-        rellenarTelefonoTrabajador.setText(trabajador.getTelefono());
+    private static void rellenarDatos(Trabajador trabajador) {
+        if (trabajador != null) {
+            rellenarId.setText(String.valueOf(trabajador.getId()));
+            rellenarCif.setText(trabajador.getCif());
+            rellenarNombreTrabajador.setText(trabajador.getNombre());
+            rellenarApellidosTrabajador.setText(trabajador.getApellidos());
+            rellenarCorreoTrabajador.setText(trabajador.getCorreo());
+            rellenarCargoTrabajador.setText(trabajador.getCargo());
+            rellenarTelefonoTrabajador.setText(trabajador.getTelefono());
+        }
     }
 
+    private static void guardarDatos() {
+        trabajadorNuevo = new Trabajador(
+                Integer.parseInt(rellenarId.getText()),
+                rellenarCif.getText(),
+                rellenarNombreTrabajador.getText(),
+                rellenarApellidosTrabajador.getText(),
+                rellenarCorreoTrabajador.getText(),
+                rellenarCargoTrabajador.getText(),
+                rellenarTelefonoTrabajador.getText()
+        );
+    }
 
-    private static void agregarTrabajadores(){
+    private static void agregarTrabajadores() {
         listaTrabajadores = TrabajadorController.consultarTrabajadores();
 
-        for (Trabajador trabajador : listaTrabajadores){
+        for (Trabajador trabajador : listaTrabajadores) {
             CBlistadoTrabajadores.addItem(trabajador);
         }
     }
-    public static void eliminarTrabajador(Trabajador trabajador){
+
+    private static void eliminarTrabajador(Trabajador trabajador) {
         TrabajadorController.borrarTrabajador(trabajador);
         listaTrabajadores.remove(trabajador);
         CBlistadoTrabajadores.removeItem(trabajador);
     }
 
+    private static void modificarTrabajador(Trabajador trabajadorViejo, Trabajador trabajadorNuevo) {
+        TrabajadorController.modificarTrabajador(trabajadorNuevo, trabajadorViejo);
+        int indice = listaTrabajadores.indexOf(trabajadorViejo);
+        if (indice != -1) {
+            listaTrabajadores.set(indice, trabajadorNuevo);
+            CBlistadoTrabajadores.removeItemAt(indice);
+            CBlistadoTrabajadores.insertItemAt(trabajadorNuevo, indice);
+            CBlistadoTrabajadores.setSelectedItem(trabajadorNuevo);
+        }
+    }
 }

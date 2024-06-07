@@ -61,7 +61,7 @@ public class TrabajadorController {
             pst.setString(6, trabajadorNuevo.getCargo());
             pst.setString(7, trabajadorNuevo.getTelefono());
             pst.setInt(8, trabajadorViejo.getId());
-
+            JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","Trabajador modificado",JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

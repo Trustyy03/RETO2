@@ -1,26 +1,23 @@
 package Vista.Empresas;
 
+import Modelo.Entidades.Empresa;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ListaDeEmpresas extends JPanel {
 
-    DetallesEmpresa detallesEmpresaApartado;
+    DetallesEmpresa detallesEmpresaApartado; //Se usará cuando se de a la linea de una empresa
+    JList<Empresa> empresas;
 
     public ListaDeEmpresas() {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
 
-        JButton empresa1 = new JButton("EMPRESA 1");
-        JButton empresa2 = new JButton("EMPRESA 2");
-        // Añadir más empresas según sea necesario
-        empresa1.addActionListener(e ->
-                JOptionPane.showMessageDialog(this, "Mostrar detalles de EMPRESA 1")
-        );
-        empresa2.addActionListener(e ->
-                JOptionPane.showMessageDialog(this, "Mostrar detalles de EMPRESA 2")
-        );
+        //o tmb que sean botones, cambiarlo a gridLayout y hacer un bucle con las empresas que hayan, crear un boton en cada una
+        //y cuando se presione, te salga los detalles
 
-        add(empresa1);
-        add(empresa2);
+        empresas = new JList<>();
+        add(empresas, BorderLayout.CENTER);
+
     }
 }

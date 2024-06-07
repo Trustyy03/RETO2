@@ -21,7 +21,7 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
 
         setLayout(new GridBagLayout());
         listaDeEmpresasApartado = new ListaDeEmpresas();
-        detallesEmpresaApartado = new DetallesEmpresa("");
+        detallesEmpresaApartado = new DetallesEmpresa();
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
@@ -50,10 +50,12 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
     public void colocarComponentes() {
         constraints.gridx = 0;
         constraints.gridy = 0;
+        constraints.gridwidth = 2;
         add(btnListaEmpresas, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
+        constraints.gridwidth = 1;
         add(labelEmpresa, constraints);
 
         constraints.gridx = 1;
@@ -62,7 +64,7 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 2; // Para que el botón ocupe dos columnas
         add(botonEnviar, constraints);
     }
 }

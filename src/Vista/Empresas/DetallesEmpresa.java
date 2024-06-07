@@ -5,10 +5,13 @@ import java.awt.*;
 
 public class DetallesEmpresa extends JPanel {
 
-    public DetallesEmpresa(String nombreEmpresa) {
+    JLabel labelEmpresa;
+
+    public DetallesEmpresa() {
         setLayout(new BorderLayout());
 
-        JLabel labelEmpresa = new JLabel(nombreEmpresa, JLabel.CENTER);
+        labelEmpresa = new JLabel("Información de la empresa", JLabel.CENTER);
+        //aqui se pondrá toda la información de la empresa (lo que nos piden poner)
         labelEmpresa.setFont(new Font("Arial", Font.BOLD, 24));
 
         add(labelEmpresa, BorderLayout.CENTER);

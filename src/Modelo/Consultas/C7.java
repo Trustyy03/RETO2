@@ -23,4 +23,9 @@ public class C7 {
     public String getCif() {
         return cif;
     }
+
+    @Override
+    public String toString() {
+        return idTecnologia + " / " + nombreEmpresa + " / " + cif;
+    }
 }

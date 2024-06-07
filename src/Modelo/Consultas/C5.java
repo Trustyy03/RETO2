@@ -29,4 +29,9 @@ public class C5 {
     public String getCursoEscolar() {
         return cursoEscolar;
     }
+
+    @Override
+    public String toString() {
+        return idIncidencia + " / " + cif + " / " + descripcion + " / " + cursoEscolar;
+    }
 }

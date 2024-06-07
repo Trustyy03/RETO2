@@ -83,4 +83,89 @@ public class OperacionesConsultas {
         rs.close();
     }
 
+    public static void consultaCuatro(String cifEmpresa, String cursoEscolar) throws SQLException {
+        String sql = "SELECT e.nombre, fct.cursoEscolar, fct.idGrupo, fct.numAlumnos\n" +
+                "FROM EMPRESA e\n" +
+                "INNER JOIN GRUPO_FCT_EMPRESA fct using(CIF)\n" +
+                "WHERE e.CIF = ?\n" + // B01234567
+                "AND fct.cursoEscolar = ?;"; // 23-24
+
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, cifEmpresa);
+        pst.setString(2, cursoEscolar);
+
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            C4 consulta4 = new C4(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+            System.out.println(consulta4.toString());
+        }
+
+        pst.close();
+        rs.close();
+    }
+
+    public static void consultaCinco(String cursoEscolar) throws SQLException {
+        String sql = "SELECT *\n" +
+                "FROM INCIDENCIA\n" +
+                "WHERE cursoEscolar = ?;"; // ej. '23-24'
+
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, cursoEscolar);
+
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            C5 consulta5 = new C5(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            System.out.println(consulta5.toString());
+        }
+
+        pst.close();
+        rs.close();
+    }
+
+    public static void consultaSeis(String nombreEmpresa, String idCiclo) throws SQLException {
+        String sql = "SELECT e.nombre as 'nombreEmpresa', enc.cantidadAlumnos, c.idCiclo \n" +
+                "FROM CICLO c \n" +
+                "INNER JOIN EMPRESA_NECESITA_CICLO enc using(idCiclo)\n" +
+                "INNER JOIN EMPRESA e using(CIF)\n" +
+                "WHERE e.nombre = ?\n" + // ej. 'IT Solutions Group'
+                "AND enc.idCiclo = ?\n" + // ej. '1ADFI'
+                "AND enc.cursoEscolar = '23-24';";
+
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, nombreEmpresa);
+        pst.setString(2, idCiclo);
+
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            C6 consulta6 = new C6(rs.getString(1), rs.getInt(2), rs.getString(3));
+            System.out.println(consulta6.toString());
+        }
+
+        pst.close();
+        rs.close();
+    }
+
+    public static void consultaSiete(String tecnologia) throws SQLException {
+        String sql = "SELECT eut.idTecnologia, e.nombre, e.CIF\n" +
+                "FROM EMPRESA e\n" +
+                "INNER JOIN EMPRESA_USA_TECNOLOGIA eut using(CIF)\n" +
+                "WHERE eut.idTecnologia = ?";
+
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, tecnologia);
+
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            C7 consulta7 = new C7(rs.getString(1), rs.getString(2), rs.getString(3));
+            System.out.println(consulta7.toString());
+        }
+
+        pst.close();
+        rs.close();
+    }
+
 }

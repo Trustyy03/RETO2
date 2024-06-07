@@ -1,38 +1,33 @@
 package Modelo.Consultas;
 
-//C6. Consulta de contactes per empresa i curs. -> No hemos contemplado que los contactos pertenezcan a un curso escolar
+//C6. Consulta que mostre, donada una empresa i un cicle en un curs escolar,
+//les dades FCT sol·licitades per l’empresa a eixe cicle (ex. Crownet sol·licita
+//15 alumnes de 2DAM)
 public class C6 {
     private String nombreEmpresa;
-    private String nombreTrabajador;
-    private String cargo;
-    private String correo;
-    private String telefono;
+    private int cantidadAlumnos;
+    private String idCiclo;
 
-    public C6(String nombreEmpresa, String nombreTrabajador, String cargo, String correo, String telefono) {
+    public C6(String nombreEmpresa, int cantidadAlumnos, String idCiclo) {
         this.nombreEmpresa = nombreEmpresa;
-        this.nombreTrabajador = nombreTrabajador;
-        this.cargo = cargo;
-        this.correo = correo;
-        this.telefono = telefono;
+        this.cantidadAlumnos = cantidadAlumnos;
+        this.idCiclo = idCiclo;
     }
 
     public String getNombreEmpresa() {
         return nombreEmpresa;
     }
 
-    public String getNombreTrabajador() {
-        return nombreTrabajador;
+    public int getCantidadAlumnos() {
+        return cantidadAlumnos;
     }
 
-    public String getCargo() {
-        return cargo;
+    public String getIdCiclo() {
+        return idCiclo;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public String getTelefono() {
-        return telefono;
+    @Override
+    public String toString() {
+        return nombreEmpresa + " / " + cantidadAlumnos + " / " + idCiclo;
     }
 }

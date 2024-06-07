@@ -30,4 +30,9 @@ public class C4 {
     public int getNumAlumnos() {
         return numAlumnos;
     }
+
+    @Override
+    public String toString() {
+        return nombreEmpresa + " / " + cursoEscolar + " / " + idGrupo + " / " + numAlumnos;
+    }
 }

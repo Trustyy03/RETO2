@@ -66,5 +66,9 @@ public class OpcionesEmpresa extends JPanel {
         constraints.gridy = 2;
         add (buscarEmpresaPorPracticas, constraints);
 
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        add (btnBuscarEmpresaPorTecnologia, constraints);
+
     }
 }

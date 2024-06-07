@@ -6,7 +6,6 @@ public class Tutor {
     String nombre;
     String apellidos;
 
-
     public Tutor(int idTutor, String nombre, String apellidos) {
         this.idTutor = idTutor;
         this.nombre = nombre;
@@ -35,5 +34,9 @@ public class Tutor {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public String toString(){
+        return idTutor + " "+ nombre;
     }
 }

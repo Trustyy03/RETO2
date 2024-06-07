@@ -1,8 +1,8 @@
 package Vista.Empresas;
 
+import Controlador.EmpresaController;
 import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
-import Modelo.Entidades.EmrpesasMentira;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -28,7 +28,6 @@ public class GestionarEmpresas extends JPanel {
 
         this.setLayout(new BorderLayout());
 
-        EmrpesasMentira emrpesasMentira = new EmrpesasMentira();
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         AgregarEmpresa agregarEmpresa = new AgregarEmpresa();
@@ -104,7 +103,7 @@ public class GestionarEmpresas extends JPanel {
     }
 
     private static void agregarEmpresas(){
-        listaEmpresas = EmrpesasMentira.getListaEmpresas();
+        listaEmpresas = EmpresaController.consultarEmpresas();
 
         for (Empresa empresa : listaEmpresas) {
             CBlistadoEmpresas.addItem(empresa);

@@ -1,5 +1,6 @@
 package Vista.Trabajadores;
 
+import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.Trabajador;
 import Modelo.Pruebas.TrabajadoresMentira;
@@ -27,6 +28,8 @@ public class GestionarTrabajadores extends JPanel {
         TrabajadoresMentira trabajadoresMentira = new TrabajadoresMentira();
 
         this.setLayout(new BorderLayout());
+
+        AgregarTrabajador agregarTrabajadorPanel = new AgregarTrabajador();
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
@@ -73,6 +76,8 @@ public class GestionarTrabajadores extends JPanel {
 
         CBlistadoTrabajadores.addActionListener(e-> {trabajadorSeleccionado =(Trabajador) CBlistadoTrabajadores.getSelectedItem();
             rellenarDatos(trabajadorSeleccionado);});
+
+        btnAgregarTrabajador.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarTrabajadorPanel));
 
     }
 

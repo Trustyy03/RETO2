@@ -96,7 +96,7 @@ public class GestionarEmpresas extends JPanel {
         panel.add(textField, gbc);
     }
 
-    public static void rellenarDatos(Empresa empresa){
+    private static void rellenarDatos(Empresa empresa){
         rellenarCif.setText(empresa.getCif());
         rellenarNombre.setText(empresa.getNombre());
         rellenarTelefono.setText(empresa.getTelefono());

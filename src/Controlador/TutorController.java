@@ -54,6 +54,8 @@ public class TutorController {
             pst.setString(2, tutorNuevo.getApellidos());
             pst.setInt(3, tutorNuevo.getIdTutor());
             pst.setInt(4, tutorViejo.getIdTutor());
+            pst.execute(modificarTutor);
+            pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

@@ -61,6 +61,8 @@ public class FCTController {
             pst.setString(5, FCTVieja.getCif());
             pst.setString(6, FCTVieja.getIdGrupo());
             pst.setString(7, FCTVieja.getCursoEscolar());
+            pst.execute(modificarTutor);
+            pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

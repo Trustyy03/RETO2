@@ -41,6 +41,7 @@ public class FCTController {
                     + "' AND cursoEscolar = '" + fct.getCursoEscolar() + "';";
             st.execute(borrarFCT);
             st.close();
+            JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","FCT eliminada",JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

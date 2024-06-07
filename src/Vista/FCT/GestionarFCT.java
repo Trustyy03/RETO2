@@ -1,5 +1,6 @@
 package Vista.FCT;
 
+import Controlador.FCTController;
 import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.FCT;
@@ -26,8 +27,8 @@ public class GestionarFCT extends JPanel {
 
     public GestionarFCT(){
 
+        listaFCT = FCTController.consultarFCT();
         this.setLayout(new BorderLayout());
-        FCTMentira fctMentira = new FCTMentira();
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
         AgregarFCT agregarFCTPanel = new AgregarFCT();
@@ -73,6 +74,7 @@ public class GestionarFCT extends JPanel {
 
         CBlistadoFCT.addActionListener(e-> {fctSeleccionada =(FCT) CBlistadoFCT.getSelectedItem();
             rellenarDatos(fctSeleccionada);});
+        btnBorrarFCT.addActionListener(e-> {fctSeleccionada = (FCT) CBlistadoFCT.getSelectedItem(); eliminarFCT(fctSeleccionada);});
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
         gbc.gridx = 0;
@@ -89,13 +91,16 @@ public class GestionarFCT extends JPanel {
         rellenarNumAlumnos.setText(String.valueOf(fct.getNumAlumnos()));
     }
 
-
     private static void agregarFCT(){
-        listaFCT = FCTMentira.getListaFCT();
-
         for (FCT fct : listaFCT){
             CBlistadoFCT.addItem(fct);
         }
+    }
+
+    private static void eliminarFCT(FCT fct){
+        FCTController.borrarFCT(fct);
+        listaFCT.remove(fct);
+        CBlistadoFCT.removeItem(fct);
     }
 
 }

@@ -1,6 +1,7 @@
 package Vista.Profesores;
 
 import Controlador.MainPanelController;
+import Controlador.TutorController;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.Tutor;
 import Vista.Estilo;
@@ -18,7 +19,7 @@ public class GestionarTutores extends JPanel {
 
     public static JButton btnGuardarTutor, btnBorrarTutor, btnAgregarTutor;
 
-    public static JComboBox<Empresa> CBlistadoTutores;
+    public static JComboBox<Tutor> CBlistadoTutores;
 
     static Tutor tutorSeleccionada;
 
@@ -32,7 +33,7 @@ public class GestionarTutores extends JPanel {
 
         JPanel panelNorte = new JPanel();
         CBlistadoTutores = new JComboBox<>();
-        agregarEmpresas();
+        agregarTutores();
 
         btnBorrarTutor = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarTutor = new JButton(lenguaje.getProperty("btnAgregar"));
@@ -68,8 +69,8 @@ public class GestionarTutores extends JPanel {
             rellenarDatos(tutorSeleccionada);});
 
         btnAgregarTutor.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarTutor));
-
-
+        btnBorrarTutor.addActionListener(e-> {tutorSeleccionada = (Tutor) CBlistadoTutores.getSelectedItem();
+            eliminarTutor(tutorSeleccionada);});
 
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -81,21 +82,23 @@ public class GestionarTutores extends JPanel {
     }
 
     private static void rellenarDatos(Tutor tutor){
-
         rellenarIdTutor.setText(String.valueOf(tutor.getIdTutor()));
         rellenarNombre.setText(tutor.getNombre());
         rellenarApellidos.setText(tutor.getApellidos());
     }
 
-    private static void agregarEmpresas(){
-    /*    listaTutores = OperacionesEntidades.consultarEmpresas();
-        //  listaEmpresas = EmrpesasMentira.getListaEmpresas();
+    private static void agregarTutores(){
+        listaTutores = TutorController.consultarTutores();
 
         for (Tutor tutor : listaTutores) {
             CBlistadoTutores.addItem(tutor);
         }
+    }
 
-     */
+    private static void eliminarTutor(Tutor tutor){
+        TutorController.borrarTutor(tutor);
+        listaTutores.remove(tutor);
+        CBlistadoTutores.removeItem(tutor);
     }
 
 }

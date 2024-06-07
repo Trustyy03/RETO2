@@ -40,6 +40,7 @@ public class TutorController {
             String borrarTutor = "DELETE FROM TUTOR_FCT WHERE idTutor = '" + tutor.getIdTutor() + "';";
             st.execute(borrarTutor);
             st.close();
+            JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","Tutor eliminado",JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

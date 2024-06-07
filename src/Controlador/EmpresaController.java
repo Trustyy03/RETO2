@@ -39,6 +39,7 @@ public class EmpresaController {
             String borrarEmpresa = "DELETE FROM EMPRESA WHERE CIF = '" + empresa.getCif() + "';";
             st.execute(borrarEmpresa);
             st.close();
+            JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","Empresa eliminada",JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

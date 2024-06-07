@@ -21,16 +21,17 @@ public class GestionarEmpresas extends JPanel {
 
     public static JComboBox<Empresa> CBlistadoEmpresas;
 
-    static Empresa empresaSeleccionada;
+    static Empresa empresaSeleccionada,empresaAntigua;
 
 
     public GestionarEmpresas() {
 
         this.setLayout(new BorderLayout());
-
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+        listaEmpresas = EmpresaController.consultarEmpresas();
 
         AgregarEmpresa agregarEmpresa = new AgregarEmpresa();
+
 
         JPanel panelNorte = new JPanel();
         CBlistadoEmpresas = new JComboBox<>();
@@ -82,6 +83,8 @@ public class GestionarEmpresas extends JPanel {
         rellenarDatos(empresaSeleccionada);});
 
         btnAgregarEmpresa.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarEmpresa));
+        btnBorrarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) CBlistadoEmpresas.getSelectedItem();
+            eliminarEmpresa(empresaSeleccionada);});
 
     }
 
@@ -103,10 +106,15 @@ public class GestionarEmpresas extends JPanel {
     }
 
     private static void agregarEmpresas(){
-        listaEmpresas = EmpresaController.consultarEmpresas();
-
         for (Empresa empresa : listaEmpresas) {
             CBlistadoEmpresas.addItem(empresa);
         }
     }
+
+    public static void eliminarEmpresa(Empresa empresa){
+        EmpresaController.borrarEmpresa(empresa);
+        listaEmpresas.remove(empresa);
+        CBlistadoEmpresas.removeItem(empresa);
+    }
+
 }

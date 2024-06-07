@@ -27,4 +27,6 @@ public class FCT {
     public int getNumAlumnos() {
         return numAlumnos;
     }
+
+    public String toString(){return idGrupo + " " + cursoEscolar;}
 }

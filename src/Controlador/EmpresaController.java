@@ -4,6 +4,7 @@ import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
 
 import javax.swing.*;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -38,6 +39,25 @@ public class EmpresaController {
             String borrarEmpresa = "DELETE FROM EMPRESA WHERE CIF = '" + empresa.getCif() + "';";
             st.execute(borrarEmpresa);
             st.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
+
+    public static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja) {
+        try {
+            String modificarTrabajador = "UPDATE EMPRESA SET CIF = ?, nombre = ?, " +
+                    "telefono = ?, numEmpleados = ?, sector = ?, direccion = ? WHERE CIF = ?";
+            PreparedStatement pst = con.prepareStatement(modificarTrabajador);
+            /*pst.setInt(1, empresaNueva.getId());
+            pst.setString(2, empresaNueva.getCif());
+            pst.setString(3, empresaNueva.getNombre());
+            pst.setString(4, empresaNueva.getApellidos());
+            pst.setString(5, empresaNueva.getCorreo());
+            pst.setString(6, empresaNueva.getCargo());
+            pst.setString(6, empresaNueva.getTelefono());
+            pst.setInt(6, empresaVieja.getId());*/
+
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

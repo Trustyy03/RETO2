@@ -5,6 +5,7 @@ import Modelo.Entidades.Trabajador;
 import Modelo.Entidades.Tutor;
 
 import javax.swing.*;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,9 +37,22 @@ public class TutorController {
     public static void borrarTutor(Tutor tutor) {
         try {
             Statement st = con.createStatement();
-            String borrarTutor = "DELETE FROM TUTOR_FCT WHERE CIF = '" + tutor.getIdTutor() + "';";
+            String borrarTutor = "DELETE FROM TUTOR_FCT WHERE idTutor = '" + tutor.getIdTutor() + "';";
             st.execute(borrarTutor);
             st.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
+
+    public static void modificarTutor(Tutor tutorNuevo, Tutor tutorViejo) {
+        try {
+            String modificarTutor = "UPDATE TUTOR_FCT SET nombre = ?, apellido = ?, idTutor = ? WHERE idTutor = ?";
+            PreparedStatement pst = con.prepareStatement(modificarTutor);
+            pst.setString(1, tutorNuevo.getNombre());
+            pst.setString(2, tutorNuevo.getApellidos());
+            pst.setInt(3, tutorNuevo.getIdTutor());
+            pst.setInt(4, tutorViejo.getIdTutor());
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

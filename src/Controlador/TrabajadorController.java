@@ -3,8 +3,10 @@ package Controlador;
 import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.Trabajador;
+import Modelo.Entidades.Tutor;
 
 import javax.swing.*;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,6 +41,25 @@ public class TrabajadorController {
             String borrarTrabajador = "DELETE FROM TRABAJADORES_INTERES WHERE CIF = '" + trabajador.getId() + "';";
             st.execute(borrarTrabajador);
             st.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
+
+    public static void modificarTrabajador(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
+        try {
+            String modificarTrabajador = "UPDATE TRABAJADORES_INTERES SET idEmpleado = ?, CIF = ?, " +
+                    "nombre = ?, apellidos = ?, correo = ?, cargo = ?, telefono = ? WHERE idEmpleado = ?";
+            PreparedStatement pst = con.prepareStatement(modificarTrabajador);
+            pst.setInt(1, trabajadorNuevo.getId());
+            pst.setString(2, trabajadorNuevo.getCif());
+            pst.setString(3, trabajadorNuevo.getNombre());
+            pst.setString(4, trabajadorNuevo.getApellidos());
+            pst.setString(5, trabajadorNuevo.getCorreo());
+            pst.setString(6, trabajadorNuevo.getCargo());
+            pst.setString(6, trabajadorNuevo.getTelefono());
+            pst.setInt(6, trabajadorViejo.getId());
+
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

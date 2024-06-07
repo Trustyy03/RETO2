@@ -59,8 +59,8 @@ public class TrabajadorController {
             pst.setString(4, trabajadorNuevo.getApellidos());
             pst.setString(5, trabajadorNuevo.getCorreo());
             pst.setString(6, trabajadorNuevo.getCargo());
-            pst.setString(6, trabajadorNuevo.getTelefono());
-            pst.setInt(6, trabajadorViejo.getId());
+            pst.setString(7, trabajadorNuevo.getTelefono());
+            pst.setInt(8, trabajadorViejo.getId());
 
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());

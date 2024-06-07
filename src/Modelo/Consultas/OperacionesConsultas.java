@@ -22,42 +22,65 @@ public class OperacionesConsultas {
         pst.setString(1, nombreEmpresa);
 
         ResultSet rs = pst.executeQuery();
-        System.out.println("--------------C1--------------");
-        System.out.printf("%-30s %-30s %-30s %-30s %-15s%n",
-                "Nombre Empresa", "Nombre Tutor", "Nombre Trabajador", "Correo Trabajador", "Telefono Tutor");
-        while (rs.next()) {
-            System.out.printf("%-30s %-30s %-30s %-30s %-15s%n", rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), "\n");
 
+        while (rs.next()) {
+            C1 consulta1 = new C1(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            System.out.println(consulta1.toString());
         }
 
         pst.close();
         rs.close();
     }
 
-    /*public static void consultaDos(String idCiclo, ) throws SQLException {
+    public static void consultaDos(String cicloFormativo, String cursoEscolar) throws SQLException {
         String sql = "SELECT c.idCiclo, fct.cursoEscolar, e.CIF, e.nombre, COUNT(*) AS NumPracticas\n" +
                 "FROM EMPRESA e\n" +
                 "INNER JOIN GRUPO_FCT_EMPRESA fct USING (CIF)\n" +
                 "INNER JOIN GRUPO g USING (idGrupo)\n" +
                 "INNER JOIN CICLO c USING (idCiclo)\n" +
-                "WHERE c.idCiclo = '2DAM'\n" +
-                "AND fct.cursoEscolar = '23-24'\n" +
+                "WHERE c.idCiclo = ?\n" + // ej. '1DAM' o '2DAM'
+                "AND fct.cursoEscolar = ?\n" + // ej. '22-23' o '23-24'
                 "GROUP BY c.idCiclo, fct.cursoEscolar, e.CIF, e.nombre;";
 
         PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, nombreEmpresa);
+        pst.setString(1, cicloFormativo);
+        pst.setString(2, cursoEscolar);
 
         ResultSet rs = pst.executeQuery();
-        System.out.println("--------------C1--------------");
-        System.out.printf("%-30s %-30s %-30s %-30s %-15s%n",
-                "Nombre Empresa", "Nombre Tutor", "Nombre Trabajador", "Correo Trabajador", "Telefono Tutor");
-        while (rs.next()) {
-            System.out.printf("%-30s %-30s %-30s %-30s %-15s%n", rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), "\n");
 
+        while (rs.next()) {
+            C2 consulta2 = new C2(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+            System.out.println(consulta2.toString());
         }
 
         pst.close();
         rs.close();
-    }*/
+    }
+
+    public static void consultaTres(String grupo, String cursoEscolar) throws SQLException {
+        String sql = "SELECT g.idGrupo, CONCAT(t.Nombre, ' ', t.Apellidos) AS nombreTutor, e.Nombre AS nombreEmpresa, COUNT(*) AS NumPracticas\n" +
+                "FROM GRUPO g\n" +
+                "INNER JOIN GRUPO_FCT_EMPRESA gfe ON g.idGrupo = gfe.idGrupo\n" +
+                "INNER JOIN EMPRESA e ON gfe.CIF = e.CIF\n" +
+                "INNER JOIN TUTOR_RESPONSABLE_GRUPO trg ON g.idGrupo = trg.idGrupo\n" +
+                "INNER JOIN TUTOR_FCT t ON trg.idTutor = t.idTutor\n" +
+                "WHERE g.idGrupo = ?\n" + // ej. 2CFSF
+                "AND gfe.cursoEscolar = ?\n" + // ej. 23-24
+                "GROUP BY g.idGrupo, t.Nombre, t.Apellidos, e.Nombre;";
+
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, grupo);
+        pst.setString(2, cursoEscolar);
+
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            C3 consulta3 = new C3(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+            System.out.println(consulta3.toString());
+        }
+
+        pst.close();
+        rs.close();
+    }
 
 }

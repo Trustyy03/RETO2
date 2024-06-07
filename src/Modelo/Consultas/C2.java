@@ -56,4 +56,9 @@ public class C2 {
     public void setNumPracticas(int numPracticas) {
         this.numPracticas = numPracticas;
     }
+
+    @Override
+    public String toString() {
+        return idCiclo + " / " + cursoEscolar + " / " + cif + " / " + nombreEmpresa + " / " + numPracticas;
+    }
 }

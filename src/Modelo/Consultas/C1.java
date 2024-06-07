@@ -56,4 +56,9 @@ public class C1 {
     public void setTelefonoTrabajador(String telefonoTrabajador) {
         this.telefonoTrabajador = telefonoTrabajador;
     }
+
+    @Override
+    public String toString() {
+        return nombreEmpresa + " / " + nombreTutor + " / " + nombreTrabajador + " / " + correoTrabajador + " / " + telefonoTrabajador;
+    }
 }

@@ -46,4 +46,9 @@ public class C3 {
     public void setNumPracticas(int numPracticas) {
         this.numPracticas = numPracticas;
     }
+
+    @Override
+    public String toString() {
+        return idGrupo + " / " + nombreTutor + " / " + nombreEmpresa + " / " + numPracticas;
+    }
 }

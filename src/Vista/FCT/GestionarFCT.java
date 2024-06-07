@@ -1,5 +1,6 @@
 package Vista.FCT;
 
+import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.FCT;
 import Vista.Estilo;
@@ -27,6 +28,7 @@ public class GestionarFCT extends JPanel {
         this.setLayout(new BorderLayout());
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+        AgregarFCT agregarFCTPanel = new AgregarFCT();
 
         JPanel panelNorte = new JPanel();
         CBlistadoFCT = new JComboBox<>();
@@ -64,6 +66,8 @@ public class GestionarFCT extends JPanel {
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
+
+        btnAgregarFCT.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarFCTPanel));
 
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {

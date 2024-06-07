@@ -1,14 +1,16 @@
 package Vista.Trabajadores;
 
+
 import Controlador.MainPanelController;
-import Modelo.Entidades.Empresa;
+import Controlador.TrabajadorController;
+
 import Modelo.Entidades.Trabajador;
-import Modelo.Pruebas.TrabajadoresMentira;
+
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
-import javax.swing.plaf.PanelUI;
+
 import java.awt.*;
 import java.util.List;
 
@@ -25,8 +27,6 @@ public class GestionarTrabajadores extends JPanel {
     static Trabajador trabajadorSeleccionado;
 
     public GestionarTrabajadores(){
-
-        TrabajadoresMentira trabajadoresMentira = new TrabajadoresMentira();
 
         this.setLayout(new BorderLayout());
 
@@ -85,6 +85,8 @@ public class GestionarTrabajadores extends JPanel {
             rellenarDatos(trabajadorSeleccionado);});
 
         btnAgregarTrabajador.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarTrabajadorPanel));
+        btnBorrarTrabajador.addActionListener(e-> {trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
+            eliminarTrabajador(trabajadorSeleccionado);});
 
     }
 
@@ -109,13 +111,16 @@ public class GestionarTrabajadores extends JPanel {
 
 
     private static void agregarTrabajadores(){
-        listaTrabajadores = TrabajadoresMentira.getListaTrabajadores();
+        listaTrabajadores = TrabajadorController.consultarTrabajadores();
 
         for (Trabajador trabajador : listaTrabajadores){
             CBlistadoTrabajadores.addItem(trabajador);
         }
-
-
+    }
+    public static void eliminarTrabajador(Trabajador trabajador){
+        TrabajadorController.borrarTrabajador(trabajador);
+        listaTrabajadores.remove(trabajador);
+        CBlistadoTrabajadores.removeItem(trabajador);
     }
 
 }

@@ -41,6 +41,8 @@ public class TrabajadorController {
             String borrarTrabajador = "DELETE FROM TRABAJADORES_INTERES WHERE idEmpleado = '" + trabajador.getId() + "';";
             st.execute(borrarTrabajador);
             st.close();
+            JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","Trabajador eliminado",JOptionPane.INFORMATION_MESSAGE);
+
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }

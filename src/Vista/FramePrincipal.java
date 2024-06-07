@@ -31,7 +31,7 @@ public FramePrincipal(){ //se inicia el Frame, donde empezará todo
 }
 
 class PanelPrincipal extends JPanel {
-    JPanel centerPanel = new JPanel(); //es el panel que recibira cambos
+    JPanel centerPanel = new JPanel(); //es el panel que recibira cambios
     InicioSesion inicioSesionPanel; //el panel donde estará la interfaz de inicio de sesión
     JMenuBar menuBar;
     JButton atras;
@@ -51,8 +51,8 @@ class PanelPrincipal extends JPanel {
         itemEsp = new JMenuItem(lenguaje.getProperty("itemEsp"));
         itemEngl = new JMenuItem(lenguaje.getProperty("itemEngl"));
         mainPanelController = new MainPanelController(centerPanel, inicioSesionPanel);
-        atras = new JButton("ATRAS");
-        inicio = new JButton("INICIO");
+        atras = new JButton(lenguaje.getProperty("btnAtras"));
+        inicio = new JButton(lenguaje.getProperty("btnInicio"));
 
         JPanel northPanel = new JPanel(new BorderLayout());
         northPanel.setPreferredSize(new Dimension(800, 50));

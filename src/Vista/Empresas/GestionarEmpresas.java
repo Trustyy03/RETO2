@@ -1,5 +1,6 @@
 package Vista.Empresas;
 
+import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.EmrpesasMentira;
 import Modelo.Entidades.OperacionesEntidades;
@@ -20,9 +21,10 @@ public class GestionarEmpresas extends JPanel {
 
     public static JButton btnGuardarEmpresa, btnBorrarEmpresa, btnAgregarEmpresa;
 
-    public static JComboBox<Empresa> listadoEmpresas;
+    public static JComboBox<Empresa> CBlistadoEmpresas;
 
     static Empresa empresaSeleccionada;
+
 
     public GestionarEmpresas() {
 
@@ -31,21 +33,26 @@ public class GestionarEmpresas extends JPanel {
         EmrpesasMentira emrpesasMentira = new EmrpesasMentira();
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
+        AgregarEmpresa agregarEmpresa = new AgregarEmpresa();
+
         JPanel panelNorte = new JPanel();
-        listadoEmpresas = new JComboBox<>();
-       // listaEmpresas = EmrpesasMentira.getListaEmpresas();
-        listaEmpresas = OperacionesEntidades.consultarEmpresas();
-        for (Empresa empresa : listaEmpresas) {
-            listadoEmpresas.addItem(empresa);
-        }
-        panelNorte.add(listadoEmpresas);
+        CBlistadoEmpresas = new JComboBox<>();
+      //  listaEmpresas = OperacionesEntidades.consultarEmpresas();
+        agregarEmpresas();
+
+
+        btnBorrarEmpresa = new JButton(lenguaje.getProperty("btnBorrar"));
+        btnAgregarEmpresa = new JButton(lenguaje.getProperty("btnAgregar"));
+        panelNorte.add(CBlistadoEmpresas);
+        panelNorte.add(btnBorrarEmpresa);
+        panelNorte.add(btnAgregarEmpresa);
 
         JPanel panelCentral = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.BOTH;
 
-        cif = Estilo.textoBonito(lenguaje.getProperty("cifEmpresa"));
+        cif = Estilo.textoBonito(lenguaje.getProperty("cif"));
         rellenarCif = new JTextField(20);
         nombre = Estilo.textoBonito(lenguaje.getProperty("nombreEmpresa"));
         rellenarNombre = new JTextField(20);
@@ -66,20 +73,18 @@ public class GestionarEmpresas extends JPanel {
         configurarCoordenadas(panelCentral, gbc, direccion, rellenarDireccion, 5);
 
         JPanel panelSur = new JPanel();
-        btnGuardarEmpresa = new JButton(lenguaje.getProperty("btnGuardarEmpresa"));
-        btnBorrarEmpresa = new JButton(lenguaje.getProperty("btnBorrarEmpresa"));
-        btnAgregarEmpresa = new JButton(lenguaje.getProperty("btnAgregarEmpresa"));
+        btnGuardarEmpresa = new JButton(lenguaje.getProperty("btnGuardar"));
         panelSur.add(btnGuardarEmpresa);
-        panelSur.add(btnBorrarEmpresa);
-        panelSur.add(btnAgregarEmpresa);
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
 
-        listadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) listadoEmpresas.getSelectedItem();
+        CBlistadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) CBlistadoEmpresas.getSelectedItem();
         rellenarDatos(empresaSeleccionada);});
+
+        btnAgregarEmpresa.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarEmpresa));
 
     }
 
@@ -92,12 +97,19 @@ public class GestionarEmpresas extends JPanel {
     }
 
     public static void rellenarDatos(Empresa empresa){
-
         rellenarCif.setText(empresa.getCif());
         rellenarNombre.setText(empresa.getNombre());
         rellenarTelefono.setText(empresa.getTelefono());
         rellenarNumEmpleados.setText(String.valueOf(empresa.getNumEmpleados()));
         rellenarSector.setText(empresa.getSector());
         rellenarDireccion.setText(empresa.getDireccion());
+    }
+
+    private static void agregarEmpresas(){
+        listaEmpresas = EmrpesasMentira.getListaEmpresas();
+
+        for (Empresa empresa : listaEmpresas) {
+            CBlistadoEmpresas.addItem(empresa);
+        }
     }
 }

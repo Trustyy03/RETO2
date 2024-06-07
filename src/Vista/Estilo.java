@@ -15,6 +15,9 @@ public class Estilo {
 
         button.setFocusPainted(false);
 
+        button.setHorizontalAlignment(SwingConstants.CENTER);
+        button.setVerticalAlignment(SwingConstants.CENTER);
+
         return button;
     }
 
@@ -28,6 +31,18 @@ public class Estilo {
         label.setFont(new Font("Arial", Font.BOLD, 30));
         label.setVisible(true);
 
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+
+        return label;
+    }
+
+    public static JLabel cartelInformativoBonito(String text){
+        JLabel label = new JLabel(text);
+
+        label.setOpaque(true);
+        label.setFont(new Font("Arial", Font.BOLD, 30));
+        label.setVisible(true);
         return label;
     }
 

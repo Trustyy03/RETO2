@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.ConexionBDD;
+import Modelo.Entidades.Empresa;
 import Modelo.Entidades.Trabajador;
 
 import javax.swing.*;
@@ -30,5 +31,16 @@ public class TrabajadorController {
         }
 
         return trabajadores;
+    }
+
+    public static void borrarTrabajador(Trabajador trabajador) {
+        try {
+            Statement st = con.createStatement();
+            String borrarTrabajador = "DELETE FROM TRABAJADORES_INTERES WHERE CIF = '" + trabajador.getId() + "';";
+            st.execute(borrarTrabajador);
+            st.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
     }
 }

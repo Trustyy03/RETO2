@@ -31,4 +31,15 @@ public class EmpresaController {
 
         return empresas;
     }
+
+    public static void borrarEmpresa(Empresa empresa) {
+        try {
+            Statement st = con.createStatement();
+            String borrarEmpresa = "DELETE FROM EMPRESA WHERE CIF = '" + empresa.getCif() + "';";
+            st.execute(borrarEmpresa);
+            st.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.ConexionBDD;
+import Modelo.Entidades.Empresa;
 import Modelo.Entidades.FCT;
 
 import javax.swing.*;
@@ -30,5 +31,18 @@ public class FCTController {
         }
 
         return fcts;
+    }
+
+    public static void borrarFCT(FCT fct) {
+        try {
+            Statement st = con.createStatement();
+            String borrarFCT = "DELETE FROM GRUPO_FCT_EMPRESA WHERE CIF = '" + fct.getCif()
+                    + "' AND idGrupo = '" + fct.getIdGrupo()
+                    + "' AND cursoEscolar = '" + fct.getCursoEscolar() + "';";
+            st.execute(borrarFCT);
+            st.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
     }
 }

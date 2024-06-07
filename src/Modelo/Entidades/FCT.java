@@ -16,35 +16,15 @@ public class FCT {
         return cif;
     }
 
-    public void setCif(String cif) {
-        this.cif = cif;
-    }
-
     public String getIdGrupo() {
         return idGrupo;
-    }
-
-    public void setIdGrupo(String idGrupo) {
-        this.idGrupo = idGrupo;
     }
 
     public String getCursoEscolar() {
         return cursoEscolar;
     }
 
-    public void setCursoEscolar(String cursoEscolar) {
-        this.cursoEscolar = cursoEscolar;
-    }
-
     public int getNumAlumnos() {
         return numAlumnos;
-    }
-
-    public void setNumAlumnos(int numAlumnos) {
-        this.numAlumnos = numAlumnos;
-    }
-
-    public String toString(){
-        return cif + " " + idGrupo;
     }
 }

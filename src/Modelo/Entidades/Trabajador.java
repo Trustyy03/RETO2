@@ -6,12 +6,17 @@ public class Trabajador {
     private String nombre;
     private String apellidos;
     private String correo;
-    public Trabajador(int id, String cif, String nombre, String apellidos, String correo) {
+    private String cargo;
+    private String telefono;
+
+    public Trabajador(int id, String cif, String nombre, String apellidos, String correo, String cargo, String telefono) {
         this.id = id;
         this.cif = cif;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
+        this.cargo = cargo;
+        this.telefono = telefono;
     }
 
     public int getId() {
@@ -36,5 +41,13 @@ public class Trabajador {
 
     public String toString(){
         return id + " " + nombre;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public String getTelefono() {
+        return telefono;
     }
 }

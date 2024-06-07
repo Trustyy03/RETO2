@@ -1,4 +1,4 @@
-package Controlador;
+package Modelo;
 
 /**
  * @see <a href="https://stackoverflow.com/questions/6567839/if-i-use-a-singleton-class-for-a-database-connection-can-one-user-close-the-con">Stackoverflow Singleton</a>

@@ -2,8 +2,7 @@ package Vista.Empresas;
 
 import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
-import Modelo.Pruebas.EmrpesasMentira;
-import Modelo.Entidades.OperacionesEntidades;
+import Modelo.Entidades.EmrpesasMentira;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -27,16 +26,16 @@ public class GestionarEmpresas extends JPanel {
 
     public GestionarEmpresas() {
 
-        AgregarEmpresa agregarEmpresa = new AgregarEmpresa();
-
         this.setLayout(new BorderLayout());
 
         EmrpesasMentira emrpesasMentira = new EmrpesasMentira();
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
+        AgregarEmpresa agregarEmpresa = new AgregarEmpresa();
+
         JPanel panelNorte = new JPanel();
         CBlistadoEmpresas = new JComboBox<>();
-
+      //  listaEmpresas = OperacionesEntidades.consultarEmpresas();
         agregarEmpresas();
 
 
@@ -80,8 +79,8 @@ public class GestionarEmpresas extends JPanel {
         add(panelSur, BorderLayout.SOUTH);
 
 
-        //CBlistadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) CBlistadoEmpresas.getSelectedItem();
-        //rellenarDatos(empresaSeleccionada);});
+        CBlistadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) CBlistadoEmpresas.getSelectedItem();
+        rellenarDatos(empresaSeleccionada);});
 
         btnAgregarEmpresa.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarEmpresa));
 
@@ -105,11 +104,10 @@ public class GestionarEmpresas extends JPanel {
     }
 
     private static void agregarEmpresas(){
-       // listaEmpresas = OperacionesEntidades.consultarEmpresas();
-      //  listaEmpresas = EmrpesasMentira.getListaEmpresas();
+        listaEmpresas = EmrpesasMentira.getListaEmpresas();
 
-       /* for (Empresa empresa : listaEmpresas) {
+        for (Empresa empresa : listaEmpresas) {
             CBlistadoEmpresas.addItem(empresa);
-        }*/
+        }
     }
 }

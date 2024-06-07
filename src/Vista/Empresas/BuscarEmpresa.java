@@ -50,11 +50,7 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
     public void colocarComponentes() {
         constraints.gridx = 0;
         constraints.gridy = 0;
-        add(labelListaEmpresas, constraints);
-
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        add(textListaEmpresas, constraints);
+        add(btnListaEmpresas, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;

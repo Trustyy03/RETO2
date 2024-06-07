@@ -80,8 +80,8 @@ public class GestionarEmpresas extends JPanel {
         add(panelSur, BorderLayout.SOUTH);
 
 
-        CBlistadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) CBlistadoEmpresas.getSelectedItem();
-        rellenarDatos(empresaSeleccionada);});
+        //CBlistadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) CBlistadoEmpresas.getSelectedItem();
+        //rellenarDatos(empresaSeleccionada);});
 
         btnAgregarEmpresa.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarEmpresa));
 
@@ -105,11 +105,11 @@ public class GestionarEmpresas extends JPanel {
     }
 
     private static void agregarEmpresas(){
-        listaEmpresas = OperacionesEntidades.consultarEmpresas();
+       // listaEmpresas = OperacionesEntidades.consultarEmpresas();
       //  listaEmpresas = EmrpesasMentira.getListaEmpresas();
 
-        for (Empresa empresa : listaEmpresas) {
+       /* for (Empresa empresa : listaEmpresas) {
             CBlistadoEmpresas.addItem(empresa);
-        }
+        }*/
     }
 }

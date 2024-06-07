@@ -25,10 +25,10 @@ public class Estilo {
         JLabel label = new JLabel(text);
 
         label.setOpaque(true);
-        label.setBackground(new Color(70, 130, 180));
-        label.setForeground(Color.WHITE);
+        label.setBackground(new Color(153, 196, 235, 195));
+        label.setForeground(Color.BLACK);
 
-        label.setFont(new Font("Arial", Font.BOLD, 30));
+        label.setFont(new Font("Arial", Font.PLAIN, 25));
         label.setVisible(true);
 
         label.setHorizontalAlignment(SwingConstants.CENTER);

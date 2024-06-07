@@ -15,9 +15,10 @@ import java.util.List;
 public class GestionarTrabajadores extends JPanel {
 
     public static List<Trabajador> listaTrabajadores;
-    public static JLabel idTrabajador,cifTrabajador, nombreTrabajador,apellidosTrabajador, correoTrabajador;
+    public static JLabel idTrabajador,cifTrabajador, nombreTrabajador,
+            apellidosTrabajador, correoTrabajador,cargoTrabajador,telefonoTrabajador;
     public static JTextField rellenarId,rellenarCif, rellenarNombreTrabajador, rellenarApellidosTrabajador,
-            rellenarCorreoTrabajador;
+            rellenarCorreoTrabajador, rellenarCargoTrabajador,rellenarTelefonoTrabajador;
     public static JButton btnGuardarTrabajador,btnBorrarTrabajador,btnAgregarTrabajador;
 
     public static JComboBox<Trabajador> CBlistadoTrabajadores;
@@ -59,12 +60,18 @@ public class GestionarTrabajadores extends JPanel {
         rellenarApellidosTrabajador = new JTextField(20);
         correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoEmpleado"));
         rellenarCorreoTrabajador = new JTextField(20);
+        cargoTrabajador = Estilo.textoBonito(lenguaje.getProperty("cargoTrabajador"));
+        rellenarCargoTrabajador  = new JTextField(20);
+        telefonoTrabajador = Estilo.textoBonito(lenguaje.getProperty("telefonoTrabajador"));
+        rellenarTelefonoTrabajador  = new JTextField(20);
 
         configurarCoordenadas(panelCentral, gbc, idTrabajador, rellenarId, 0);
         configurarCoordenadas(panelCentral, gbc, cifTrabajador, rellenarCif, 1);
         configurarCoordenadas(panelCentral, gbc, nombreTrabajador, rellenarNombreTrabajador, 2);
         configurarCoordenadas(panelCentral, gbc, apellidosTrabajador, rellenarApellidosTrabajador, 3);
         configurarCoordenadas(panelCentral, gbc, correoTrabajador, rellenarCorreoTrabajador, 4);
+        configurarCoordenadas(panelCentral, gbc, cargoTrabajador, rellenarCargoTrabajador, 5);
+        configurarCoordenadas(panelCentral, gbc, telefonoTrabajador, rellenarTelefonoTrabajador, 6);
 
         JPanel panelSur = new JPanel();
         btnGuardarTrabajador = new JButton(lenguaje.getProperty("btnGuardar"));
@@ -96,6 +103,8 @@ public class GestionarTrabajadores extends JPanel {
         rellenarNombreTrabajador.setText(trabajador.getNombre());
         rellenarApellidosTrabajador.setText(trabajador.getApellidos());
         rellenarCorreoTrabajador.setText(trabajador.getCorreo());
+        rellenarCargoTrabajador.setText(trabajador.getCargo());
+        rellenarTelefonoTrabajador.setText(trabajador.getTelefono());
     }
 
 

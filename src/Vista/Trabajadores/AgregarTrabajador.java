@@ -9,9 +9,9 @@ import java.awt.*;
 public class AgregarTrabajador extends JPanel{
 
     public static JLabel nuevoIdTrabajador,nuevoCifTrabajador, nuevoNombreTrabajador,
-            nuevoApellidosTrabajador,nuevoCorreoTrabajador,cartelInformativo;
+            nuevoApellidosTrabajador,nuevoCorreoTrabajador,nuevoCargoTrabajador,nuevoTelefonoTrabajador,cartelInformativo;
     public static JTextField nuevoRellenarId,nuevoRellenarCif, nuevoRellenarNombreTrabajador, nuevoRellenarApellidosTrabajador,
-            nuevoRellenarCorreoTrabajador;
+            nuevoRellenarCorreoTrabajador,nuevoRellenarTelefonoTrabajador,nuevoRellenarCargoTrabajador;
 
     public static JButton btnGuardarTrabajador;
 
@@ -39,12 +39,18 @@ public class AgregarTrabajador extends JPanel{
         nuevoRellenarApellidosTrabajador = new JTextField(20);
         nuevoCorreoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoEmpleado"));
         nuevoRellenarCorreoTrabajador = new JTextField(20);
+        nuevoCargoTrabajador = Estilo.textoBonito(lenguaje.getProperty("cargoTrabajador"));
+        nuevoRellenarCargoTrabajador = new JTextField(20);
+        nuevoTelefonoTrabajador = Estilo.textoBonito(lenguaje.getProperty("telefonoTrabajador"));
+        nuevoRellenarTelefonoTrabajador = new JTextField(20);
 
         configurarCoordenadas(panelCentral, gbc, nuevoIdTrabajador, nuevoRellenarId, 0);
         configurarCoordenadas(panelCentral, gbc, nuevoCifTrabajador, nuevoRellenarCif, 1);
         configurarCoordenadas(panelCentral, gbc, nuevoNombreTrabajador, nuevoRellenarNombreTrabajador, 2);
         configurarCoordenadas(panelCentral, gbc, nuevoApellidosTrabajador, nuevoRellenarApellidosTrabajador, 3);
         configurarCoordenadas(panelCentral, gbc, nuevoCorreoTrabajador, nuevoRellenarCorreoTrabajador, 4);
+        configurarCoordenadas(panelCentral, gbc, nuevoCargoTrabajador, nuevoRellenarCargoTrabajador, 5);
+        configurarCoordenadas(panelCentral, gbc, nuevoTelefonoTrabajador, nuevoRellenarTelefonoTrabajador, 6);
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentral, BorderLayout.CENTER);

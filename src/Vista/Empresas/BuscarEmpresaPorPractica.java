@@ -1,5 +1,6 @@
 package Vista.Empresas;
 
+import Controlador.MainPanelController;
 import Vista.ComponentesGridBagLayout;
 
 import javax.swing.*;
@@ -13,10 +14,12 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
     JTextField textCiclo;
     JButton botonListaEmpresas;
     GridBagConstraints constraints;
+    ListaDeEmpresasConPracticas listaDeEmpresasConPracticasApartado;
 
     public BuscarEmpresaPorPractica() {
 
         setLayout(new GridBagLayout());
+        listaDeEmpresasConPracticasApartado = new ListaDeEmpresasConPracticas();
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
@@ -28,6 +31,9 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
         textCiclo = new JTextField(20);
 
         botonListaEmpresas = new JButton("LISTA DE EMPRESAS CON PRACTICAS");
+        botonListaEmpresas.addActionListener( e ->
+            MainPanelController.nuevoPanelActivo(listaDeEmpresasConPracticasApartado)
+        );
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
 

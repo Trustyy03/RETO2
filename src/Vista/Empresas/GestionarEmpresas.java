@@ -2,7 +2,7 @@ package Vista.Empresas;
 
 import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
-import Modelo.Entidades.EmrpesasMentira;
+import Modelo.Pruebas.EmrpesasMentira;
 import Modelo.Entidades.OperacionesEntidades;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
@@ -10,7 +10,6 @@ import Vista.Idioma.Lenguaje;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GestionarEmpresas extends JPanel {
 
@@ -28,16 +27,16 @@ public class GestionarEmpresas extends JPanel {
 
     public GestionarEmpresas() {
 
+        AgregarEmpresa agregarEmpresa = new AgregarEmpresa();
+
         this.setLayout(new BorderLayout());
 
         EmrpesasMentira emrpesasMentira = new EmrpesasMentira();
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
-        AgregarEmpresa agregarEmpresa = new AgregarEmpresa();
-
         JPanel panelNorte = new JPanel();
         CBlistadoEmpresas = new JComboBox<>();
-      //  listaEmpresas = OperacionesEntidades.consultarEmpresas();
+
         agregarEmpresas();
 
 
@@ -106,7 +105,8 @@ public class GestionarEmpresas extends JPanel {
     }
 
     private static void agregarEmpresas(){
-        listaEmpresas = EmrpesasMentira.getListaEmpresas();
+        listaEmpresas = OperacionesEntidades.consultarEmpresas();
+      //  listaEmpresas = EmrpesasMentira.getListaEmpresas();
 
         for (Empresa empresa : listaEmpresas) {
             CBlistadoEmpresas.addItem(empresa);

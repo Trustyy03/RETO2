@@ -3,6 +3,7 @@ package Vista.FCT;
 import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.FCT;
+import Modelo.Pruebas.FCTMentira;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -20,19 +21,20 @@ public class GestionarFCT extends JPanel {
     public static JLabel cif, idGrupo, cursoEscolar, numAlumnos;
     public static JTextField rellenarCif, rellenarIdGrupo, rellenarCursoEscolar, rellenarNumAlumnos;
     public static JButton btnGuardarFCT, btnBorrarFCT, btnAgregarFCT;
-    public static JComboBox<Empresa> CBlistadoFCT;
+    public static JComboBox<FCT> CBlistadoFCT;
     static FCT fctSeleccionada;
 
     public GestionarFCT(){
 
         this.setLayout(new BorderLayout());
+        FCTMentira fctMentira = new FCTMentira();
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
         AgregarFCT agregarFCTPanel = new AgregarFCT();
 
         JPanel panelNorte = new JPanel();
         CBlistadoFCT = new JComboBox<>();
-
+        agregarFCT();
 
         btnBorrarFCT = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarFCT = new JButton(lenguaje.getProperty("btnAgregar"));
@@ -69,6 +71,8 @@ public class GestionarFCT extends JPanel {
 
         btnAgregarFCT.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarFCTPanel));
 
+        CBlistadoFCT.addActionListener(e-> {fctSeleccionada =(FCT) CBlistadoFCT.getSelectedItem();
+            rellenarDatos(fctSeleccionada);});
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
         gbc.gridx = 0;
@@ -78,10 +82,20 @@ public class GestionarFCT extends JPanel {
         panel.add(textField, gbc);
     }
 
+    private static void rellenarDatos(FCT fct){
+        rellenarCif.setText(fct.getCif());
+        rellenarIdGrupo.setText(fct.getIdGrupo());
+        rellenarCursoEscolar.setText(fct.getCursoEscolar());
+        rellenarNumAlumnos.setText(String.valueOf(fct.getNumAlumnos()));
+    }
+
 
     private static void agregarFCT(){
+        listaFCT = FCTMentira.getListaFCT();
 
-
+        for (FCT fct : listaFCT){
+            CBlistadoFCT.addItem(fct);
+        }
     }
 
 }

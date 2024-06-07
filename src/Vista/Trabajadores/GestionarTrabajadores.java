@@ -1,6 +1,8 @@
 package Vista.Trabajadores;
 
+import Modelo.Entidades.Empresa;
 import Modelo.Entidades.Trabajador;
+import Modelo.Pruebas.TrabajadoresMentira;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -21,6 +23,8 @@ public class GestionarTrabajadores extends JPanel {
     static Trabajador trabajadorSeleccionado;
 
     public GestionarTrabajadores(){
+
+        TrabajadoresMentira trabajadoresMentira = new TrabajadoresMentira();
 
         this.setLayout(new BorderLayout());
 
@@ -48,11 +52,27 @@ public class GestionarTrabajadores extends JPanel {
         rellenarCif = new JTextField(20);
         nombreTrabajador = Estilo.textoBonito(lenguaje.getProperty("nombreTrabajador"));
         rellenarNombreTrabajador = new JTextField(20);
-        apellidosTrabajador = Estilo.textoBonito(lenguaje.getProperty("ape"));
+        apellidosTrabajador = Estilo.textoBonito(lenguaje.getProperty("apellidosTrabajador"));
         rellenarApellidosTrabajador = new JTextField(20);
-        correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("numEmpleadoEmpresa"));
+        correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoEmpleado"));
         rellenarCorreoTrabajador = new JTextField(20);
 
+        configurarCoordenadas(panelCentral, gbc, idTrabajador, rellenarId, 0);
+        configurarCoordenadas(panelCentral, gbc, cifTrabajador, rellenarCif, 1);
+        configurarCoordenadas(panelCentral, gbc, nombreTrabajador, rellenarNombreTrabajador, 2);
+        configurarCoordenadas(panelCentral, gbc, apellidosTrabajador, rellenarApellidosTrabajador, 3);
+        configurarCoordenadas(panelCentral, gbc, correoTrabajador, rellenarCorreoTrabajador, 4);
+
+        JPanel panelSur = new JPanel();
+        btnGuardarTrabajador = new JButton(lenguaje.getProperty("btnGuardar"));
+        panelSur.add(btnGuardarTrabajador);
+
+        add(panelNorte, BorderLayout.NORTH);
+        add(panelCentral, BorderLayout.CENTER);
+        add(panelSur, BorderLayout.SOUTH);
+
+        CBlistadoTrabajadores.addActionListener(e-> {trabajadorSeleccionado =(Trabajador) CBlistadoTrabajadores.getSelectedItem();
+            rellenarDatos(trabajadorSeleccionado);});
 
     }
 
@@ -75,7 +95,11 @@ public class GestionarTrabajadores extends JPanel {
 
 
     private static void agregarTrabajadores(){
+        listaTrabajadores = TrabajadoresMentira.getListaTrabajadores();
 
+        for (Trabajador trabajador : listaTrabajadores){
+            CBlistadoTrabajadores.addItem(trabajador);
+        }
 
 
     }

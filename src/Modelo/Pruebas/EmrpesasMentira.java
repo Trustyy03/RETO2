@@ -1,4 +1,6 @@
-package Modelo.Entidades;
+package Modelo.Pruebas;
+
+import Modelo.Entidades.Empresa;
 
 import java.util.ArrayList;
 

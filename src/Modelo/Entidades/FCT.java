@@ -43,4 +43,8 @@ public class FCT {
     public void setNumAlumnos(int numAlumnos) {
         this.numAlumnos = numAlumnos;
     }
+
+    public String toString(){
+        return cif + " " + idGrupo;
+    }
 }

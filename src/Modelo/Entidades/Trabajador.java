@@ -33,4 +33,8 @@ public class Trabajador {
     public String getCorreo() {
         return correo;
     }
+
+    public String toString(){
+        return id + " " + nombre;
+    }
 }

@@ -38,7 +38,7 @@ public class TrabajadorController {
     public static void borrarTrabajador(Trabajador trabajador) {
         try {
             Statement st = con.createStatement();
-            String borrarTrabajador = "DELETE FROM TRABAJADORES_INTERES WHERE CIF = '" + trabajador.getId() + "';";
+            String borrarTrabajador = "DELETE FROM TRABAJADORES_INTERES WHERE idEmpleado = '" + trabajador.getId() + "';";
             st.execute(borrarTrabajador);
             st.close();
         } catch (SQLException e) {

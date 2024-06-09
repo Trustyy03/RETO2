@@ -70,7 +70,7 @@ public class EmpresaController {
             pst.setString(5, empresaNueva.getSector());
             pst.setString(6, empresaNueva.getDireccion());
             pst.setString(7, empresaVieja.getCif());
-            pst.execute(modificarTrabajador);
+            pst.executeUpdate(modificarTrabajador);
             pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());

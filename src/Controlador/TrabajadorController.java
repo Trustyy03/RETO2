@@ -13,10 +13,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class TrabajadorController {
-    static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static ArrayList<Trabajador> consultarTrabajadores() {
         ArrayList<Trabajador> trabajadores = new ArrayList<>();
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return trabajadores;
+        }
         try {
             Statement st = con.createStatement();
             String consultaTrabajadores = "SELECT * FROM TRABAJADORES_INTERES";
@@ -36,6 +40,10 @@ public class TrabajadorController {
     }
 
     public static void borrarTrabajador(Trabajador trabajador) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
         try {
             Statement st = con.createStatement();
             String borrarTrabajador = "DELETE FROM TRABAJADORES_INTERES WHERE idEmpleado = '" + trabajador.getId() + "';";
@@ -49,6 +57,10 @@ public class TrabajadorController {
     }
 
     public static void modificarTrabajador(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
         try {
             String modificarTrabajador = "UPDATE TRABAJADORES_INTERES SET idEmpleado = ?, CIF = ?, " +
                     "nombre = ?, apellidos = ?, correo = ?, cargo = ?, telefono = ? WHERE idEmpleado = ?;";

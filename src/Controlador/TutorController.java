@@ -12,10 +12,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class TutorController {
-    static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static ArrayList<Tutor> consultarTutores() {
         ArrayList<Tutor> tutores = new ArrayList<>();
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return tutores;
+        }
         try {
             Statement st = con.createStatement();
             String consultaTutores = "SELECT * FROM TUTOR_FCT";
@@ -35,6 +39,10 @@ public class TutorController {
     }
 
     public static void borrarTutor(Tutor tutor) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
         try {
             Statement st = con.createStatement();
             String borrarTutor = "DELETE FROM TUTOR_FCT WHERE idTutor = '" + tutor.getIdTutor() + "';";
@@ -47,6 +55,10 @@ public class TutorController {
     }
 
     public static void modificarTutor(Tutor tutorNuevo, Tutor tutorViejo) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
         try {
             String modificarTutor = "UPDATE TUTOR_FCT SET nombre = ?, apellido = ?, idTutor = ? WHERE idTutor = ?;";
             PreparedStatement pst = con.prepareStatement(modificarTutor);

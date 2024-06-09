@@ -11,12 +11,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class EmpresaController {
-    static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static ArrayList<Empresa> consultarEmpresas() {
         ArrayList<Empresa> empresas = new ArrayList<>();
-        try {
-            Statement st = con.createStatement();
+
+        if (con == null){
+            System.out.println("Conexión de la base de datos no disponible");
+            return empresas;
+        }
+
+        try (Statement st = con.createStatement()){
             String consultaEmpresas = "SELECT * FROM EMPRESA";
             ResultSet rs = st.executeQuery(consultaEmpresas);
 
@@ -34,6 +39,10 @@ public class EmpresaController {
     }
 
     public static void borrarEmpresa(Empresa empresa) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
         try {
             Statement st = con.createStatement();
             String borrarEmpresa = "DELETE FROM EMPRESA WHERE CIF = '" + empresa.getCif() + "';";
@@ -46,6 +55,10 @@ public class EmpresaController {
     }
 
     public static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
         try {
             String modificarTrabajador = "UPDATE EMPRESA SET CIF = ?, nombre = ?, " +
                     "telefono = ?, numEmpleados = ?, sector = ?, direccion = ? WHERE CIF = ?;";
@@ -56,7 +69,7 @@ public class EmpresaController {
             pst.setInt(4, empresaNueva.getNumEmpleados());
             pst.setString(5, empresaNueva.getSector());
             pst.setString(6, empresaNueva.getDireccion());
-            pst.setString(7, empresaNueva.getCif());
+            pst.setString(7, empresaVieja.getCif());
             pst.execute(modificarTrabajador);
             pst.close();
         } catch (SQLException e) {

@@ -13,10 +13,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class FCTController {
-    static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static ArrayList<FCT> consultarFCT() {
         ArrayList<FCT> fcts = new ArrayList<>();
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return fcts;
+        }
         try {
             Statement st = con.createStatement();
             String consultaFCT = "SELECT * FROM GRUPO_FCT_EMPRESA";
@@ -36,6 +40,10 @@ public class FCTController {
     }
 
     public static void borrarFCT(FCT fct) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
         try {
             Statement st = con.createStatement();
             String borrarFCT = "DELETE FROM GRUPO_FCT_EMPRESA WHERE CIF = '" + fct.getCif()
@@ -50,6 +58,10 @@ public class FCTController {
     }
 
     public static void modificarFCT(FCT FCTNueva, FCT FCTVieja) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
         try {
             String modificarTutor = "UPDATE GRUPO_FCT_EMPRESA SET CIF = ?, idGrupo = ?, cursoEscolar = ?, " +
                     "numAlumnos = ? WHERE CIF = ? AND idGrupo = ? AND cursoEscolar = ?;";

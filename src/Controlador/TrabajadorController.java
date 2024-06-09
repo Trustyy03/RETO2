@@ -80,4 +80,28 @@ public class TrabajadorController {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }
     }
+
+    public static void insertarTrabajador(Trabajador trabajador) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
+        try {
+            String insertarTrabajador = "INSERT INTO TRABAJADORES_INTERES (idEmpleado, CIF, nombre, apellidos, correo, cargo, telefono) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(insertarTrabajador);
+            pst.setInt(1, trabajador.getId());
+            pst.setString(2, trabajador.getCif());
+            pst.setString(3, trabajador.getNombre());
+            pst.setString(4, trabajador.getApellidos());
+            pst.setString(5, trabajador.getCorreo());
+            pst.setString(6, trabajador.getCargo());
+            pst.setString(7, trabajador.getTelefono());
+            pst.executeUpdate(insertarTrabajador);
+            pst.close();
+            JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","Trabajador modificado",JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
 }

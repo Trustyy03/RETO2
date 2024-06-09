@@ -64,7 +64,7 @@ public class FCTController {
         }
         try {
             String modificarTutor = "UPDATE GRUPO_FCT_EMPRESA SET CIF = ?, idGrupo = ?, cursoEscolar = ?, " +
-                    "numAlumnos = ? WHERE CIF = ? AND idGrupo = ? AND cursoEscolar = ?;";
+                    "numAlumnos = ? WHERE CIF = ? AND idGrupo = ? AND cursoEscolar = ?";
             PreparedStatement pst = con.prepareStatement(modificarTutor);
             pst.setString(1, FCTNueva.getCif());
             pst.setString(2, FCTNueva.getIdGrupo());
@@ -74,6 +74,26 @@ public class FCTController {
             pst.setString(6, FCTVieja.getIdGrupo());
             pst.setString(7, FCTVieja.getCursoEscolar());
             pst.executeUpdate(modificarTutor);
+            pst.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
+
+    public static void insertarFCT(FCT fct) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
+        try {
+            String insertarFCT = "INSERT INTO GRUPO_FCT_EMPRESA (CIF, idGrupo, cursoEscolar, numAlumnos) " +
+                    "VALUES (?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(insertarFCT);
+            pst.setString(1, fct.getCif());
+            pst.setString(2, fct.getIdGrupo());
+            pst.setString(3, fct.getCursoEscolar());
+            pst.setInt(4, fct.getNumAlumnos());
+            pst.executeUpdate(insertarFCT);
             pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());

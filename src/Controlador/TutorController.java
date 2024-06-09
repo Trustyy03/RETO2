@@ -72,4 +72,22 @@ public class TutorController {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }
     }
+
+    public static void insertarTutor(Tutor tutor) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
+        try {
+            String insertarTutor = "INSERT INTO TUTOR_FCT (nombre, apellido, idTutor) VALUES (?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(insertarTutor);
+            pst.setString(1, tutor.getNombre());
+            pst.setString(2, tutor.getApellidos());
+            pst.setInt(3, tutor.getIdTutor());
+            pst.executeUpdate(insertarTutor);
+            pst.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
 }

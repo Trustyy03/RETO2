@@ -61,7 +61,7 @@ public class EmpresaController {
         }
         try {
             String modificarTrabajador = "UPDATE EMPRESA SET CIF = ?, nombre = ?, " +
-                    "telefono = ?, numEmpleados = ?, sector = ?, direccion = ? WHERE CIF = ?;";
+                    "telefono = ?, numEmpleados = ?, sector = ?, direccion = ? WHERE CIF = ?";
             PreparedStatement pst = con.prepareStatement(modificarTrabajador);
             pst.setString(1, empresaNueva.getCif());
             pst.setString(2, empresaNueva.getNombre());
@@ -71,6 +71,28 @@ public class EmpresaController {
             pst.setString(6, empresaNueva.getDireccion());
             pst.setString(7, empresaVieja.getCif());
             pst.executeUpdate(modificarTrabajador);
+            pst.close();
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }
+
+    public void insertarEmpresa(Empresa empresa) {
+        if (con == null) {
+            System.out.println("Conexión de la base de datos no disponible");
+            return;
+        }
+        try {
+            String insertarEmpresa = "INSERT INTO EMPRESA (CIF, nombre, telefono, numEmpleados, sector, direccion) " +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(insertarEmpresa);
+            pst.setString(1, empresa.getCif());
+            pst.setString(2, empresa.getNombre());
+            pst.setString(3, empresa.getTelefono());
+            pst.setInt(4, empresa.getNumEmpleados());
+            pst.setString(5, empresa.getSector());
+            pst.setString(6, empresa.getDireccion());
+            pst.executeUpdate(insertarEmpresa);
             pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());

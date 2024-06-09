@@ -127,7 +127,7 @@ public class GestionarEmpresas extends JPanel {
     }
 
     private static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja){
-        EmpresaController.modificarEmpresa(empresaNueva,empresaVieja);
+        //EmpresaController.modificarEmpresa(empresaNueva,empresaVieja);
         int indice = listaEmpresas.indexOf(empresaVieja);
         if (indice != -1) {
             listaEmpresas.set(indice, empresaNueva);

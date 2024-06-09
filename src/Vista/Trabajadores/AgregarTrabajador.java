@@ -1,5 +1,6 @@
 package Vista.Trabajadores;
 
+import Modelo.Entidades.Trabajador;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -14,6 +15,8 @@ public class AgregarTrabajador extends JPanel{
             nuevoRellenarCorreoTrabajador,nuevoRellenarTelefonoTrabajador,nuevoRellenarCargoTrabajador;
 
     public static JButton btnGuardarTrabajador;
+
+    static Trabajador trabajadorNuevo;
 
     public AgregarTrabajador(){
 
@@ -52,8 +55,16 @@ public class AgregarTrabajador extends JPanel{
         configurarCoordenadas(panelCentral, gbc, nuevoCargoTrabajador, nuevoRellenarCargoTrabajador, 5);
         configurarCoordenadas(panelCentral, gbc, nuevoTelefonoTrabajador, nuevoRellenarTelefonoTrabajador, 6);
 
+        JPanel panelSur = new JPanel();
+        btnGuardarTrabajador = new JButton(lenguaje.getProperty("btnGuardar"));
+        btnGuardarTrabajador.setFont(new Font("Arial", Font.BOLD, 30));
+        panelSur.add(btnGuardarTrabajador);
+
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentral, BorderLayout.CENTER);
+        add(panelSur, BorderLayout.SOUTH);
+
+        btnGuardarTrabajador.addActionListener(e-> {agregarTrabajador();GestionarTrabajadores.CBlistadoTrabajadores.addItem(trabajadorNuevo);vaciarDatos();});
 
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -62,6 +73,18 @@ public class AgregarTrabajador extends JPanel{
         panel.add(label, gbc);
         gbc.gridx = 1;
         panel.add(textField, gbc);
+    }
+
+    private static void agregarTrabajador(){
+        trabajadorNuevo = new Trabajador(Integer.parseInt(nuevoRellenarId.getText()),nuevoRellenarCif.getText(),nuevoRellenarNombreTrabajador.getText(),
+                nuevoRellenarApellidosTrabajador.getText(), nuevoRellenarCorreoTrabajador.getText(),
+                nuevoRellenarCargoTrabajador.getText(),nuevoRellenarTelefonoTrabajador.getText());
+    }
+
+    private static void vaciarDatos(){
+        nuevoRellenarId.setText("");nuevoRellenarCif.setText("");nuevoRellenarNombreTrabajador.setText("");
+        nuevoRellenarApellidosTrabajador.setText("");nuevoRellenarCorreoTrabajador.setText("");nuevoRellenarCargoTrabajador.setText("");
+        nuevoRellenarTelefonoTrabajador.setText("");
     }
 
 

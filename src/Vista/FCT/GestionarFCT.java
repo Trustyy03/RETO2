@@ -14,6 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Vista.Empresas.GestionarEmpresas.CBlistadoEmpresas;
 import static Vista.Empresas.GestionarEmpresas.rellenarDireccion;
 
 public class GestionarFCT extends JPanel {
@@ -23,7 +24,7 @@ public class GestionarFCT extends JPanel {
     public static JTextField rellenarCif, rellenarIdGrupo, rellenarCursoEscolar, rellenarNumAlumnos;
     public static JButton btnGuardarFCT, btnBorrarFCT, btnAgregarFCT;
     public static JComboBox<FCT> CBlistadoFCT;
-    static FCT fctSeleccionada;
+    static FCT fctSeleccionada,fctNueva;
 
     public GestionarFCT(){
 
@@ -75,6 +76,8 @@ public class GestionarFCT extends JPanel {
         CBlistadoFCT.addActionListener(e-> {fctSeleccionada =(FCT) CBlistadoFCT.getSelectedItem();
             rellenarDatos(fctSeleccionada);});
         btnBorrarFCT.addActionListener(e-> {fctSeleccionada = (FCT) CBlistadoFCT.getSelectedItem(); eliminarFCT(fctSeleccionada);});
+        btnGuardarFCT.addActionListener(e-> {fctSeleccionada = (FCT) CBlistadoFCT.getSelectedItem();
+            guardarDatos(); modificarFTC(fctNueva,fctSeleccionada); });
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
         gbc.gridx = 0;
@@ -91,6 +94,11 @@ public class GestionarFCT extends JPanel {
         rellenarNumAlumnos.setText(String.valueOf(fct.getNumAlumnos()));
     }
 
+    private static void guardarDatos(){
+        fctNueva = new FCT(rellenarCif.getText(),rellenarIdGrupo.getText(),rellenarCursoEscolar.getText(),
+                Integer.parseInt(rellenarNumAlumnos.getText()));
+    }
+
     private static void agregarFCT(){
         for (FCT fct : listaFCT){
             CBlistadoFCT.addItem(fct);
@@ -101,6 +109,18 @@ public class GestionarFCT extends JPanel {
         FCTController.borrarFCT(fct);
         listaFCT.remove(fct);
         CBlistadoFCT.removeItem(fct);
+    }
+
+    private static void modificarFTC(FCT fctNueva , FCT fctVieja){
+        FCTController.modificarFCT(fctNueva,fctVieja);
+        int indice = listaFCT.indexOf(fctVieja);
+        if (indice != -1) {
+            listaFCT.set(indice, fctNueva);
+            CBlistadoFCT.removeItemAt(indice);
+            CBlistadoFCT.insertItemAt(fctNueva, indice);
+            CBlistadoFCT.setSelectedItem(fctNueva);
+        }
+
     }
 
 }

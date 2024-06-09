@@ -1,5 +1,6 @@
 package Vista.Empresas;
 
+import Modelo.Entidades.Empresa;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -13,6 +14,8 @@ public class AgregarEmpresa extends JPanel {
             nuevoRellenarNumEmpleados,  nuevoRellenarSector,  nuevoRellenarDireccion;
 
     public static JButton btnGuardarEmpresa;
+
+    static Empresa empresaNueva;
 
     public AgregarEmpresa(){
 
@@ -57,6 +60,8 @@ public class AgregarEmpresa extends JPanel {
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
+        btnGuardarEmpresa.addActionListener(e-> {agregarEmpresa();GestionarEmpresas.CBlistadoEmpresas.addItem(empresaNueva);vaciarDatos();});
+
     }
 
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -65,6 +70,16 @@ public class AgregarEmpresa extends JPanel {
         panel.add(label, gbc);
         gbc.gridx = 1;
         panel.add(textField, gbc);
+    }
+
+    private static void agregarEmpresa(){
+        empresaNueva = new Empresa(nuevoRellenarCif.getText(),nuevoRellenarNombre.getText(),nuevoRellenarTelefono.getText(),
+                Integer.parseInt(nuevoRellenarNumEmpleados.getText()),nuevoRellenarSector.getText(),nuevoRellenarDireccion.getText());
+    }
+
+    private static void vaciarDatos(){
+        nuevoRellenarCif.setText("");nuevoRellenarNombre.setText("");nuevoRellenarTelefono.setText("");
+        nuevoRellenarNumEmpleados.setText("");nuevoRellenarSector.setText("");nuevoRellenarDireccion.setText("");
     }
 
 }

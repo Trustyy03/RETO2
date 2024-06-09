@@ -1,5 +1,6 @@
 package Vista.Profesores;
 
+import Modelo.Entidades.Tutor;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -11,6 +12,7 @@ public class AgregarTutor extends JPanel{
     public static JLabel nuevoIdTutor,nuevoNombre,nuevoApellidos,cartelInformativo;
     public static JTextField nuevoRellenarIdTutor,nuevoRellenarNombre,nuevoRellenarApellidos;
     public static JButton btnGuardarTutor;
+    static Tutor nuevoTutor;
 
     public AgregarTutor(){
         this.setLayout(new BorderLayout());
@@ -45,6 +47,8 @@ public class AgregarTutor extends JPanel{
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
+        btnGuardarTutor.addActionListener(e-> {agregarTutor();GestionarTutores.CBlistadoTutores.addItem(nuevoTutor); vaciarDatos();});
+
     }
 
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -54,4 +58,13 @@ public class AgregarTutor extends JPanel{
         gbc.gridx = 1;
         panel.add(textField, gbc);
     }
+
+    private static void agregarTutor(){
+        nuevoTutor = new Tutor(Integer.parseInt(nuevoRellenarIdTutor.getText()),nuevoRellenarNombre.getText(),nuevoRellenarApellidos.getText());
+    }
+
+    private static void vaciarDatos(){
+        nuevoRellenarIdTutor.setText("");nuevoRellenarNombre.setText("");nuevoRellenarApellidos.setText("");
+    }
+
 }

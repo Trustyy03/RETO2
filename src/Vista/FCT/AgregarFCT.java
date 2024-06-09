@@ -1,5 +1,6 @@
 package Vista.FCT;
 
+import Modelo.Entidades.FCT;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -12,6 +13,8 @@ public class AgregarFCT extends JPanel{
     public static JTextField nuevoRellenarCif, nuevoRellenarIdGrupo, nuevoRellenarCursoEscolar, nuevoRellenarNumAlumnos;
 
     public static JButton btnGuardarFCT;
+
+    static FCT nuevaFCT;
 
     public AgregarFCT(){
 
@@ -51,6 +54,8 @@ public class AgregarFCT extends JPanel{
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
+        btnGuardarFCT.addActionListener(e-> {agregarFCT(); GestionarFCT.CBlistadoFCT.addItem(nuevaFCT); vaciarDatos();});
+
     }
 
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -60,5 +65,17 @@ public class AgregarFCT extends JPanel{
         gbc.gridx = 1;
         panel.add(textField, gbc);
     }
+
+    private static void agregarFCT(){
+        nuevaFCT = new FCT(nuevoRellenarCif.getText(),nuevoRellenarIdGrupo.getText(),
+                nuevoRellenarCursoEscolar.getText(),Integer.parseInt(nuevoRellenarNumAlumnos.getText()));
+    }
+
+    private static void vaciarDatos(){
+        nuevoRellenarCif.setText("");nuevoRellenarIdGrupo.setText("");nuevoRellenarCursoEscolar.setText("");
+        nuevoRellenarNumAlumnos.setText("");
+    }
+
+
 
 }

@@ -21,7 +21,7 @@ public class GestionarTutores extends JPanel {
 
     public static JComboBox<Tutor> CBlistadoTutores;
 
-    static Tutor tutorSeleccionada;
+    static Tutor tutorSeleccionada,tutorNuevo;
 
     public GestionarTutores() {
 
@@ -71,6 +71,8 @@ public class GestionarTutores extends JPanel {
         btnAgregarTutor.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarTutor));
         btnBorrarTutor.addActionListener(e-> {tutorSeleccionada = (Tutor) CBlistadoTutores.getSelectedItem();
             eliminarTutor(tutorSeleccionada);});
+        btnGuardarTutor.addActionListener(e-> {tutorSeleccionada = (Tutor) CBlistadoTutores.getSelectedItem();
+            guardarDatos(); modificarTutor(tutorNuevo,tutorSeleccionada); });
 
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -87,6 +89,10 @@ public class GestionarTutores extends JPanel {
         rellenarApellidos.setText(tutor.getApellidos());
     }
 
+    private static void guardarDatos(){
+        tutorNuevo = new Tutor(Integer.parseInt(rellenarIdTutor.getText()),rellenarNombre.getText(),rellenarApellidos.getText());
+    }
+
     private static void agregarTutores(){
         listaTutores = TutorController.consultarTutores();
 
@@ -99,6 +105,18 @@ public class GestionarTutores extends JPanel {
         TutorController.borrarTutor(tutor);
         listaTutores.remove(tutor);
         CBlistadoTutores.removeItem(tutor);
+    }
+
+    private static void modificarTutor(Tutor tutorNuevo, Tutor tutorViejo){
+        TutorController.modificarTutor(tutorNuevo,tutorViejo);
+        int indice = listaTutores.indexOf(tutorViejo);
+        if (indice != -1) {
+            listaTutores.set(indice, tutorNuevo);
+            CBlistadoTutores.removeItemAt(indice);
+            CBlistadoTutores.insertItemAt(tutorNuevo, indice);
+            CBlistadoTutores.setSelectedItem(tutorNuevo);
+        }
+
     }
 
 }

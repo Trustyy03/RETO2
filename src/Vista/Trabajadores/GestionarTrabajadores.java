@@ -88,7 +88,7 @@ public class GestionarTrabajadores extends JPanel {
         btnGuardarTrabajador.addActionListener(e -> {
             trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
             guardarDatos();
-            modificarTrabajador(trabajadorSeleccionado, trabajadorNuevo);
+            modificarTrabajador(trabajadorNuevo,trabajadorSeleccionado);
         });
     }
 
@@ -113,14 +113,9 @@ public class GestionarTrabajadores extends JPanel {
     }
 
     private static void guardarDatos() {
-        trabajadorNuevo = new Trabajador(
-                Integer.parseInt(rellenarId.getText()),
-                rellenarCif.getText(),
-                rellenarNombreTrabajador.getText(),
-                rellenarApellidosTrabajador.getText(),
-                rellenarCorreoTrabajador.getText(),
-                rellenarCargoTrabajador.getText(),
-                rellenarTelefonoTrabajador.getText()
+        trabajadorNuevo = new Trabajador(Integer.parseInt(rellenarId.getText()), rellenarCif.getText(),
+                rellenarNombreTrabajador.getText(), rellenarApellidosTrabajador.getText(), rellenarCorreoTrabajador.getText(),
+                rellenarCargoTrabajador.getText(), rellenarTelefonoTrabajador.getText()
         );
     }
 
@@ -138,7 +133,7 @@ public class GestionarTrabajadores extends JPanel {
         CBlistadoTrabajadores.removeItem(trabajador);
     }
 
-    private static void modificarTrabajador(Trabajador trabajadorViejo, Trabajador trabajadorNuevo) {
+    private static void modificarTrabajador(Trabajador trabajadorNuevo , Trabajador trabajadorViejo) {
         TrabajadorController.modificarTrabajador(trabajadorNuevo, trabajadorViejo);
         int indice = listaTrabajadores.indexOf(trabajadorViejo);
         if (indice != -1) {

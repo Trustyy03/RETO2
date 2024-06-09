@@ -21,7 +21,7 @@ public class GestionarEmpresas extends JPanel {
 
     public static JComboBox<Empresa> CBlistadoEmpresas;
 
-    static Empresa empresaSeleccionada,empresaAntigua;
+    static Empresa empresaSeleccionada,empresaNueva;
 
 
     public GestionarEmpresas() {
@@ -86,6 +86,9 @@ public class GestionarEmpresas extends JPanel {
         btnBorrarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) CBlistadoEmpresas.getSelectedItem();
             eliminarEmpresa(empresaSeleccionada);});
 
+        btnGuardarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) CBlistadoEmpresas.getSelectedItem();
+       guardarDatos(); modificarEmpresa(empresaNueva,empresaSeleccionada); });
+
     }
 
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -105,16 +108,36 @@ public class GestionarEmpresas extends JPanel {
         rellenarDireccion.setText(empresa.getDireccion());
     }
 
+    private static void guardarDatos(){
+        empresaNueva = new Empresa(rellenarCif.getText(),rellenarNombre.getText(),rellenarTelefono.getText(),
+              Integer.parseInt(rellenarNumEmpleados.getText()),rellenarSector.getText(),rellenarDireccion.getText());
+
+    }
+
     private static void agregarEmpresas(){
         for (Empresa empresa : listaEmpresas) {
             CBlistadoEmpresas.addItem(empresa);
         }
     }
 
-    public static void eliminarEmpresa(Empresa empresa){
+    private static void eliminarEmpresa(Empresa empresa){
         EmpresaController.borrarEmpresa(empresa);
         listaEmpresas.remove(empresa);
         CBlistadoEmpresas.removeItem(empresa);
     }
+
+    private static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja){
+        EmpresaController.modificarEmpresa(empresaNueva,empresaVieja);
+        int indice = listaEmpresas.indexOf(empresaVieja);
+        if (indice != -1) {
+            listaEmpresas.set(indice, empresaNueva);
+            CBlistadoEmpresas.removeItemAt(indice);
+            CBlistadoEmpresas.insertItemAt(empresaNueva, indice);
+            CBlistadoEmpresas.setSelectedItem(empresaNueva);
+        }
+
+
+    }
+
 
 }

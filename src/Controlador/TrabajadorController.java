@@ -73,7 +73,7 @@ public class TrabajadorController {
             pst.setString(6, trabajadorNuevo.getCargo());
             pst.setString(7, trabajadorNuevo.getTelefono());
             pst.setInt(8, trabajadorViejo.getId());
-            pst.executeUpdate(modificarTrabajador);
+            pst.executeUpdate();
             pst.close();
             JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","Trabajador modificado",JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
@@ -97,7 +97,7 @@ public class TrabajadorController {
             pst.setString(5, trabajador.getCorreo());
             pst.setString(6, trabajador.getCargo());
             pst.setString(7, trabajador.getTelefono());
-            pst.executeUpdate(insertarTrabajador);
+            pst.executeUpdate();
             pst.close();
             JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","Trabajador modificado",JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {

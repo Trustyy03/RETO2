@@ -73,7 +73,7 @@ public class FCTController {
             pst.setString(5, FCTVieja.getCif());
             pst.setString(6, FCTVieja.getIdGrupo());
             pst.setString(7, FCTVieja.getCursoEscolar());
-            pst.executeUpdate(modificarTutor);
+            pst.executeUpdate();
             pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
@@ -93,7 +93,7 @@ public class FCTController {
             pst.setString(2, fct.getIdGrupo());
             pst.setString(3, fct.getCursoEscolar());
             pst.setInt(4, fct.getNumAlumnos());
-            pst.executeUpdate(insertarFCT);
+            pst.executeUpdate();
             pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());

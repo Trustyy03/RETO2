@@ -60,9 +60,9 @@ public class EmpresaController {
             return;
         }
         try {
-            String modificarTrabajador = "UPDATE EMPRESA SET CIF = ?, nombre = ?, " +
+            String modificarEmpresa = "UPDATE EMPRESA SET CIF = ?, nombre = ?, " +
                     "telefono = ?, numEmpleados = ?, sector = ?, direccion = ? WHERE CIF = ?";
-            PreparedStatement pst = con.prepareStatement(modificarTrabajador);
+            PreparedStatement pst = con.prepareStatement(modificarEmpresa);
             pst.setString(1, empresaNueva.getCif());
             pst.setString(2, empresaNueva.getNombre());
             pst.setString(3, empresaNueva.getTelefono());
@@ -70,7 +70,7 @@ public class EmpresaController {
             pst.setString(5, empresaNueva.getSector());
             pst.setString(6, empresaNueva.getDireccion());
             pst.setString(7, empresaVieja.getCif());
-            pst.executeUpdate(modificarTrabajador);
+            pst.executeUpdate();
             pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
@@ -92,7 +92,7 @@ public class EmpresaController {
             pst.setInt(4, empresa.getNumEmpleados());
             pst.setString(5, empresa.getSector());
             pst.setString(6, empresa.getDireccion());
-            pst.executeUpdate(insertarEmpresa);
+            pst.executeUpdate();
             pst.close();
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());

@@ -1,5 +1,6 @@
 package Vista.Profesores;
 
+import Controlador.TutorController;
 import Modelo.Entidades.Tutor;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
@@ -47,7 +48,7 @@ public class AgregarTutor extends JPanel{
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        btnGuardarTutor.addActionListener(e-> {agregarTutor();GestionarTutores.CBlistadoTutores.addItem(nuevoTutor); vaciarDatos();});
+        btnGuardarTutor.addActionListener(e-> {agregarTutor();vaciarDatos();});
 
     }
 
@@ -61,6 +62,8 @@ public class AgregarTutor extends JPanel{
 
     private static void agregarTutor(){
         nuevoTutor = new Tutor(Integer.parseInt(nuevoRellenarIdTutor.getText()),nuevoRellenarNombre.getText(),nuevoRellenarApellidos.getText());
+        TutorController.insertarTutor(nuevoTutor);
+        GestionarTutores.CBlistadoTutores.addItem(nuevoTutor);
     }
 
     private static void vaciarDatos(){

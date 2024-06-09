@@ -1,5 +1,6 @@
 package Vista.Empresas;
 
+import Controlador.EmpresaController;
 import Modelo.Entidades.Empresa;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
@@ -60,7 +61,7 @@ public class AgregarEmpresa extends JPanel {
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        btnGuardarEmpresa.addActionListener(e-> {agregarEmpresa();GestionarEmpresas.CBlistadoEmpresas.addItem(empresaNueva);vaciarDatos();});
+        btnGuardarEmpresa.addActionListener(e-> {agregarEmpresa();vaciarDatos();});
 
     }
 
@@ -75,6 +76,8 @@ public class AgregarEmpresa extends JPanel {
     private static void agregarEmpresa(){
         empresaNueva = new Empresa(nuevoRellenarCif.getText(),nuevoRellenarNombre.getText(),nuevoRellenarTelefono.getText(),
                 Integer.parseInt(nuevoRellenarNumEmpleados.getText()),nuevoRellenarSector.getText(),nuevoRellenarDireccion.getText());
+        EmpresaController.insertarEmpresa(empresaNueva);
+        GestionarEmpresas.CBlistadoEmpresas.addItem(empresaNueva);
     }
 
     private static void vaciarDatos(){

@@ -1,5 +1,6 @@
 package Vista.FCT;
 
+import Controlador.FCTController;
 import Modelo.Entidades.FCT;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
@@ -54,7 +55,7 @@ public class AgregarFCT extends JPanel{
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        btnGuardarFCT.addActionListener(e-> {agregarFCT(); GestionarFCT.CBlistadoFCT.addItem(nuevaFCT); vaciarDatos();});
+        btnGuardarFCT.addActionListener(e-> {agregarFCT(); vaciarDatos();});
 
     }
 
@@ -69,6 +70,8 @@ public class AgregarFCT extends JPanel{
     private static void agregarFCT(){
         nuevaFCT = new FCT(nuevoRellenarCif.getText(),nuevoRellenarIdGrupo.getText(),
                 nuevoRellenarCursoEscolar.getText(),Integer.parseInt(nuevoRellenarNumAlumnos.getText()));
+        FCTController.insertarFCT(nuevaFCT);
+        GestionarFCT.CBlistadoFCT.addItem(nuevaFCT);
     }
 
     private static void vaciarDatos(){

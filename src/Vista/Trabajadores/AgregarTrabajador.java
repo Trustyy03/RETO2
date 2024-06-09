@@ -1,5 +1,6 @@
 package Vista.Trabajadores;
 
+import Controlador.TrabajadorController;
 import Modelo.Entidades.Trabajador;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
@@ -64,7 +65,7 @@ public class AgregarTrabajador extends JPanel{
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        btnGuardarTrabajador.addActionListener(e-> {agregarTrabajador();GestionarTrabajadores.CBlistadoTrabajadores.addItem(trabajadorNuevo);vaciarDatos();});
+        btnGuardarTrabajador.addActionListener(e-> {agregarTrabajador();vaciarDatos();});
 
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
@@ -79,6 +80,8 @@ public class AgregarTrabajador extends JPanel{
         trabajadorNuevo = new Trabajador(Integer.parseInt(nuevoRellenarId.getText()),nuevoRellenarCif.getText(),nuevoRellenarNombreTrabajador.getText(),
                 nuevoRellenarApellidosTrabajador.getText(), nuevoRellenarCorreoTrabajador.getText(),
                 nuevoRellenarCargoTrabajador.getText(),nuevoRellenarTelefonoTrabajador.getText());
+        TrabajadorController.insertarTrabajador(trabajadorNuevo);
+        GestionarTrabajadores.CBlistadoTrabajadores.addItem(trabajadorNuevo);
     }
 
     private static void vaciarDatos(){

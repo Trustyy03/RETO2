@@ -77,7 +77,7 @@ public class EmpresaController {
         }
     }
 
-    public void insertarEmpresa(Empresa empresa) {
+    public static void insertarEmpresa(Empresa empresa) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return;

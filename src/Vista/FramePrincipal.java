@@ -35,6 +35,7 @@ class PanelPrincipal extends JPanel {
     InicioSesion inicioSesionPanel; //el panel donde estará la interfaz de inicio de sesión
     JMenuBar menuBar;
     JButton atras;
+    public static JLabel nombreUsuario;
     JButton inicio;
     JMenu menuLeng;
     JMenuItem itemEsp, itemEngl;
@@ -47,12 +48,13 @@ class PanelPrincipal extends JPanel {
         inicioSesionPanel = new InicioSesion(framePrincipal);
 
         menuBar = new JMenuBar();
-        menuLeng = new JMenu(lenguaje.getProperty("menuLeng"));
+        nombreUsuario = new JLabel("*Nombre Usuario*");
+        menuLeng = Estilo.menuBonito(lenguaje.getProperty("menuLeng"));
         itemEsp = new JMenuItem(lenguaje.getProperty("itemEsp"));
         itemEngl = new JMenuItem(lenguaje.getProperty("itemEngl"));
         mainPanelController = new MainPanelController(centerPanel, inicioSesionPanel);
-        atras = new JButton(lenguaje.getProperty("btnAtras"));
-        inicio = new JButton(lenguaje.getProperty("btnInicio"));
+        atras = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnAtras"));
+        inicio = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnInicio"));
 
         JPanel northPanel = new JPanel(new BorderLayout());
         northPanel.setPreferredSize(new Dimension(800, 50));
@@ -67,6 +69,7 @@ class PanelPrincipal extends JPanel {
         buttonPanel.add(inicio);
 
         northPanel.add(menuBar, BorderLayout.WEST);
+        northPanel.add(nombreUsuario,BorderLayout.CENTER);
         northPanel.add(buttonPanel, BorderLayout.EAST);
 
         add(northPanel, BorderLayout.NORTH);
@@ -80,8 +83,15 @@ class PanelPrincipal extends JPanel {
         itemEngl.addActionListener(e -> cambiarLenguaje(Lenguaje.english));
         inicio.addActionListener(e -> {
             MainPanelController.volverInicio();
+            nombreUsuario.setText("*Nombre Usuario*");
+            InicioSesion.rellenarUsuario.setText("");
+            InicioSesion.rellenarUsuario.setText("");
         });
-        atras.addActionListener(e -> MainPanelController.antiguoPanel());
+        atras.addActionListener(e ->{ MainPanelController.antiguoPanel();
+            nombreUsuario.setText("*Nombre Usuario*");
+            InicioSesion.rellenarUsuario.setText("");
+            InicioSesion.rellenarUsuario.setText("");
+        });
     }
 
     public void cambiarLenguaje(int newLang) {

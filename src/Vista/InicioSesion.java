@@ -38,6 +38,9 @@ public class InicioSesion extends JPanel {
         entrar.addActionListener(e->{
             MainPanelController.nuevoPanelActivo(opcionesPanel);
             framePrincipal.setTitle("OPCIONES");
+            if (e.getSource() == entrar){
+                PanelPrincipal.nombreUsuario.setText(rellenarUsuario.getText());
+            }
         });
 
     }

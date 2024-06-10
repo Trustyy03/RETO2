@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class TodosCiclosYCursos {
 
     static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
-    static ArrayList<String> cursosEscolares;
-    static ArrayList<String> ciclos;
+    public static ArrayList<String> cursosEscolares;
+    public static ArrayList<String> ciclos;
 
     public static ArrayList<String> consultarCursos() throws SQLException {
         String sql = "SELECT cursoEscolar FROM TUTOR_RESPONSABLE_GRUPO GROUP BY cursoEscolar;";
@@ -25,7 +25,7 @@ public class TodosCiclosYCursos {
         while (rs.next()) {
             cursosEscolares.add(rs.getString(1));
         }
-        System.out.println(cursosEscolares);
+        //System.out.println(cursosEscolares);
 
 
         st.close();
@@ -45,8 +45,6 @@ public class TodosCiclosYCursos {
         while (rs.next()) {
             ciclos.add(rs.getString(1));
         }
-        System.out.println(ciclos);
-
 
         st.close();
         rs.close();

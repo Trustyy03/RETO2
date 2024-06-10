@@ -11,7 +11,7 @@ public class Main {
         }
 
         try {
-            OperacionesConsultas.consultaDos("2DAM", "23-24");
+            OperacionesConsultas.consultaDos("1DAM", "23-24");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -52,8 +52,8 @@ public class Main {
             throw new RuntimeException(e);
         }*/
 
-        TodosCiclosYCursos.consultarCursos();
-        TodosCiclosYCursos.consultarCiclos();
+        /*TodosCiclosYCursos.consultarCursos();
+        TodosCiclosYCursos.consultarCiclos();*/
 
 
     }

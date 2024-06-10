@@ -53,7 +53,7 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 3;
         add(botonEnviar, constraints);
     }
 }

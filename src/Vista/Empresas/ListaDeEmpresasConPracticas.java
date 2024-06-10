@@ -1,6 +1,7 @@
 package Vista.Empresas;
 
 import Modelo.Consultas.*;
+import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -14,7 +15,10 @@ public class ListaDeEmpresasConPracticas extends JPanel {
     JTable empresasConPracticas;
     DefaultTableModel modelo;
 
+    public static String ciclo;
+
     public ListaDeEmpresasConPracticas() {
+
 
         empresasConPracticas = new JTable();
 
@@ -25,9 +29,10 @@ public class ListaDeEmpresasConPracticas extends JPanel {
     }
 
     public JPanel mostrarTablaDatos() {
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
         JPanel panelDatos = new JPanel(new BorderLayout());
 
-        String[] nombresCampos = new String[]{"1s", "2s", "3s", "4s", "5i"};
+        String[] nombresCampos = new String[]{lenguaje.getProperty("ciclo"), "Curso escolar", "CIF empresa", "Nombre empresa", "Numero alumnos"};
 
         modelo = new DefaultTableModel();
 

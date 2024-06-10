@@ -34,7 +34,7 @@ public class OperacionesConsultas {
         rs.close();
     }
 
-    public static ArrayList<C2> consultaDos(String a, String b) throws SQLException {
+    public static ArrayList<C2> consultaDos(String ciclo, String cursoEscolar) throws SQLException {
         ArrayList<C2> listaResultados = new ArrayList<>();
 
         String sql = "SELECT c.idCiclo, fct.cursoEscolar, e.CIF, e.nombre, COUNT(*) AS NumPracticas\n" +
@@ -48,8 +48,8 @@ public class OperacionesConsultas {
 
         PreparedStatement pst = con.prepareStatement(sql);
 
-        pst.setString(1, a);
-        pst.setString(2, b);
+        pst.setString(1, ciclo);
+        pst.setString(2, cursoEscolar);
 
         ResultSet rs = pst.executeQuery();
 

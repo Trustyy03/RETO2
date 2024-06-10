@@ -38,12 +38,8 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
         }
 
         botonListaEmpresas = new JButton("LISTA DE EMPRESAS CON PRACTICAS");
-        botonListaEmpresas.addActionListener( e -> {a = (String) CBCiclo.getSelectedItem();
-            b = (String) CBCurso.getSelectedItem();
-            System.out.println(a);
+        botonListaEmpresas.addActionListener( e -> {
             MainPanelController.nuevoPanelActivo(new ListaDeEmpresasConPracticas());
-
-
         });
 
         constraints.fill = GridBagConstraints.HORIZONTAL;

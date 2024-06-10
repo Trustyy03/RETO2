@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.*;
+import Vista.Empresas.ListaDeEmpresasConPracticas;
 import Vista.Empresas.OpcionesEmpresa;
 import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
@@ -127,6 +128,8 @@ class PanelPrincipal extends JPanel {
         OpcionesTrabajadores.btngestionarTrabajadores.setText(lenguaje.getProperty("btnGestionarTrabajadores"));
         OpcionesTrabajadores.btnbuscarPorEmpresaCurso.setText(lenguaje.getProperty("btnBuscarPorEmpresaCUrso"));
         OpcionesTrabajadores.btnhistorialContactosPorEmpresa.setText(lenguaje.getProperty("btnhistorialContactosPorEmpresa"));
+
+        ListaDeEmpresasConPracticas.ciclo = lenguaje.getProperty("ciclo");
 
     }
 }

@@ -9,9 +9,9 @@ import java.awt.*;
 public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridBagLayout {
 
     JLabel labelCurso;
-    JTextField textCurso;
+    static JTextField textCurso;
     JLabel labelCiclo;
-    JTextField textCiclo;
+    static JTextField textCiclo;
     JButton botonListaEmpresas;
     GridBagConstraints constraints;
     ListaDeEmpresasConPracticas listaDeEmpresasConPracticasApartado;

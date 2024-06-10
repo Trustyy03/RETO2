@@ -15,21 +15,20 @@ import java.util.ArrayList;
 
 public class TutorController {
     private static ArrayList<Tutor> listaTutores = new ArrayList<>();
-    private static JComboBox<Tutor> CBlistadoTutores = new JComboBox<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
 
     public static void inicializarTutores() {
         listaTutores = consultarTutores();
         for (Tutor tutor : listaTutores) {
-            CBlistadoTutores.addItem(tutor);
+            GestionarTutores.CBlistadoTutores.addItem(tutor);
         }
     }
 
     public static void eliminarTutor(Tutor tutor){
         if (borrarTutorSQL(tutor)){
             listaTutores.remove(tutor);
-            CBlistadoTutores.removeItem(tutor);
+            GestionarTutores.CBlistadoTutores.removeItem(tutor);
         }
     }
 
@@ -38,9 +37,9 @@ public class TutorController {
             int indice = listaTutores.indexOf(tutorViejo);
             if (indice != -1) {
                 listaTutores.set(indice, tutorNuevo);
-                CBlistadoTutores.removeItemAt(indice);
-                CBlistadoTutores.insertItemAt(tutorNuevo, indice);
-                CBlistadoTutores.setSelectedItem(tutorNuevo);
+                GestionarTutores.CBlistadoTutores.removeItemAt(indice);
+                GestionarTutores.CBlistadoTutores.insertItemAt(tutorNuevo, indice);
+                GestionarTutores.CBlistadoTutores.setSelectedItem(tutorNuevo);
             }
         }
     }
@@ -137,8 +136,4 @@ public class TutorController {
         }
     }
 
-
-    public static ArrayList<Tutor> getListaTutores() {return listaTutores;}
-
-    public static JComboBox<Tutor> getCBlistadoTutores() {return CBlistadoTutores;}
 }

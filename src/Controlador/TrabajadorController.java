@@ -16,19 +16,18 @@ import java.util.List;
 
 public class TrabajadorController {
     private static List<Trabajador> listaTrabajadores = new ArrayList<>();
-    private static JComboBox<Trabajador> CBlistadoTrabajadores = new JComboBox<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static void inicializarTrabajadores() {
         listaTrabajadores = consultarTrabajadores();
         for (Trabajador trabajador : listaTrabajadores) {
-            CBlistadoTrabajadores.addItem(trabajador);
+            GestionarTrabajadores.CBListadoTrabajadores.addItem(trabajador);
         }
     }
     public static void eliminarTrabajador(Trabajador trabajador) {
         if (borrarTrabajadorSQL(trabajador)) {
             listaTrabajadores.remove(trabajador);
-            CBlistadoTrabajadores.removeItem(trabajador);
+            GestionarTrabajadores.CBListadoTrabajadores.removeItem(trabajador);
         }
     }
 
@@ -37,9 +36,9 @@ public class TrabajadorController {
             int indice = listaTrabajadores.indexOf(trabajadorViejo);
             if (indice != -1) {
                 listaTrabajadores.set(indice, trabajadorNuevo);
-                CBlistadoTrabajadores.removeItemAt(indice);
-                CBlistadoTrabajadores.insertItemAt(trabajadorNuevo, indice);
-                CBlistadoTrabajadores.setSelectedItem(trabajadorNuevo);
+                GestionarTrabajadores.CBListadoTrabajadores.removeItemAt(indice);
+                GestionarTrabajadores.CBListadoTrabajadores.insertItemAt(trabajadorNuevo, indice);
+                GestionarTrabajadores.CBListadoTrabajadores.setSelectedItem(trabajadorNuevo);
             }
         }
     }
@@ -47,7 +46,7 @@ public class TrabajadorController {
     public static void insertarTrabajador(Trabajador trabajadorNuevo){
         if (insertarTrabajadorSQL(trabajadorNuevo)) {
             listaTrabajadores.add(trabajadorNuevo);
-            CBlistadoTrabajadores.addItem(trabajadorNuevo);
+            GestionarTrabajadores.CBListadoTrabajadores.addItem(trabajadorNuevo);
         }
     }
 
@@ -146,11 +145,4 @@ public class TrabajadorController {
         }
     }
 
-    public static List<Trabajador> getListaTrabajadores() {
-        return listaTrabajadores;
-    }
-
-    public static JComboBox<Trabajador> getCBlistadoTrabajadores() {
-        return CBlistadoTrabajadores;
-    }
 }

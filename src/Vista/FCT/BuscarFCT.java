@@ -16,6 +16,7 @@ public class BuscarFCT extends JPanel implements ComponentesGridBagLayout {
     JList<FCT> fcts;
     GridBagConstraints constraints;
 
+
     public BuscarFCT() {
 
         setLayout(new GridBagLayout());

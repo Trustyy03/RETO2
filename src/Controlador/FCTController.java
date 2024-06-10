@@ -16,20 +16,19 @@ import java.util.List;
 
 public class FCTController {
     private static List<FCT> listaFCT = new ArrayList<>();
-    private static JComboBox<FCT> CBlistadoFCT = new JComboBox<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static void inicializarFCT(){
         listaFCT = consultarFCT();
         for (FCT fct : listaFCT){
-            CBlistadoFCT.addItem(fct);
+            GestionarFCT.CBListadoFCT.addItem(fct);
         }
     }
 
     public static void eliminarFCT(FCT fct){
         if (FCTController.eliminarFCTSQL(fct)){
             listaFCT.remove(fct);
-            CBlistadoFCT.removeItem(fct);
+            GestionarFCT.CBListadoFCT.removeItem(fct);
         }
     }
 
@@ -38,9 +37,9 @@ public class FCTController {
             int indice = listaFCT.indexOf(fctVieja);
             if (indice != -1) {
                 listaFCT.set(indice, fctNueva);
-                CBlistadoFCT.removeItemAt(indice);
-                CBlistadoFCT.insertItemAt(fctNueva, indice);
-                CBlistadoFCT.setSelectedItem(fctNueva);
+                GestionarFCT.CBListadoFCT.removeItemAt(indice);
+                GestionarFCT.CBListadoFCT.insertItemAt(fctNueva, indice);
+                GestionarFCT.CBListadoFCT.setSelectedItem(fctNueva);
             }
         }
     }
@@ -48,7 +47,7 @@ public class FCTController {
     public static void agregarFCT(FCT nuevaFCT){
         if ( FCTController.insertarFCTSQL(nuevaFCT)){
             listaFCT.add(nuevaFCT);
-            CBlistadoFCT.addItem(nuevaFCT);
+            GestionarFCT.CBListadoFCT.addItem(nuevaFCT);
         }
     }
 
@@ -145,11 +144,4 @@ public class FCTController {
         }
     }
 
-    public static List<FCT> getListaFCT() {
-        return listaFCT;
-    }
-
-    public static JComboBox<FCT> getCBlistadoFCT() {
-        return CBlistadoFCT;
-    }
 }

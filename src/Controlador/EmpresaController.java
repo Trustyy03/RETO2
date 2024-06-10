@@ -10,6 +10,8 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class EmpresaController {
+
+
     private static ArrayList<Empresa> listaEmpresas = new ArrayList<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 

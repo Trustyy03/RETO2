@@ -10,11 +10,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
-    JLabel labelEmpresa;
-    JComboBox<Empresa> listadoEmpresas;
+    JLabel labelEmpresa,prueba;
     JButton botonEnviar;
     GridBagConstraints constraints;
     ListaDeEmpresas listaDeEmpresasApartado;
+    JComboBox<Empresa> cb;
 
     public BuscarEmpresa() {
         setLayout(new GridBagLayout());
@@ -22,15 +22,14 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
-
         labelEmpresa = new JLabel("EMPRESA");
-
-        listadoEmpresas = new JComboBox<>();
-        cargarEmpresasEnComboBox();
+        prueba = new JLabel("asdf");
+       // cb = new JComboBox<>();
+        cb = EmpresaController.getCBlistadoEmpresas();
 
         botonEnviar = new JButton("ENVIAR");
         botonEnviar.addActionListener(e -> {
-            Empresa empresaSeleccionada = (Empresa) listadoEmpresas.getSelectedItem();
+            Empresa empresaSeleccionada = (Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
             if (empresaSeleccionada != null) {
                 MainPanelController.nuevoPanelActivo(listaDeEmpresasApartado);
             } else {
@@ -43,17 +42,6 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
         colocarComponentes();
     }
 
-    public void cargarEmpresasEnComboBox() {
-        ArrayList<Empresa> listaEmpresas = EmpresaController.consultarEmpresas();
-        DefaultComboBoxModel<Empresa> modelo = new DefaultComboBoxModel<>();
-
-        for (Empresa empresa : listaEmpresas) {
-            modelo.addElement(empresa);
-        }
-
-        listadoEmpresas.setModel(modelo);
-    }
-
     @Override
     public void colocarComponentes() {
         constraints.gridx = 0;
@@ -63,7 +51,8 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
 
         constraints.gridx = 1;
         constraints.gridy = 1;
-        add(listadoEmpresas, constraints);
+        constraints.gridwidth = 2;
+        add(cb, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;

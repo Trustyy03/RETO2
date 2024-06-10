@@ -33,8 +33,7 @@ public class GestionarEmpresas extends JPanel {
 
         btnBorrarEmpresa = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarEmpresa = new JButton(lenguaje.getProperty("btnAgregar"));
-        JComboBox cb = EmpresaController.getCBlistadoEmpresas();
-        panelNorte.add(cb);
+        panelNorte.add(EmpresaController.getCBlistadoEmpresas());
         panelNorte.add(btnBorrarEmpresa);
         panelNorte.add(btnAgregarEmpresa);
 
@@ -72,14 +71,14 @@ public class GestionarEmpresas extends JPanel {
         add(panelSur, BorderLayout.SOUTH);
 
 
-        cb.addActionListener(e-> {empresaSeleccionada =(Empresa) cb.getSelectedItem();
+        EmpresaController.getCBlistadoEmpresas().addActionListener(e-> {empresaSeleccionada =(Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
         rellenarDatos(empresaSeleccionada);});
 
         btnAgregarEmpresa.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarEmpresa));
-        btnBorrarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) cb.getSelectedItem();
+        btnBorrarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
             EmpresaController.eliminarEmpresa(empresaSeleccionada);});
 
-        btnGuardarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) cb.getSelectedItem();
+        btnGuardarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
        guardarDatos(); EmpresaController.modificarEmpresa(empresaNueva,empresaSeleccionada); });
 
     }

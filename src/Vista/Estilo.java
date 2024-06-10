@@ -93,15 +93,8 @@ public class Estilo {
         return textField;
     }
 
-    public static JList<String> listBonita(String[] items) {
-        JList<String> list = new JList<>(items);
-        list.setBackground(Color.WHITE); // Blanco
-        list.setForeground(Color.BLACK); // Negro
-        list.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        list.setSelectionBackground(new Color(70, 130, 180)); // Azul
-        list.setSelectionForeground(Color.WHITE); // Blanco
 
-        return list;
-    }
+
+
 }

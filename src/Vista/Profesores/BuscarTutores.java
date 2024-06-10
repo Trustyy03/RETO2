@@ -14,6 +14,7 @@ public class BuscarTutores extends JPanel implements ComponentesGridBagLayout{
     JLabel tutorLabel;
     JTextField tutorField;
     GridBagConstraints constraints;
+    JButton btnBuscar;
 
     public BuscarTutores() {
         setLayout(new GridBagLayout());
@@ -29,6 +30,8 @@ public class BuscarTutores extends JPanel implements ComponentesGridBagLayout{
 
         tutorLabel = new JLabel("TUTOR:");
         tutorField = new JTextField();
+
+        btnBuscar = new JButton("BUSCAR");
 
         empresasList = new JList<>();
 

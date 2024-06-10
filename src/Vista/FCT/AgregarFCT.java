@@ -70,16 +70,11 @@ public class AgregarFCT extends JPanel{
     private static void agregarFCT(){
         nuevaFCT = new FCT(nuevoRellenarCif.getText(),nuevoRellenarIdGrupo.getText(),
                 nuevoRellenarCursoEscolar.getText(),Integer.parseInt(nuevoRellenarNumAlumnos.getText()));
-        if ( FCTController.insertarFCT(nuevaFCT)){
-            GestionarFCT.CBlistadoFCT.addItem(nuevaFCT);
-        }
+        FCTController.agregarFCT(nuevaFCT);
     }
 
     private static void vaciarDatos(){
         nuevoRellenarCif.setText("");nuevoRellenarIdGrupo.setText("");nuevoRellenarCursoEscolar.setText("");
         nuevoRellenarNumAlumnos.setText("");
     }
-
-
-
 }

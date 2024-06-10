@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.EmpresaController;
+import Controlador.FCTController;
 import Controlador.MainPanelController;
 import Vista.Empresas.OpcionesEmpresa;
 import Vista.FCT.OpcionesFCT;
@@ -15,11 +16,11 @@ public class FramePrincipal extends JFrame{
 
     public static void main(String[] args) {
         EmpresaController.inicializarEmpresas();
+        FCTController.inicializarFCT();
         new FramePrincipal();
     }
 
 public FramePrincipal(){ //se inicia el Frame, donde empezará todo
-
     PanelPrincipal panelPrincipal = new PanelPrincipal(this); //se agrega el panelPrincipal, donde contendrá la información general de la app
     add(panelPrincipal);
     setTitle("INICIO SESIÓN"); //Cuando se realice el inicio de sesión, cambiar el titulo al panel en el que esten (mediante actionsListeners)

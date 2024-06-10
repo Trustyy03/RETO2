@@ -35,7 +35,7 @@ public class GestionarEmpresas extends JPanel {
 
         JPanel panelNorte = new JPanel();
         CBlistadoEmpresas = new JComboBox<>();
-      //  listaEmpresas = OperacionesEntidades.consultarEmpresas();
+        //listaEmpresas = OperacionesEntidades.consultarEmpresas();
         agregarEmpresas();
 
 
@@ -114,29 +114,30 @@ public class GestionarEmpresas extends JPanel {
 
     }
 
-    private static void agregarEmpresas(){
+    public static void agregarEmpresas(){
         for (Empresa empresa : listaEmpresas) {
             CBlistadoEmpresas.addItem(empresa);
         }
     }
 
     private static void eliminarEmpresa(Empresa empresa){
-        EmpresaController.borrarEmpresa(empresa);
-        listaEmpresas.remove(empresa);
-        CBlistadoEmpresas.removeItem(empresa);
+
+        if (EmpresaController.borrarEmpresa(empresa)){
+            listaEmpresas.remove(empresa);
+            CBlistadoEmpresas.removeItem(empresa);
+        }
     }
 
     private static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja){
-        EmpresaController.modificarEmpresa(empresaNueva,empresaVieja);
-        int indice = listaEmpresas.indexOf(empresaVieja);
-        if (indice != -1) {
-            listaEmpresas.set(indice, empresaNueva);
-            CBlistadoEmpresas.removeItemAt(indice);
-            CBlistadoEmpresas.insertItemAt(empresaNueva, indice);
-            CBlistadoEmpresas.setSelectedItem(empresaNueva);
+        if (EmpresaController.modificarEmpresa(empresaNueva,empresaVieja)){
+            int indice = listaEmpresas.indexOf(empresaVieja);
+            if (indice != -1) {
+                listaEmpresas.set(indice, empresaNueva);
+                CBlistadoEmpresas.removeItemAt(indice);
+                CBlistadoEmpresas.insertItemAt(empresaNueva, indice);
+                CBlistadoEmpresas.setSelectedItem(empresaNueva);
+            }
         }
-
-
     }
 
 

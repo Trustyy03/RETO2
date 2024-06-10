@@ -1,58 +1,61 @@
 package Vista.Empresas;
 
+import Controlador.EmpresaController;
 import Controlador.MainPanelController;
+import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
-
-    JButton btnListaEmpresas;
-    JTextField textListaEmpresas;
     JLabel labelEmpresa;
-    JTextField textEmpresa;
+    JComboBox<Empresa> listadoEmpresas;
     JButton botonEnviar;
     GridBagConstraints constraints;
     ListaDeEmpresas listaDeEmpresasApartado;
-    DetallesEmpresa detallesEmpresaApartado;
 
     public BuscarEmpresa() {
-
         setLayout(new GridBagLayout());
         listaDeEmpresasApartado = new ListaDeEmpresas();
-        detallesEmpresaApartado = new DetallesEmpresa();
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        btnListaEmpresas = new JButton("LISTA DE EMPRESAS");
-        btnListaEmpresas.addActionListener(e ->
-                MainPanelController.nuevoPanelActivo(listaDeEmpresasApartado)
-        );
-
         labelEmpresa = new JLabel("EMPRESA");
-        textEmpresa = new JTextField(20);
+
+        listadoEmpresas = new JComboBox<>();
+        cargarEmpresasEnComboBox();
 
         botonEnviar = new JButton("ENVIAR");
-        //si no la encuentras que te salga un showMessageDialog (comprobar que el nombre de la empresa está en la base de datos)
-        //si la encuentras te salta a la de detalles
-        botonEnviar.addActionListener(e ->
-                MainPanelController.nuevoPanelActivo(detallesEmpresaApartado)
-        );
+        botonEnviar.addActionListener(e -> {
+            Empresa empresaSeleccionada = (Empresa) listadoEmpresas.getSelectedItem();
+            if (empresaSeleccionada != null) {
+                MainPanelController.nuevoPanelActivo(listaDeEmpresasApartado);
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor, seleccione una empresa.");
+            }
+        });
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
         colocarComponentes();
     }
 
+    public void cargarEmpresasEnComboBox() {
+        ArrayList<Empresa> listaEmpresas = EmpresaController.consultarEmpresas();
+        DefaultComboBoxModel<Empresa> modelo = new DefaultComboBoxModel<>();
+
+        for (Empresa empresa : listaEmpresas) {
+            modelo.addElement(empresa);
+        }
+
+        listadoEmpresas.setModel(modelo);
+    }
+
     @Override
     public void colocarComponentes() {
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.gridwidth = 2;
-        add(btnListaEmpresas, constraints);
-
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
@@ -60,11 +63,11 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
 
         constraints.gridx = 1;
         constraints.gridy = 1;
-        add(textEmpresa, constraints);
+        add(listadoEmpresas, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        constraints.gridwidth = 2; // Para que el botón ocupe dos columnas
+        constraints.gridwidth = 2;
         add(botonEnviar, constraints);
     }
 }

@@ -106,20 +106,25 @@ public class GestionarFCT extends JPanel {
     }
 
     private static void eliminarFCT(FCT fct){
-        FCTController.borrarFCT(fct);
-        listaFCT.remove(fct);
-        CBlistadoFCT.removeItem(fct);
+        if (FCTController.borrarFCT(fct)){
+            listaFCT.remove(fct);
+            CBlistadoFCT.removeItem(fct);
+        }
+
     }
 
     private static void modificarFTC(FCT fctNueva , FCT fctVieja){
-        FCTController.modificarFCT(fctNueva,fctVieja);
-        int indice = listaFCT.indexOf(fctVieja);
-        if (indice != -1) {
-            listaFCT.set(indice, fctNueva);
-            CBlistadoFCT.removeItemAt(indice);
-            CBlistadoFCT.insertItemAt(fctNueva, indice);
-            CBlistadoFCT.setSelectedItem(fctNueva);
+        if (FCTController.modificarFCT(fctNueva,fctVieja)){
+            int indice = listaFCT.indexOf(fctVieja);
+            if (indice != -1) {
+                listaFCT.set(indice, fctNueva);
+                CBlistadoFCT.removeItemAt(indice);
+                CBlistadoFCT.insertItemAt(fctNueva, indice);
+                CBlistadoFCT.setSelectedItem(fctNueva);
+            }
         }
+
+
 
     }
 

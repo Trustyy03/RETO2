@@ -61,9 +61,11 @@ public class AgregarTutor extends JPanel{
     }
 
     private static void agregarTutor(){
-        nuevoTutor = new Tutor(Integer.parseInt(nuevoRellenarIdTutor.getText()),nuevoRellenarNombre.getText(),nuevoRellenarApellidos.getText());
-        TutorController.insertarTutor(nuevoTutor);
-        GestionarTutores.CBlistadoTutores.addItem(nuevoTutor);
+        nuevoTutor = new Tutor(Integer.parseInt(nuevoRellenarIdTutor.getText()),nuevoRellenarNombre.getText(),
+                nuevoRellenarApellidos.getText());
+        if (TutorController.insertarTutor(nuevoTutor)){
+            GestionarTutores.CBlistadoTutores.addItem(nuevoTutor);
+        }
     }
 
     private static void vaciarDatos(){

@@ -9,9 +9,8 @@ import java.awt.*;
 public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridBagLayout {
 
     JLabel labelCurso;
-    static JTextField textCurso;
+    static JComboBox<String>CBCurso,CBCiclo;
     JLabel labelCiclo;
-    static JTextField textCiclo;
     JButton botonListaEmpresas;
     GridBagConstraints constraints;
     ListaDeEmpresasConPracticas listaDeEmpresasConPracticasApartado;
@@ -25,10 +24,10 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
         constraints.insets = new Insets(10, 10, 10, 10);
 
         labelCurso = new JLabel("CURSO");
-        textCurso = new JTextField(20);
+        CBCurso = new JComboBox<>();
+        CBCiclo = new JComboBox<>();
 
         labelCiclo = new JLabel("CICLO FORMATIVO");
-        textCiclo = new JTextField(20);
 
         botonListaEmpresas = new JButton("LISTA DE EMPRESAS CON PRACTICAS");
         botonListaEmpresas.addActionListener( e ->
@@ -49,7 +48,7 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
 
         constraints.gridx = 1;
         constraints.gridy = 0;
-        add(textCurso, constraints);
+        add(CBCurso, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
@@ -57,7 +56,7 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
 
         constraints.gridx = 1;
         constraints.gridy = 1;
-        add(textCiclo, constraints);
+        add(CBCiclo, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;

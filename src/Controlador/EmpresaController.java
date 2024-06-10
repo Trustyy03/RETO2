@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
+import Vista.Empresas.BuscarEmpresa;
 import Vista.Empresas.GestionarEmpresas;
 
 import javax.swing.*;
@@ -10,20 +11,21 @@ import java.util.ArrayList;
 
 public class EmpresaController {
     private static ArrayList<Empresa> listaEmpresas = new ArrayList<>();
-    private static JComboBox<Empresa> CBlistadoEmpresas = new JComboBox<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static void inicializarEmpresas() {
         listaEmpresas = consultarEmpresas();
         for (Empresa empresa : listaEmpresas) {
-            CBlistadoEmpresas.addItem(empresa);
+            GestionarEmpresas.CBListadoEmpresas.addItem(empresa);
+            BuscarEmpresa.CBListadoEmpresaB.addItem(empresa);
         }
     }
 
     public static void eliminarEmpresa(Empresa empresa){
         if (borrarEmpresaSQL(empresa)){
             listaEmpresas.remove(empresa);
-            CBlistadoEmpresas.removeItem(empresa);
+            GestionarEmpresas.CBListadoEmpresas.removeItem(empresa);
+            BuscarEmpresa.CBListadoEmpresaB.removeItem(empresa);
         }
     }
 
@@ -32,9 +34,13 @@ public class EmpresaController {
             int indice = listaEmpresas.indexOf(empresaVieja);
             if (indice != -1) {
                 listaEmpresas.set(indice, empresaNueva);
-                CBlistadoEmpresas.removeItemAt(indice);
-                CBlistadoEmpresas.insertItemAt(empresaNueva, indice);
-                CBlistadoEmpresas.setSelectedItem(empresaNueva);
+                GestionarEmpresas.CBListadoEmpresas.removeItemAt(indice);
+                GestionarEmpresas.CBListadoEmpresas.insertItemAt(empresaNueva, indice);
+                GestionarEmpresas.CBListadoEmpresas.setSelectedItem(empresaNueva);
+
+                BuscarEmpresa.CBListadoEmpresaB.removeItemAt(indice);
+                BuscarEmpresa.CBListadoEmpresaB.insertItemAt(empresaNueva, indice);
+                BuscarEmpresa.CBListadoEmpresaB.setSelectedItem(empresaNueva);
             }
         }
     }
@@ -42,7 +48,8 @@ public class EmpresaController {
     public static void agregarEmpresa(Empresa empresaNueva){
         if (EmpresaController.insertarEmpresaSQL(empresaNueva)) {
             listaEmpresas.add(empresaNueva);
-            CBlistadoEmpresas.addItem(empresaNueva);
+            GestionarEmpresas.CBListadoEmpresas.addItem(empresaNueva);
+            BuscarEmpresa.CBListadoEmpresaB.addItem(empresaNueva);
         }
     }
 
@@ -140,11 +147,5 @@ public class EmpresaController {
         }
     }
 
-    public static ArrayList<Empresa> getEmpresas() {
-        return listaEmpresas;
-    }
 
-    public static JComboBox<Empresa> getCBlistadoEmpresas() {
-        return CBlistadoEmpresas;
-    }
 }

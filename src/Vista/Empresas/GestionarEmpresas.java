@@ -19,6 +19,8 @@ public class GestionarEmpresas extends JPanel {
     public static JButton btnGuardarEmpresa, btnBorrarEmpresa, btnAgregarEmpresa;
     static Empresa empresaSeleccionada,empresaNueva;
 
+    public static JComboBox<Empresa> CBListadoEmpresas = new JComboBox<>();
+
 
     public GestionarEmpresas() {
 
@@ -29,11 +31,10 @@ public class GestionarEmpresas extends JPanel {
 
 
         JPanel panelNorte = new JPanel();
-      //  listaEmpresas = OperacionesEntidades.consultarEmpresas();
 
         btnBorrarEmpresa = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarEmpresa = new JButton(lenguaje.getProperty("btnAgregar"));
-        panelNorte.add(EmpresaController.getCBlistadoEmpresas());
+        panelNorte.add(CBListadoEmpresas);
         panelNorte.add(btnBorrarEmpresa);
         panelNorte.add(btnAgregarEmpresa);
 
@@ -71,14 +72,14 @@ public class GestionarEmpresas extends JPanel {
         add(panelSur, BorderLayout.SOUTH);
 
 
-        EmpresaController.getCBlistadoEmpresas().addActionListener(e-> {empresaSeleccionada =(Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
+        CBListadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) CBListadoEmpresas.getSelectedItem();
         rellenarDatos(empresaSeleccionada);});
 
         btnAgregarEmpresa.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarEmpresa));
-        btnBorrarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
+        btnBorrarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) CBListadoEmpresas.getSelectedItem();
             EmpresaController.eliminarEmpresa(empresaSeleccionada);});
 
-        btnGuardarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
+        btnGuardarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) CBListadoEmpresas.getSelectedItem();
        guardarDatos(); EmpresaController.modificarEmpresa(empresaNueva,empresaSeleccionada); });
 
     }

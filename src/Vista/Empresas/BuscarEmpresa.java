@@ -14,8 +14,8 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
     JButton botonEnviar;
     GridBagConstraints constraints;
     ListaDeEmpresas listaDeEmpresasApartado;
-    JComboBox<Empresa> cb;
 
+    public static JComboBox<Empresa> CBListadoEmpresaB = new JComboBox<>();
     public BuscarEmpresa() {
         setLayout(new GridBagLayout());
         listaDeEmpresasApartado = new ListaDeEmpresas();
@@ -23,13 +23,10 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
         labelEmpresa = new JLabel("EMPRESA");
-        prueba = new JLabel("asdf");
-       // cb = new JComboBox<>();
-        cb = EmpresaController.getCBlistadoEmpresas();
 
         botonEnviar = new JButton("ENVIAR");
         botonEnviar.addActionListener(e -> {
-            Empresa empresaSeleccionada = (Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
+            Empresa empresaSeleccionada = (Empresa) CBListadoEmpresaB.getSelectedItem();
             if (empresaSeleccionada != null) {
                 MainPanelController.nuevoPanelActivo(listaDeEmpresasApartado);
             } else {
@@ -52,7 +49,7 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridwidth = 2;
-        add(cb, constraints);
+        add(CBListadoEmpresaB, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;

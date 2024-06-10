@@ -5,34 +5,46 @@ import Vista.ComponentesGridBagLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
+
+import static Modelo.Consultas.TodosCiclosYCursos.*;
 
 public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridBagLayout {
 
     JLabel labelCurso;
-    static JComboBox<String>CBCurso,CBCiclo;
+    static JComboBox<String> CBCurso,CBCiclo;
     JLabel labelCiclo;
     JButton botonListaEmpresas;
     GridBagConstraints constraints;
-    ListaDeEmpresasConPracticas listaDeEmpresasConPracticasApartado;
+    String a,b;
 
-    public BuscarEmpresaPorPractica() {
+    public BuscarEmpresaPorPractica() throws SQLException {
 
         setLayout(new GridBagLayout());
-        listaDeEmpresasConPracticasApartado = new ListaDeEmpresasConPracticas();
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
         labelCurso = new JLabel("CURSO");
-        CBCurso = new JComboBox<>();
-        CBCiclo = new JComboBox<>();
+        CBCurso = new JComboBox<String>();
+        for (String curso : consultarCursos()) {
+            CBCurso.addItem(curso);
+        }
 
         labelCiclo = new JLabel("CICLO FORMATIVO");
+        CBCiclo = new JComboBox<String>();
+        for (String ciclo: consultarCiclos()) {
+            CBCiclo.addItem(ciclo);
+        }
 
         botonListaEmpresas = new JButton("LISTA DE EMPRESAS CON PRACTICAS");
-        botonListaEmpresas.addActionListener( e ->
-            MainPanelController.nuevoPanelActivo(listaDeEmpresasConPracticasApartado)
-        );
+        botonListaEmpresas.addActionListener( e -> {a = (String) CBCiclo.getSelectedItem();
+            b = (String) CBCurso.getSelectedItem();
+            System.out.println(a);
+            MainPanelController.nuevoPanelActivo(new ListaDeEmpresasConPracticas());
+
+
+        });
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
@@ -65,4 +77,11 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
 
     }
 
+    public static String getCBCiclo() {
+        return (String) CBCiclo.getSelectedItem();
+    }
+
+    public static String getCBCurso() {
+        return (String) CBCurso.getSelectedItem();
+    }
 }

@@ -6,6 +6,7 @@ import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class OpcionesEmpresa extends JPanel {
 
@@ -24,7 +25,11 @@ public class OpcionesEmpresa extends JPanel {
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         buscarEmpresaApartado = new BuscarEmpresa();
-        buscarEmpresaPorPracticaApartado = new BuscarEmpresaPorPractica();
+        try {
+            buscarEmpresaPorPracticaApartado = new BuscarEmpresaPorPractica();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         gestionarEmpresasApartado = new GestionarEmpresas();
         buscarEmpresaPorTecnologiaApartado = new BuscarEmpresaPorTecnologia();
 

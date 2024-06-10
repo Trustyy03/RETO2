@@ -5,6 +5,8 @@ import Modelo.ConexionBDD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 public class OperacionesConsultas {
 
@@ -32,7 +34,9 @@ public class OperacionesConsultas {
         rs.close();
     }
 
-    public static void consultaDos(String cicloFormativo, String cursoEscolar) throws SQLException {
+    public static ArrayList<C2> consultaDos(String a, String b) throws SQLException {
+        ArrayList<C2> listaResultados = new ArrayList<>();
+
         String sql = "SELECT c.idCiclo, fct.cursoEscolar, e.CIF, e.nombre, COUNT(*) AS NumPracticas\n" +
                 "FROM EMPRESA e\n" +
                 "INNER JOIN GRUPO_FCT_EMPRESA fct USING (CIF)\n" +
@@ -43,18 +47,22 @@ public class OperacionesConsultas {
                 "GROUP BY c.idCiclo, fct.cursoEscolar, e.CIF, e.nombre;";
 
         PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, cicloFormativo);
-        pst.setString(2, cursoEscolar);
+
+        pst.setString(1, a);
+        pst.setString(2, b);
 
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
             C2 consulta2 = new C2(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
             System.out.println(consulta2.toString());
+            listaResultados.add(consulta2);
         }
 
         pst.close();
         rs.close();
+        return listaResultados;
+
     }
 
     public static void consultaTres(String grupo, String cursoEscolar) throws SQLException {

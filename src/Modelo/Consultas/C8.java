@@ -29,4 +29,9 @@ public class C8 {
     public String getFecha() {
         return fecha;
     }
+
+    @Override
+    public String toString() {
+        return nombreEmpresa + " / " + nombreTutor + " / " + descripcion + " / " + fecha;
+    }
 }

@@ -25,7 +25,7 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        labelEmpresa = new JLabel("GRUPO");
+        labelEmpresa = new JLabel("EMPRESA");
         empresas = new JComboBox<>();
 
         labelCurso = new JLabel("CURSO");

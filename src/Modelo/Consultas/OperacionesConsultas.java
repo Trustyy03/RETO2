@@ -168,4 +168,27 @@ public class OperacionesConsultas {
         rs.close();
     }
 
+    public static void consultaOcho(String cifEmpresa) throws SQLException {
+        String sql = "SELECT e.nombre, CONCAT(t.nombre, ' ', t.apellidos) as nombreTutor, c.descripcion, c.fecha\n" +
+                "FROM EMPRESA e\n" +
+                "INNER JOIN TUTOR_CONTACTA_EMPRESA c using(CIF)\n" +
+                "INNER JOIN TUTOR_FCT t using(idTutor)\n" +
+                "WHERE e.CIF = ?;"; // ej. B01234567
+
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, cifEmpresa);
+
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            C8 consulta8 = new C8(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            System.out.println(consulta8.toString());
+        }
+
+        pst.close();
+        rs.close();
+    }
+
+
+
 }

@@ -26,11 +26,6 @@ public class DetallesEmpresa extends JPanel {
 
         //Aqui supongo que tienes que crear un C1 = OperacionesConsultas.consultaUno(empresaSeleccionada.getNombre());
         //Y luego llamas al metodo de rellenar datos y listo
-        try {
-            OperacionesConsultas.consultaUno(empresaSeleccionada.getNombre());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
@@ -58,12 +53,17 @@ public class DetallesEmpresa extends JPanel {
         rellenarTelefonoTrabajador = new JTextField(20);
 
         configurarCoordenadas(panelCentral, gbc, nombreEmpresa, rellenarNombreEmpresa, 0);
-        configurarCoordenadas(panelCentral, gbc, nombreTutor ,rellenarNombreTutor, 1);
+        configurarCoordenadas(panelCentral, gbc, nombreTutor, rellenarNombreTutor, 1);
         configurarCoordenadas(panelCentral, gbc, nombreTrabajador, rellenarNombreTrabajador, 2);
         configurarCoordenadas(panelCentral, gbc, correoTrabajador, rellenarCorreoTrabajador, 3);
-        configurarCoordenadas(panelCentral, gbc,telefonoTrabajador , rellenarTelefonoTrabajador, 4);
+        configurarCoordenadas(panelCentral, gbc, telefonoTrabajador, rellenarTelefonoTrabajador, 4);
 
-       // rellenarDatos();
+        try {
+            C1 nombreEmpresa = OperacionesConsultas.consultaUno(empresaSeleccionada.getNombre());
+            rellenarDatos(nombreEmpresa);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
        add(panelNorte, BorderLayout.NORTH);
        add(panelCentral, BorderLayout.CENTER);

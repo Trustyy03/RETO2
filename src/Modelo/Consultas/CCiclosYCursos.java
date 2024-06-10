@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class TodosCiclosYCursos {
+public class CCiclosYCursos {
 
     static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
     public static ArrayList<String> cursosEscolares;

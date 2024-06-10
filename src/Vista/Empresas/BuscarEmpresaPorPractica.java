@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
-import static Modelo.Consultas.TodosCiclosYCursos.*;
+import static Modelo.Consultas.CCiclosYCursos.*;
 
 public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridBagLayout {
 

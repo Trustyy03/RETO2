@@ -1,7 +1,6 @@
 package Vista.Trabajadores;
 
 import Controlador.MainPanelController;
-import Modelo.Consultas.TodosCiclosYCursos;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
 
@@ -9,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
-import static Modelo.Consultas.TodosCiclosYCursos.*;
+import static Modelo.Consultas.CCiclosYCursos.*;
 
 
 public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayout {

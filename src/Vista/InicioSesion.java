@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.MainPanelController;
+import Controlador.InicioSesionController;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -45,25 +46,17 @@ public class InicioSesion extends JPanel {
         colocarComponentes();
 
         entrar.addActionListener(e -> {
-           // if (camposVacios(ipTextField, puertoTextField, nombreBaseDatosField, rellenarUsuario, rellenarContrasenya)) {
-           //     JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos", "Error", JOptionPane.ERROR_MESSAGE);
+           //if (InicioSesionController.camposVacios(ipTextField, puertoTextField, nombreBaseDatosField, rellenarUsuario, rellenarContrasenya)) {
+           //    JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos", "Error", JOptionPane.ERROR_MESSAGE);
             //} else {
                 MainPanelController.nuevoPanelActivo(opcionesPanel);
                 framePrincipal.setTitle("OPCIONES");
                 PanelPrincipal.nombreUsuario.setText("Nombre: " + rellenarUsuario.getText() + "/" + nombreBaseDatosField.getText() + "" +
                         "/" + ipTextField.getText() + "/"+puertoTextField.getText()+"/");
-           // }
+            //}
         });
     }
-/*
-    private boolean camposVacios(JTextField... campos) {
-        for (JTextField campo : campos) {
-            if (campo.getText().isEmpty()) {
-                return true;
-            }
-        }
-        return false;
-    }*/
+
 
     public void colocarComponentes() {
 

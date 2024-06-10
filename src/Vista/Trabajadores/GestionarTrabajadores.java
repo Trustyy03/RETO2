@@ -11,15 +11,11 @@ import java.awt.*;
 import java.util.List;
 
 public class GestionarTrabajadores extends JPanel {
-
-    public static List<Trabajador> listaTrabajadores;
     public static JLabel idTrabajador, cifTrabajador, nombreTrabajador,
             apellidosTrabajador, correoTrabajador, cargoTrabajador, telefonoTrabajador;
     public static JTextField rellenarId, rellenarCif, rellenarNombreTrabajador, rellenarApellidosTrabajador,
             rellenarCorreoTrabajador, rellenarCargoTrabajador, rellenarTelefonoTrabajador;
     public static JButton btnGuardarTrabajador, btnBorrarTrabajador, btnAgregarTrabajador;
-
-    public static JComboBox<Trabajador> CBlistadoTrabajadores;
     static Trabajador trabajadorSeleccionado, trabajadorNuevo;
 
     public GestionarTrabajadores() {
@@ -30,12 +26,11 @@ public class GestionarTrabajadores extends JPanel {
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         JPanel panelNorte = new JPanel();
-        CBlistadoTrabajadores = new JComboBox<>();
-        agregarTrabajadores();
 
         btnBorrarTrabajador = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarTrabajador = new JButton(lenguaje.getProperty("btnAgregar"));
-        panelNorte.add(CBlistadoTrabajadores);
+        JComboBox cb = TrabajadorController.getCBlistadoTrabajadores();
+        panelNorte.add(cb);
         panelNorte.add(btnBorrarTrabajador);
         panelNorte.add(btnAgregarTrabajador);
 
@@ -75,20 +70,20 @@ public class GestionarTrabajadores extends JPanel {
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        CBlistadoTrabajadores.addActionListener(e -> {
-            trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
+        cb.addActionListener(e -> {
+            trabajadorSeleccionado = (Trabajador) cb.getSelectedItem();
             rellenarDatos(trabajadorSeleccionado);
         });
 
         btnAgregarTrabajador.addActionListener(e -> MainPanelController.nuevoPanelActivo(agregarTrabajadorPanel));
         btnBorrarTrabajador.addActionListener(e -> {
-            trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
-            eliminarTrabajador(trabajadorSeleccionado);
+            trabajadorSeleccionado = (Trabajador) cb.getSelectedItem();
+            TrabajadorController.eliminarTrabajador(trabajadorSeleccionado);
         });
         btnGuardarTrabajador.addActionListener(e -> {
-            trabajadorSeleccionado = (Trabajador) CBlistadoTrabajadores.getSelectedItem();
+            trabajadorSeleccionado = (Trabajador) cb.getSelectedItem();
             guardarDatos();
-            modificarTrabajador(trabajadorNuevo,trabajadorSeleccionado);
+            TrabajadorController.modificarTrabajador(trabajadorNuevo,trabajadorSeleccionado);
         });
     }
 
@@ -117,30 +112,5 @@ public class GestionarTrabajadores extends JPanel {
                 rellenarNombreTrabajador.getText(), rellenarApellidosTrabajador.getText(), rellenarCorreoTrabajador.getText(),
                 rellenarCargoTrabajador.getText(), rellenarTelefonoTrabajador.getText()
         );
-    }
-
-    private static void agregarTrabajadores() {
-        listaTrabajadores = TrabajadorController.consultarTrabajadores();
-
-        for (Trabajador trabajador : listaTrabajadores) {
-            CBlistadoTrabajadores.addItem(trabajador);
-        }
-    }
-
-    private static void eliminarTrabajador(Trabajador trabajador) {
-        TrabajadorController.borrarTrabajador(trabajador);
-        listaTrabajadores.remove(trabajador);
-        CBlistadoTrabajadores.removeItem(trabajador);
-    }
-
-    private static void modificarTrabajador(Trabajador trabajadorNuevo , Trabajador trabajadorViejo) {
-        TrabajadorController.modificarTrabajador(trabajadorNuevo, trabajadorViejo);
-        int indice = listaTrabajadores.indexOf(trabajadorViejo);
-        if (indice != -1) {
-            listaTrabajadores.set(indice, trabajadorNuevo);
-            CBlistadoTrabajadores.removeItemAt(indice);
-            CBlistadoTrabajadores.insertItemAt(trabajadorNuevo, indice);
-            CBlistadoTrabajadores.setSelectedItem(trabajadorNuevo);
-        }
     }
 }

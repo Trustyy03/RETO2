@@ -3,6 +3,7 @@ package Vista;
 import Controlador.EmpresaController;
 import Controlador.FCTController;
 import Controlador.MainPanelController;
+import Controlador.TrabajadorController;
 import Vista.Empresas.OpcionesEmpresa;
 import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
@@ -17,6 +18,7 @@ public class FramePrincipal extends JFrame{
     public static void main(String[] args) {
         EmpresaController.inicializarEmpresas();
         FCTController.inicializarFCT();
+        TrabajadorController.inicializarTrabajadores();
         new FramePrincipal();
     }
 

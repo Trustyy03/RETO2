@@ -40,7 +40,8 @@ public class EmpresaController {
     }
 
     public static void agregarEmpresa(Empresa empresaNueva){
-        if (EmpresaController.insertarEmpresaSQL(empresaNueva)){
+        if (EmpresaController.insertarEmpresaSQL(empresaNueva)) {
+            listaEmpresas.add(empresaNueva);
             CBlistadoEmpresas.addItem(empresaNueva);
         }
     }

@@ -4,6 +4,7 @@ import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.Trabajador;
 import Modelo.Entidades.Tutor;
+import Vista.Trabajadores.GestionarTrabajadores;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -11,9 +12,44 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TrabajadorController {
+    private static List<Trabajador> listaTrabajadores = new ArrayList<>();
+    private static JComboBox<Trabajador> CBlistadoTrabajadores = new JComboBox<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+
+    public static void inicializarTrabajadores() {
+        listaTrabajadores = consultarTrabajadores();
+        for (Trabajador trabajador : listaTrabajadores) {
+            CBlistadoTrabajadores.addItem(trabajador);
+        }
+    }
+    public static void eliminarTrabajador(Trabajador trabajador) {
+        if (borrarTrabajadorSQL(trabajador)) {
+            listaTrabajadores.remove(trabajador);
+            CBlistadoTrabajadores.removeItem(trabajador);
+        }
+    }
+
+    public static void modificarTrabajador(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
+        if (modificarTrabajadorSQL(trabajadorNuevo, trabajadorViejo)) {
+            int indice = listaTrabajadores.indexOf(trabajadorViejo);
+            if (indice != -1) {
+                listaTrabajadores.set(indice, trabajadorNuevo);
+                CBlistadoTrabajadores.removeItemAt(indice);
+                CBlistadoTrabajadores.insertItemAt(trabajadorNuevo, indice);
+                CBlistadoTrabajadores.setSelectedItem(trabajadorNuevo);
+            }
+        }
+    }
+
+    public static void insertarTrabajador(Trabajador trabajadorNuevo){
+        if (insertarTrabajadorSQL(trabajadorNuevo)) {
+            listaTrabajadores.add(trabajadorNuevo);
+            CBlistadoTrabajadores.addItem(trabajadorNuevo);
+        }
+    }
 
     public static ArrayList<Trabajador> consultarTrabajadores() {
         ArrayList<Trabajador> trabajadores = new ArrayList<>();
@@ -39,7 +75,7 @@ public class TrabajadorController {
         return trabajadores;
     }
 
-    public static boolean borrarTrabajador(Trabajador trabajador) {
+    public static boolean borrarTrabajadorSQL(Trabajador trabajador) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -57,7 +93,7 @@ public class TrabajadorController {
         }
     }
 
-    public static boolean modificarTrabajador(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
+    public static boolean modificarTrabajadorSQL(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -84,7 +120,7 @@ public class TrabajadorController {
         }
     }
 
-    public static boolean insertarTrabajador(Trabajador trabajador) {
+    public static boolean insertarTrabajadorSQL(Trabajador trabajador) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -108,5 +144,13 @@ public class TrabajadorController {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
+    }
+
+    public static List<Trabajador> getListaTrabajadores() {
+        return listaTrabajadores;
+    }
+
+    public static JComboBox<Trabajador> getCBlistadoTrabajadores() {
+        return CBlistadoTrabajadores;
     }
 }

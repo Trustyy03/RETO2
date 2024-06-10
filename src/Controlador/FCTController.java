@@ -47,6 +47,7 @@ public class FCTController {
 
     public static void agregarFCT(FCT nuevaFCT){
         if ( FCTController.insertarFCTSQL(nuevaFCT)){
+            listaFCT.add(nuevaFCT);
             CBlistadoFCT.addItem(nuevaFCT);
         }
     }

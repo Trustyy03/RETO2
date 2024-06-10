@@ -47,6 +47,7 @@ public class TutorController {
 
     public static void agregarTutor(Tutor tutorNuevo){
         if (insertarTutorSQL(tutorNuevo)){
+            listaTutores.add(tutorNuevo);
             GestionarTutores.CBlistadoTutores.addItem(tutorNuevo);
         }
     }

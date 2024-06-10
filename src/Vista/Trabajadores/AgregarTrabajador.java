@@ -81,7 +81,6 @@ public class AgregarTrabajador extends JPanel{
                 nuevoRellenarApellidosTrabajador.getText(), nuevoRellenarCorreoTrabajador.getText(),
                 nuevoRellenarCargoTrabajador.getText(),nuevoRellenarTelefonoTrabajador.getText());
         TrabajadorController.insertarTrabajador(trabajadorNuevo);
-        GestionarTrabajadores.CBlistadoTrabajadores.addItem(trabajadorNuevo);
     }
 
     private static void vaciarDatos(){

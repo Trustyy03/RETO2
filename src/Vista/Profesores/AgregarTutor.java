@@ -60,16 +60,14 @@ public class AgregarTutor extends JPanel{
         panel.add(textField, gbc);
     }
 
+    private static void vaciarDatos(){
+        nuevoRellenarIdTutor.setText("");nuevoRellenarNombre.setText("");nuevoRellenarApellidos.setText("");
+    }
+
     private static void agregarTutor(){
         nuevoTutor = new Tutor(Integer.parseInt(nuevoRellenarIdTutor.getText()),nuevoRellenarNombre.getText(),
                 nuevoRellenarApellidos.getText());
-        if (TutorController.insertarTutor(nuevoTutor)){
-            GestionarTutores.CBlistadoTutores.addItem(nuevoTutor);
-        }
-    }
-
-    private static void vaciarDatos(){
-        nuevoRellenarIdTutor.setText("");nuevoRellenarNombre.setText("");nuevoRellenarApellidos.setText("");
+        TutorController.agregarTutor(nuevoTutor);
     }
 
 }

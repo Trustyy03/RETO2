@@ -1,8 +1,10 @@
 package Controlador;
 
 import Modelo.ConexionBDD;
+import Modelo.Entidades.Empresa;
 import Modelo.Entidades.Trabajador;
 import Modelo.Entidades.Tutor;
+import Vista.Profesores.GestionarTutores;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -12,7 +14,42 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class TutorController {
+    private static ArrayList<Tutor> listaTutores = new ArrayList<>();
+    private static JComboBox<Tutor> CBlistadoTutores = new JComboBox<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+
+
+    public static void inicializarTutores() {
+        listaTutores = consultarTutores();
+        for (Tutor tutor : listaTutores) {
+            CBlistadoTutores.addItem(tutor);
+        }
+    }
+
+    public static void eliminarTutor(Tutor tutor){
+        if (borrarTutorSQL(tutor)){
+            listaTutores.remove(tutor);
+            CBlistadoTutores.removeItem(tutor);
+        }
+    }
+
+    public static void modificarTutor(Tutor tutorNuevo, Tutor tutorViejo){
+        if (modificarTutorSQL(tutorNuevo,tutorViejo)){
+            int indice = listaTutores.indexOf(tutorViejo);
+            if (indice != -1) {
+                listaTutores.set(indice, tutorNuevo);
+                CBlistadoTutores.removeItemAt(indice);
+                CBlistadoTutores.insertItemAt(tutorNuevo, indice);
+                CBlistadoTutores.setSelectedItem(tutorNuevo);
+            }
+        }
+    }
+
+    public static void agregarTutor(Tutor tutorNuevo){
+        if (insertarTutorSQL(tutorNuevo)){
+            GestionarTutores.CBlistadoTutores.addItem(tutorNuevo);
+        }
+    }
 
     public static ArrayList<Tutor> consultarTutores() {
         ArrayList<Tutor> tutores = new ArrayList<>();
@@ -38,7 +75,7 @@ public class TutorController {
         return tutores;
     }
 
-    public static boolean borrarTutor(Tutor tutor) {
+    public static boolean borrarTutorSQL(Tutor tutor) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -56,7 +93,7 @@ public class TutorController {
         }
     }
 
-    public static boolean modificarTutor(Tutor tutorNuevo, Tutor tutorViejo) {
+    public static boolean modificarTutorSQL(Tutor tutorNuevo, Tutor tutorViejo) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -78,7 +115,7 @@ public class TutorController {
         }
     }
 
-    public static boolean insertarTutor(Tutor tutor) {
+    public static boolean insertarTutorSQL(Tutor tutor) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -98,4 +135,9 @@ public class TutorController {
             return false;
         }
     }
+
+
+    public static ArrayList<Tutor> getListaTutores() {return listaTutores;}
+
+    public static JComboBox<Tutor> getCBlistadoTutores() {return CBlistadoTutores;}
 }

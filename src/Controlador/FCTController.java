@@ -4,6 +4,7 @@ import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
 import Modelo.Entidades.FCT;
 import Modelo.Entidades.Tutor;
+import Vista.FCT.GestionarFCT;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -11,9 +12,44 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FCTController {
+    private static List<FCT> listaFCT = new ArrayList<>();
+    private static JComboBox<FCT> CBlistadoFCT = new JComboBox<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+
+    public static void inicializarFCT(){
+        listaFCT = consultarFCT();
+        for (FCT fct : listaFCT){
+            CBlistadoFCT.addItem(fct);
+        }
+    }
+
+    public static void eliminarFCT(FCT fct){
+        if (FCTController.eliminarFCTSQL(fct)){
+            listaFCT.remove(fct);
+            CBlistadoFCT.removeItem(fct);
+        }
+    }
+
+    public static void modificarFTC(FCT fctNueva , FCT fctVieja){
+        if (FCTController.modificarFCTSQL(fctNueva,fctVieja)){
+            int indice = listaFCT.indexOf(fctVieja);
+            if (indice != -1) {
+                listaFCT.set(indice, fctNueva);
+                CBlistadoFCT.removeItemAt(indice);
+                CBlistadoFCT.insertItemAt(fctNueva, indice);
+                CBlistadoFCT.setSelectedItem(fctNueva);
+            }
+        }
+    }
+
+    public static void agregarFCT(FCT nuevaFCT){
+        if ( FCTController.insertarFCTSQL(nuevaFCT)){
+            CBlistadoFCT.addItem(nuevaFCT);
+        }
+    }
 
     public static ArrayList<FCT> consultarFCT() {
         ArrayList<FCT> fcts = new ArrayList<>();
@@ -39,7 +75,7 @@ public class FCTController {
         return fcts;
     }
 
-    public static boolean borrarFCT(FCT fct) {
+    public static boolean eliminarFCTSQL(FCT fct) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -59,7 +95,7 @@ public class FCTController {
         }
     }
 
-    public static boolean modificarFCT(FCT FCTNueva, FCT FCTVieja) {
+    public static boolean modificarFCTSQL(FCT FCTNueva, FCT FCTVieja) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -85,7 +121,7 @@ public class FCTController {
         }
     }
 
-    public static boolean insertarFCT(FCT fct) {
+    public static boolean insertarFCTSQL(FCT fct) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -106,5 +142,13 @@ public class FCTController {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
+    }
+
+    public static List<FCT> getListaFCT() {
+        return listaFCT;
+    }
+
+    public static JComboBox<FCT> getCBlistadoFCT() {
+        return CBlistadoFCT;
     }
 }

@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.EmpresaController;
+import Controlador.FCTController;
 import Controlador.MainPanelController;
 import Vista.Empresas.OpcionesEmpresa;
 import Vista.FCT.OpcionesFCT;
@@ -15,11 +16,11 @@ public class FramePrincipal extends JFrame{
 
     public static void main(String[] args) {
         EmpresaController.inicializarEmpresas();
+        FCTController.inicializarFCT();
         new FramePrincipal();
     }
 
 public FramePrincipal(){ //se inicia el Frame, donde empezará todo
-
     PanelPrincipal panelPrincipal = new PanelPrincipal(this); //se agrega el panelPrincipal, donde contendrá la información general de la app
     add(panelPrincipal);
     setTitle("INICIO SESIÓN"); //Cuando se realice el inicio de sesión, cambiar el titulo al panel en el que esten (mediante actionsListeners)
@@ -51,11 +52,11 @@ class PanelPrincipal extends JPanel {
 
         btnAtras = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnAtras"));
         btnInicio = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnInicio"));
-        menuBar = new JMenuBar();
+        menuBar = Estilo.menuBarBonito();
         nombreUsuario = new JLabel("*Nombre Usuario*");
         menuLeng = Estilo.menuBonito(lenguaje.getProperty("menuLeng"));
-        itemEsp = new JMenuItem(lenguaje.getProperty("itemEsp"));
-        itemEngl = new JMenuItem(lenguaje.getProperty("itemEngl"));
+        itemEsp = Estilo.menuItemBonito(lenguaje.getProperty("itemEsp"));
+        itemEngl = Estilo.menuItemBonito(lenguaje.getProperty("itemEngl"));
         mainPanelController = new MainPanelController(centerPanel, inicioSesionPanel);
 
         JPanel northPanel = new JPanel(new BorderLayout());

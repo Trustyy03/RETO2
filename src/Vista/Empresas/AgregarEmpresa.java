@@ -73,7 +73,7 @@ public class AgregarEmpresa extends JPanel {
         panel.add(textField, gbc);
     }
 
-    private static void agregarEmpresa(){
+    public static void agregarEmpresa(){
         empresaNueva = new Empresa(nuevoRellenarCif.getText(),nuevoRellenarNombre.getText(),nuevoRellenarTelefono.getText(),
                 Integer.parseInt(nuevoRellenarNumEmpleados.getText()),nuevoRellenarSector.getText(),nuevoRellenarDireccion.getText());
         EmpresaController.insertarEmpresa(empresaNueva);

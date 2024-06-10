@@ -35,7 +35,7 @@ public class GestionarEmpresas extends JPanel {
 
         JPanel panelNorte = new JPanel();
         CBlistadoEmpresas = new JComboBox<>();
-      //  listaEmpresas = OperacionesEntidades.consultarEmpresas();
+        //listaEmpresas = OperacionesEntidades.consultarEmpresas();
         agregarEmpresas();
 
 
@@ -114,7 +114,7 @@ public class GestionarEmpresas extends JPanel {
 
     }
 
-    private static void agregarEmpresas(){
+    public static void agregarEmpresas(){
         for (Empresa empresa : listaEmpresas) {
             CBlistadoEmpresas.addItem(empresa);
         }

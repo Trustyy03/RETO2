@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class InicioSesion extends JPanel {
 
-    public static JLabel usuario,contrasenya,ipLabel,puertoLabel;
-    public static JTextField rellenarUsuario,rellenarContrasenya,ipTextField,puertoTextField;
+    public static JLabel usuario,contrasenya,ipLabel,puertoLabel,nombreBaseDatosLabel;
+    public static JTextField rellenarUsuario,rellenarContrasenya,ipTextField,puertoTextField,nombreBaseDatosField;
     public static JButton entrar;
 
     GridBagConstraints constraints;
@@ -27,29 +27,43 @@ public class InicioSesion extends JPanel {
         constraints.insets = new Insets(10,10,10,10);
 
         ipLabel = Estilo.textoBonito(lenguaje.getProperty("ipTexto"));
-        ipTextField = Estilo.textFieldBonito(7);
+        ipTextField = Estilo.textFieldBonito(10);
 
         puertoLabel = Estilo.textoBonito(lenguaje.getProperty("puertoTexto"));
-        puertoTextField = Estilo.textFieldBonito(7);
+        puertoTextField = Estilo.textFieldBonito(10);
+
+        nombreBaseDatosLabel = Estilo.textoBonito(lenguaje.getProperty("baseDatosTexto"));
+        nombreBaseDatosField = Estilo.textFieldBonito(10);
 
         usuario = Estilo.textoBonito(lenguaje.getProperty("usuarioInicio"));
-        rellenarUsuario = Estilo.textFieldBonito(14);
+        rellenarUsuario = Estilo.textFieldBonito(20);
 
         contrasenya = Estilo.textoBonito(lenguaje.getProperty("contrasenyaInico"));
-        rellenarContrasenya = Estilo.textFieldBonito(14);
+        rellenarContrasenya = Estilo.textFieldBonito(20);
 
         entrar = Estilo.botonBonito(lenguaje.getProperty("entrarInicio"));
         colocarComponentes();
 
-        entrar.addActionListener(e->{
-            MainPanelController.nuevoPanelActivo(opcionesPanel);
-            framePrincipal.setTitle("OPCIONES");
-            if (e.getSource() == entrar){
-                PanelPrincipal.nombreUsuario.setText(rellenarUsuario.getText());
-            }
+        entrar.addActionListener(e -> {
+           // if (camposVacios(ipTextField, puertoTextField, nombreBaseDatosField, rellenarUsuario, rellenarContrasenya)) {
+           //     JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos", "Error", JOptionPane.ERROR_MESSAGE);
+            //} else {
+                MainPanelController.nuevoPanelActivo(opcionesPanel);
+                framePrincipal.setTitle("OPCIONES");
+                PanelPrincipal.nombreUsuario.setText("Nombre: " + rellenarUsuario.getText() + "/" + nombreBaseDatosField.getText() + "" +
+                        "/" + ipTextField.getText() + "/"+puertoTextField.getText()+"/");
+           // }
         });
-
     }
+/*
+    private boolean camposVacios(JTextField... campos) {
+        for (JTextField campo : campos) {
+            if (campo.getText().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }*/
 
     public void colocarComponentes() {
 
@@ -78,27 +92,38 @@ public class InicioSesion extends JPanel {
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
-        add(usuario, constraints);
+        add(nombreBaseDatosLabel, constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridwidth = 3;
-        add(rellenarUsuario, constraints);
+        add(nombreBaseDatosField, constraints);
 
         // Row 3
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridwidth = 1;
-        add(contrasenya, constraints);
+        add(usuario, constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 2;
         constraints.gridwidth = 3;
-        add(rellenarContrasenya, constraints);
+        add(rellenarUsuario, constraints);
 
         // Row 4
         constraints.gridx = 0;
         constraints.gridy = 3;
+        constraints.gridwidth = 1;
+        add(contrasenya, constraints);
+
+        constraints.gridx = 1;
+        constraints.gridy = 3;
+        constraints.gridwidth = 3;
+        add(rellenarContrasenya, constraints);
+
+        // Row 5
+        constraints.gridx = 0;
+        constraints.gridy = 4;
         constraints.gridwidth = 4;
         constraints.anchor = GridBagConstraints.CENTER;
         add(entrar, constraints);

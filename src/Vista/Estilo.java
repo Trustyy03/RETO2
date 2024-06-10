@@ -40,7 +40,7 @@ public class Estilo {
         label.setFont(new Font("Arial", Font.BOLD, 25));
         label.setVisible(true);
 
-        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setHorizontalAlignment(SwingConstants.LEFT);
         label.setVerticalAlignment(SwingConstants.CENTER);
 
         return label;

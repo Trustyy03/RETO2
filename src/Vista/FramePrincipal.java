@@ -88,11 +88,17 @@ class PanelPrincipal extends JPanel {
             MainPanelController.volverInicio();
             nombreUsuario.setText("I");
             InicioSesion.rellenarUsuario.setText("");
-            InicioSesion.rellenarUsuario.setText("");
+            InicioSesion.rellenarContrasenya.setText("");
+            InicioSesion.puertoTextField.setText("");
+            InicioSesion.ipTextField.setText("");
+            InicioSesion.nombreBaseDatosField.setText("");
         });
         btnAtras.addActionListener(e ->{ MainPanelController.antiguoPanel();
             InicioSesion.rellenarUsuario.setText("");
-            InicioSesion.rellenarUsuario.setText("");
+            InicioSesion.rellenarContrasenya.setText("");
+            InicioSesion.puertoTextField.setText("");
+            InicioSesion.ipTextField.setText("");
+            InicioSesion.nombreBaseDatosField.setText("");
         });
     }
 

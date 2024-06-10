@@ -72,17 +72,14 @@ public class AgregarEmpresa extends JPanel {
         gbc.gridx = 1;
         panel.add(textField, gbc);
     }
-
-    private static void agregarEmpresa(){
-        empresaNueva = new Empresa(nuevoRellenarCif.getText(),nuevoRellenarNombre.getText(),nuevoRellenarTelefono.getText(),
-                Integer.parseInt(nuevoRellenarNumEmpleados.getText()),nuevoRellenarSector.getText(),nuevoRellenarDireccion.getText());
-        if (EmpresaController.insertarEmpresa(empresaNueva)){
-            GestionarEmpresas.CBlistadoEmpresas.addItem(empresaNueva);
-        }
-    }
     private static void vaciarDatos(){
         nuevoRellenarCif.setText("");nuevoRellenarNombre.setText("");nuevoRellenarTelefono.setText("");
         nuevoRellenarNumEmpleados.setText("");nuevoRellenarSector.setText("");nuevoRellenarDireccion.setText("");
     }
 
+    private static void agregarEmpresa() {
+        empresaNueva = new Empresa(nuevoRellenarCif.getText(),nuevoRellenarNombre.getText(),nuevoRellenarTelefono.getText(),
+                Integer.parseInt(nuevoRellenarNumEmpleados.getText()),nuevoRellenarSector.getText(),nuevoRellenarDireccion.getText());
+        EmpresaController.agregarEmpresa(empresaNueva);
+    }
 }

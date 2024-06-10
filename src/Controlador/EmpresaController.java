@@ -2,16 +2,48 @@ package Controlador;
 
 import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
+import Vista.Empresas.GestionarEmpresas;
 
 import javax.swing.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class EmpresaController {
+    private static ArrayList<Empresa> listaEmpresas = new ArrayList<>();
+    private static JComboBox<Empresa> CBlistadoEmpresas = new JComboBox<>();
     public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+
+    public static void inicializarEmpresas() {
+        listaEmpresas = consultarEmpresas();
+        for (Empresa empresa : listaEmpresas) {
+            CBlistadoEmpresas.addItem(empresa);
+        }
+    }
+
+    public static void eliminarEmpresa(Empresa empresa){
+        if (borrarEmpresaSQL(empresa)){
+            listaEmpresas.remove(empresa);
+            CBlistadoEmpresas.removeItem(empresa);
+        }
+    }
+
+    public static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja){
+        if (modificarEmpresaSQL(empresaNueva,empresaVieja)){
+            int indice = listaEmpresas.indexOf(empresaVieja);
+            if (indice != -1) {
+                listaEmpresas.set(indice, empresaNueva);
+                CBlistadoEmpresas.removeItemAt(indice);
+                CBlistadoEmpresas.insertItemAt(empresaNueva, indice);
+                CBlistadoEmpresas.setSelectedItem(empresaNueva);
+            }
+        }
+    }
+
+    public static void agregarEmpresa(Empresa empresaNueva){
+        if (EmpresaController.insertarEmpresaSQL(empresaNueva)){
+            CBlistadoEmpresas.addItem(empresaNueva);
+        }
+    }
 
     public static ArrayList<Empresa> consultarEmpresas() {
         ArrayList<Empresa> empresas = new ArrayList<>();
@@ -38,7 +70,7 @@ public class EmpresaController {
         return empresas;
     }
 
-    public static boolean borrarEmpresa(Empresa empresa) {
+    public static boolean borrarEmpresaSQL(Empresa empresa) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -56,7 +88,7 @@ public class EmpresaController {
         }
     }
 
-    public static boolean modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja) {
+    public static boolean modificarEmpresaSQL(Empresa empresaNueva, Empresa empresaVieja) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -82,7 +114,7 @@ public class EmpresaController {
         }
     }
 
-    public static boolean insertarEmpresa(Empresa empresa) {
+    public static boolean insertarEmpresaSQL(Empresa empresa) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -105,5 +137,13 @@ public class EmpresaController {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
+    }
+
+    public static ArrayList<Empresa> getEmpresas() {
+        return listaEmpresas;
+    }
+
+    public static JComboBox<Empresa> getCBlistadoEmpresas() {
+        return CBlistadoEmpresas;
     }
 }

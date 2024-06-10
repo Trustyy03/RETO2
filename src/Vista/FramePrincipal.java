@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.EmpresaController;
 import Controlador.MainPanelController;
 import Vista.Empresas.OpcionesEmpresa;
 import Vista.FCT.OpcionesFCT;
@@ -13,6 +14,7 @@ import java.awt.*;
 public class FramePrincipal extends JFrame{
 
     public static void main(String[] args) {
+        EmpresaController.inicializarEmpresas();
         new FramePrincipal();
     }
 

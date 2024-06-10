@@ -12,15 +12,11 @@ import java.util.ArrayList;
 
 public class GestionarEmpresas extends JPanel {
 
-    public static ArrayList<Empresa> listaEmpresas;
     public static JLabel cif, nombre, telefono, numEmpleados, sector, direccion;
     public static JTextField rellenarCif, rellenarNombre, rellenarTelefono,
             rellenarNumEmpleados, rellenarSector, rellenarDireccion;
 
     public static JButton btnGuardarEmpresa, btnBorrarEmpresa, btnAgregarEmpresa;
-
-    public static JComboBox<Empresa> CBlistadoEmpresas;
-
     static Empresa empresaSeleccionada,empresaNueva;
 
 
@@ -28,20 +24,16 @@ public class GestionarEmpresas extends JPanel {
 
         this.setLayout(new BorderLayout());
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
-        listaEmpresas = EmpresaController.consultarEmpresas();
 
         AgregarEmpresa agregarEmpresa = new AgregarEmpresa();
 
 
         JPanel panelNorte = new JPanel();
-        CBlistadoEmpresas = new JComboBox<>();
       //  listaEmpresas = OperacionesEntidades.consultarEmpresas();
-        agregarEmpresas();
-
 
         btnBorrarEmpresa = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarEmpresa = new JButton(lenguaje.getProperty("btnAgregar"));
-        panelNorte.add(CBlistadoEmpresas);
+        panelNorte.add(EmpresaController.getCBlistadoEmpresas());
         panelNorte.add(btnBorrarEmpresa);
         panelNorte.add(btnAgregarEmpresa);
 
@@ -79,15 +71,15 @@ public class GestionarEmpresas extends JPanel {
         add(panelSur, BorderLayout.SOUTH);
 
 
-        CBlistadoEmpresas.addActionListener(e-> {empresaSeleccionada =(Empresa) CBlistadoEmpresas.getSelectedItem();
+        EmpresaController.getCBlistadoEmpresas().addActionListener(e-> {empresaSeleccionada =(Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
         rellenarDatos(empresaSeleccionada);});
 
         btnAgregarEmpresa.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarEmpresa));
-        btnBorrarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) CBlistadoEmpresas.getSelectedItem();
-            eliminarEmpresa(empresaSeleccionada);});
+        btnBorrarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
+            EmpresaController.eliminarEmpresa(empresaSeleccionada);});
 
-        btnGuardarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) CBlistadoEmpresas.getSelectedItem();
-       guardarDatos(); modificarEmpresa(empresaNueva,empresaSeleccionada); });
+        btnGuardarEmpresa.addActionListener(e-> {empresaSeleccionada = (Empresa) EmpresaController.getCBlistadoEmpresas().getSelectedItem();
+       guardarDatos(); EmpresaController.modificarEmpresa(empresaNueva,empresaSeleccionada); });
 
     }
 
@@ -113,32 +105,4 @@ public class GestionarEmpresas extends JPanel {
               Integer.parseInt(rellenarNumEmpleados.getText()),rellenarSector.getText(),rellenarDireccion.getText());
 
     }
-
-    private static void agregarEmpresas(){
-        for (Empresa empresa : listaEmpresas) {
-            CBlistadoEmpresas.addItem(empresa);
-        }
-    }
-
-    private static void eliminarEmpresa(Empresa empresa){
-
-        if (EmpresaController.borrarEmpresa(empresa)){
-            listaEmpresas.remove(empresa);
-            CBlistadoEmpresas.removeItem(empresa);
-        }
-    }
-
-    private static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja){
-        if (EmpresaController.modificarEmpresa(empresaNueva,empresaVieja)){
-            int indice = listaEmpresas.indexOf(empresaVieja);
-            if (indice != -1) {
-                listaEmpresas.set(indice, empresaNueva);
-                CBlistadoEmpresas.removeItemAt(indice);
-                CBlistadoEmpresas.insertItemAt(empresaNueva, indice);
-                CBlistadoEmpresas.setSelectedItem(empresaNueva);
-            }
-        }
-    }
-
-
 }

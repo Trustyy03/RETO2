@@ -14,7 +14,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Vista.Empresas.GestionarEmpresas.CBlistadoEmpresas;
 import static Vista.Empresas.GestionarEmpresas.rellenarDireccion;
 
 public class GestionarFCT extends JPanel {

@@ -76,10 +76,10 @@ public class AgregarEmpresa extends JPanel {
     private static void agregarEmpresa(){
         empresaNueva = new Empresa(nuevoRellenarCif.getText(),nuevoRellenarNombre.getText(),nuevoRellenarTelefono.getText(),
                 Integer.parseInt(nuevoRellenarNumEmpleados.getText()),nuevoRellenarSector.getText(),nuevoRellenarDireccion.getText());
-        EmpresaController.insertarEmpresa(empresaNueva);
-        GestionarEmpresas.CBlistadoEmpresas.addItem(empresaNueva);
+        if (EmpresaController.insertarEmpresa(empresaNueva)){
+            GestionarEmpresas.CBlistadoEmpresas.addItem(empresaNueva);
+        }
     }
-
     private static void vaciarDatos(){
         nuevoRellenarCif.setText("");nuevoRellenarNombre.setText("");nuevoRellenarTelefono.setText("");
         nuevoRellenarNumEmpleados.setText("");nuevoRellenarSector.setText("");nuevoRellenarDireccion.setText("");

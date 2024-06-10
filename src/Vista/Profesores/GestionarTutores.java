@@ -102,21 +102,22 @@ public class GestionarTutores extends JPanel {
     }
 
     private static void eliminarTutor(Tutor tutor){
-        TutorController.borrarTutor(tutor);
-        listaTutores.remove(tutor);
-        CBlistadoTutores.removeItem(tutor);
+        if (TutorController.borrarTutor(tutor)){
+            listaTutores.remove(tutor);
+            CBlistadoTutores.removeItem(tutor);
+        }
     }
 
     private static void modificarTutor(Tutor tutorNuevo, Tutor tutorViejo){
-        TutorController.modificarTutor(tutorNuevo,tutorViejo);
-        int indice = listaTutores.indexOf(tutorViejo);
-        if (indice != -1) {
-            listaTutores.set(indice, tutorNuevo);
-            CBlistadoTutores.removeItemAt(indice);
-            CBlistadoTutores.insertItemAt(tutorNuevo, indice);
-            CBlistadoTutores.setSelectedItem(tutorNuevo);
+        if (TutorController.modificarTutor(tutorNuevo,tutorViejo)){
+            int indice = listaTutores.indexOf(tutorViejo);
+            if (indice != -1) {
+                listaTutores.set(indice, tutorNuevo);
+                CBlistadoTutores.removeItemAt(indice);
+                CBlistadoTutores.insertItemAt(tutorNuevo, indice);
+                CBlistadoTutores.setSelectedItem(tutorNuevo);
+            }
         }
-
     }
 
 }

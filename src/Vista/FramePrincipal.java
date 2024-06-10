@@ -55,7 +55,7 @@ class PanelPrincipal extends JPanel {
         btnAtras = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnAtras"));
         btnInicio = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnInicio"));
         menuBar = Estilo.menuBarBonito();
-        nombreUsuario = new JLabel("*Nombre Usuario*");
+        nombreUsuario = new JLabel("I");
         menuLeng = Estilo.menuBonito(lenguaje.getProperty("menuLeng"));
         itemEsp = Estilo.menuItemBonito(lenguaje.getProperty("itemEsp"));
         itemEngl = Estilo.menuItemBonito(lenguaje.getProperty("itemEngl"));
@@ -88,12 +88,11 @@ class PanelPrincipal extends JPanel {
         itemEngl.addActionListener(e -> cambiarLenguaje(Lenguaje.english));
         btnInicio.addActionListener(e -> {
             MainPanelController.volverInicio();
-            nombreUsuario.setText("*Nombre Usuario*");
+            nombreUsuario.setText("I");
             InicioSesion.rellenarUsuario.setText("");
             InicioSesion.rellenarUsuario.setText("");
         });
         btnAtras.addActionListener(e ->{ MainPanelController.antiguoPanel();
-            nombreUsuario.setText("*Nombre Usuario*");
             InicioSesion.rellenarUsuario.setText("");
             InicioSesion.rellenarUsuario.setText("");
         });

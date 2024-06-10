@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class InicioSesion extends JPanel {
 
-    public static JLabel usuario,contrasenya;
-    public static JTextField rellenarUsuario,rellenarContrasenya;
+    public static JLabel usuario,contrasenya,ipLabel,puertoLabel;
+    public static JTextField rellenarUsuario,rellenarContrasenya,ipTextField,puertoTextField;
     public static JButton entrar;
 
     GridBagConstraints constraints;
@@ -26,11 +26,17 @@ public class InicioSesion extends JPanel {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(10,10,10,10);
 
-        usuario = new JLabel(lenguaje.getProperty("usuarioInicio"));
-        rellenarUsuario = Estilo.textFieldBonito(15);
+        ipLabel = Estilo.textoBonito(lenguaje.getProperty("ipTexto"));
+        ipTextField = Estilo.textFieldBonito(7);
 
-        contrasenya = new JLabel(lenguaje.getProperty("contrasenyaInico"));
-        rellenarContrasenya = Estilo.textFieldBonito(15);
+        puertoLabel = Estilo.textoBonito(lenguaje.getProperty("puertoTexto"));
+        puertoTextField = Estilo.textFieldBonito(7);
+
+        usuario = Estilo.textoBonito(lenguaje.getProperty("usuarioInicio"));
+        rellenarUsuario = Estilo.textFieldBonito(14);
+
+        contrasenya = Estilo.textoBonito(lenguaje.getProperty("contrasenyaInico"));
+        rellenarContrasenya = Estilo.textFieldBonito(14);
 
         entrar = Estilo.botonBonito(lenguaje.getProperty("entrarInicio"));
         colocarComponentes();
@@ -49,24 +55,52 @@ public class InicioSesion extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        add (usuario, constraints);
+        constraints.gridwidth = 1;
+        constraints.weightx = 0.5;
+        add(ipLabel, constraints);
+
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        constraints.gridwidth = 1;
+        add(ipTextField, constraints);
 
         constraints.gridx = 2;
         constraints.gridy = 0;
-        add (rellenarUsuario, constraints);
+        constraints.gridwidth = 1;
+        add(puertoLabel, constraints);
 
+        constraints.gridx = 3;
+        constraints.gridy = 0;
+        constraints.gridwidth = 1;
+        add(puertoTextField, constraints);
+
+        // Row 2
         constraints.gridx = 0;
         constraints.gridy = 1;
-        add (contrasenya, constraints);
+        constraints.gridwidth = 1;
+        add(usuario, constraints);
 
-        constraints.gridx = 2;
+        constraints.gridx = 1;
         constraints.gridy = 1;
-        add (rellenarContrasenya, constraints);
+        constraints.gridwidth = 3;
+        add(rellenarUsuario, constraints);
 
+        // Row 3
         constraints.gridx = 0;
         constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        add(contrasenya, constraints);
+
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        constraints.gridwidth = 3;
+        add(rellenarContrasenya, constraints);
+
+        // Row 4
+        constraints.gridx = 0;
+        constraints.gridy = 3;
         constraints.gridwidth = 4;
-        constraints.gridheight = 1;
-        add (entrar, constraints);
+        constraints.anchor = GridBagConstraints.CENTER;
+        add(entrar, constraints);
     }
 }

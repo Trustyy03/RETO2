@@ -27,12 +27,12 @@ public class InicioSesion extends JPanel {
         constraints.insets = new Insets(10,10,10,10);
 
         usuario = new JLabel(lenguaje.getProperty("usuarioInicio"));
-        rellenarUsuario = new JTextField(15);
+        rellenarUsuario = Estilo.textFieldBonito(15);
 
         contrasenya = new JLabel(lenguaje.getProperty("contrasenyaInico"));
-        rellenarContrasenya = new JTextField(15);
+        rellenarContrasenya = Estilo.textFieldBonito(15);
 
-        entrar = new JButton(lenguaje.getProperty("entrarInicio"));
+        entrar = Estilo.botonBonito(lenguaje.getProperty("entrarInicio"));
         colocarComponentes();
 
         entrar.addActionListener(e->{

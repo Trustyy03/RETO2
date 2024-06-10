@@ -51,11 +51,11 @@ class PanelPrincipal extends JPanel {
 
         btnAtras = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnAtras"));
         btnInicio = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnInicio"));
-        menuBar = new JMenuBar();
+        menuBar = Estilo.menuBarBonito();
         nombreUsuario = new JLabel("*Nombre Usuario*");
         menuLeng = Estilo.menuBonito(lenguaje.getProperty("menuLeng"));
-        itemEsp = new JMenuItem(lenguaje.getProperty("itemEsp"));
-        itemEngl = new JMenuItem(lenguaje.getProperty("itemEngl"));
+        itemEsp = Estilo.menuItemBonito(lenguaje.getProperty("itemEsp"));
+        itemEngl = Estilo.menuItemBonito(lenguaje.getProperty("itemEngl"));
         mainPanelController = new MainPanelController(centerPanel, inicioSesionPanel);
 
         JPanel northPanel = new JPanel(new BorderLayout());

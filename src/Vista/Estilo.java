@@ -56,19 +56,35 @@ public class Estilo {
         return label;
     }
 
-    public static JComboBox<String> comboBoxBonito(String[] items) {
-        JComboBox<String> comboBox = new JComboBox<>(items);
-        comboBox.setBackground(Color.WHITE); // Blanco
-        comboBox.setForeground(Color.BLACK); // Negro
-        comboBox.setFont(new Font("Arial", Font.PLAIN, 20));
-
-        comboBox.setBorder(BorderFactory.createLineBorder(new Color(70, 130, 180), 2)); // Azul
-
-        return comboBox;
+    public static JMenuBar menuBarBonito() {
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setBackground(new Color(70, 130, 180)); // Azul
+        menuBar.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2)); // Borde blanco
+        return menuBar;
     }
 
-    public static JTextField textFieldBonito() {
-        JTextField textField = new JTextField();
+    public static JMenu menuBonito(String text) {
+        JMenu menu = new JMenu(text);
+        menu.setForeground(Color.WHITE); // Texto blanco
+        menu.setFont(new Font("Arial", Font.BOLD, 16));
+        menu.setOpaque(true);
+        menu.setBackground(new Color(70, 130, 180)); // Azul
+        menu.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        return menu;
+    }
+
+    public static JMenuItem menuItemBonito(String text) {
+        JMenuItem menuItem = new JMenuItem(text);
+        menuItem.setFont(new Font("Arial", Font.PLAIN, 16));
+        menuItem.setOpaque(true);
+        menuItem.setBackground(Color.WHITE); // Blanco
+        menuItem.setForeground(Color.BLACK); // Negro
+        menuItem.setBorder(BorderFactory.createLineBorder(new Color(70, 130, 180), 1)); // Borde azul
+        return menuItem;
+    }
+
+    public static JTextField textFieldBonito(int columnas) {
+        JTextField textField = new JTextField(columnas);
         textField.setBackground(Color.WHITE); // Blanco
         textField.setForeground(Color.BLACK); // Negro
         textField.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -88,14 +104,5 @@ public class Estilo {
         list.setSelectionForeground(Color.WHITE); // Blanco
 
         return list;
-    }
-
-    public static JMenu menuBonito(String text) {
-        JMenu menu = new JMenu(text);
-        menu.setBackground(new Color(70, 130, 180)); // Azul
-        menu.setForeground(Color.WHITE); // Blanco
-        menu.setFont(new Font("Arial", Font.BOLD, 20));
-
-        return menu;
     }
 }

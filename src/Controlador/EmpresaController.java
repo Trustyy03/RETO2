@@ -38,10 +38,10 @@ public class EmpresaController {
         return empresas;
     }
 
-    public static void borrarEmpresa(Empresa empresa) {
+    public static boolean borrarEmpresa(Empresa empresa) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             Statement st = con.createStatement();
@@ -49,15 +49,17 @@ public class EmpresaController {
             st.execute(borrarEmpresa);
             st.close();
             JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","Empresa eliminada",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public static void modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja) {
+    public static boolean modificarEmpresa(Empresa empresaNueva, Empresa empresaVieja) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             String modificarEmpresa = "UPDATE EMPRESA SET CIF = ?, nombre = ?, " +
@@ -72,15 +74,18 @@ public class EmpresaController {
             pst.setString(7, empresaVieja.getCif());
             pst.executeUpdate();
             pst.close();
+            JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","Empresa modificada",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public static void insertarEmpresa(Empresa empresa) {
+    public static boolean insertarEmpresa(Empresa empresa) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             String insertarEmpresa = "INSERT INTO EMPRESA (CIF, nombre, telefono, numEmpleados, sector, direccion) " +
@@ -94,8 +99,11 @@ public class EmpresaController {
             pst.setString(6, empresa.getDireccion());
             pst.executeUpdate();
             pst.close();
+            JOptionPane.showMessageDialog(null,"Se ha añadido correctamente","Empresa añadida",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 }

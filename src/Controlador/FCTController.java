@@ -39,10 +39,10 @@ public class FCTController {
         return fcts;
     }
 
-    public static void borrarFCT(FCT fct) {
+    public static boolean borrarFCT(FCT fct) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             Statement st = con.createStatement();
@@ -52,15 +52,17 @@ public class FCTController {
             st.execute(borrarFCT);
             st.close();
             JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","FCT eliminada",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public static void modificarFCT(FCT FCTNueva, FCT FCTVieja) {
+    public static boolean modificarFCT(FCT FCTNueva, FCT FCTVieja) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             String modificarTutor = "UPDATE GRUPO_FCT_EMPRESA SET CIF = ?, idGrupo = ?, cursoEscolar = ?, " +
@@ -75,15 +77,18 @@ public class FCTController {
             pst.setString(7, FCTVieja.getCursoEscolar());
             pst.executeUpdate();
             pst.close();
+            JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","FCT modificada",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public static void insertarFCT(FCT fct) {
+    public static boolean insertarFCT(FCT fct) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             String insertarFCT = "INSERT INTO GRUPO_FCT_EMPRESA (CIF, idGrupo, cursoEscolar, numAlumnos) " +
@@ -95,8 +100,11 @@ public class FCTController {
             pst.setInt(4, fct.getNumAlumnos());
             pst.executeUpdate();
             pst.close();
+            JOptionPane.showMessageDialog(null,"Se ha añadido correctamente","FCT añadida",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 }

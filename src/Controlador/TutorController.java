@@ -38,10 +38,10 @@ public class TutorController {
         return tutores;
     }
 
-    public static void borrarTutor(Tutor tutor) {
+    public static boolean borrarTutor(Tutor tutor) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             Statement st = con.createStatement();
@@ -49,15 +49,17 @@ public class TutorController {
             st.execute(borrarTutor);
             st.close();
             JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","Tutor eliminado",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public static void modificarTutor(Tutor tutorNuevo, Tutor tutorViejo) {
+    public static boolean modificarTutor(Tutor tutorNuevo, Tutor tutorViejo) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             String modificarTutor = "UPDATE TUTOR_FCT SET nombre = ?, apellido = ?, idTutor = ? WHERE idTutor = ?;";
@@ -68,15 +70,18 @@ public class TutorController {
             pst.setInt(4, tutorViejo.getIdTutor());
             pst.executeUpdate();
             pst.close();
+            JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","Tutor modificado",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public static void insertarTutor(Tutor tutor) {
+    public static boolean insertarTutor(Tutor tutor) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             String insertarTutor = "INSERT INTO TUTOR_FCT (nombre, apellido, idTutor) VALUES (?, ?, ?)";
@@ -86,8 +91,11 @@ public class TutorController {
             pst.setInt(3, tutor.getIdTutor());
             pst.executeUpdate();
             pst.close();
+            JOptionPane.showMessageDialog(null,"Se ha añadido correctamente","Tutor añadido",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 }

@@ -39,10 +39,10 @@ public class TrabajadorController {
         return trabajadores;
     }
 
-    public static void borrarTrabajador(Trabajador trabajador) {
+    public static boolean borrarTrabajador(Trabajador trabajador) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             Statement st = con.createStatement();
@@ -50,16 +50,17 @@ public class TrabajadorController {
             st.execute(borrarTrabajador);
             st.close();
             JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","Trabajador eliminado",JOptionPane.INFORMATION_MESSAGE);
-
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public static void modificarTrabajador(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
+    public static boolean modificarTrabajador(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             String modificarTrabajador = "UPDATE TRABAJADORES_INTERES SET idEmpleado = ?, CIF = ?, " +
@@ -76,15 +77,17 @@ public class TrabajadorController {
             pst.executeUpdate();
             pst.close();
             JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","Trabajador modificado",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public static void insertarTrabajador(Trabajador trabajador) {
+    public static boolean insertarTrabajador(Trabajador trabajador) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
-            return;
+            return false;
         }
         try {
             String insertarTrabajador = "INSERT INTO TRABAJADORES_INTERES (idEmpleado, CIF, nombre, apellidos, correo, cargo, telefono) " +
@@ -99,9 +102,11 @@ public class TrabajadorController {
             pst.setString(7, trabajador.getTelefono());
             pst.executeUpdate();
             pst.close();
-            JOptionPane.showMessageDialog(null,"Se ha modificado correctamente","Trabajador modificado",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha añadido correctamente","Trabajador añadido",JOptionPane.INFORMATION_MESSAGE);
+            return true;
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 }

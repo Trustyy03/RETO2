@@ -41,7 +41,7 @@ public class AgregarTrabajador extends JPanel{
         nuevoRellenarNombreTrabajador = new JTextField(20);
         nuevoApellidosTrabajador = Estilo.textoBonito(lenguaje.getProperty("apellidosTrabajador"));
         nuevoRellenarApellidosTrabajador = new JTextField(20);
-        nuevoCorreoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoEmpleado"));
+        nuevoCorreoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoTrabajador"));
         nuevoRellenarCorreoTrabajador = new JTextField(20);
         nuevoCargoTrabajador = Estilo.textoBonito(lenguaje.getProperty("cargoTrabajador"));
         nuevoRellenarCargoTrabajador = new JTextField(20);

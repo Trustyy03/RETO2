@@ -47,7 +47,7 @@ public class GestionarTrabajadores extends JPanel {
         rellenarNombreTrabajador = new JTextField(20);
         apellidosTrabajador = Estilo.textoBonito(lenguaje.getProperty("apellidosTrabajador"));
         rellenarApellidosTrabajador = new JTextField(20);
-        correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoEmpleado"));
+        correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoTrabajador"));
         rellenarCorreoTrabajador = new JTextField(20);
         cargoTrabajador = Estilo.textoBonito(lenguaje.getProperty("cargoTrabajador"));
         rellenarCargoTrabajador = new JTextField(20);

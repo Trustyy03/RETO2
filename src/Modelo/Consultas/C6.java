@@ -10,6 +10,7 @@ public class C6 {
     private String idCiclo;
 
     public C6(String cifEmpresa, String nombreEmpresa, int cantidadAlumnos, String idCiclo) {
+        this.cifEmpresa = cifEmpresa;
         this.nombreEmpresa = nombreEmpresa;
         this.cantidadAlumnos = cantidadAlumnos;
         this.idCiclo = idCiclo;

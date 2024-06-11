@@ -1,8 +1,7 @@
 package Vista;
 
 import Controlador.*;
-import Vista.Empresas.ListaDeEmpresasConPracticas;
-import Vista.Empresas.OpcionesEmpresa;
+import Vista.Empresas.*;
 import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
 import Vista.Profesores.OpcionesProfesores;
@@ -121,6 +120,7 @@ class PanelPrincipal extends JPanel {
         OpcionesEmpresa.buscarEmpresa.setText(lenguaje.getProperty("btnBuscarEmpresas"));
         OpcionesEmpresa.buscarEmpresaPorPracticas.setText(lenguaje.getProperty("btnEmpresasPorPracticas"));
         OpcionesEmpresa.btnBuscarEmpresaPorTecnologia.setText(lenguaje.getProperty("btnEmpresasPorTecnologia"));
+        OpcionesEmpresa.btnIncidencias.setText(lenguaje.getProperty("btnIncidencias"));
         OpcionesFCT.gestionarFCT.setText(lenguaje.getProperty("btnGestionarFCT"));
         OpcionesFCT.buscarFCT.setText(lenguaje.getProperty("btnBuscarFCT"));
         OpcionesProfesores.gestionarProfesores.setText(lenguaje.getProperty("btnGestionarTutores"));
@@ -129,6 +129,24 @@ class PanelPrincipal extends JPanel {
         OpcionesTrabajadores.btnbuscarPorEmpresaCurso.setText(lenguaje.getProperty("btnBuscarPorEmpresaCUrso"));
         OpcionesTrabajadores.btnhistorialContactosPorEmpresa.setText(lenguaje.getProperty("btnhistorialContactosPorEmpresa"));
 
+        GestionarEmpresas.btnBorrarEmpresa.setText(lenguaje.getProperty("btnBorrar"));
+        GestionarEmpresas.btnGuardarEmpresa.setText(lenguaje.getProperty("btnGuardar"));
+        GestionarEmpresas.btnAgregarEmpresa.setText(lenguaje.getProperty("btnAgregar"));
+        GestionarEmpresas.cif.setText(lenguaje.getProperty("cif"));
+        GestionarEmpresas.nombre.setText(lenguaje.getProperty("nombreEmpresa"));
+        GestionarEmpresas.telefono.setText(lenguaje.getProperty("telefonoEmpresa"));
+        GestionarEmpresas.numEmpleados.setText(lenguaje.getProperty("numEmpleadoEmpresa"));
+        GestionarEmpresas.sector.setText(lenguaje.getProperty("sectorEmpresa"));
+        GestionarEmpresas.direccion.setText(lenguaje.getProperty("direccionEmpresa"));
+
+        AgregarEmpresa.btnGuardarEmpresa.setText(lenguaje.getProperty("btnGuardar"));
+        AgregarEmpresa.nuevoCif.setText(lenguaje.getProperty("cif"));
+        AgregarEmpresa.nuevoNombre.setText(lenguaje.getProperty("nombreEmpresa"));
+        AgregarEmpresa.nuevoTelefono.setText(lenguaje.getProperty("telefonoEmpresa"));
+        AgregarEmpresa.nuevoNumEmpleados.setText(lenguaje.getProperty("numEmpleadoEmpresa"));
+        AgregarEmpresa.nuevoSector.setText(lenguaje.getProperty("sectorEmpresa"));
+        AgregarEmpresa.nuevoDireccion.setText(lenguaje.getProperty("direccionEmpresa"));
+        AgregarEmpresa.cartelInformacion.setText(lenguaje.getProperty("cartelInformacaionEmpresa"));
         ListaDeEmpresasConPracticas.ciclo = lenguaje.getProperty("ciclo");
 
     }

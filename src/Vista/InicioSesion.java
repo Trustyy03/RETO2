@@ -13,12 +13,16 @@ public class InicioSesion extends JPanel {
     public static JTextField rellenarUsuario,rellenarContrasenya,ipTextField,puertoTextField,nombreBaseDatosField;
     public static JButton entrar;
 
+    public static String nombree;
+
     GridBagConstraints constraints;
 
     public InicioSesion(FramePrincipal framePrincipal){
 
         this.setLayout(new GridBagLayout());
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+
+        nombree = new String(lenguaje.getProperty("nombree"));
 
         OpcionesPanel opcionesPanel = new OpcionesPanel();
 
@@ -51,7 +55,7 @@ public class InicioSesion extends JPanel {
             //} else {
                 MainPanelController.nuevoPanelActivo(opcionesPanel);
                 framePrincipal.setTitle("OPCIONES");
-                PanelPrincipal.nombreUsuario.setText("Nombre: " + rellenarUsuario.getText() + "/" + nombreBaseDatosField.getText() + "" +
+                PanelPrincipal.nombreUsuario.setText(nombree+ rellenarUsuario.getText() + "/" + nombreBaseDatosField.getText() + "" +
                         "/" + ipTextField.getText() + "/"+puertoTextField.getText()+"/");
             //}
         });

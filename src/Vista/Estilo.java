@@ -2,21 +2,44 @@ package Vista;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Estilo {
 
-    public static JButton botonBonito(String text){
+    public static JButton botonBonito(String text) {
         JButton button = new JButton(text);
 
-        button.setBackground(new Color(70, 130, 180)); // Azul
-        button.setForeground(Color.WHITE); // Blanco
+        // Colores personalizados
+        Color defaultBackgroundColor = new Color(70, 130, 180); // Azul
+        Color hoverBackgroundColor = new Color(0, 79, 219);  // Azul claro
+        Color defaultForegroundColor = Color.WHITE;            // Blanco
+        Color hoverForegroundColor = Color.WHITE;             // Amarillo
 
+        // Configuración del botón
+        button.setBackground(defaultBackgroundColor);
+        button.setForeground(defaultForegroundColor);
         button.setFont(new Font("Arial", Font.BOLD, 30));
-
         button.setFocusPainted(false);
-
         button.setHorizontalAlignment(SwingConstants.CENTER);
         button.setVerticalAlignment(SwingConstants.CENTER);
+
+        // Añadir MouseAdapter para cambiar el color cuando el ratón pasa por encima
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(hoverBackgroundColor);
+                button.setForeground(hoverForegroundColor);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(defaultBackgroundColor);
+                button.setForeground(defaultForegroundColor);
+            }
+        });
 
         return button;
     }

@@ -34,19 +34,19 @@ public class AgregarTrabajador extends JPanel{
         gbc.fill = GridBagConstraints.BOTH;
 
         nuevoIdTrabajador = Estilo.textoBonito(lenguaje.getProperty("idTrabajador"));
-        nuevoRellenarId = new JTextField(20);
+        nuevoRellenarId = Estilo.textFieldBonito(20);
         nuevoCifTrabajador = Estilo.textoBonito(lenguaje.getProperty("cif"));
-        nuevoRellenarCif = new JTextField(20);
+        nuevoRellenarCif = Estilo.textFieldBonito(20);
         nuevoNombreTrabajador = Estilo.textoBonito(lenguaje.getProperty("nombreTrabajador"));
-        nuevoRellenarNombreTrabajador = new JTextField(20);
+        nuevoRellenarNombreTrabajador = Estilo.textFieldBonito(20);
         nuevoApellidosTrabajador = Estilo.textoBonito(lenguaje.getProperty("apellidosTrabajador"));
-        nuevoRellenarApellidosTrabajador = new JTextField(20);
+        nuevoRellenarApellidosTrabajador = Estilo.textFieldBonito(20);
         nuevoCorreoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoTrabajador"));
-        nuevoRellenarCorreoTrabajador = new JTextField(20);
+        nuevoRellenarCorreoTrabajador = Estilo.textFieldBonito(20);
         nuevoCargoTrabajador = Estilo.textoBonito(lenguaje.getProperty("cargoTrabajador"));
-        nuevoRellenarCargoTrabajador = new JTextField(20);
+        nuevoRellenarCargoTrabajador = Estilo.textFieldBonito(20);
         nuevoTelefonoTrabajador = Estilo.textoBonito(lenguaje.getProperty("telefonoTrabajador"));
-        nuevoRellenarTelefonoTrabajador = new JTextField(20);
+        nuevoRellenarTelefonoTrabajador = Estilo.textFieldBonito(20);
 
         configurarCoordenadas(panelCentral, gbc, nuevoIdTrabajador, nuevoRellenarId, 0);
         configurarCoordenadas(panelCentral, gbc, nuevoCifTrabajador, nuevoRellenarCif, 1);

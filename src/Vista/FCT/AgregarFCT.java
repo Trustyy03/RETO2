@@ -32,13 +32,13 @@ public class AgregarFCT extends JPanel{
         gbc.fill = GridBagConstraints.BOTH;
 
         nuevoCif = Estilo.textoBonito(lenguaje.getProperty("cif"));
-        nuevoRellenarCif = new JTextField(20);
+        nuevoRellenarCif = Estilo.textFieldBonito(20);
         nuevoIdGrupo = Estilo.textoBonito(lenguaje.getProperty("idGrupoFCT"));
-        nuevoRellenarIdGrupo = new JTextField(20);
+        nuevoRellenarIdGrupo = Estilo.textFieldBonito(20);
         nuevoCursoEscolar = Estilo.textoBonito(lenguaje.getProperty("cursoEscolarFCT"));
-        nuevoRellenarCursoEscolar = new JTextField(20);
+        nuevoRellenarCursoEscolar = Estilo.textFieldBonito(20);
         nuevoNumAlumnos = Estilo.textoBonito(lenguaje.getProperty("numAlumnosFCT"));
-        nuevoRellenarNumAlumnos = new JTextField(20);
+        nuevoRellenarNumAlumnos = Estilo.textFieldBonito(20);
 
 
         configurarCoordenadas(panelCentral, gbc, nuevoCif, nuevoRellenarCif, 0);

@@ -29,11 +29,11 @@ public class AgregarTutor extends JPanel{
         gbc.fill = GridBagConstraints.BOTH;
 
         nuevoIdTutor = Estilo.textoBonito(lenguaje.getProperty("idTutor"));
-        nuevoRellenarIdTutor = new JTextField(20);
+        nuevoRellenarIdTutor = Estilo.textFieldBonito(20);
         nuevoNombre = Estilo.textoBonito(lenguaje.getProperty("nombreTutor"));
-        nuevoRellenarNombre = new JTextField(20);
+        nuevoRellenarNombre = Estilo.textFieldBonito(20);
         nuevoApellidos = Estilo.textoBonito(lenguaje.getProperty("apellidosTutor"));
-        nuevoRellenarApellidos = new JTextField(20);
+        nuevoRellenarApellidos = Estilo.textFieldBonito(20);
 
         configurarCoordenadas(panelCentral, gbc, nuevoIdTutor, nuevoRellenarIdTutor, 0);
         configurarCoordenadas(panelCentral, gbc, nuevoNombre, nuevoRellenarNombre, 1);

@@ -5,6 +5,7 @@ import Controlador.MainPanelController;
 import Modelo.Consultas.OperacionesConsultas;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
+import Vista.Estilo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
-    JLabel labelEmpresa,prueba;
+    JLabel labelEmpresa;
     JButton botonEnviar;
     GridBagConstraints constraints;
 
@@ -20,7 +21,7 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
 
     static Empresa empresaSeleccionada;
 
-    public static JComboBox<Empresa> CBListadoEmpresaB = new JComboBox<>();
+    public static JComboBox<Empresa> CBListadoEmpresaB = Estilo.estiloComboBox();
 
     public BuscarEmpresa() {
 
@@ -28,9 +29,9 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
-        labelEmpresa = new JLabel("EMPRESA");
+        labelEmpresa = Estilo.textoBonitoInicioSesion("EMPRESA");
 
-        botonEnviar = new JButton("ENVIAR");
+        botonEnviar = Estilo.botonBonito("ENVIAR");
         botonEnviar.addActionListener(e -> {
             empresaSeleccionada = (Empresa) CBListadoEmpresaB.getSelectedItem();
             if (empresaSeleccionada != null) {

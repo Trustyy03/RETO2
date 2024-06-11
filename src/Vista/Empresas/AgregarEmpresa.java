@@ -33,17 +33,17 @@ public class AgregarEmpresa extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
 
         nuevoCif = Estilo.textoBonito(lenguaje.getProperty("cif"));
-        nuevoRellenarCif = new JTextField(20);
+        nuevoRellenarCif = Estilo.textFieldBonito(20);
         nuevoNombre = Estilo.textoBonito(lenguaje.getProperty("nombreEmpresa"));
-        nuevoRellenarNombre = new JTextField(20);
+        nuevoRellenarNombre = Estilo.textFieldBonito(20);
         nuevoTelefono = Estilo.textoBonito(lenguaje.getProperty("telefonoEmpresa"));
-        nuevoRellenarTelefono = new JTextField(20);
+        nuevoRellenarTelefono = Estilo.textFieldBonito(20);
         nuevoNumEmpleados = Estilo.textoBonito(lenguaje.getProperty("numEmpleadoEmpresa"));
-        nuevoRellenarNumEmpleados = new JTextField(20);
+        nuevoRellenarNumEmpleados = Estilo.textFieldBonito(20);
         nuevoSector = Estilo.textoBonito(lenguaje.getProperty("sectorEmpresa"));
-        nuevoRellenarSector = new JTextField(20);
+        nuevoRellenarSector = Estilo.textFieldBonito(20);
         nuevoDireccion = Estilo.textoBonito(lenguaje.getProperty("direccionEmpresa"));
-        nuevoRellenarDireccion = new JTextField(20);
+        nuevoRellenarDireccion = Estilo.textFieldBonito(20);
 
         configurarCoordenadas(panelCentral, gbc, nuevoCif, nuevoRellenarCif, 0);
         configurarCoordenadas(panelCentral, gbc, nuevoNombre, nuevoRellenarNombre, 1);

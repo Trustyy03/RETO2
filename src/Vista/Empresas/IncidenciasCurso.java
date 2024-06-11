@@ -1,5 +1,6 @@
 package Vista.Empresas;
 
+import Vista.Estilo;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
     DefaultTableModel modelo;
 
     public IncidenciasCurso(){
-        curso = new JComboBox<>();
+        curso = Estilo.estiloComboBox();
 
         //String[] nombresCampos = new String[]{"Nombre Empresa", "CIF Empresa"};
         modelo = new DefaultTableModel();

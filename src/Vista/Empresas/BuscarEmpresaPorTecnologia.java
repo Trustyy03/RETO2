@@ -1,6 +1,7 @@
 package Vista.Empresas;
 
 import Modelo.Consultas.C7;
+import Vista.Estilo;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTa
 
 
     public BuscarEmpresaPorTecnologia(){
-        tecnologias = new JComboBox<>();
+        tecnologias = Estilo.estiloComboBox();
         for (String tecnologia : consultarTecnologias()){
             tecnologias.addItem(tecnologia);
         }

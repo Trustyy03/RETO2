@@ -113,17 +113,17 @@ public class Estilo {
 
     public static JMenuBar menuBarBonito() {
         JMenuBar menuBar = new JMenuBar();
-        menuBar.setBackground(new Color(70, 130, 180)); // Azul
-        menuBar.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2)); // Borde blanco
+        menuBar.setBackground(new Color(70, 130, 180));
+        menuBar.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
         return menuBar;
     }
 
     public static JMenu menuBonito(String text) {
         JMenu menu = new JMenu(text);
-        menu.setForeground(Color.WHITE); // Texto blanco
+        menu.setForeground(Color.WHITE);
         menu.setFont(new Font("Arial", Font.BOLD, 16));
         menu.setOpaque(true);
-        menu.setBackground(new Color(70, 130, 180)); // Azul
+        menu.setBackground(new Color(70, 130, 180));
         menu.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         return menu;
     }
@@ -132,9 +132,9 @@ public class Estilo {
         JMenuItem menuItem = new JMenuItem(text);
         menuItem.setFont(new Font("Arial", Font.PLAIN, 16));
         menuItem.setOpaque(true);
-        menuItem.setBackground(Color.WHITE); // Blanco
-        menuItem.setForeground(Color.BLACK); // Negro
-        menuItem.setBorder(BorderFactory.createLineBorder(new Color(70, 130, 180), 1)); // Borde azul
+        menuItem.setBackground(Color.WHITE);
+        menuItem.setForeground(Color.BLACK);
+        menuItem.setBorder(BorderFactory.createLineBorder(new Color(70, 130, 180), 1));
         return menuItem;
     }
 
@@ -149,7 +149,63 @@ public class Estilo {
         return textField;
     }
 
+    public static JComboBox<String> estiloComboBox(String[] items){
+        JComboBox<String> comboBox = new JComboBox<>(items);
 
+        // Set foreground and background colors
+        comboBox.setForeground(Color.WHITE);
+        comboBox.setBackground(Color.BLUE);
+        comboBox.setOpaque(true);
+
+        // Customize the combo box renderer
+        comboBox.setRenderer(new CustomComboBoxRenderer());
+
+        return comboBox;
+    }
+
+    public static <T> JComboBox<T> estiloComboBox(){
+        JComboBox<T> comboBox = new JComboBox<>();
+
+        // Set foreground and background colors
+        comboBox.setForeground(Color.WHITE);
+        comboBox.setBackground(Color.WHITE);
+        comboBox.setSize(50,50);
+        comboBox.setOpaque(true);
+
+        // Customize the combo box renderer
+        comboBox.setRenderer(new CustomComboBoxRenderer());
+
+        return comboBox;
+    }
+
+    static class CustomComboBoxRenderer extends DefaultListCellRenderer {
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+            // Set padding and font
+            label.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            label.setFont(new Font("Arial", Font.BOLD, 14));
+
+            // Set custom colors and gradients
+            if (isSelected) {
+                label.setBackground(Color.BLACK);
+                label.setForeground(Color.WHITE);
+            } else {
+                label.setBackground(new Color(118, 179, 231));
+                label.setForeground(Color.WHITE);
+            }
+
+            // Set rounded corners
+            label.setOpaque(true);
+            label.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createLineBorder(Color.WHITE, 1),
+                    BorderFactory.createEmptyBorder(5, 10, 5, 10)
+            ));
+
+            return label;
+        }
+    }
 
 
 

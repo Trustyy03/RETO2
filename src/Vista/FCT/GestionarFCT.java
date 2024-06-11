@@ -33,8 +33,8 @@ public class GestionarFCT extends JPanel {
 
         JPanel panelNorte = new JPanel();
 
-        btnBorrarFCT = new JButton(lenguaje.getProperty("btnBorrar"));
-        btnAgregarFCT = new JButton(lenguaje.getProperty("btnAgregar"));
+        btnBorrarFCT = Estilo.botonBonito(lenguaje.getProperty("btnBorrar"));
+        btnAgregarFCT = Estilo.botonBonito(lenguaje.getProperty("btnAgregar"));
         panelNorte.add(CBListadoFCT);
         panelNorte.add(btnBorrarFCT);
         panelNorte.add(btnAgregarFCT);
@@ -45,13 +45,13 @@ public class GestionarFCT extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
 
         cif = Estilo.textoBonito(lenguaje.getProperty("cif"));
-        rellenarCif = new JTextField(20);
+        rellenarCif = Estilo.textFieldBonito(20);
         idGrupo = Estilo.textoBonito(lenguaje.getProperty("idGrupoFCT"));
-        rellenarIdGrupo = new JTextField(20);
+        rellenarIdGrupo = Estilo.textFieldBonito(20);
         cursoEscolar = Estilo.textoBonito(lenguaje.getProperty("cursoEscolarFCT"));
-        rellenarCursoEscolar = new JTextField(20);
+        rellenarCursoEscolar = Estilo.textFieldBonito(20);
         numAlumnos = Estilo.textoBonito(lenguaje.getProperty("numAlumnosFCT"));
-        rellenarNumAlumnos = new JTextField(20);
+        rellenarNumAlumnos = Estilo.textFieldBonito(20);
 
         configurarCoordenadas(panelCentral, gbc, cif, rellenarCif, 0);
         configurarCoordenadas(panelCentral, gbc, idGrupo, rellenarIdGrupo, 1);
@@ -59,7 +59,7 @@ public class GestionarFCT extends JPanel {
         configurarCoordenadas(panelCentral, gbc, numAlumnos, rellenarNumAlumnos, 3);
 
         JPanel panelSur = new JPanel();
-        btnGuardarFCT = new JButton(lenguaje.getProperty("btnGuardar"));
+        btnGuardarFCT = Estilo.botonBonito(lenguaje.getProperty("btnGuardar"));
         panelSur.add(btnGuardarFCT);
 
         add(panelNorte, BorderLayout.NORTH);

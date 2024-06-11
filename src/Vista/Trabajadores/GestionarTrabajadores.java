@@ -29,8 +29,8 @@ public class GestionarTrabajadores extends JPanel {
 
         JPanel panelNorte = new JPanel();
 
-        btnBorrarTrabajador = new JButton(lenguaje.getProperty("btnBorrar"));
-        btnAgregarTrabajador = new JButton(lenguaje.getProperty("btnAgregar"));
+        btnBorrarTrabajador = Estilo.botonBonito(lenguaje.getProperty("btnBorrar"));
+        btnAgregarTrabajador = Estilo.botonBonito(lenguaje.getProperty("btnAgregar"));
         panelNorte.add(CBListadoTrabajadores);
         panelNorte.add(btnBorrarTrabajador);
         panelNorte.add(btnAgregarTrabajador);
@@ -41,19 +41,19 @@ public class GestionarTrabajadores extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
 
         idTrabajador = Estilo.textoBonito(lenguaje.getProperty("idTrabajador"));
-        rellenarId = new JTextField(20);
+        rellenarId = Estilo.textFieldBonito(20);
         cifTrabajador = Estilo.textoBonito(lenguaje.getProperty("cif"));
-        rellenarCif = new JTextField(20);
+        rellenarCif = Estilo.textFieldBonito(20);
         nombreTrabajador = Estilo.textoBonito(lenguaje.getProperty("nombreTrabajador"));
-        rellenarNombreTrabajador = new JTextField(20);
+        rellenarNombreTrabajador = Estilo.textFieldBonito(20);
         apellidosTrabajador = Estilo.textoBonito(lenguaje.getProperty("apellidosTrabajador"));
-        rellenarApellidosTrabajador = new JTextField(20);
+        rellenarApellidosTrabajador = Estilo.textFieldBonito(20);
         correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoTrabajador"));
-        rellenarCorreoTrabajador = new JTextField(20);
+        rellenarCorreoTrabajador = Estilo.textFieldBonito(20);
         cargoTrabajador = Estilo.textoBonito(lenguaje.getProperty("cargoTrabajador"));
-        rellenarCargoTrabajador = new JTextField(20);
+        rellenarCargoTrabajador = Estilo.textFieldBonito(20);
         telefonoTrabajador = Estilo.textoBonito(lenguaje.getProperty("telefonoTrabajador"));
-        rellenarTelefonoTrabajador = new JTextField(20);
+        rellenarTelefonoTrabajador = Estilo.textFieldBonito(20);
 
         configurarCoordenadas(panelCentral, gbc, idTrabajador, rellenarId, 0);
         configurarCoordenadas(panelCentral, gbc, cifTrabajador, rellenarCif, 1);
@@ -64,7 +64,7 @@ public class GestionarTrabajadores extends JPanel {
         configurarCoordenadas(panelCentral, gbc, telefonoTrabajador, rellenarTelefonoTrabajador, 6);
 
         JPanel panelSur = new JPanel();
-        btnGuardarTrabajador = new JButton(lenguaje.getProperty("btnGuardar"));
+        btnGuardarTrabajador = Estilo.botonBonito(lenguaje.getProperty("btnGuardar"));
         panelSur.add(btnGuardarTrabajador);
 
         add(panelNorte, BorderLayout.NORTH);

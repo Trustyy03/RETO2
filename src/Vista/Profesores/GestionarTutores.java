@@ -33,8 +33,8 @@ public class GestionarTutores extends JPanel {
 
         JPanel panelNorte = new JPanel();
 
-        btnBorrarTutor = new JButton(lenguaje.getProperty("btnBorrar"));
-        btnAgregarTutor = new JButton(lenguaje.getProperty("btnAgregar"));
+        btnBorrarTutor = Estilo.botonBonito(lenguaje.getProperty("btnBorrar"));
+        btnAgregarTutor = Estilo.botonBonito(lenguaje.getProperty("btnAgregar"));
         panelNorte.add(CBlistadoTutores);
         panelNorte.add(btnBorrarTutor);
         panelNorte.add(btnAgregarTutor);
@@ -45,18 +45,18 @@ public class GestionarTutores extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
 
         idTutor = Estilo.textoBonito(lenguaje.getProperty("idTutor"));
-        rellenarIdTutor = new JTextField(20);
+        rellenarIdTutor = Estilo.textFieldBonito(20);
         nombre = Estilo.textoBonito(lenguaje.getProperty("nombreTutor"));
-        rellenarNombre = new JTextField(20);
+        rellenarNombre = Estilo.textFieldBonito(20);
         apellidos = Estilo.textoBonito(lenguaje.getProperty("apellidosTutor"));
-        rellenarApellidos = new JTextField(20);
+        rellenarApellidos = Estilo.textFieldBonito(20);
 
         configurarCoordenadas(panelCentral, gbc, idTutor, rellenarIdTutor, 0);
         configurarCoordenadas(panelCentral, gbc, nombre, rellenarNombre, 1);
         configurarCoordenadas(panelCentral, gbc, apellidos, rellenarApellidos, 2);
 
         JPanel panelSur = new JPanel();
-        btnGuardarTutor = new JButton(lenguaje.getProperty("btnGuardar"));
+        btnGuardarTutor = Estilo.botonBonito(lenguaje.getProperty("btnGuardar"));
         panelSur.add(btnGuardarTutor);
 
         add(panelNorte, BorderLayout.NORTH);

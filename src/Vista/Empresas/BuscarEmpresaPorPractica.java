@@ -2,6 +2,7 @@ package Vista.Empresas;
 
 import Controlador.MainPanelController;
 import Vista.ComponentesGridBagLayout;
+import Vista.Estilo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,19 +25,19 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        labelCurso = new JLabel("CURSO");
-        CBCurso = new JComboBox<String>();
+        labelCurso = Estilo.textoBonitoInicioSesion("CURSO");
+        CBCurso = Estilo.estiloComboBox();
         for (String curso : consultarCursos()) {
             CBCurso.addItem(curso);
         }
 
-        labelCiclo = new JLabel("CICLO FORMATIVO");
-        CBCiclo = new JComboBox<String>();
+        labelCiclo = Estilo.textoBonitoInicioSesion("CICLO FORMATIVO");
+        CBCiclo = Estilo.estiloComboBox();
         for (String ciclo: consultarCiclos()) {
             CBCiclo.addItem(ciclo);
         }
 
-        botonListaEmpresas = new JButton("LISTA DE EMPRESAS CON PRACTICAS");
+        botonListaEmpresas = Estilo.botonBonito("LISTA DE EMPRESAS CON PRACTICAS");
         botonListaEmpresas.addActionListener( e -> {
             MainPanelController.nuevoPanelActivo(new ListaDeEmpresasConPracticas());
         });

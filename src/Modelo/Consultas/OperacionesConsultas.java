@@ -12,7 +12,7 @@ public class OperacionesConsultas {
 
     static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
-    public static C1 consultaUno(String nombreEmpresa) throws SQLException {
+    public static Consulta1 consultaUno(String nombreEmpresa) throws SQLException {
         String sql = "SELECT e.nombre, CONCAT(t.nombre, ' ', t.apellidos) as nombre_tutor, CONCAT(ti.nombre, ' ', ti.apellidos) as nombre_trabajador, ti.correo, ti.telefono\n" +
                 "FROM EMPRESA e\n" +
                 "INNER JOIN TUTOR_RESPONSABLE_EMPRESA tre on e.CIF = tre.CIF\n" +
@@ -25,9 +25,9 @@ public class OperacionesConsultas {
 
         ResultSet rs = pst.executeQuery();
 
-        C1 consulta1 = null;
+        Consulta1 consulta1 = null;
         while (rs.next()) {
-            consulta1 = new C1(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            consulta1 = new Consulta1(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
         }
 
         pst.close();
@@ -35,8 +35,8 @@ public class OperacionesConsultas {
         return consulta1;
     }
 
-    public static ArrayList<C2> consultaDos(String ciclo, String cursoEscolar) throws SQLException {
-        ArrayList<C2> listaResultados = new ArrayList<>();
+    public static ArrayList<Consulta2> consultaDos(String ciclo, String cursoEscolar) throws SQLException {
+        ArrayList<Consulta2> listaResultados = new ArrayList<>();
 
         String sql = "SELECT c.idCiclo, fct.cursoEscolar, e.CIF, e.nombre, COUNT(*) AS NumPracticas\n" +
                 "FROM EMPRESA e\n" +
@@ -55,7 +55,7 @@ public class OperacionesConsultas {
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
-            C2 consulta2 = new C2(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+            Consulta2 consulta2 = new Consulta2(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
             listaResultados.add(consulta2);
         }
 
@@ -65,8 +65,8 @@ public class OperacionesConsultas {
 
     }
 
-    public static ArrayList<C3> consultaTres(String grupo, String cursoEscolar) throws SQLException {
-        ArrayList<C3> listaResultados = new ArrayList<>();
+    public static ArrayList<Consulta3> consultaTres(String grupo, String cursoEscolar) throws SQLException {
+        ArrayList<Consulta3> listaResultados = new ArrayList<>();
 
         String sql = "SELECT g.idCiclo, g.idGrupo, CONCAT(t.Nombre, ' ', t.Apellidos) AS nombreTutor, e.Nombre AS nombreEmpresa, COUNT(*) AS NumPracticas\n" +
                 "FROM GRUPO g\n" +
@@ -86,7 +86,7 @@ public class OperacionesConsultas {
 
 
         while (rs.next()) {
-            C3 consulta3 = new C3(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+            Consulta3 consulta3 = new Consulta3(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
             listaResultados.add(consulta3);
         }
 
@@ -96,8 +96,8 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static ArrayList<C4> consultaCuatro(String nombreEmpresa, String cursoEscolar) throws SQLException {
-        ArrayList<C4> listaResultados = new ArrayList<>();
+    public static ArrayList<Consulta4> consultaCuatro(String nombreEmpresa, String cursoEscolar) throws SQLException {
+        ArrayList<Consulta4> listaResultados = new ArrayList<>();
 
         String sql = "SELECT e.nombre, fct.cursoEscolar, fct.idGrupo, fct.numAlumnos\n" +
                 "FROM EMPRESA e\n" +
@@ -112,7 +112,7 @@ public class OperacionesConsultas {
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
-            C4 consulta4 = new C4(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+            Consulta4 consulta4 = new Consulta4(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
             listaResultados.add(consulta4);
         }
 
@@ -122,8 +122,8 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static ArrayList<C5> consultaCinco(String cursoEscolar) {
-        ArrayList<C5> listaResultados = new ArrayList<>();
+    public static ArrayList<Consulta5> consultaCinco(String cursoEscolar) {
+        ArrayList<Consulta5> listaResultados = new ArrayList<>();
 
         String sql = "SELECT i.idIncidencia, i.CIF, e.nombre, i.descripcion\n" +
                 "FROM INCIDENCIA i\n" +
@@ -136,7 +136,7 @@ public class OperacionesConsultas {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                C5 consulta5 = new C5(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                Consulta5 consulta5 = new Consulta5(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 listaResultados.add(consulta5);
             }
             pst.close();
@@ -148,8 +148,8 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static ArrayList<C6> consultaSeis(String nombreEmpresa, String idCiclo, String cursoEscolar) throws SQLException {
-        ArrayList<C6> listaResultados = new ArrayList<>();
+    public static ArrayList<Consulta6> consultaSeis(String nombreEmpresa, String idCiclo, String cursoEscolar) throws SQLException {
+        ArrayList<Consulta6> listaResultados = new ArrayList<>();
         String sql = "SELECT e.CIF, e.nombre as 'nombreEmpresa', enc.cantidadAlumnos, c.idCiclo\n" +
                 "FROM CICLO c\n" +
                 "INNER JOIN EMPRESA_NECESITA_CICLO enc using(idCiclo)\n" +
@@ -166,7 +166,7 @@ public class OperacionesConsultas {
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
-            C6 consulta6 = new C6(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+            Consulta6 consulta6 = new Consulta6(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
             listaResultados.add(consulta6);
         }
 
@@ -176,8 +176,8 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static ArrayList<C7> consultaSiete(String tecnologia) {
-        ArrayList<C7> listaResultados = new ArrayList<>();
+    public static ArrayList<Consulta7> consultaSiete(String tecnologia) {
+        ArrayList<Consulta7> listaResultados = new ArrayList<>();
         String sql = "SELECT eut.idTecnologia, e.nombre, e.CIF\n" +
                 "FROM EMPRESA e\n" +
                 "INNER JOIN EMPRESA_USA_TECNOLOGIA eut using(CIF)\n" +
@@ -190,7 +190,7 @@ public class OperacionesConsultas {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                C7 consulta7 = new C7(rs.getString(1), rs.getString(2), rs.getString(3));
+                Consulta7 consulta7 = new Consulta7(rs.getString(1), rs.getString(2), rs.getString(3));
                 listaResultados.add(consulta7);
             }
 
@@ -203,8 +203,8 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static ArrayList<C8> consultaOcho(String nombreEmpresa) {
-        ArrayList<C8> listaResultados = new ArrayList<>();
+    public static ArrayList<Consulta8> consultaOcho(String nombreEmpresa) {
+        ArrayList<Consulta8> listaResultados = new ArrayList<>();
 
         String sql = "SELECT e.nombre, CONCAT(t.nombre, ' ', t.apellidos) as nombreTutor, c.descripcion, c.fecha\n" +
                 "FROM EMPRESA e\n" +
@@ -219,7 +219,7 @@ public class OperacionesConsultas {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                C8 consulta8 = new C8(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                Consulta8 consulta8 = new Consulta8(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 listaResultados.add(consulta8);
             }
 

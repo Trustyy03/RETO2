@@ -1,6 +1,6 @@
 package Vista.Empresas;
 
-import Modelo.Consultas.C5;
+import Modelo.Consultas.Consulta5;
 import Modelo.Consultas.ConsultasSimples;
 import Modelo.Consultas.OperacionesConsultas;
 import Vista.Estilo;
@@ -56,8 +56,8 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
 
         limpiarTabla();
 
-        ArrayList<C5> incidencias = OperacionesConsultas.consultaCinco(cursoSeleccionado);
-        for (C5 incidencia : incidencias) {
+        ArrayList<Consulta5> incidencias = OperacionesConsultas.consultaCinco(cursoSeleccionado);
+        for (Consulta5 incidencia : incidencias) {
             Object[] fila = {incidencia.getIdIncidencia(), incidencia.getCif(), incidencia.getCursoEscolar(), incidencia.getDescripcion()};
             modelo.addRow(fila);
         }

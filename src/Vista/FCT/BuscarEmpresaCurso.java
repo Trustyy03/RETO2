@@ -1,14 +1,13 @@
 package Vista.FCT;
 
 import Controlador.MainPanelController;
-import Modelo.Consultas.C6;
+import Modelo.Consultas.Consulta6;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
 import Vista.Estilo;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.SQLException;
 
@@ -101,8 +100,8 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
         ListaDeTrabajadores.modelo.setRowCount(0);
         Empresa empresa = (Empresa) CBListadoEmpresas.getSelectedItem();
         try {
-            for (C6 c6 : consultaSeis(empresa.getNombre(), (String)ciclo.getSelectedItem(), (String)cursoEscolar.getSelectedItem())) {
-                Object[] fila = new Object[]{c6.getNombreEmpresa(), c6.getCantidadAlumnos(), c6.getIdCiclo()};
+            for (Consulta6 consulta6 : consultaSeis(empresa.getNombre(), (String)ciclo.getSelectedItem(), (String)cursoEscolar.getSelectedItem())) {
+                Object[] fila = new Object[]{consulta6.getNombreEmpresa(), consulta6.getCantidadAlumnos(), consulta6.getIdCiclo()};
                 ListaDeTrabajadores.modelo.addRow(fila);
             }
         } catch (SQLException e) {

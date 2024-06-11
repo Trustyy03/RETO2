@@ -1,13 +1,13 @@
 package Modelo.Consultas;
 
 //C5. Consulta de incidències per curs.
-public class C5 {
+public class Consulta5 {
     private int idIncidencia;
     private String cif;
     private String descripcion;
     private String cursoEscolar;
 
-    public C5(int idIncidencia, String cif, String descripcion, String cursoEscolar) {
+    public Consulta5(int idIncidencia, String cif, String descripcion, String cursoEscolar) {
         this.idIncidencia = idIncidencia;
         this.cif = cif;
         this.descripcion = descripcion;

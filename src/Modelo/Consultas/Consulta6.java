@@ -3,13 +3,13 @@ package Modelo.Consultas;
 //C6. Consulta que mostre, donada una empresa i un cicle en un curs escolar,
 //les dades FCT sol·licitades per l’empresa a eixe cicle (ex. Crownet sol·licita
 //15 alumnes de 2DAM)
-public class C6 {
+public class Consulta6 {
     private String cifEmpresa;
     private String nombreEmpresa;
     private int cantidadAlumnos;
     private String idCiclo;
 
-    public C6(String cifEmpresa, String nombreEmpresa, int cantidadAlumnos, String idCiclo) {
+    public Consulta6(String cifEmpresa, String nombreEmpresa, int cantidadAlumnos, String idCiclo) {
         this.cifEmpresa = cifEmpresa;
         this.nombreEmpresa = nombreEmpresa;
         this.cantidadAlumnos = cantidadAlumnos;

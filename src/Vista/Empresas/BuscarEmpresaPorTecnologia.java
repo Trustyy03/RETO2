@@ -1,6 +1,6 @@
 package Vista.Empresas;
 
-import Modelo.Consultas.C7;
+import Modelo.Consultas.Consulta7;
 import Vista.Estilo;
 import Vista.MostrarDatosTablas;
 
@@ -41,8 +41,8 @@ public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTa
     public void mostrarTablaDatos() {
         modelo.setRowCount(0);
 
-        for (C7 c7 : consultaSiete((String)tecnologias.getSelectedItem())){
-            Object[] fila = new Object[]{c7.getNombreEmpresa(), c7.getCif()};
+        for (Consulta7 consulta7 : consultaSiete((String)tecnologias.getSelectedItem())){
+            Object[] fila = new Object[]{consulta7.getNombreEmpresa(), consulta7.getCif()};
             modelo.addRow(fila);
         }
     }

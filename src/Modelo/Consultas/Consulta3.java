@@ -5,14 +5,14 @@ package Modelo.Consultas;
 
 //Aqui hay problemilla, dice grupo y curso pero para nosotros es ciclo-grupo y curso.
 
-public class C3 {
+public class Consulta3 {
     private String ciclo;
     private String idGrupo;
     private String nombreTutor;
     private String nombreEmpresa;
     private int numPracticas;
 
-    public C3(String ciclo, String idGrupo, String nombreTutor, String nombreEmpresa, int numPracticas) {
+    public Consulta3(String ciclo, String idGrupo, String nombreTutor, String nombreEmpresa, int numPracticas) {
         this.ciclo = ciclo;
         this.idGrupo = idGrupo;
         this.nombreTutor = nombreTutor;

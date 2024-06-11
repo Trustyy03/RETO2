@@ -41,8 +41,8 @@ public class ListaDeEmpresasConPracticas extends JPanel {
         empresasConPracticas = new JTable(modelo);
 
         try {
-            for (C2 c2 : consultaDos(BuscarEmpresaPorPractica.getCBCiclo(), BuscarEmpresaPorPractica.getCBCurso())){
-                Object[] fila = new Object[] {c2.getNombreEmpresa(), c2.getCif(), c2.getCursoEscolar(), c2.getIdCiclo(), c2.getNumPracticas()};
+            for (Consulta2 consulta2 : consultaDos(BuscarEmpresaPorPractica.getCBCiclo(), BuscarEmpresaPorPractica.getCBCurso())){
+                Object[] fila = new Object[] {consulta2.getNombreEmpresa(), consulta2.getCif(), consulta2.getCursoEscolar(), consulta2.getIdCiclo(), consulta2.getNumPracticas()};
                 modelo.addRow(fila);
             }
         } catch (SQLException e) {

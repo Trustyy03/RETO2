@@ -1,6 +1,6 @@
 package Vista.FCT;
 
-import Modelo.Consultas.C4;
+import Modelo.Consultas.Consulta4;
 import Vista.ComponentesGridBagLayout;
 import Vista.Estilo;
 import Vista.MostrarDatosTablas;
@@ -94,8 +94,8 @@ public class BuscarFCT extends JPanel implements ComponentesGridBagLayout, Mostr
     public void mostrarTablaDatos() {
         modelo.setRowCount(0);
         try {
-            for (C4 c4 : consultaCuatro((String)empresas.getSelectedItem(), (String)cursos.getSelectedItem())){
-                Object[] fila = new Object[]{c4.getIdGrupo(), c4.getNumAlumnos()};
+            for (Consulta4 consulta4 : consultaCuatro((String)empresas.getSelectedItem(), (String)cursos.getSelectedItem())){
+                Object[] fila = new Object[]{consulta4.getIdGrupo(), consulta4.getNumAlumnos()};
                 modelo.addRow(fila);
             }
         } catch (SQLException e) {

@@ -1,7 +1,6 @@
 package Vista.Profesores;
 
-import Modelo.Consultas.C3;
-import Modelo.Consultas.C4;
+import Modelo.Consultas.Consulta3;
 import Modelo.Consultas.ConsultasSimples;
 import Vista.ComponentesGridBagLayout;
 import Vista.Estilo;
@@ -11,9 +10,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import static Modelo.Consultas.OperacionesConsultas.consultaCuatro;
 import static Modelo.Consultas.OperacionesConsultas.consultaTres;
 
 public class BuscarTutores extends JPanel implements ComponentesGridBagLayout, MostrarDatosTablas {
@@ -93,8 +90,8 @@ public class BuscarTutores extends JPanel implements ComponentesGridBagLayout, M
         modelo.setRowCount(0);
 
         try {
-            for (C3 c3 : consultaTres((String)grupos.getSelectedItem(), (String)cursos.getSelectedItem())) {
-                Object[] fila = new Object[]{c3.getCiclo(), c3.getIdGrupo(), c3.getNombreTutor(), c3.getNombreEmpresa(), c3.getNumPracticas()};
+            for (Consulta3 consulta3 : consultaTres((String)grupos.getSelectedItem(), (String)cursos.getSelectedItem())) {
+                Object[] fila = new Object[]{consulta3.getCiclo(), consulta3.getIdGrupo(), consulta3.getNombreTutor(), consulta3.getNombreEmpresa(), consulta3.getNumPracticas()};
                 modelo.addRow(fila);
             }
         } catch (SQLException e) {

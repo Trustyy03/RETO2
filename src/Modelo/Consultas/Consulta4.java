@@ -3,13 +3,13 @@ package Modelo.Consultas;
 //C4. Consulta que mostre donada una empresa i un curs les dades d’FCT
 //(grups, alumnes ..)
 
-public class C4 {
+public class Consulta4 {
     private String nombreEmpresa;
     private String cursoEscolar;
     private String idGrupo;
     private int numAlumnos;
 
-    public C4(String nombreEmpresa, String cursoEscolar, String idGrupo, int numAlumnos) {
+    public Consulta4(String nombreEmpresa, String cursoEscolar, String idGrupo, int numAlumnos) {
         this.nombreEmpresa = nombreEmpresa;
         this.cursoEscolar = cursoEscolar;
         this.idGrupo = idGrupo;

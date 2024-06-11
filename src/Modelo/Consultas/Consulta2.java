@@ -2,14 +2,14 @@ package Modelo.Consultas;
 
 //C2. Consulta que mostre, donat un cicle formatiu (exemple 2DAM) i un curs
 //les empreses que han acollit pràctiques i el nombre de pràctiques acollides.
-public class C2 {
+public class Consulta2 {
     private String idCiclo;
     private String cursoEscolar;
     private String cif;
     private String nombreEmpresa;
     private int numPracticas;
 
-    public C2(String idCiclo, String cursoEscolar, String cif, String nombreEmpresa, int numPracticas) {
+    public Consulta2(String idCiclo, String cursoEscolar, String cif, String nombreEmpresa, int numPracticas) {
         this.idCiclo = idCiclo;
         this.cursoEscolar = cursoEscolar;
         this.cif = cif;

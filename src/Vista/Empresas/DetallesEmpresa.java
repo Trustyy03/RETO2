@@ -2,7 +2,7 @@ package Vista.Empresas;
 
 import Modelo.Consultas.OperacionesConsultas;
 import Modelo.Entidades.Empresa;
-import Modelo.Consultas.C1;
+import Modelo.Consultas.Consulta1;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
@@ -57,8 +57,8 @@ public class DetallesEmpresa extends JPanel {
         configurarCoordenadas(panelCentral, gbc, telefonoTrabajador, rellenarTelefonoTrabajador, 4);
 
         try {
-            C1 c1 = OperacionesConsultas.consultaUno(empresaSeleccionada.getNombre());
-            rellenarDatos(c1);
+            Consulta1 consulta1 = OperacionesConsultas.consultaUno(empresaSeleccionada.getNombre());
+            rellenarDatos(consulta1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -76,12 +76,12 @@ public class DetallesEmpresa extends JPanel {
         panel.add(label1, gbc);
     }
 
-    private static void rellenarDatos(C1 c1){
-        rellenarNombreEmpresa.setText(c1.getNombreEmpresa());
-        rellenarNombreTutor.setText(c1.getNombreTutor());
-        rellenarNombreTrabajador.setText(c1.getNombreTrabajador());
-        rellenarCorreoTrabajador.setText(c1.getCorreoTrabajador());
-        rellenarTelefonoTrabajador.setText(c1.getTelefonoTrabajador());
+    private static void rellenarDatos(Consulta1 consulta1){
+        rellenarNombreEmpresa.setText(consulta1.getNombreEmpresa());
+        rellenarNombreTutor.setText(consulta1.getNombreTutor());
+        rellenarNombreTrabajador.setText(consulta1.getNombreTrabajador());
+        rellenarCorreoTrabajador.setText(consulta1.getCorreoTrabajador());
+        rellenarTelefonoTrabajador.setText(consulta1.getTelefonoTrabajador());
     }
 
 

@@ -1,13 +1,13 @@
 package Modelo.Consultas;
 
 //C8. Consulta de l’historial de contactes per empresa
-public class C8 {
+public class Consulta8 {
     private String nombreEmpresa;
     private String nombreTutor;
     private String descripcion;
     private String fecha;
 
-    public C8(String nombreEmpresa, String nombreTutor, String descripcion, String fecha) {
+    public Consulta8(String nombreEmpresa, String nombreTutor, String descripcion, String fecha) {
         this.nombreEmpresa = nombreEmpresa;
         this.nombreTutor = nombreTutor;
         this.descripcion = descripcion;

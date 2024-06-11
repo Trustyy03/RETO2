@@ -38,8 +38,6 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
 
         labelEmpresa = Estilo.textoBonitoInicioSesion("EMPRESA");
 
-        //CBListadoEmpresas.getSelectedItem();
-
         labelCiclo = Estilo.textoBonitoInicioSesion("CICLO");
         ciclo = Estilo.estiloComboBox();
         for (String cicloh : consultarCiclos()) {

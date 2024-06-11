@@ -15,7 +15,7 @@ public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLay
 
     public ListaDeTrabajadores() {
 
-        setLayout(new BorderLayout());
+        setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
@@ -28,7 +28,12 @@ public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLay
 
     @Override
     public void colocarComponentes() {
+        JScrollPane scrollPane = new JScrollPane();
 
-
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.fill = GridBagConstraints.BOTH;
+        scrollPane.add(datosFCT);
+        add(scrollPane, constraints);
     }
 }

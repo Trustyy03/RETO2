@@ -2,6 +2,7 @@ package Modelo.Consultas;
 
 import Modelo.ConexionBDD;
 
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -192,25 +193,33 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static void consultaOcho(String cifEmpresa) throws SQLException {
+    public static ArrayList<C8> consultaOcho(String nombreEmpresa) throws SQLException {
+        ArrayList<C8> listaResultados = new ArrayList<>();
+
         String sql = "SELECT e.nombre, CONCAT(t.nombre, ' ', t.apellidos) as nombreTutor, c.descripcion, c.fecha\n" +
                 "FROM EMPRESA e\n" +
                 "INNER JOIN TUTOR_CONTACTA_EMPRESA c using(CIF)\n" +
                 "INNER JOIN TUTOR_FCT t using(idTutor)\n" +
-                "WHERE e.CIF = ?;"; // ej. B01234567
+                "WHERE e.nombre = ?;";
 
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, cifEmpresa);
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, nombreEmpresa);
 
-        ResultSet rs = pst.executeQuery();
+            ResultSet rs = pst.executeQuery();
 
-        while (rs.next()) {
-            C8 consulta8 = new C8(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
-            System.out.println(consulta8.toString());
+            while (rs.next()) {
+                C8 consulta8 = new C8(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                listaResultados.add(consulta8);
+            }
+
+            pst.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
-        pst.close();
-        rs.close();
+        return listaResultados;
     }
 
 

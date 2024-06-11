@@ -48,12 +48,12 @@ public class MainPruebasConsultas {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+*/
         try {
             OperacionesConsultas.consultaOcho("B01234567");
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }*/
+        }
 
         /*CCiclosYCursos.consultarCursos();
         CCiclosYCursos.consultarCiclos();*/

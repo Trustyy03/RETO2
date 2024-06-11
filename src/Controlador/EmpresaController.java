@@ -94,12 +94,19 @@ public class EmpresaController {
             return false;
         }
         try {
-            Statement st = con.createStatement();
-            String borrarEmpresa = "DELETE FROM EMPRESA WHERE CIF = '" + empresa.getCif() + "';";
-            st.execute(borrarEmpresa);
-            st.close();
-            JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","Empresa eliminada",JOptionPane.INFORMATION_MESSAGE);
-            return true;
+            int resp = JOptionPane.showConfirmDialog(null, "Seguro que quieres borrar?", "Confirmar", JOptionPane.OK_CANCEL_OPTION);
+
+            if(resp == 0){
+                Statement st = con.createStatement();
+                String borrarEmpresa = "DELETE FROM EMPRESA WHERE CIF = '" + empresa.getCif() + "';";
+                st.execute(borrarEmpresa);
+                st.close();
+                JOptionPane.showMessageDialog(null,"Se ha eliminado correctamente","Empresa eliminada",JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             return false;

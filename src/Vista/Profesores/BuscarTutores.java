@@ -1,66 +1,52 @@
 package Vista.Profesores;
 
 import Modelo.Consultas.C3;
+import Modelo.Consultas.C4;
 import Modelo.Consultas.ConsultasSimples;
 import Vista.ComponentesGridBagLayout;
+import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static Modelo.Consultas.OperacionesConsultas.consultaCuatro;
 import static Modelo.Consultas.OperacionesConsultas.consultaTres;
 
-public class BuscarTutores extends JPanel implements ComponentesGridBagLayout{
+public class BuscarTutores extends JPanel implements ComponentesGridBagLayout, MostrarDatosTablas {
 
     JLabel grupoLabel, cursoLabel;
     JComboBox<String> grupos;
     JComboBox<String> cursos;
-    JList<String> empresasList;
-    JLabel tutorLabel;
-    JTextField tutorField;
     GridBagConstraints constraints;
-    JButton btnBuscar;
+    JTable empresaPorTecnologia;
+    DefaultTableModel modelo;
 
     public BuscarTutores() {
         setLayout(new GridBagLayout());
-
         constraints = new GridBagConstraints();
-
         constraints.insets = new Insets(10, 10, 10, 10);
 
         grupoLabel = new JLabel("GRUPO:");
-        grupos = new JComboBox<>();
         cursoLabel = new JLabel("CURSO:");
+        grupos = new JComboBox<>();
         cursos = new JComboBox<>();
+        insertarDatosJComboBoxes();
 
-        tutorLabel = new JLabel("TUTOR:");
-        tutorField = new JTextField();
 
-        btnBuscar = new JButton("BUSCAR");
+        String[] nombresCampos = new String[]{"Ciclo", "Grupo", "Nombre Tutor", "Nombre Empresa", "Número Prácticas"};
+        modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(nombresCampos);
+        empresaPorTecnologia = new JTable(modelo);
 
-        empresasList = new JList<>();
+        grupos.addActionListener(e -> mostrarTablaDatos());
+        cursos.addActionListener(e -> mostrarTablaDatos());
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
         colocarComponentes();
-        insertarDatosJComboBoxes();
-
-        try {
-            String grupoSeleccionado = (String)grupos.getSelectedItem();
-            String cursoSeleccionado = (String)cursos.getSelectedItem();
-
-            ArrayList<C3> c3 = consultaTres(grupoSeleccionado,cursoSeleccionado);
-
-            for (C3 results : c3) {
-
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        grupos.getSelectedItem();
-
     }
 
     private void insertarDatosJComboBoxes() {
@@ -92,20 +78,26 @@ public class BuscarTutores extends JPanel implements ComponentesGridBagLayout{
         add(cursos, constraints);
 
         constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        add(tutorLabel,constraints);
-
-        constraints.gridx = 1;
-        constraints.weightx = 5;
-        add(tutorField,constraints);
-
-        constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridwidth = 6; //numero de columnas que ocupara
         constraints.weightx = 1.0; //redimensionamiento
         constraints.weighty = 1.0;
         constraints.fill = GridBagConstraints.BOTH;
-        add(new JScrollPane(empresasList), constraints);
+        JScrollPane scrollPane = new JScrollPane(empresaPorTecnologia);
+        add(scrollPane, constraints);
+    }
+
+    @Override
+    public void mostrarTablaDatos() {
+        modelo.setRowCount(0);
+
+        try {
+            for (C3 c3 : consultaTres((String)grupos.getSelectedItem(), (String)cursos.getSelectedItem())) {
+                Object[] fila = new Object[]{c3.getCiclo(), c3.getIdGrupo(), c3.getNombreTutor(), c3.getNombreEmpresa(), c3.getNumPracticas()};
+                modelo.addRow(fila);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

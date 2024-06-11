@@ -1,29 +1,36 @@
 package Vista.Trabajadores;
 
 import Controlador.MainPanelController;
+import Modelo.Consultas.C6;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
+import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.SQLException;
 
 import static Modelo.Consultas.ConsultasSimples.*;
+import static Modelo.Consultas.OperacionesConsultas.consultaSeis;
 
 
-public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayout {
+public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayout, MostrarDatosTablas {
 
     JLabel labelEmpresa;
     public static JComboBox<Empresa> CBListadoEmpresas = new JComboBox<>();
+    JLabel labelCiclo;
+    JComboBox<String> ciclo;
     JLabel labelCurso;
-    JComboBox<String> cursos;
+    JComboBox<String> cursoEscolar;
     JButton botonListaTrabajadores;
     GridBagConstraints constraints;
     ListaDeTrabajadores listaDeTrabajadores;
+    DefaultTableModel modelo;
 
     public BuscarEmpresaCurso() throws SQLException {
-
         setLayout(new GridBagLayout());
+
         listaDeTrabajadores = new ListaDeTrabajadores();
 
         constraints = new GridBagConstraints();
@@ -31,13 +38,21 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
 
         labelEmpresa = new JLabel("EMPRESA");
 
-        labelCurso = new JLabel("CURSO");
-        cursos = new JComboBox<>();
-        for (String curso : consultarCursos()) {
-            cursos.addItem(curso);
+        //CBListadoEmpresas.getSelectedItem();
+
+        labelCiclo = new JLabel("CICLO");
+        ciclo = new JComboBox<>();
+        for (String cicloh : consultarCiclos()) {
+            ciclo.addItem(cicloh);
         }
 
-        botonListaTrabajadores = new JButton("LISTA DE TRABAJADORES POR EMPRESA / CURSO");
+        labelCurso = new JLabel("CURSO");
+        cursoEscolar = new JComboBox<>();
+        for (String curso : consultarCursos()) {
+            cursoEscolar.addItem(curso);
+        }
+
+        botonListaTrabajadores = new JButton("LISTA DE TRABAJADORES POR EMPRESA / CICLO");
         botonListaTrabajadores.addActionListener(e ->
                 MainPanelController.nuevoPanelActivo(listaDeTrabajadores)
         );
@@ -60,17 +75,38 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
 
         constraints.gridx = 0;
         constraints.gridy = 1;
-        add(labelCurso, constraints);
+        add(labelCiclo, constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 1;
-        add(cursos, constraints);
+        add(ciclo, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
+        add(labelCurso, constraints);
+
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        add(cursoEscolar, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 3;
         constraints.gridwidth = 2;
         add(botonListaTrabajadores, constraints);
 
     }
 
+    @Override
+    public void mostrarTablaDatos() {
+        modelo.setRowCount(0);
+
+        try {
+            for (C6 c6 : consultaSeis((String)CBListadoEmpresas.getSelectedItem(), (String)ciclo.getSelectedItem(), (String)cursoEscolar.getSelectedItem())) {
+                Object[] fila = new Object[]{c6.getNombreEmpresa(), c6.getCantidadAlumnos(), c6.getIdCiclo()};
+                modelo.addRow(fila);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

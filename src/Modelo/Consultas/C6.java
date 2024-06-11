@@ -4,14 +4,23 @@ package Modelo.Consultas;
 //les dades FCT sol·licitades per l’empresa a eixe cicle (ex. Crownet sol·licita
 //15 alumnes de 2DAM)
 public class C6 {
+    private String cifEmpresa;
     private String nombreEmpresa;
     private int cantidadAlumnos;
     private String idCiclo;
 
-    public C6(String nombreEmpresa, int cantidadAlumnos, String idCiclo) {
+    public C6(String cifEmpresa, String nombreEmpresa, int cantidadAlumnos, String idCiclo) {
         this.nombreEmpresa = nombreEmpresa;
         this.cantidadAlumnos = cantidadAlumnos;
         this.idCiclo = idCiclo;
+    }
+
+    public String getCifEmpresa() {
+        return cifEmpresa;
+    }
+
+    public void setCifEmpresa(String cifEmpresa) {
+        this.cifEmpresa = cifEmpresa;
     }
 
     public String getNombreEmpresa() {

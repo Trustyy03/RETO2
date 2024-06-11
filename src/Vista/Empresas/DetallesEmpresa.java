@@ -19,8 +19,6 @@ public class DetallesEmpresa extends JPanel {
 
     JLabel labelEmpresa;
 
-    //Cambios para Aymen
-
     public DetallesEmpresa() {
 
         this.setLayout(new BorderLayout());

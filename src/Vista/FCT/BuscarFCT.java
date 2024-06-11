@@ -2,6 +2,7 @@ package Vista.FCT;
 
 import Modelo.Consultas.C4;
 import Vista.ComponentesGridBagLayout;
+import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -12,7 +13,7 @@ import static Modelo.Consultas.ConsultasSimples.consultarCursos;
 import static Modelo.Consultas.ConsultasSimples.consultarNombresEmpresas;
 import static Modelo.Consultas.OperacionesConsultas.consultaCuatro;
 
-public class BuscarFCT extends JPanel implements ComponentesGridBagLayout {
+public class BuscarFCT extends JPanel implements ComponentesGridBagLayout, MostrarDatosTablas {
 
     JLabel labelCurso;
     JComboBox<String> cursos;
@@ -54,18 +55,6 @@ public class BuscarFCT extends JPanel implements ComponentesGridBagLayout {
         colocarComponentes();
     }
 
-    public void mostrarTablaDatos() {
-        modelo.setRowCount(0);
-
-        try {
-            for (C4 c4 : consultaCuatro((String)empresas.getSelectedItem(), (String)cursos.getSelectedItem())){
-                Object[] fila = new Object[]{c4.getIdGrupo(), c4.getNumAlumnos()};
-                modelo.addRow(fila);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @Override
     public void colocarComponentes() {
@@ -98,5 +87,19 @@ public class BuscarFCT extends JPanel implements ComponentesGridBagLayout {
         JScrollPane scrollPane = new JScrollPane(fctPorEmpresaYCurso);
         add(scrollPane, constraints);
 
+    }
+
+
+    public void mostrarTablaDatos() {
+        modelo.setRowCount(0);
+
+        try {
+            for (C4 c4 : consultaCuatro((String)empresas.getSelectedItem(), (String)cursos.getSelectedItem())){
+                Object[] fila = new Object[]{c4.getIdGrupo(), c4.getNumAlumnos()};
+                modelo.addRow(fila);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

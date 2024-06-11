@@ -34,6 +34,7 @@ public class OpcionesProfesores extends JPanel {
         buscarTutores = Estilo.botonBonito(lenguaje.getProperty("btnBuscarTutores"));
         buscarTutores.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarTutoresApartado);
+
         });
         colocarComponentes();
     }

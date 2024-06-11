@@ -8,7 +8,7 @@ import java.awt.*;
 
 import static Modelo.Consultas.ConsultasSimples.consultarTecnologias;
 
-public class IncidenciasCurso extends JPanel implements MostrarDatosTablas {
+public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
 
     JComboBox<String> curso;
     JTable incidenciasPorCurso;
@@ -30,10 +30,10 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas {
 
         add(new JScrollPane(incidenciasPorCurso), BorderLayout.CENTER);
     }
+
+
     @Override
     public void mostrarTablaDatos() {
-
-
 
     }
 }

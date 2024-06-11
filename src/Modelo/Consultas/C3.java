@@ -6,16 +6,26 @@ package Modelo.Consultas;
 //Aqui hay problemilla, dice grupo y curso pero para nosotros es ciclo-grupo y curso.
 
 public class C3 {
+    private String ciclo;
     private String idGrupo;
     private String nombreTutor;
     private String nombreEmpresa;
     private int numPracticas;
 
-    public C3(String idGrupo, String nombreTutor, String nombreEmpresa, int numPracticas) {
+    public C3(String ciclo, String idGrupo, String nombreTutor, String nombreEmpresa, int numPracticas) {
+        this.ciclo = ciclo;
         this.idGrupo = idGrupo;
         this.nombreTutor = nombreTutor;
         this.nombreEmpresa = nombreEmpresa;
         this.numPracticas = numPracticas;
+    }
+
+    public String getCiclo() {
+        return ciclo;
+    }
+
+    public void setCiclo(String ciclo) {
+        this.ciclo = ciclo;
     }
 
     public String getIdGrupo() {

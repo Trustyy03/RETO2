@@ -1,0 +1,11 @@
+OperacionesConsultas -> Métodos para las consultas que van insertados en las vistas
+C1 -> Implementada -> Cambiar colores
+C2 -> Implementada
+C3 -> Implementada
+C4 -> Falta implementar
+C5 -> Falta implementar
+C6 -> Falta implementar
+C7 -> Implementada
+C8 -> Implementada
+ConsultasSimples -> Consultas complementarias para llenar datos en JComboBoxes
+MainPruebasConsultas -> Pruebas de las OperacionesConsultas cuando devolvían void e imprimian el resultado por consola

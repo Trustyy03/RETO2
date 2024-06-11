@@ -2,6 +2,7 @@ package Vista.FCT;
 
 import Modelo.Consultas.C4;
 import Vista.ComponentesGridBagLayout;
+import Vista.Estilo;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -30,14 +31,14 @@ public class BuscarFCT extends JPanel implements ComponentesGridBagLayout, Mostr
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        labelCurso = new JLabel("CURSO");
-        cursos = new JComboBox<>();
+        labelCurso = Estilo.textoBonitoInicioSesion("CURSO");
+        cursos = Estilo.estiloComboBox();
         for (String curso : consultarCursos()){
             cursos.addItem(curso);
         }
 
-        labelEmpresa = new JLabel("EMPRESA");
-        empresas = new JComboBox<>();
+        labelEmpresa = Estilo.textoBonitoInicioSesion("EMPRESA");
+        empresas = Estilo.estiloComboBox();
         for (String empresa : consultarNombresEmpresas()){
             empresas.addItem(empresa);
         }

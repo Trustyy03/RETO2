@@ -4,6 +4,7 @@ import Controlador.MainPanelController;
 import Modelo.Consultas.C6;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
+import Vista.Estilo;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -36,17 +37,17 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        labelEmpresa = new JLabel("EMPRESA");
+        labelEmpresa = Estilo.textoBonitoInicioSesion("EMPRESA");
 
         //CBListadoEmpresas.getSelectedItem();
 
-        labelCiclo = new JLabel("CICLO");
+        labelCiclo = Estilo.textoBonitoInicioSesion("CICLO");
         ciclo = new JComboBox<>();
         for (String cicloh : consultarCiclos()) {
             ciclo.addItem(cicloh);
         }
 
-        labelCurso = new JLabel("CURSO");
+        labelCurso = Estilo.textoBonitoInicioSesion("CURSO");
         cursoEscolar = new JComboBox<>();
         for (String curso : consultarCursos()) {
             cursoEscolar.addItem(curso);

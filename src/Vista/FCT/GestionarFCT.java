@@ -22,7 +22,7 @@ public class GestionarFCT extends JPanel {
     public static JButton btnGuardarFCT, btnBorrarFCT, btnAgregarFCT;
     static FCT fctSeleccionada,fctNueva;
 
-    public static JComboBox<FCT> CBListadoFCT = new JComboBox<>();
+    public static JComboBox<FCT> CBListadoFCT = Estilo.estiloComboBox();
 
     public GestionarFCT(){
 

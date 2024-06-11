@@ -55,8 +55,7 @@ public class InicioSesion extends JPanel {
             //} else {
                 MainPanelController.nuevoPanelActivo(opcionesPanel);
                 framePrincipal.setTitle("OPCIONES");
-                PanelPrincipal.nombreUsuario.setText(nombree+ rellenarUsuario.getText() + "/" + nombreBaseDatosField.getText() + "" +
-                        "/" + ipTextField.getText() + "/"+puertoTextField.getText()+"/");
+                PanelPrincipal.nombreUsuario.setText(nombree+" " +  rellenarUsuario.getText());
             //}
         });
     }

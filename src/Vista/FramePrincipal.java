@@ -53,7 +53,7 @@ class PanelPrincipal extends JPanel {
         btnAtras = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnAtras"));
         btnInicio = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnInicio"));
         menuBar = Estilo.menuBarBonito();
-        nombreUsuario = new JLabel("I");
+        nombreUsuario = new JLabel(lenguaje.getProperty("nombree"));
         menuLeng = Estilo.menuBonito(lenguaje.getProperty("menuLeng"));
         itemEsp = Estilo.menuItemBonito(lenguaje.getProperty("itemEsp"));
         itemEngl = Estilo.menuItemBonito(lenguaje.getProperty("itemEngl"));
@@ -104,15 +104,18 @@ class PanelPrincipal extends JPanel {
 
     public void cambiarLenguaje(int newLang) {
         Lenguaje lenguaje = new Lenguaje(newLang);
+
         btnAtras.setText(lenguaje.getProperty("btnAtras"));
         btnInicio.setText(lenguaje.getProperty("btnInicio"));
         menuLeng.setText(lenguaje.getProperty("menuLeng"));
         itemEsp.setText(lenguaje.getProperty("itemEsp"));
         itemEngl.setText(lenguaje.getProperty("itemEngl"));
+        nombreUsuario.setText(lenguaje.getProperty("nombree")+ " "+ InicioSesion.rellenarUsuario.getText());
         OpcionesPanel.btnFct.setText(lenguaje.getProperty("btnFct"));
         OpcionesPanel.btnEmpresas.setText(lenguaje.getProperty("btnEmpresas"));
         OpcionesPanel.btnProfesores.setText(lenguaje.getProperty("btnProfesores"));
         OpcionesPanel.btnTrabajadores.setText(lenguaje.getProperty("btnTrabajadores"));
+        InicioSesion.nombree = lenguaje.getProperty("nombree");
         InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
         InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
         InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));

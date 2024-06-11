@@ -96,26 +96,30 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static void consultaCuatro(String cifEmpresa, String cursoEscolar) throws SQLException {
+    public static ArrayList<C4> consultaCuatro(String nombreEmpresa, String cursoEscolar) throws SQLException {
+        ArrayList<C4> listaResultados = new ArrayList<>();
+
         String sql = "SELECT e.nombre, fct.cursoEscolar, fct.idGrupo, fct.numAlumnos\n" +
                 "FROM EMPRESA e\n" +
                 "INNER JOIN GRUPO_FCT_EMPRESA fct using(CIF)\n" +
-                "WHERE e.CIF = ?\n" + // B01234567
+                "WHERE e.nombre = ?\n" + // IT solutions
                 "AND fct.cursoEscolar = ?;"; // 23-24
 
         PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, cifEmpresa);
+        pst.setString(1, nombreEmpresa);
         pst.setString(2, cursoEscolar);
 
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
             C4 consulta4 = new C4(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
-            System.out.println(consulta4.toString());
+            listaResultados.add(consulta4);
         }
 
         pst.close();
         rs.close();
+
+        return listaResultados;
     }
 
     public static void consultaCinco(String cursoEscolar) throws SQLException {

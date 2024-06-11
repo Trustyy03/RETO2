@@ -13,6 +13,7 @@ public class ConsultasSimples {
     public static ArrayList<String> cursosEscolares;
     public static ArrayList<String> ciclos;
     public static ArrayList<String> grupos;
+    public static ArrayList<String> empresas;
 
     public static ArrayList<String> consultarCursos() {
         String sql = "SELECT cursoEscolar FROM TUTOR_RESPONSABLE_GRUPO GROUP BY cursoEscolar;";
@@ -74,5 +75,26 @@ public class ConsultasSimples {
         }
 
         return grupos;
+    }
+
+    public static ArrayList<String> consultarNombresEmpresas() {
+        String sql = "SELECT nombre FROM EMPRESA;";
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            empresas = new ArrayList<>();
+
+            while (rs.next()) {
+                empresas.add(rs.getString(1));
+            }
+
+            st.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return empresas;
     }
 }

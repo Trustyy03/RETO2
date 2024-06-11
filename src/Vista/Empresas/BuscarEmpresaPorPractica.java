@@ -16,7 +16,6 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
     JLabel labelCiclo;
     JButton botonListaEmpresas;
     GridBagConstraints constraints;
-    String a,b;
 
     public BuscarEmpresaPorPractica() throws SQLException {
 

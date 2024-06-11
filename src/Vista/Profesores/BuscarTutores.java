@@ -1,9 +1,15 @@
 package Vista.Profesores;
 
+import Modelo.Consultas.C3;
+import Modelo.Consultas.ConsultasSimples;
 import Vista.ComponentesGridBagLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import static Modelo.Consultas.OperacionesConsultas.consultaTres;
 
 public class BuscarTutores extends JPanel implements ComponentesGridBagLayout{
 
@@ -38,6 +44,33 @@ public class BuscarTutores extends JPanel implements ComponentesGridBagLayout{
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
         colocarComponentes();
+        insertarDatosJComboBoxes();
+
+        try {
+            String grupoSeleccionado = (String)grupos.getSelectedItem();
+            String cursoSeleccionado = (String)cursos.getSelectedItem();
+
+            ArrayList<C3> c3 = consultaTres(grupoSeleccionado,cursoSeleccionado);
+
+            for (C3 results : c3) {
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        grupos.getSelectedItem();
+
+    }
+
+    private void insertarDatosJComboBoxes() {
+        //Inserción de datos JComboBoxes
+        for (String grupo : ConsultasSimples.consultarGrupos()) {
+            grupos.addItem(grupo);
+        }
+        for (String curso : ConsultasSimples.consultarCursos()) {
+            cursos.addItem(curso);
+        }
     }
 
     @Override

@@ -2,6 +2,9 @@ package Modelo.Consultas;
 
 //C3. Consulta que mostre, donat un grup (2DAM-2CFSF) i un curs, les dades
 //del professor tutor del grup i les empreses amb FCT’s i el nombre d’estes.
+
+//Aqui hay problemilla, dice grupo y curso pero para nosotros es ciclo-grupo y curso.
+
 public class C3 {
     private String idGrupo;
     private String nombreTutor;

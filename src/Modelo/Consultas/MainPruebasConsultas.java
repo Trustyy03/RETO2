@@ -2,7 +2,7 @@ package Modelo.Consultas;
 
 import java.sql.SQLException;
 
-public class mainPruebasConsultas {
+public class MainPruebasConsultas {
     public static void main(String[] args) throws SQLException {
 
         //los métodos ya no funcionarán porqué ya no devuelven texto, hay que cambiar las pruebas

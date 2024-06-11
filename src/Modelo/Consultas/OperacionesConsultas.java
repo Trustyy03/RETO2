@@ -65,7 +65,9 @@ public class OperacionesConsultas {
 
     }
 
-    public static void consultaTres(String grupo, String cursoEscolar) throws SQLException {
+    public static ArrayList<C3> consultaTres(String grupo, String cursoEscolar) throws SQLException {
+        ArrayList<C3> listaResultados = new ArrayList<>();
+
         String sql = "SELECT g.idGrupo, CONCAT(t.Nombre, ' ', t.Apellidos) AS nombreTutor, e.Nombre AS nombreEmpresa, COUNT(*) AS NumPracticas\n" +
                 "FROM GRUPO g\n" +
                 "INNER JOIN GRUPO_FCT_EMPRESA gfe ON g.idGrupo = gfe.idGrupo\n" +
@@ -82,13 +84,16 @@ public class OperacionesConsultas {
 
         ResultSet rs = pst.executeQuery();
 
+
         while (rs.next()) {
             C3 consulta3 = new C3(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
-            System.out.println(consulta3.toString());
+            listaResultados.add(consulta3);
         }
 
         pst.close();
         rs.close();
+
+        return listaResultados;
     }
 
     public static void consultaCuatro(String cifEmpresa, String cursoEscolar) throws SQLException {

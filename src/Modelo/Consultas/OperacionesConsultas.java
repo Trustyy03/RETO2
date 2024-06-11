@@ -165,24 +165,31 @@ public class OperacionesConsultas {
         rs.close();
     }
 
-    public static void consultaSiete(String tecnologia) throws SQLException {
+    public static ArrayList<C7> consultaSiete(String tecnologia) {
+        ArrayList<C7> listaResultados = new ArrayList<>();
         String sql = "SELECT eut.idTecnologia, e.nombre, e.CIF\n" +
                 "FROM EMPRESA e\n" +
                 "INNER JOIN EMPRESA_USA_TECNOLOGIA eut using(CIF)\n" +
                 "WHERE eut.idTecnologia = ?";
 
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, tecnologia);
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, tecnologia);
 
-        ResultSet rs = pst.executeQuery();
+            ResultSet rs = pst.executeQuery();
 
-        while (rs.next()) {
-            C7 consulta7 = new C7(rs.getString(1), rs.getString(2), rs.getString(3));
-            System.out.println(consulta7.toString());
+            while (rs.next()) {
+                C7 consulta7 = new C7(rs.getString(1), rs.getString(2), rs.getString(3));
+                listaResultados.add(consulta7);
+            }
+
+            pst.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
-        pst.close();
-        rs.close();
+        return listaResultados;
     }
 
     public static void consultaOcho(String cifEmpresa) throws SQLException {

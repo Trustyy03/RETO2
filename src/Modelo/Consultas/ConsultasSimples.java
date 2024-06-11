@@ -14,6 +14,7 @@ public class ConsultasSimples {
     public static ArrayList<String> ciclos;
     public static ArrayList<String> grupos;
     public static ArrayList<String> empresas;
+    public static ArrayList<String> tecnologias;
 
     public static ArrayList<String> consultarCursos() {
         String sql = "SELECT cursoEscolar FROM TUTOR_RESPONSABLE_GRUPO GROUP BY cursoEscolar;";
@@ -97,4 +98,26 @@ public class ConsultasSimples {
 
         return empresas;
     }
+
+    public static ArrayList<String> consultarTecnologias() {
+        String sql = "SELECT idTecnologia FROM TECNOLOGIA;";
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            tecnologias = new ArrayList<>();
+
+            while (rs.next()) {
+                tecnologias.add(rs.getString(1));
+            }
+
+            st.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return tecnologias;
+    }
+
 }

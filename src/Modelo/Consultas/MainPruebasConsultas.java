@@ -25,12 +25,12 @@ public class MainPruebasConsultas {
             throw new RuntimeException(e);
         }
 
-        */try {
+        try {
             OperacionesConsultas.consultaCuatro("B01234567", "23-24");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-/*
+
         try {
             OperacionesConsultas.consultaCinco("23-24");
         } catch (SQLException e) {

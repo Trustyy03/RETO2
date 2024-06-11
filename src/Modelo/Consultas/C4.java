@@ -2,6 +2,7 @@ package Modelo.Consultas;
 
 //C4. Consulta que mostre donada una empresa i un curs les dades d’FCT
 //(grups, alumnes ..)
+
 public class C4 {
     private String nombreEmpresa;
     private String cursoEscolar;

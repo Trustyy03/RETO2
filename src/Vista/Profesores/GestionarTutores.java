@@ -19,7 +19,7 @@ public class GestionarTutores extends JPanel {
 
     public static JButton btnGuardarTutor, btnBorrarTutor, btnAgregarTutor;
 
-    public static JComboBox<Tutor> CBlistadoTutores;
+    public static JComboBox<Tutor> CBlistadoTutores = new JComboBox<>();
 
     static Tutor tutorSeleccionada,tutorNuevo;
 
@@ -32,7 +32,6 @@ public class GestionarTutores extends JPanel {
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         JPanel panelNorte = new JPanel();
-        CBlistadoTutores = new JComboBox<>();
 
         btnBorrarTutor = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarTutor = new JButton(lenguaje.getProperty("btnAgregar"));
@@ -64,11 +63,11 @@ public class GestionarTutores extends JPanel {
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        TutorController.getCBlistadoTutores().addActionListener(e->{tutorSeleccionada =(Tutor) TutorController.getCBlistadoTutores().getSelectedItem();
+        CBlistadoTutores.addActionListener(e->{tutorSeleccionada =(Tutor) CBlistadoTutores.getSelectedItem();
             rellenarDatos(tutorSeleccionada);});
 
         btnAgregarTutor.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarTutor));
-        TutorController.getCBlistadoTutores().addActionListener(e->{tutorSeleccionada =(Tutor) TutorController.getCBlistadoTutores().getSelectedItem();
+        btnBorrarTutor.addActionListener(e->{tutorSeleccionada =(Tutor) CBlistadoTutores.getSelectedItem();
             TutorController.eliminarTutor(tutorSeleccionada);});
 
         btnGuardarTutor.addActionListener(e-> {tutorSeleccionada = (Tutor) CBlistadoTutores.getSelectedItem();

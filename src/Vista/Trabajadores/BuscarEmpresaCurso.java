@@ -6,18 +6,22 @@ import Vista.ComponentesGridBagLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
+
+import static Modelo.Consultas.ConsultasSimples.*;
+
 
 public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayout {
 
     JLabel labelEmpresa;
-    JComboBox<Empresa> empresas;
+    public static JComboBox<Empresa> CBListadoEmpresas = new JComboBox<>();
     JLabel labelCurso;
     JComboBox<String> cursos;
     JButton botonListaTrabajadores;
     GridBagConstraints constraints;
     ListaDeTrabajadores listaDeTrabajadores;
 
-    public BuscarEmpresaCurso() {
+    public BuscarEmpresaCurso() throws SQLException {
 
         setLayout(new GridBagLayout());
         listaDeTrabajadores = new ListaDeTrabajadores();
@@ -26,10 +30,12 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
         constraints.insets = new Insets(10, 10, 10, 10);
 
         labelEmpresa = new JLabel("EMPRESA");
-        empresas = new JComboBox<>();
 
         labelCurso = new JLabel("CURSO");
         cursos = new JComboBox<>();
+        for (String curso : consultarCursos()) {
+            cursos.addItem(curso);
+        }
 
         botonListaTrabajadores = new JButton("LISTA DE TRABAJADORES POR EMPRESA / CURSO");
         botonListaTrabajadores.addActionListener(e ->
@@ -50,7 +56,7 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
 
         constraints.gridx = 1;
         constraints.gridy = 0;
-        add(empresas, constraints);
+        add(CBListadoEmpresas, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;

@@ -42,7 +42,7 @@ public class ConexionBDD{
 
         if(con==null){
             try {
-                String host = "jdbc:mysql://192.168.203.110:33060/gestion_fct2";
+                String host = "jdbc:mysql://localhost:33060/gestion_fct2";
                 String username = "Administrador";
                 String password = "Virtual01";
                 con = java.sql.DriverManager.getConnection( host, username, password );

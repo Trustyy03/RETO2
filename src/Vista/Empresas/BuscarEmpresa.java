@@ -2,11 +2,13 @@ package Vista.Empresas;
 
 import Controlador.EmpresaController;
 import Controlador.MainPanelController;
+import Modelo.Consultas.OperacionesConsultas;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
@@ -19,9 +21,10 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
     static Empresa empresaSeleccionada;
 
     public static JComboBox<Empresa> CBListadoEmpresaB = new JComboBox<>();
-    public BuscarEmpresa() {
-        setLayout(new GridBagLayout());
 
+    public BuscarEmpresa() {
+
+        setLayout(new GridBagLayout());
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);

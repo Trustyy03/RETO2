@@ -2,8 +2,11 @@ package Modelo.Consultas;
 
 import java.sql.SQLException;
 
-public class Main {
+public class MainPruebasConsultas {
     public static void main(String[] args) throws SQLException {
+
+        //los métodos ya no funcionarán porqué ya no devuelven texto, hay que cambiar las pruebas
+
         /*try {
             OperacionesConsultas.consultaUno("IT Solutions Group");
         } catch (SQLException e) {
@@ -45,15 +48,15 @@ public class Main {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+*/
         try {
             OperacionesConsultas.consultaOcho("B01234567");
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }*/
+        }
 
-        /*TodosCiclosYCursos.consultarCursos();
-        TodosCiclosYCursos.consultarCiclos();*/
+        /*CCiclosYCursos.consultarCursos();
+        CCiclosYCursos.consultarCiclos();*/
 
 
     }

@@ -49,9 +49,6 @@ public class ListaDeEmpresasConPracticas extends JPanel {
             throw new RuntimeException(e);
         }
 
-
-
-
         JScrollPane scrollPane = new JScrollPane(empresasConPracticas);
         panelDatos.add(scrollPane, BorderLayout.CENTER);
         panelDatos.setLayout(new BoxLayout(panelDatos, BoxLayout.Y_AXIS));

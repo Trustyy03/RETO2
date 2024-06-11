@@ -22,6 +22,8 @@ public class GestionarFCT extends JPanel {
     public static JButton btnGuardarFCT, btnBorrarFCT, btnAgregarFCT;
     static FCT fctSeleccionada,fctNueva;
 
+    public static JComboBox<FCT> CBListadoFCT = new JComboBox<>();
+
     public GestionarFCT(){
 
         this.setLayout(new BorderLayout());
@@ -33,8 +35,7 @@ public class GestionarFCT extends JPanel {
 
         btnBorrarFCT = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarFCT = new JButton(lenguaje.getProperty("btnAgregar"));
-        JComboBox cb = FCTController.getCBlistadoFCT();
-        panelNorte.add(cb);
+        panelNorte.add(CBListadoFCT);
         panelNorte.add(btnBorrarFCT);
         panelNorte.add(btnAgregarFCT);
 
@@ -67,10 +68,10 @@ public class GestionarFCT extends JPanel {
 
         btnAgregarFCT.addActionListener(e-> MainPanelController.nuevoPanelActivo(agregarFCTPanel));
 
-        cb.addActionListener(e-> {fctSeleccionada =(FCT) cb.getSelectedItem();
+        CBListadoFCT.addActionListener(e-> {fctSeleccionada =(FCT) CBListadoFCT.getSelectedItem();
             rellenarDatos(fctSeleccionada);});
-        btnBorrarFCT.addActionListener(e-> {fctSeleccionada = (FCT) cb.getSelectedItem(); FCTController.eliminarFCT(fctSeleccionada);});
-        btnGuardarFCT.addActionListener(e-> {fctSeleccionada = (FCT) cb.getSelectedItem();
+        btnBorrarFCT.addActionListener(e-> {fctSeleccionada = (FCT) CBListadoFCT.getSelectedItem(); FCTController.eliminarFCT(fctSeleccionada);});
+        btnGuardarFCT.addActionListener(e-> {fctSeleccionada = (FCT) CBListadoFCT.getSelectedItem();
             guardarDatos(); FCTController.modificarFTC(fctNueva,fctSeleccionada); });
     }
     private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {

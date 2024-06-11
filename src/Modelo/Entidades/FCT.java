@@ -1,6 +1,7 @@
 package Modelo.Entidades;
 
 public class FCT {
+    private String nombreEmpresa;
     private String cif;
     private String idGrupo;
     private String cursoEscolar;

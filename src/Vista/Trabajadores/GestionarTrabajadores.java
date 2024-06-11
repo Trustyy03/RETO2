@@ -18,6 +18,8 @@ public class GestionarTrabajadores extends JPanel {
     public static JButton btnGuardarTrabajador, btnBorrarTrabajador, btnAgregarTrabajador;
     static Trabajador trabajadorSeleccionado, trabajadorNuevo;
 
+    public static JComboBox<Trabajador> CBListadoTrabajadores = new JComboBox<>();
+
     public GestionarTrabajadores() {
         this.setLayout(new BorderLayout());
 
@@ -29,8 +31,7 @@ public class GestionarTrabajadores extends JPanel {
 
         btnBorrarTrabajador = new JButton(lenguaje.getProperty("btnBorrar"));
         btnAgregarTrabajador = new JButton(lenguaje.getProperty("btnAgregar"));
-        JComboBox cb = TrabajadorController.getCBlistadoTrabajadores();
-        panelNorte.add(cb);
+        panelNorte.add(CBListadoTrabajadores);
         panelNorte.add(btnBorrarTrabajador);
         panelNorte.add(btnAgregarTrabajador);
 
@@ -47,7 +48,7 @@ public class GestionarTrabajadores extends JPanel {
         rellenarNombreTrabajador = new JTextField(20);
         apellidosTrabajador = Estilo.textoBonito(lenguaje.getProperty("apellidosTrabajador"));
         rellenarApellidosTrabajador = new JTextField(20);
-        correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoEmpleado"));
+        correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoTrabajador"));
         rellenarCorreoTrabajador = new JTextField(20);
         cargoTrabajador = Estilo.textoBonito(lenguaje.getProperty("cargoTrabajador"));
         rellenarCargoTrabajador = new JTextField(20);
@@ -70,18 +71,18 @@ public class GestionarTrabajadores extends JPanel {
         add(panelCentral, BorderLayout.CENTER);
         add(panelSur, BorderLayout.SOUTH);
 
-        cb.addActionListener(e -> {
-            trabajadorSeleccionado = (Trabajador) cb.getSelectedItem();
+        CBListadoTrabajadores.addActionListener(e -> {
+            trabajadorSeleccionado = (Trabajador) CBListadoTrabajadores.getSelectedItem();
             rellenarDatos(trabajadorSeleccionado);
         });
 
         btnAgregarTrabajador.addActionListener(e -> MainPanelController.nuevoPanelActivo(agregarTrabajadorPanel));
         btnBorrarTrabajador.addActionListener(e -> {
-            trabajadorSeleccionado = (Trabajador) cb.getSelectedItem();
+            trabajadorSeleccionado = (Trabajador) CBListadoTrabajadores.getSelectedItem();
             TrabajadorController.eliminarTrabajador(trabajadorSeleccionado);
         });
         btnGuardarTrabajador.addActionListener(e -> {
-            trabajadorSeleccionado = (Trabajador) cb.getSelectedItem();
+            trabajadorSeleccionado = (Trabajador) CBListadoTrabajadores.getSelectedItem();
             guardarDatos();
             TrabajadorController.modificarTrabajador(trabajadorNuevo,trabajadorSeleccionado);
         });

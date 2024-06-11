@@ -4,6 +4,7 @@ import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
 import Vista.Empresas.BuscarEmpresa;
 import Vista.Empresas.GestionarEmpresas;
+import Vista.Trabajadores.BuscarEmpresaCurso;
 
 import javax.swing.*;
 import java.sql.*;
@@ -20,6 +21,7 @@ public class EmpresaController {
         for (Empresa empresa : listaEmpresas) {
             GestionarEmpresas.CBListadoEmpresas.addItem(empresa);
             BuscarEmpresa.CBListadoEmpresaB.addItem(empresa);
+            BuscarEmpresaCurso.CBListadoEmpresas.addItem(empresa);
         }
     }
 
@@ -28,6 +30,7 @@ public class EmpresaController {
             listaEmpresas.remove(empresa);
             GestionarEmpresas.CBListadoEmpresas.removeItem(empresa);
             BuscarEmpresa.CBListadoEmpresaB.removeItem(empresa);
+            BuscarEmpresaCurso.CBListadoEmpresas.removeItem(empresa);
         }
     }
 
@@ -43,6 +46,10 @@ public class EmpresaController {
                 BuscarEmpresa.CBListadoEmpresaB.removeItemAt(indice);
                 BuscarEmpresa.CBListadoEmpresaB.insertItemAt(empresaNueva, indice);
                 BuscarEmpresa.CBListadoEmpresaB.setSelectedItem(empresaNueva);
+
+                BuscarEmpresaCurso.CBListadoEmpresas.removeItemAt(indice);
+                BuscarEmpresaCurso.CBListadoEmpresas.insertItemAt(empresaNueva, indice);
+                BuscarEmpresaCurso.CBListadoEmpresas.setSelectedItem(empresaNueva);
             }
         }
     }
@@ -52,6 +59,7 @@ public class EmpresaController {
             listaEmpresas.add(empresaNueva);
             GestionarEmpresas.CBListadoEmpresas.addItem(empresaNueva);
             BuscarEmpresa.CBListadoEmpresaB.addItem(empresaNueva);
+            BuscarEmpresaCurso.CBListadoEmpresas.addItem(empresaNueva);
         }
     }
 

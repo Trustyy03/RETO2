@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
-import static Modelo.Consultas.TodosCiclosYCursos.*;
+import static Modelo.Consultas.ConsultasSimples.*;
 
 public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridBagLayout {
 
@@ -16,7 +16,6 @@ public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridB
     JLabel labelCiclo;
     JButton botonListaEmpresas;
     GridBagConstraints constraints;
-    String a,b;
 
     public BuscarEmpresaPorPractica() throws SQLException {
 

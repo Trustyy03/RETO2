@@ -1,4 +1,4 @@
-package Vista.Trabajadores;
+package Vista.FCT;
 
 import Controlador.MainPanelController;
 import Modelo.Consultas.C6;

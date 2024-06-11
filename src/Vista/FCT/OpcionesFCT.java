@@ -3,7 +3,7 @@ package Vista.FCT;
 import Controlador.MainPanelController;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
-import Vista.Trabajadores.BuscarEmpresaCurso;
+import Vista.FCT.BuscarEmpresaCurso;
 
 import javax.swing.*;
 import java.awt.*;

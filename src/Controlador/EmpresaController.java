@@ -4,7 +4,7 @@ import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
 import Vista.Empresas.BuscarEmpresa;
 import Vista.Empresas.GestionarEmpresas;
-import Vista.Trabajadores.BuscarEmpresaCurso;
+import Vista.FCT.BuscarEmpresaCurso;
 
 import javax.swing.*;
 import java.sql.*;

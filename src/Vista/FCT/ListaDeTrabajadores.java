@@ -1,16 +1,10 @@
-package Vista.Trabajadores;
+package Vista.FCT;
 
-import Modelo.Consultas.C6;
-import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
-import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.SQLException;
-
-import static Modelo.Consultas.OperacionesConsultas.consultaSeis;
 
 public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLayout {
 

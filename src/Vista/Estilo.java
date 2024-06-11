@@ -21,7 +21,7 @@ public class Estilo {
         // Configuración del botón
         button.setBackground(defaultBackgroundColor);
         button.setForeground(defaultForegroundColor);
-        button.setFont(new Font("Arial", Font.BOLD, 30));
+        button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setFocusPainted(false);
         button.setHorizontalAlignment(SwingConstants.CENTER);
         button.setVerticalAlignment(SwingConstants.CENTER);

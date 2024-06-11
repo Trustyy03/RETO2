@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class OpcionesEmpresa extends JPanel {
 
-    public static JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas,btnBuscarEmpresaPorTecnologia;
+    public static JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas,btnBuscarEmpresaPorTecnologia, btnIncidencias;
     BuscarEmpresa buscarEmpresaApartado;
     BuscarEmpresaPorPractica buscarEmpresaPorPracticaApartado;
     GestionarEmpresas gestionarEmpresasApartado;

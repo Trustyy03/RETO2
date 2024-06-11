@@ -46,6 +46,22 @@ public class Estilo {
         return label;
     }
 
+    public static JLabel textoBonitoInfo(String text){
+        JLabel label = new JLabel(text);
+
+        label.setOpaque(true);
+        label.setForeground(Color.BLACK);
+        label.setBackground(new Color(70, 130, 180));
+
+        label.setFont(new Font("Arial", Font.BOLD, 25));
+        label.setVisible(true);
+
+        label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+
+        return label;
+    }
+
     public static JLabel cartelInformativoBonito(String text){
         JLabel label = new JLabel(text);
 

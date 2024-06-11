@@ -10,7 +10,7 @@ import java.awt.*;
 public class DetallesEmpresa extends JPanel {
 
     public static JLabel cif, nombre, telefono, numEmpleados, sector, direccion;
-    public static JTextField rellenarCif, rellenarNombre, rellenarTelefono,
+    public static JLabel rellenarCif, rellenarNombre, rellenarTelefono,
             rellenarNumEmpleados, rellenarSector, rellenarDireccion;
     Empresa empresaSeleccionada;
 
@@ -36,17 +36,17 @@ public class DetallesEmpresa extends JPanel {
 
 
         cif = Estilo.textoBonito(lenguaje.getProperty("cif"));
-        rellenarCif = new JTextField(20);
+        rellenarCif = Estilo.textoBonitoInfo("");
         nombre = Estilo.textoBonito(lenguaje.getProperty("nombreEmpresa"));
-        rellenarNombre = new JTextField(20);
+        rellenarNombre = Estilo.textoBonitoInfo("");
         telefono = Estilo.textoBonito(lenguaje.getProperty("telefonoEmpresa"));
-        rellenarTelefono = new JTextField(20);
+        rellenarTelefono = Estilo.textoBonitoInfo("");
         numEmpleados = Estilo.textoBonito(lenguaje.getProperty("numEmpleadoEmpresa"));
-        rellenarNumEmpleados = new JTextField(20);
+        rellenarNumEmpleados = Estilo.textoBonitoInfo("");
         sector = Estilo.textoBonito(lenguaje.getProperty("sectorEmpresa"));
-        rellenarSector = new JTextField(20);
+        rellenarSector = Estilo.textoBonitoInfo("");
         direccion = Estilo.textoBonito(lenguaje.getProperty("direccionEmpresa"));
-        rellenarDireccion = new JTextField(20);
+        rellenarDireccion = Estilo.textoBonitoInfo("");
 
         configurarCoordenadas(panelCentral, gbc, cif, rellenarCif, 0);
         configurarCoordenadas(panelCentral, gbc, nombre, rellenarNombre, 1);
@@ -62,12 +62,12 @@ public class DetallesEmpresa extends JPanel {
 
     }
 
-    private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JTextField textField, int yPos) {
+    private void configurarCoordenadas(JPanel panel, GridBagConstraints gbc, JLabel label, JLabel label1, int yPos) {
         gbc.gridx = 0;
         gbc.gridy = yPos;
         panel.add(label, gbc);
         gbc.gridx = 1;
-        panel.add(textField, gbc);
+        panel.add(label1, gbc);
     }
 
     private static void rellenarDatos(Empresa empresa){

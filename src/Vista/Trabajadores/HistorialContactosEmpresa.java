@@ -1,6 +1,7 @@
 package Vista.Trabajadores;
 
 import Modelo.Consultas.C8;
+import Vista.Estilo;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +18,7 @@ public class HistorialContactosEmpresa extends JPanel {
     DefaultTableModel modelo;
 
     public HistorialContactosEmpresa(){
-        empresas = new JComboBox<>();
+        empresas = Estilo.estiloComboBox();
         for (String empresa : consultarNombresEmpresas()){
             empresas.addItem(empresa);
         }

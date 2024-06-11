@@ -18,7 +18,7 @@ public class GestionarTrabajadores extends JPanel {
     public static JButton btnGuardarTrabajador, btnBorrarTrabajador, btnAgregarTrabajador;
     static Trabajador trabajadorSeleccionado, trabajadorNuevo;
 
-    public static JComboBox<Trabajador> CBListadoTrabajadores = new JComboBox<>();
+    public static JComboBox<Trabajador> CBListadoTrabajadores = Estilo.estiloComboBox();
 
     public GestionarTrabajadores() {
         this.setLayout(new BorderLayout());

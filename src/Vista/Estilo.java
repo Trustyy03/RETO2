@@ -166,13 +166,11 @@ public class Estilo {
     public static <T> JComboBox<T> estiloComboBox(){
         JComboBox<T> comboBox = new JComboBox<>();
 
-        // Set foreground and background colors
-        comboBox.setForeground(Color.WHITE);
+        comboBox.setForeground(Color.BLACK);
         comboBox.setBackground(Color.WHITE);
         comboBox.setSize(50,50);
         comboBox.setOpaque(true);
 
-        // Customize the combo box renderer
         comboBox.setRenderer(new CustomComboBoxRenderer());
 
         return comboBox;
@@ -183,20 +181,17 @@ public class Estilo {
         public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
-            // Set padding and font
             label.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
             label.setFont(new Font("Arial", Font.BOLD, 14));
 
-            // Set custom colors and gradients
             if (isSelected) {
                 label.setBackground(Color.BLACK);
                 label.setForeground(Color.WHITE);
             } else {
                 label.setBackground(new Color(118, 179, 231));
-                label.setForeground(Color.WHITE);
+                label.setForeground(Color.BLACK);
             }
 
-            // Set rounded corners
             label.setOpaque(true);
             label.setBorder(BorderFactory.createCompoundBorder(
                     BorderFactory.createLineBorder(Color.WHITE, 1),

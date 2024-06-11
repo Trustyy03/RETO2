@@ -2,7 +2,6 @@ package Modelo.Consultas;
 
 import Modelo.ConexionBDD;
 
-import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -204,7 +203,7 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static ArrayList<C8> consultaOcho(String nombreEmpresa) throws SQLException {
+    public static ArrayList<C8> consultaOcho(String nombreEmpresa) {
         ArrayList<C8> listaResultados = new ArrayList<>();
 
         String sql = "SELECT e.nombre, CONCAT(t.nombre, ' ', t.apellidos) as nombreTutor, c.descripcion, c.fecha\n" +

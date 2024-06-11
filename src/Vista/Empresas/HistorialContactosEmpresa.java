@@ -39,13 +39,9 @@ public class HistorialContactosEmpresa extends JPanel {
     public void mostrarTablaDatos() {
         modelo.setRowCount(0);
 
-        try {
-            for (C8 c8 : consultaOcho((String)empresas.getSelectedItem())){
-                Object[] fila = new Object[]{c8.getNombreEmpresa(), c8.getNombreTutor(), c8.getDescripcion(), c8.getFecha()};
-                modelo.addRow(fila);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        for (C8 c8 : consultaOcho((String)empresas.getSelectedItem())){
+            Object[] fila = new Object[]{c8.getNombreEmpresa(), c8.getNombreTutor(), c8.getDescripcion(), c8.getFecha()};
+            modelo.addRow(fila);
         }
     }
 

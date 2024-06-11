@@ -93,7 +93,6 @@ public class BuscarFCT extends JPanel implements ComponentesGridBagLayout, Mostr
 
     public void mostrarTablaDatos() {
         modelo.setRowCount(0);
-
         try {
             for (C4 c4 : consultaCuatro((String)empresas.getSelectedItem(), (String)cursos.getSelectedItem())){
                 Object[] fila = new Object[]{c4.getIdGrupo(), c4.getNumAlumnos()};

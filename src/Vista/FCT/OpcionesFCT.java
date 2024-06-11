@@ -3,20 +3,30 @@ package Vista.FCT;
 import Controlador.MainPanelController;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
+import Vista.Trabajadores.BuscarEmpresaCurso;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class OpcionesFCT extends JPanel {
 
-    public static JButton gestionarFCT,buscarFCT;
+    public static JButton gestionarFCT,buscarFCT,btnbuscarPorEmpresaCurso;
     BuscarFCT buscarFCTApartado;
     GestionarFCT gestionarFCTApartado;
     GridBagConstraints constraints;
 
+    BuscarEmpresaCurso buscarEmpresaCursoApartado;
+
     public OpcionesFCT(){
 
         this.setLayout(new GridBagLayout());
+
+        try {
+            buscarEmpresaCursoApartado = new BuscarEmpresaCurso();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
@@ -32,6 +42,10 @@ public class OpcionesFCT extends JPanel {
         buscarFCT = Estilo.botonBonito(lenguaje.getProperty("btnBuscarFCT"));
         buscarFCT.addActionListener(e -> MainPanelController.nuevoPanelActivo(buscarFCTApartado));
 
+        btnbuscarPorEmpresaCurso = Estilo.botonBonito(lenguaje.getProperty("btnBuscarPorEmpresaCUrso"));
+        btnbuscarPorEmpresaCurso.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(buscarEmpresaCursoApartado);
+        });
         colocarComponentes();
     }
 
@@ -44,6 +58,10 @@ public class OpcionesFCT extends JPanel {
         constraints.gridx = 0;
         constraints.gridy = 1;
         add (buscarFCT, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        add (btnbuscarPorEmpresaCurso, constraints);
 
     }
 

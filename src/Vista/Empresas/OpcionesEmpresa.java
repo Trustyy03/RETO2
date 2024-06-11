@@ -10,7 +10,8 @@ import java.sql.SQLException;
 
 public class OpcionesEmpresa extends JPanel {
 
-    public static JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas,btnBuscarEmpresaPorTecnologia, btnIncidencias;
+    public static JButton gestionarEmpresa,buscarEmpresa,buscarEmpresaPorPracticas,btnBuscarEmpresaPorTecnologia, btnIncidencias
+            ,btnhistorialContactosPorEmpresa;
     BuscarEmpresa buscarEmpresaApartado;
     BuscarEmpresaPorPractica buscarEmpresaPorPracticaApartado;
     GestionarEmpresas gestionarEmpresasApartado;
@@ -18,6 +19,8 @@ public class OpcionesEmpresa extends JPanel {
     IncidenciasCurso incidenciasCursoApartado;
 
     GridBagConstraints constraints;
+
+    HistorialContactosEmpresa historialContactosEmpresaApartado;
 
     public OpcionesEmpresa(){
 
@@ -34,6 +37,7 @@ public class OpcionesEmpresa extends JPanel {
         gestionarEmpresasApartado = new GestionarEmpresas();
         buscarEmpresaPorTecnologiaApartado = new BuscarEmpresaPorTecnologia();
         incidenciasCursoApartado = new IncidenciasCurso();
+        historialContactosEmpresaApartado = new HistorialContactosEmpresa();
 
         constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -60,6 +64,11 @@ public class OpcionesEmpresa extends JPanel {
             MainPanelController.nuevoPanelActivo(incidenciasCursoApartado);
         });
 
+        btnhistorialContactosPorEmpresa = Estilo.botonBonito(lenguaje.getProperty("btnhistorialContactosPorEmpresa"));
+        btnhistorialContactosPorEmpresa.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(historialContactosEmpresaApartado);
+        });
+
         colocarComponentes();
     }
 
@@ -84,6 +93,10 @@ public class OpcionesEmpresa extends JPanel {
         constraints.gridx = 0;
         constraints.gridy = 4;
         add (btnIncidencias, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        add (btnhistorialContactosPorEmpresa, constraints);
 
     }
 }

@@ -129,8 +129,8 @@ class PanelPrincipal extends JPanel {
         OpcionesProfesores.gestionarProfesores.setText(lenguaje.getProperty("btnGestionarTutores"));
         OpcionesProfesores.buscarTutores.setText(lenguaje.getProperty("btnBuscarTutores"));
         OpcionesTrabajadores.btngestionarTrabajadores.setText(lenguaje.getProperty("btnGestionarTrabajadores"));
-        OpcionesTrabajadores.btnbuscarPorEmpresaCurso.setText(lenguaje.getProperty("btnBuscarPorEmpresaCUrso"));
-        OpcionesTrabajadores.btnhistorialContactosPorEmpresa.setText(lenguaje.getProperty("btnhistorialContactosPorEmpresa"));
+        OpcionesFCT.btnbuscarPorEmpresaCurso.setText(lenguaje.getProperty("btnBuscarPorEmpresaCUrso"));
+        OpcionesEmpresa.btnhistorialContactosPorEmpresa.setText(lenguaje.getProperty("btnhistorialContactosPorEmpresa"));
 
         GestionarEmpresas.btnBorrarEmpresa.setText(lenguaje.getProperty("btnBorrar"));
         GestionarEmpresas.btnGuardarEmpresa.setText(lenguaje.getProperty("btnGuardar"));

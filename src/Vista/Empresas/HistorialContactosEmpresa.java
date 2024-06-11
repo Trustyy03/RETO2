@@ -1,4 +1,4 @@
-package Vista.Trabajadores;
+package Vista.Empresas;
 
 import Modelo.Consultas.C8;
 import Vista.Estilo;

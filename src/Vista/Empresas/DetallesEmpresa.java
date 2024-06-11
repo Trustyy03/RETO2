@@ -1,17 +1,20 @@
 package Vista.Empresas;
 
+import Modelo.Consultas.OperacionesConsultas;
 import Modelo.Entidades.Empresa;
+import Modelo.Consultas.C1;
 import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class DetallesEmpresa extends JPanel {
 
-    public static JLabel cif, nombre, telefono, numEmpleados, sector, direccion;
-    public static JLabel rellenarCif, rellenarNombre, rellenarTelefono,
-            rellenarNumEmpleados, rellenarSector, rellenarDireccion;
+    public static JLabel nombreEmpresa, nombreTutor, nombreTrabajador, correoTrabajador, telefonoTrabajador;
+    public static JLabel rellenarNombreEmpresa, rellenarNombreTutor, rellenarNombreTrabajador,
+            rellenarCorreoTrabajador, rellenarTelefonoTrabajador;
     Empresa empresaSeleccionada;
 
     JLabel labelEmpresa;
@@ -22,6 +25,7 @@ public class DetallesEmpresa extends JPanel {
 
         this.setLayout(new BorderLayout());
         empresaSeleccionada =  BuscarEmpresa.getEmpresaSeleccionada();
+
 
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
@@ -37,27 +41,29 @@ public class DetallesEmpresa extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
 
 
-        cif = Estilo.textoBonito(lenguaje.getProperty("cif"));
-        rellenarCif = Estilo.textoBonitoInfo("");
-        nombre = Estilo.textoBonito(lenguaje.getProperty("nombreEmpresa"));
-        rellenarNombre = Estilo.textoBonitoInfo("");
-        telefono = Estilo.textoBonito(lenguaje.getProperty("telefonoEmpresa"));
-        rellenarTelefono = Estilo.textoBonitoInfo("");
-        numEmpleados = Estilo.textoBonito(lenguaje.getProperty("numEmpleadoEmpresa"));
-        rellenarNumEmpleados = Estilo.textoBonitoInfo("");
-        sector = Estilo.textoBonito(lenguaje.getProperty("sectorEmpresa"));
-        rellenarSector = Estilo.textoBonitoInfo("");
-        direccion = Estilo.textoBonito(lenguaje.getProperty("direccionEmpresa"));
-        rellenarDireccion = Estilo.textoBonitoInfo("");
+        nombreEmpresa = Estilo.textoBonito(lenguaje.getProperty("nombreEmpresa"));
+        rellenarNombreEmpresa = Estilo.textoBonitoInfo("");
+        nombreTutor = Estilo.textoBonito(lenguaje.getProperty("nombreTutor"));
+        rellenarNombreTutor = Estilo.textoBonitoInfo("");
+        nombreTrabajador = Estilo.textoBonito(lenguaje.getProperty("nombreTrabajador"));
+        rellenarNombreTrabajador = Estilo.textoBonitoInfo("");
+        correoTrabajador = Estilo.textoBonito(lenguaje.getProperty("correoTrabajador"));
+        rellenarCorreoTrabajador = Estilo.textoBonitoInfo("");
+        telefonoTrabajador = Estilo.textoBonito(lenguaje.getProperty("telefonoTrabajador"));
+        rellenarTelefonoTrabajador = Estilo.textoBonitoInfo("");
 
-        configurarCoordenadas(panelCentral, gbc, cif, rellenarCif, 0);
-        configurarCoordenadas(panelCentral, gbc, nombre, rellenarNombre, 1);
-        configurarCoordenadas(panelCentral, gbc, telefono, rellenarTelefono, 2);
-        configurarCoordenadas(panelCentral, gbc, numEmpleados, rellenarNumEmpleados, 3);
-        configurarCoordenadas(panelCentral, gbc, sector, rellenarSector, 4);
-        configurarCoordenadas(panelCentral, gbc, direccion, rellenarDireccion, 5);
+        configurarCoordenadas(panelCentral, gbc, nombreEmpresa, rellenarNombreEmpresa, 0);
+        configurarCoordenadas(panelCentral, gbc, nombreTutor, rellenarNombreTutor, 1);
+        configurarCoordenadas(panelCentral, gbc, nombreTrabajador, rellenarNombreTrabajador, 2);
+        configurarCoordenadas(panelCentral, gbc, correoTrabajador, rellenarCorreoTrabajador, 3);
+        configurarCoordenadas(panelCentral, gbc, telefonoTrabajador, rellenarTelefonoTrabajador, 4);
 
-        rellenarDatos(empresaSeleccionada);
+        try {
+            C1 c1 = OperacionesConsultas.consultaUno(empresaSeleccionada.getNombre());
+            rellenarDatos(c1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
        add(panelNorte, BorderLayout.NORTH);
        add(panelCentral, BorderLayout.CENTER);
@@ -72,13 +78,12 @@ public class DetallesEmpresa extends JPanel {
         panel.add(label1, gbc);
     }
 
-    private static void rellenarDatos(Empresa empresa){
-        rellenarCif.setText(empresa.getCif());
-        rellenarNombre.setText(empresa.getNombre());
-        rellenarTelefono.setText(empresa.getTelefono());
-        rellenarNumEmpleados.setText(String.valueOf(empresa.getNumEmpleados()));
-        rellenarSector.setText(empresa.getSector());
-        rellenarDireccion.setText(empresa.getDireccion());
+    private static void rellenarDatos(C1 c1){
+        rellenarNombreEmpresa.setText(c1.getNombreEmpresa());
+        rellenarNombreTutor.setText(c1.getNombreTutor());
+        rellenarNombreTrabajador.setText(c1.getNombreTrabajador());
+        rellenarCorreoTrabajador.setText(c1.getCorreoTrabajador());
+        rellenarTelefonoTrabajador.setText(c1.getTelefonoTrabajador());
     }
 
 

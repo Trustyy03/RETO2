@@ -27,19 +27,19 @@ public class InicioSesion extends JPanel {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(10,10,10,10);
 
-        ipLabel = Estilo.textoBonito(lenguaje.getProperty("ipTexto"));
+        ipLabel = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("ipTexto"));
         ipTextField = Estilo.textFieldBonito(10);
 
-        puertoLabel = Estilo.textoBonito(lenguaje.getProperty("puertoTexto"));
+        puertoLabel = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("puertoTexto"));
         puertoTextField = Estilo.textFieldBonito(10);
 
-        nombreBaseDatosLabel = Estilo.textoBonito(lenguaje.getProperty("baseDatosTexto"));
+        nombreBaseDatosLabel = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("baseDatosTexto"));
         nombreBaseDatosField = Estilo.textFieldBonito(10);
 
-        usuario = Estilo.textoBonito(lenguaje.getProperty("usuarioInicio"));
+        usuario = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("usuarioInicio"));
         rellenarUsuario = Estilo.textFieldBonito(20);
 
-        contrasenya = Estilo.textoBonito(lenguaje.getProperty("contrasenyaInico"));
+        contrasenya = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("contrasenyaInico"));
         rellenarContrasenya = Estilo.textFieldBonito(20);
 
         entrar = Estilo.botonBonito(lenguaje.getProperty("entrarInicio"));

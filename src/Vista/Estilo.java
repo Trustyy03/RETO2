@@ -31,14 +31,29 @@ public class Estilo {
         return button;
     }
 
-    public static JLabel textoBonito(String text){
+    public static JLabel textoBonitoInicioSesion(String text){
         JLabel label = new JLabel(text);
 
         label.setOpaque(true);
         label.setForeground(Color.BLACK);
 
         label.setFont(new Font("Arial", Font.BOLD, 25));
-        label.setBackground(new Color(123, 177, 220));
+        label.setVisible(true);
+
+        label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+
+        return label;
+    }
+
+    public static JLabel textoBonito(String text){
+        JLabel label = new JLabel(text);
+
+        label.setOpaque(true);
+        label.setForeground(Color.BLACK);
+        label.setBackground(new Color(118, 179, 231));
+
+        label.setFont(new Font("Arial", Font.BOLD, 25));
         label.setVisible(true);
 
         label.setHorizontalAlignment(SwingConstants.LEFT);
@@ -52,6 +67,8 @@ public class Estilo {
 
         label.setOpaque(true);
         label.setForeground(Color.BLACK);
+        label.setBackground(Color.WHITE);
+        label.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         label.setFont(new Font("Arial", Font.BOLD, 25));
         label.setVisible(true);

@@ -12,9 +12,7 @@ public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLay
     JTable datosFCT;
     public static DefaultTableModel modelo;
 
-
     public ListaDeTrabajadores() {
-
         setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
@@ -28,12 +26,14 @@ public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLay
 
     @Override
     public void colocarComponentes() {
-        JScrollPane scrollPane = new JScrollPane();
-
+        JScrollPane scrollPane = new JScrollPane(datosFCT);
         constraints.gridx = 0;
         constraints.gridy = 0;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.weightx = 1.0;
+        constraints.weighty = 1.0;
         constraints.fill = GridBagConstraints.BOTH;
-        scrollPane.add(datosFCT);
         add(scrollPane, constraints);
     }
 }

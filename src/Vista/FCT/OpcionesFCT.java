@@ -28,13 +28,9 @@ public class OpcionesFCT extends JPanel {
         constraints.insets = new Insets(10,10,10,10);
 
         gestionarFCT = Estilo.botonBonito(lenguaje.getProperty("btnGestionarFCT"));
-        gestionarFCT.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(gestionarFCTApartado);
-        });
+        gestionarFCT.addActionListener(e -> MainPanelController.nuevoPanelActivo(gestionarFCTApartado));
         buscarFCT = Estilo.botonBonito(lenguaje.getProperty("btnBuscarFCT"));
-        buscarFCT.addActionListener(e -> {
-            MainPanelController.nuevoPanelActivo(buscarFCTApartado);
-        });
+        buscarFCT.addActionListener(e -> MainPanelController.nuevoPanelActivo(buscarFCTApartado));
 
         colocarComponentes();
     }

@@ -1,16 +1,12 @@
 package Vista.Empresas;
 
-import Modelo.Consultas.C4;
 import Modelo.Consultas.C7;
-import Modelo.Entidades.Empresa;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.SQLException;
 
 import static Modelo.Consultas.ConsultasSimples.consultarTecnologias;
-import static Modelo.Consultas.OperacionesConsultas.consultaCuatro;
 import static Modelo.Consultas.OperacionesConsultas.consultaSiete;
 
 public class BuscarEmpresaPorTecnologia extends JPanel {

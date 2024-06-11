@@ -1,12 +1,9 @@
 package Vista.FCT;
 
 import Modelo.Consultas.C4;
-import Modelo.Entidades.Empresa;
-import Modelo.Entidades.FCT;
 import Vista.ComponentesGridBagLayout;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.SQLException;

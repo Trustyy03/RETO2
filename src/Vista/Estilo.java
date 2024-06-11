@@ -38,6 +38,7 @@ public class Estilo {
         label.setForeground(Color.BLACK);
 
         label.setFont(new Font("Arial", Font.BOLD, 25));
+        label.setBackground(new Color(123, 177, 220));
         label.setVisible(true);
 
         label.setHorizontalAlignment(SwingConstants.LEFT);
@@ -51,7 +52,6 @@ public class Estilo {
 
         label.setOpaque(true);
         label.setForeground(Color.BLACK);
-        label.setBackground(new Color(70, 130, 180));
 
         label.setFont(new Font("Arial", Font.BOLD, 25));
         label.setVisible(true);

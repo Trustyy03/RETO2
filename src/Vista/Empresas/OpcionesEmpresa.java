@@ -15,6 +15,7 @@ public class OpcionesEmpresa extends JPanel {
     BuscarEmpresaPorPractica buscarEmpresaPorPracticaApartado;
     GestionarEmpresas gestionarEmpresasApartado;
     BuscarEmpresaPorTecnologia buscarEmpresaPorTecnologiaApartado;
+    IncidenciasCurso incidenciasCursoApartado;
 
     GridBagConstraints constraints;
 
@@ -32,6 +33,7 @@ public class OpcionesEmpresa extends JPanel {
         }
         gestionarEmpresasApartado = new GestionarEmpresas();
         buscarEmpresaPorTecnologiaApartado = new BuscarEmpresaPorTecnologia();
+        incidenciasCursoApartado = new IncidenciasCurso();
 
         constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -52,6 +54,10 @@ public class OpcionesEmpresa extends JPanel {
         btnBuscarEmpresaPorTecnologia = Estilo.botonBonito(lenguaje.getProperty("btnEmpresasPorTecnologia"));
         btnBuscarEmpresaPorTecnologia.addActionListener(e -> {
             MainPanelController.nuevoPanelActivo(buscarEmpresaPorTecnologiaApartado);
+        });
+        btnIncidencias = Estilo.botonBonito(lenguaje.getProperty("btnIncidencias"));
+        btnIncidencias.addActionListener(e -> {
+            MainPanelController.nuevoPanelActivo(incidenciasCursoApartado);
         });
 
         colocarComponentes();
@@ -74,6 +80,10 @@ public class OpcionesEmpresa extends JPanel {
         constraints.gridx = 0;
         constraints.gridy = 3;
         add (btnBuscarEmpresaPorTecnologia, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        add (btnIncidencias, constraints);
 
     }
 }

@@ -1,6 +1,7 @@
 package Vista.Empresas;
 
 import Modelo.Consultas.C7;
+import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -9,7 +10,7 @@ import java.awt.*;
 import static Modelo.Consultas.ConsultasSimples.consultarTecnologias;
 import static Modelo.Consultas.OperacionesConsultas.consultaSiete;
 
-public class BuscarEmpresaPorTecnologia extends JPanel {
+public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTablas {
 
     JComboBox<String> tecnologias;
     JTable empresaPorTecnologia;

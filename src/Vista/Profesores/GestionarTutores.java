@@ -19,7 +19,7 @@ public class GestionarTutores extends JPanel {
 
     public static JButton btnGuardarTutor, btnBorrarTutor, btnAgregarTutor;
 
-    public static JComboBox<Tutor> CBlistadoTutores = new JComboBox<>();
+    public static JComboBox<Tutor> CBlistadoTutores = Estilo.estiloComboBox();
 
     static Tutor tutorSeleccionada,tutorNuevo;
 

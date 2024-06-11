@@ -11,8 +11,8 @@ public class ListaDeTrabajadores extends JPanel {
     public ListaDeTrabajadores() {
         setLayout(new BorderLayout());
 
-        trabajadores = new JList<>();
-        add(trabajadores, BorderLayout.CENTER);
+        //trabajadores = new JTable<>();
+        //add(trabajadores, BorderLayout.CENTER);
 
     }
 

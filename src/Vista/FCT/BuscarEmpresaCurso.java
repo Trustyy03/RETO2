@@ -19,7 +19,7 @@ import static Modelo.Consultas.OperacionesConsultas.consultaSeis;
 public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayout, MostrarDatosTablas {
 
     JLabel labelEmpresa;
-    public static JComboBox<Empresa> CBListadoEmpresas = new JComboBox<>();
+    public static JComboBox<Empresa> CBListadoEmpresas = Estilo.estiloComboBox();
     JLabel labelCiclo;
     JComboBox<String> ciclo;
     JLabel labelCurso;
@@ -42,18 +42,18 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
         //CBListadoEmpresas.getSelectedItem();
 
         labelCiclo = Estilo.textoBonitoInicioSesion("CICLO");
-        ciclo = new JComboBox<>();
+        ciclo = Estilo.estiloComboBox();
         for (String cicloh : consultarCiclos()) {
             ciclo.addItem(cicloh);
         }
 
         labelCurso = Estilo.textoBonitoInicioSesion("CURSO");
-        cursoEscolar = new JComboBox<>();
+        cursoEscolar = Estilo.estiloComboBox();
         for (String curso : consultarCursos()) {
             cursoEscolar.addItem(curso);
         }
 
-        botonListaTrabajadores = new JButton("LISTA DE TRABAJADORES POR EMPRESA / CICLO");
+        botonListaTrabajadores = Estilo.botonBonito("LISTA DE TRABAJADORES POR EMPRESA / CICLO");
         botonListaTrabajadores.addActionListener(e ->
                 MainPanelController.nuevoPanelActivo(listaDeTrabajadores)
         );

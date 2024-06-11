@@ -21,7 +21,7 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
         curso = Estilo.estiloComboBox();
         cargarCursos();
 
-        String[] nombresCampos = new String[]{"ID Incidencia", "CIF Empresa","Curso","Descripción"};
+        String[] nombresCampos = new String[]{"ID Incidencia", "CIF Empresa","Descripción","Nombre Empresa"};
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         incidenciasPorCurso = new JTable(modelo);

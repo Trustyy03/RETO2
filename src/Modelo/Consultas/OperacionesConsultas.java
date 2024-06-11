@@ -69,15 +69,15 @@ public class OperacionesConsultas {
     public static ArrayList<C3> consultaTres(String grupo, String cursoEscolar) throws SQLException {
         ArrayList<C3> listaResultados = new ArrayList<>();
 
-        String sql = "SELECT g.idGrupo, CONCAT(t.Nombre, ' ', t.Apellidos) AS nombreTutor, e.Nombre AS nombreEmpresa, COUNT(*) AS NumPracticas\n" +
+        String sql = "SELECT g.idCiclo, g.idGrupo, CONCAT(t.Nombre, ' ', t.Apellidos) AS nombreTutor, e.Nombre AS nombreEmpresa, COUNT(*) AS NumPracticas\n" +
                 "FROM GRUPO g\n" +
                 "INNER JOIN GRUPO_FCT_EMPRESA gfe ON g.idGrupo = gfe.idGrupo\n" +
                 "INNER JOIN EMPRESA e ON gfe.CIF = e.CIF\n" +
                 "INNER JOIN TUTOR_RESPONSABLE_GRUPO trg ON g.idGrupo = trg.idGrupo\n" +
                 "INNER JOIN TUTOR_FCT t ON trg.idTutor = t.idTutor\n" +
-                "WHERE g.idGrupo = ?\n" + // ej. 2CFSF
-                "AND gfe.cursoEscolar = ?\n" + // ej. 23-24
-                "GROUP BY g.idGrupo, t.Nombre, t.Apellidos, e.Nombre;";
+                "WHERE g.idGrupo = ?\n" +
+                "AND gfe.cursoEscolar = ?\n" +
+                "GROUP BY g.idCiclo, g.idGrupo, t.Nombre, t.Apellidos, e.Nombre;";
 
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, grupo);
@@ -87,7 +87,7 @@ public class OperacionesConsultas {
 
 
         while (rs.next()) {
-            C3 consulta3 = new C3(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+            C3 consulta3 = new C3(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
             listaResultados.add(consulta3);
         }
 
@@ -123,47 +123,58 @@ public class OperacionesConsultas {
         return listaResultados;
     }
 
-    public static void consultaCinco(String cursoEscolar) throws SQLException {
-        String sql = "SELECT *\n" +
-                "FROM INCIDENCIA\n" +
+    public static ArrayList<C5> consultaCinco(String cursoEscolar) {
+        ArrayList<C5> listaResultados = new ArrayList<>();
+
+        String sql = "SELECT i.idIncidencia, i.CIF, e.nombre, i.descripcion\n" +
+                "FROM INCIDENCIA i\n" +
+                "JOIN EMPRESA e using(CIF)\n" +
                 "WHERE cursoEscolar = ?;"; // ej. '23-24'
 
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setString(1, cursoEscolar);
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, cursoEscolar);
+            ResultSet rs = pst.executeQuery();
 
-        ResultSet rs = pst.executeQuery();
-
-        while (rs.next()) {
-            C5 consulta5 = new C5(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
-            System.out.println(consulta5.toString());
+            while (rs.next()) {
+                C5 consulta5 = new C5(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                listaResultados.add(consulta5);
+            }
+            pst.close();
+            rs.close();
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
         }
 
-        pst.close();
-        rs.close();
+        return listaResultados;
     }
 
-    public static void consultaSeis(String nombreEmpresa, String idCiclo) throws SQLException {
-        String sql = "SELECT e.nombre as 'nombreEmpresa', enc.cantidadAlumnos, c.idCiclo \n" +
-                "FROM CICLO c \n" +
+    public static ArrayList<C6> consultaSeis(String nombreEmpresa, String idCiclo, String cursoEscolar) throws SQLException {
+        ArrayList<C6> listaResultados = new ArrayList<>();
+        String sql = "SELECT e.CIF, e.nombre as 'nombreEmpresa', enc.cantidadAlumnos, c.idCiclo\n" +
+                "FROM CICLO c\n" +
                 "INNER JOIN EMPRESA_NECESITA_CICLO enc using(idCiclo)\n" +
                 "INNER JOIN EMPRESA e using(CIF)\n" +
-                "WHERE e.nombre = ?\n" + // ej. 'IT Solutions Group'
-                "AND enc.idCiclo = ?\n" + // ej. '1ADFI'
-                "AND enc.cursoEscolar = '23-24';";
+                "WHERE e.nombre = ?\n" +
+                "AND enc.idCiclo = ?\n" +
+                "AND enc.cursoEscolar = ?;";
 
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, nombreEmpresa);
         pst.setString(2, idCiclo);
+        pst.setString(3, cursoEscolar);
 
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
-            C6 consulta6 = new C6(rs.getString(1), rs.getInt(2), rs.getString(3));
-            System.out.println(consulta6.toString());
+            C6 consulta6 = new C6(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+            listaResultados.add(consulta6);
         }
 
         pst.close();
         rs.close();
+
+        return listaResultados;
     }
 
     public static ArrayList<C7> consultaSiete(String tecnologia) {

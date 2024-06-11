@@ -120,4 +120,6 @@ public class ConsultasSimples {
         return tecnologias;
     }
 
+
+
 }

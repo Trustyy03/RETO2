@@ -27,12 +27,11 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
     JButton botonListaTrabajadores;
     GridBagConstraints constraints;
     ListaDeTrabajadores listaDeTrabajadores;
-    DefaultTableModel modelo;
+
 
     public BuscarEmpresaCurso() throws SQLException {
         setLayout(new GridBagLayout());
 
-        listaDeTrabajadores = new ListaDeTrabajadores();
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
@@ -54,9 +53,11 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
         }
 
         botonListaTrabajadores = Estilo.botonBonito("LISTA DE TRABAJADORES POR EMPRESA / CICLO");
-        botonListaTrabajadores.addActionListener(e ->
-                MainPanelController.nuevoPanelActivo(listaDeTrabajadores)
-        );
+        botonListaTrabajadores.addActionListener(e -> {
+            listaDeTrabajadores = new ListaDeTrabajadores();
+            mostrarTablaDatos();
+            MainPanelController.nuevoPanelActivo(listaDeTrabajadores);
+        });
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
@@ -99,12 +100,12 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
 
     @Override
     public void mostrarTablaDatos() {
-        modelo.setRowCount(0);
-
+        ListaDeTrabajadores.modelo.setRowCount(0);
+        Empresa empresa = (Empresa) CBListadoEmpresas.getSelectedItem();
         try {
-            for (C6 c6 : consultaSeis((String)CBListadoEmpresas.getSelectedItem(), (String)ciclo.getSelectedItem(), (String)cursoEscolar.getSelectedItem())) {
+            for (C6 c6 : consultaSeis(empresa.getNombre(), (String)ciclo.getSelectedItem(), (String)cursoEscolar.getSelectedItem())) {
                 Object[] fila = new Object[]{c6.getNombreEmpresa(), c6.getCantidadAlumnos(), c6.getIdCiclo()};
-                modelo.addRow(fila);
+                ListaDeTrabajadores.modelo.addRow(fila);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -10,10 +10,11 @@ public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLay
 
     GridBagConstraints constraints;
     JTable datosFCT;
-    DefaultTableModel modelo;
+    public static DefaultTableModel modelo;
 
 
     public ListaDeTrabajadores() {
+
         setLayout(new BorderLayout());
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
@@ -23,13 +24,11 @@ public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLay
         modelo.setColumnIdentifiers(nombresCampos);
         datosFCT = new JTable(modelo);
         colocarComponentes();
-
-
     }
-
 
     @Override
     public void colocarComponentes() {
+
 
     }
 }

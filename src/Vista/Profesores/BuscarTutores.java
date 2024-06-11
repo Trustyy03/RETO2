@@ -4,6 +4,7 @@ import Modelo.Consultas.C3;
 import Modelo.Consultas.C4;
 import Modelo.Consultas.ConsultasSimples;
 import Vista.ComponentesGridBagLayout;
+import Vista.Estilo;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -29,10 +30,10 @@ public class BuscarTutores extends JPanel implements ComponentesGridBagLayout, M
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        grupoLabel = new JLabel("GRUPO:");
-        cursoLabel = new JLabel("CURSO:");
-        grupos = new JComboBox<>();
-        cursos = new JComboBox<>();
+        grupoLabel = Estilo.textoBonitoInicioSesion("GRUPO:");
+        cursoLabel = Estilo.textoBonitoInicioSesion("CURSO:");
+        grupos = Estilo.estiloComboBox();
+        cursos = Estilo.estiloComboBox();
         insertarDatosJComboBoxes();
 
 

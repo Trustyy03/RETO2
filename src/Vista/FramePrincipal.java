@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.*;
+import Modelo.ConexionBDD;
 import Vista.Empresas.*;
 import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
@@ -13,6 +14,7 @@ import java.awt.*;
 public class FramePrincipal extends JFrame{
 
     public static void main(String[] args) {
+        ConexionBDD.ConfigurarConnection();
         EmpresaController.inicializarEmpresas();
         FCTController.inicializarFCT();
         TrabajadorController.inicializarTrabajadores();

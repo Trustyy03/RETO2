@@ -1,5 +1,9 @@
 package Modelo;
 
+import java.io.*;
+import java.lang.reflect.Field;
+import java.util.Properties;
+
 /**
  * @see <a href="https://stackoverflow.com/questions/6567839/if-i-use-a-singleton-class-for-a-database-connection-can-one-user-close-the-con">Stackoverflow Singleton</a>
  * Patron Singleton
@@ -26,9 +30,50 @@ public class ConexionBDD{
     private static ConexionBDD dbInstance; //Variable para almacenar la unica instancia de la clase
     private static java.sql.Connection con;
 
+    private static  String host = "";
+    private static String username = "";
+    private static String password= "";
+
 
     private ConexionBDD() {
         // El Constructor es privado!!
+    }
+
+    public static void ConfigurarConnection(){
+        Properties properties = new Properties();
+        File file = new File("src/Modelo/connection.config");
+        try {InputStream input = new FileInputStream(file);
+            properties.load(input);
+            setHost(properties.getProperty("database.host"));
+            setUsername(properties.getProperty("database.username"));
+            setPassword(properties.getProperty("database.password"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void setPassword(String password) {
+        ConexionBDD.password = password;
+    }
+
+    public static String getHost() {
+        return host;
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    private static void setUsername(String username) {
+        ConexionBDD.username = username;
+    }
+
+    private static void setHost(String host) {
+        ConexionBDD.host = host;
     }
 
     public static ConexionBDD getInstance(){
@@ -43,9 +88,9 @@ public class ConexionBDD{
 
         if(con==null){
             try {
-                String host = "jdbc:mysql://192.168.203.110:33060/gestion_fct2";
-                String username = "Administrador";
-                String password = "Virtual01";
+                String host = getHost();
+                String username = getUsername();
+                String password = getPassword();
                 con = java.sql.DriverManager.getConnection( host, username, password );
                 System.out.println("Conexión realizada");
             } catch (java.sql.SQLException ex) {

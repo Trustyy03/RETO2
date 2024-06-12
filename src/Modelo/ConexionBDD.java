@@ -52,7 +52,6 @@ public class ConexionBDD{
                 System.out.println("Se ha producido un error al conectar: " + ex.getMessage());
             }
         }
-
         return con;
     }
 }

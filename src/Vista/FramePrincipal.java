@@ -35,7 +35,7 @@ public FramePrincipal(){ //se inicia el Frame, donde empezará todo
 
 class PanelPrincipal extends JPanel {
     JPanel centerPanel = new JPanel(); //es el panel que recibira cambios
-    InicioSesion inicioSesionPanel; //el panel donde estará la interfaz de inicio de sesión
+    OpcionesPanel opcionesPanel;
     JMenuBar menuBar;
     JButton btnAtras;
     static JLabel nombreUsuario;
@@ -48,7 +48,7 @@ class PanelPrincipal extends JPanel {
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
         this.setLayout(new BorderLayout());
 
-        inicioSesionPanel = new InicioSesion(framePrincipal);
+        opcionesPanel = new OpcionesPanel();
 
         btnAtras = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnAtras"));
         btnInicio = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnInicio"));
@@ -57,7 +57,7 @@ class PanelPrincipal extends JPanel {
         menuLeng = Estilo.menuBonito(lenguaje.getProperty("menuLeng"));
         itemEsp = Estilo.menuItemBonito(lenguaje.getProperty("itemEsp"));
         itemEngl = Estilo.menuItemBonito(lenguaje.getProperty("itemEngl"));
-        mainPanelController = new MainPanelController(centerPanel, inicioSesionPanel);
+        mainPanelController = new MainPanelController(centerPanel, opcionesPanel);
 
         JPanel northPanel = new JPanel(new BorderLayout());
         northPanel.setPreferredSize(new Dimension(800, 50));
@@ -78,7 +78,7 @@ class PanelPrincipal extends JPanel {
         add(northPanel, BorderLayout.NORTH);
 
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-        centerPanel.add(inicioSesionPanel);
+        centerPanel.add(opcionesPanel);
 
         add(centerPanel, BorderLayout.CENTER);
 
@@ -87,19 +87,8 @@ class PanelPrincipal extends JPanel {
         btnInicio.addActionListener(e -> {
             MainPanelController.volverInicio();
             nombreUsuario.setText("I");
-            InicioSesion.rellenarUsuario.setText("");
-            InicioSesion.rellenarContrasenya.setText("");
-            InicioSesion.puertoTextField.setText("");
-            InicioSesion.ipTextField.setText("");
-            InicioSesion.nombreBaseDatosField.setText("");
         });
-        btnAtras.addActionListener(e ->{ MainPanelController.antiguoPanel();
-            InicioSesion.rellenarUsuario.setText("");
-            InicioSesion.rellenarContrasenya.setText("");
-            InicioSesion.puertoTextField.setText("");
-            InicioSesion.ipTextField.setText("");
-            InicioSesion.nombreBaseDatosField.setText("");
-        });
+        btnAtras.addActionListener(e ->{ MainPanelController.antiguoPanel();});
     }
 
     public void cambiarLenguaje(int newLang) {

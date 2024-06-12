@@ -55,25 +55,24 @@ public class ConexionBDD{
     private static void setPassword(String password) {
         ConexionBDD.password = password;
     }
-
-    public static String getHost() {
-        return host;
-    }
-
-    public static String getUsername() {
-        return username;
-    }
-
     public static String getPassword() {
         return password;
     }
 
+
     private static void setUsername(String username) {
         ConexionBDD.username = username;
     }
+    public static String getUsername() {
+        return username;
+    }
+
 
     private static void setHost(String host) {
         ConexionBDD.host = host;
+    }
+    public static String getHost() {
+        return host;
     }
 
     public static ConexionBDD getInstance(){

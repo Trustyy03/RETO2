@@ -1,6 +1,6 @@
 package Vista.Empresas;
 
-import Modelo.Consultas.C8;
+import Modelo.Consultas.Consulta8;
 import Modelo.Entidades.Empresa;
 import Vista.Estilo;
 
@@ -44,7 +44,7 @@ public class HistorialContactosEmpresa extends JPanel {
         modelo.setRowCount(0);
         Empresa empresa = (Empresa) CBListadoEmpresas.getSelectedItem();
 
-        for (C8 c8 : consultaOcho(empresa.getNombre())){
+        for (Consulta8 c8 : consultaOcho(empresa.getNombre())){
             Object[] fila = new Object[]{c8.getNombreEmpresa(), c8.getNombreTutor(), c8.getDescripcion(), c8.getFecha()};
             modelo.addRow(fila);
         }

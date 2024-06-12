@@ -12,7 +12,9 @@ public class OperacionesConsultas {
 
     static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
-    public static Consulta1 consultaUno(String nombreEmpresa) throws SQLException {
+    public static ArrayList<Consulta1> consultaUno(String nombreEmpresa) throws SQLException {
+        ArrayList<Consulta1> listaResultados = new ArrayList<>();
+
         String sql = "SELECT e.nombre, CONCAT(t.nombre, ' ', t.apellidos) as nombre_tutor, CONCAT(ti.nombre, ' ', ti.apellidos) as nombre_trabajador, ti.correo, ti.telefono\n" +
                 "FROM EMPRESA e\n" +
                 "INNER JOIN TUTOR_RESPONSABLE_EMPRESA tre on e.CIF = tre.CIF\n" +
@@ -25,14 +27,15 @@ public class OperacionesConsultas {
 
         ResultSet rs = pst.executeQuery();
 
-        Consulta1 consulta1 = null;
+
         while (rs.next()) {
-            consulta1 = new Consulta1(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            Consulta1 consulta1 = new Consulta1(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            listaResultados.add(consulta1);
         }
 
         pst.close();
         rs.close();
-        return consulta1;
+        return listaResultados;
     }
 
     public static ArrayList<Consulta2> consultaDos(String ciclo, String cursoEscolar) throws SQLException {

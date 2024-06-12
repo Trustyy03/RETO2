@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
+import static Modelo.Consultas.OperacionesConsultas.consultaUno;
+
 public class DetallesEmpresa extends JPanel {
 
     public static JLabel nombreEmpresa, nombreTutor, nombreTrabajador, correoTrabajador, telefonoTrabajador;
@@ -57,8 +59,8 @@ public class DetallesEmpresa extends JPanel {
         configurarCoordenadas(panelCentral, gbc, telefonoTrabajador, rellenarTelefonoTrabajador, 4);
 
         try {
-            Consulta1 consulta1 = OperacionesConsultas.consultaUno(empresaSeleccionada.getNombre());
-            rellenarDatos(consulta1);
+            for (Consulta1 c1 : consultaUno(empresaSeleccionada.getNombre()))
+            rellenarDatos(c1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

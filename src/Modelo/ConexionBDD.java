@@ -26,6 +26,7 @@ public class ConexionBDD{
     private static ConexionBDD dbInstance; //Variable para almacenar la unica instancia de la clase
     private static java.sql.Connection con;
 
+
     private ConexionBDD() {
         // El Constructor es privado!!
     }

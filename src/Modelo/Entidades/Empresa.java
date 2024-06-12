@@ -6,7 +6,6 @@ public class Empresa {
     private String telefono;
     private int numEmpleados;
     private String sector;
-
     private String direccion;
     public Empresa(String cif, String nombre, String telefono, int numEmpleados, String sector,String direccion) {
         this.cif = cif;

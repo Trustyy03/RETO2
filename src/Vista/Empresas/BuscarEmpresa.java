@@ -2,7 +2,6 @@ package Vista.Empresas;
 
 import Controlador.EmpresaController;
 import Controlador.MainPanelController;
-import Modelo.Consultas.OperacionesConsultas;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
 import Vista.Estilo;

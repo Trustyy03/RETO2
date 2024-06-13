@@ -5,6 +5,7 @@ import Modelo.Consultas.Consulta6;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
 import Vista.Estilo;
+import Vista.Idioma.Lenguaje;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -17,39 +18,38 @@ import static Modelo.Consultas.OperacionesConsultas.consultaSeis;
 
 public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayout, MostrarDatosTablas {
 
-    JLabel labelEmpresa;
+    public static JLabel labelEmpresa,labelCiclo,labelCurso;
     public static JComboBox<Empresa> CBListadoEmpresas = Estilo.estiloComboBox();
-    JLabel labelCiclo;
     JComboBox<String> ciclo;
-    JLabel labelCurso;
     JComboBox<String> cursoEscolar;
-    JButton botonListaTrabajadores;
+    public static JButton botonListaTrabajadores;
     GridBagConstraints constraints;
     ListaDeTrabajadores listaDeTrabajadores;
 
 
     public BuscarEmpresaCurso() throws SQLException {
         setLayout(new GridBagLayout());
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        labelEmpresa = Estilo.textoBonitoInicioSesion("EMPRESA");
+        labelEmpresa = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("labelEmpresa"));
 
-        labelCiclo = Estilo.textoBonitoInicioSesion("CICLO");
+        labelCiclo = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("labelCiclo"));
         ciclo = Estilo.estiloComboBox();
         for (String cicloh : consultarCiclos()) {
             ciclo.addItem(cicloh);
         }
 
-        labelCurso = Estilo.textoBonitoInicioSesion("CURSO");
+        labelCurso = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("labelCurso"));
         cursoEscolar = Estilo.estiloComboBox();
         for (String curso : consultarCursos()) {
             cursoEscolar.addItem(curso);
         }
 
-        botonListaTrabajadores = Estilo.botonBonito("LISTA DE TRABAJADORES POR EMPRESA / CICLO");
+        botonListaTrabajadores = Estilo.botonBonito(lenguaje.getProperty("botonListaTrabajadores"));
         botonListaTrabajadores.addActionListener(e -> {
             listaDeTrabajadores = new ListaDeTrabajadores();
             mostrarTablaDatos();

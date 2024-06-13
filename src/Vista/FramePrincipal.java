@@ -3,6 +3,8 @@ package Vista;
 import Controlador.*;
 import Modelo.ConexionBDD;
 import Vista.Empresas.*;
+import Vista.FCT.BuscarEmpresaCurso;
+import Vista.FCT.BuscarFCT;
 import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
 import Vista.Profesores.OpcionesProfesores;
@@ -145,13 +147,16 @@ class PanelPrincipal extends JPanel {
         BuscarEmpresa.labelEmpresa.setText(lenguaje.getProperty("labelEmpresa"));
         BuscarEmpresa.botonEnviar.setText(lenguaje.getProperty("btnEnviar"));
 
-        DetallesEmpresa.nombreEmpresa.setText(lenguaje.getProperty("nombreEmpresa"));
-        DetallesEmpresa.nombreTutor.setText(lenguaje.getProperty("nombreTutor"));
-        DetallesEmpresa.nombreTrabajador.setText(lenguaje.getProperty("nombreTrabajador"));
-        DetallesEmpresa.correoTrabajador.setText(lenguaje.getProperty("correoTrabajador"));
-        DetallesEmpresa.telefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
-        DetallesEmpresa.labelEmpresa.setText(lenguaje.getProperty("cartelInfoEmpresa"));
+        try {
+            DetallesEmpresa.nombreEmpresa.setText(lenguaje.getProperty("nombreEmpresa"));
+            DetallesEmpresa.nombreTutor.setText(lenguaje.getProperty("nombreTutor"));
+            DetallesEmpresa.nombreTrabajador.setText(lenguaje.getProperty("nombreTrabajador"));
+            DetallesEmpresa.correoTrabajador.setText(lenguaje.getProperty("correoTrabajador"));
+            DetallesEmpresa.telefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
+            DetallesEmpresa.labelEmpresa.setText(lenguaje.getProperty("cartelInfoEmpresa"));
+        }catch (NullPointerException e){
 
+        }
         BuscarEmpresaPorPractica.labelCiclo.setText(lenguaje.getProperty("labelCiclo"));
         BuscarEmpresaPorPractica.labelCurso.setText(lenguaje.getProperty("labelCurso"));
         BuscarEmpresaPorPractica.botonListaEmpresas.setText(lenguaje.getProperty("botonListaEmpresas"));
@@ -159,8 +164,17 @@ class PanelPrincipal extends JPanel {
         BuscarEmpresaPorTecnologia.nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
         BuscarEmpresaPorTecnologia.cifEmpresa = lenguaje.getProperty("cifEmpresa");
 
-
         ListaDeEmpresasConPracticas.ciclo = lenguaje.getProperty("ciclo");
+
+
+        BuscarFCT.labelCurso.setText(lenguaje.getProperty("labelCurso"));
+        BuscarFCT.labelEmpresa.setText(lenguaje.getProperty("labelEmpresa"));
+
+        BuscarEmpresaCurso.labelCurso.setText(lenguaje.getProperty("labelCurso"));
+        BuscarEmpresaCurso.labelCiclo.setText(lenguaje.getProperty("labelCiclo"));
+        BuscarEmpresaCurso.labelEmpresa.setText(lenguaje.getProperty("labelEmpresa"));
+        BuscarEmpresaCurso.botonListaTrabajadores.setText(lenguaje.getProperty("botonListaTrabajadores"));
+
 
     }
 }

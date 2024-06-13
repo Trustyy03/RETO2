@@ -3,6 +3,7 @@ package Vista.FCT;
 import Modelo.Consultas.Consulta4;
 import Vista.ComponentesGridBagLayout;
 import Vista.Estilo;
+import Vista.Idioma.Lenguaje;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -16,9 +17,9 @@ import static Modelo.Consultas.OperacionesConsultas.consultaCuatro;
 
 public class BuscarFCT extends JPanel implements ComponentesGridBagLayout, MostrarDatosTablas {
 
-    JLabel labelCurso;
+    public static JLabel labelCurso;
     JComboBox<String> cursos;
-    JLabel labelEmpresa;
+    public static JLabel labelEmpresa;
     JComboBox<String> empresas;
     JTable fctPorEmpresaYCurso;
     DefaultTableModel modelo;
@@ -28,16 +29,18 @@ public class BuscarFCT extends JPanel implements ComponentesGridBagLayout, Mostr
     public BuscarFCT() {
 
         setLayout(new GridBagLayout());
+
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        labelCurso = Estilo.textoBonitoInicioSesion("CURSO");
+        labelCurso = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("labelCurso"));
         cursos = Estilo.estiloComboBox();
         for (String curso : consultarCursos()){
             cursos.addItem(curso);
         }
 
-        labelEmpresa = Estilo.textoBonitoInicioSesion("EMPRESA");
+        labelEmpresa = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("labelEmpresa"));
         empresas = Estilo.estiloComboBox();
         for (String empresa : consultarNombresEmpresas()){
             empresas.addItem(empresa);

@@ -92,7 +92,7 @@ class PanelPrincipal extends JPanel {
         itemEngl.addActionListener(e -> cambiarLenguaje(Lenguaje.english));
         btnInicio.addActionListener(e -> {
             MainPanelController.volverInicio();
-            nombreUsuario.setText("I");
+            //nombreUsuario.setText("I");
         });
         btnAtras.addActionListener(e ->{ MainPanelController.antiguoPanel();});
     }

@@ -31,6 +31,7 @@ public class HistorialContactosEmpresa extends JPanel {
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         contactosPorEmpresa = new JTable(modelo);
+        Estilo.estiloJTable(contactosPorEmpresa);
 
         CBListadoEmpresas.addActionListener(e -> mostrarTablaDatos());
 

@@ -35,6 +35,7 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         incidenciasPorCurso = new JTable(modelo);
+        Estilo.estiloJTable(incidenciasPorCurso);
 
         setLayout(new BorderLayout());
         add(curso, BorderLayout.NORTH);

@@ -1,6 +1,7 @@
 package Vista.Empresas;
 
 import Modelo.Consultas.*;
+import Vista.Estilo;
 import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
@@ -23,7 +24,7 @@ public class ListaDeEmpresasConPracticas extends JPanel {
         add(mostrarTablaDatos());
         JScrollPane scrollPane = new JScrollPane(empresasConPracticas);
         scrollPane.setPreferredSize(new Dimension(700,700));
-        empresasConPracticas.setRowHeight(50);
+        Estilo.estiloJTable(empresasConPracticas);
         add(scrollPane, BorderLayout.CENTER);
     }
 

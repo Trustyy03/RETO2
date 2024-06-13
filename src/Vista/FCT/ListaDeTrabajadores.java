@@ -1,6 +1,7 @@
 package Vista.FCT;
 
 import Vista.ComponentesGridBagLayout;
+import Vista.Estilo;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +22,7 @@ public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLay
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         datosFCT = new JTable(modelo);
+        Estilo.estiloJTable(datosFCT);
         colocarComponentes();
     }
 

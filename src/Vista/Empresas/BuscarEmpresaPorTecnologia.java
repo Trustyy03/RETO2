@@ -39,6 +39,7 @@ public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTa
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         empresaPorTecnologia = new JTable(modelo);
+        Estilo.estiloJTable(empresaPorTecnologia);
 
 
         setLayout(new BorderLayout());

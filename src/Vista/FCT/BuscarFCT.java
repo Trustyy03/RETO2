@@ -50,6 +50,7 @@ public class BuscarFCT extends JPanel implements ComponentesGridBagLayout, Mostr
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         fctPorEmpresaYCurso = new JTable(modelo);
+        Estilo.estiloJTable(fctPorEmpresaYCurso);
 
         cursos.addActionListener(e -> mostrarTablaDatos());
         empresas.addActionListener(e -> mostrarTablaDatos());

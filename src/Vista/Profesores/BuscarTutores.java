@@ -38,6 +38,7 @@ public class BuscarTutores extends JPanel implements ComponentesGridBagLayout, M
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         empresaPorTecnologia = new JTable(modelo);
+        Estilo.estiloJTable(empresaPorTecnologia);
 
         grupos.addActionListener(e -> mostrarTablaDatos());
         cursos.addActionListener(e -> mostrarTablaDatos());

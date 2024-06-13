@@ -3,6 +3,7 @@ package Vista;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -202,6 +203,8 @@ public class Estilo {
         }
     }
 
-
-
+    public static void estiloJTable(JTable tabla) {
+        tabla.setRowHeight(40);
+        tabla.setFont(new Font("Arial", Font.PLAIN, 14));
+    }
 }

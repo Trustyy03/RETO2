@@ -16,13 +16,11 @@ import java.util.List;
 
 public class FCTController {
     private static List<FCT> listaFCT = new ArrayList<>();
-    public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    private static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static void inicializarFCT(){
         listaFCT = consultarFCT();
-        for (FCT fct : listaFCT){
-            GestionarFCT.CBListadoFCT.addItem(fct);
-        }
+        consultarFCT().forEach(fct -> GestionarFCT.CBListadoFCT.addItem(fct));
     }
 
     public static void eliminarFCT(FCT fct){
@@ -75,7 +73,7 @@ public class FCTController {
         return fcts;
     }
 
-    public static boolean eliminarFCTSQL(FCT fct) {
+    private static boolean eliminarFCTSQL(FCT fct) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -95,7 +93,7 @@ public class FCTController {
         }
     }
 
-    public static boolean modificarFCTSQL(FCT FCTNueva, FCT FCTVieja) {
+    private static boolean modificarFCTSQL(FCT FCTNueva, FCT FCTVieja) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -121,7 +119,7 @@ public class FCTController {
         }
     }
 
-    public static boolean insertarFCTSQL(FCT fct) {
+    private static boolean insertarFCTSQL(FCT fct) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;

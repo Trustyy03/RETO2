@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class ConsultasSimples {
 
-    static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
-    public static ArrayList<String> cursosEscolares;
-    public static ArrayList<String> ciclos;
-    public static ArrayList<String> grupos;
-    public static ArrayList<String> empresas;
-    public static ArrayList<String> tecnologias;
+    private static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    private static ArrayList<String> cursosEscolares;
+    private static ArrayList<String> ciclos;
+    private static ArrayList<String> grupos;
+    private static ArrayList<String> empresas;
+    private static ArrayList<String> tecnologias;
 
     public static ArrayList<String> consultarCursos() {
         String sql = "SELECT cursoEscolar FROM TUTOR_RESPONSABLE_GRUPO GROUP BY cursoEscolar;";
@@ -140,7 +140,4 @@ public class ConsultasSimples {
         }
         return tecnologias;
     }
-
-
-
 }

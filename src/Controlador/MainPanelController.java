@@ -5,8 +5,8 @@ import java.util.Stack;
 
 public class MainPanelController {
 
-    public static JPanel panelActivo, panelPadre, panelInicio;
-    static Stack<JPanel> listaPaneles = new Stack<>();
+    private static JPanel panelActivo, panelPadre, panelInicio;
+    private static Stack<JPanel> listaPaneles = new Stack<>();
 
     public MainPanelController(JPanel panelPad, JPanel panelActi) {
         panelPadre = panelPad;

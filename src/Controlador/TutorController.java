@@ -12,15 +12,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class TutorController {
     private static ArrayList<Tutor> listaTutores = new ArrayList<>();
-    public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    private static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
 
     public static void inicializarTutores() {
         listaTutores = consultarTutores();
-        for (Tutor tutor : listaTutores) {
+        Iterator<Tutor> it = consultarTutores().iterator();
+        while (it.hasNext()) {
+            Tutor tutor = it.next();
             GestionarTutores.CBlistadoTutores.addItem(tutor);
         }
     }
@@ -75,7 +78,7 @@ public class TutorController {
         return tutores;
     }
 
-    public static boolean borrarTutorSQL(Tutor tutor) {
+    private static boolean borrarTutorSQL(Tutor tutor) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -93,7 +96,7 @@ public class TutorController {
         }
     }
 
-    public static boolean modificarTutorSQL(Tutor tutorNuevo, Tutor tutorViejo) {
+    private static boolean modificarTutorSQL(Tutor tutorNuevo, Tutor tutorViejo) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -115,7 +118,7 @@ public class TutorController {
         }
     }
 
-    public static boolean insertarTutorSQL(Tutor tutor) {
+    private static boolean insertarTutorSQL(Tutor tutor) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -135,5 +138,4 @@ public class TutorController {
             return false;
         }
     }
-
 }

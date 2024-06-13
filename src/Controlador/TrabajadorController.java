@@ -16,13 +16,11 @@ import java.util.List;
 
 public class TrabajadorController {
     private static List<Trabajador> listaTrabajadores = new ArrayList<>();
-    public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    private static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static void inicializarTrabajadores() {
         listaTrabajadores = consultarTrabajadores();
-        for (Trabajador trabajador : listaTrabajadores) {
-            GestionarTrabajadores.CBListadoTrabajadores.addItem(trabajador);
-        }
+        listaTrabajadores.forEach(trabajador -> GestionarTrabajadores.CBListadoTrabajadores.addItem(trabajador));
     }
     public static void eliminarTrabajador(Trabajador trabajador) {
         if (borrarTrabajadorSQL(trabajador)) {
@@ -74,7 +72,7 @@ public class TrabajadorController {
         return trabajadores;
     }
 
-    public static boolean borrarTrabajadorSQL(Trabajador trabajador) {
+    private static boolean borrarTrabajadorSQL(Trabajador trabajador) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -92,7 +90,7 @@ public class TrabajadorController {
         }
     }
 
-    public static boolean modificarTrabajadorSQL(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
+    private static boolean modificarTrabajadorSQL(Trabajador trabajadorNuevo, Trabajador trabajadorViejo) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -119,7 +117,7 @@ public class TrabajadorController {
         }
     }
 
-    public static boolean insertarTrabajadorSQL(Trabajador trabajador) {
+    private static boolean insertarTrabajadorSQL(Trabajador trabajador) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FCTMentira {
 
-    static List<FCT> listaFCT = new ArrayList<>();
+    private static List<FCT> listaFCT = new ArrayList<>();
 
     public FCTMentira(){
 

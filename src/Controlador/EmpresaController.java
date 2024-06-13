@@ -12,16 +12,17 @@ import Vista.Trabajadores.AgregarTrabajador;
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class EmpresaController {
 
-
     private static ArrayList<Empresa> listaEmpresas = new ArrayList<>();
-    public static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
+    private static java.sql.Connection con = ConexionBDD.getInstance().getConnection();
 
     public static void inicializarEmpresas() {
-        listaEmpresas = consultarEmpresas();
-        for (Empresa empresa : listaEmpresas) {
+        Iterator<Empresa> it = consultarEmpresas().iterator();
+        while(it.hasNext()) {
+            Empresa empresa = it.next();
             GestionarEmpresas.CBListadoEmpresas.addItem(empresa);
             BuscarEmpresa.CBListadoEmpresaB.addItem(empresa);
             BuscarEmpresaCurso.CBListadoEmpresas.addItem(empresa);
@@ -31,6 +32,7 @@ public class EmpresaController {
     }
 
     public static void eliminarEmpresa(Empresa empresa){
+
         if (borrarEmpresaSQL(empresa)){
             listaEmpresas.remove(empresa);
             GestionarEmpresas.CBListadoEmpresas.removeItem(empresa);
@@ -81,7 +83,7 @@ public class EmpresaController {
         }
     }
 
-    public static ArrayList<Empresa> consultarEmpresas() {
+    private static ArrayList<Empresa> consultarEmpresas() {
         ArrayList<Empresa> empresas = new ArrayList<>();
 
         if (con == null){
@@ -106,7 +108,7 @@ public class EmpresaController {
         return empresas;
     }
 
-    public static boolean borrarEmpresaSQL(Empresa empresa) {
+    private static boolean borrarEmpresaSQL(Empresa empresa) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -131,7 +133,7 @@ public class EmpresaController {
         }
     }
 
-    public static boolean modificarEmpresaSQL(Empresa empresaNueva, Empresa empresaVieja) {
+    private static boolean modificarEmpresaSQL(Empresa empresaNueva, Empresa empresaVieja) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -157,7 +159,7 @@ public class EmpresaController {
         }
     }
 
-    public static boolean insertarEmpresaSQL(Empresa empresa) {
+    private static boolean insertarEmpresaSQL(Empresa empresa) {
         if (con == null) {
             System.out.println("Conexión de la base de datos no disponible");
             return false;
@@ -181,6 +183,4 @@ public class EmpresaController {
             return false;
         }
     }
-
-
 }

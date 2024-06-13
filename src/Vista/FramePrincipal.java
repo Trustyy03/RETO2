@@ -25,7 +25,7 @@ public class FramePrincipal extends JFrame{
 public FramePrincipal(){ //se inicia el Frame, donde empezará todo
     PanelPrincipal panelPrincipal = new PanelPrincipal(this); //se agrega el panelPrincipal, donde contendrá la información general de la app
     add(panelPrincipal);
-    setTitle("INICIO SESIÓN"); //Cuando se realice el inicio de sesión, cambiar el titulo al panel en el que esten (mediante actionsListeners)
+    setTitle("FCT MANAGER"); //Cuando se realice el inicio de sesión, cambiar el titulo al panel en el que esten (mediante actionsListeners)
     setSize(800, 600);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
@@ -55,7 +55,7 @@ class PanelPrincipal extends JPanel {
         btnAtras = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnAtras"));
         btnInicio = Estilo.botonBonitoDeLaBarra(lenguaje.getProperty("btnInicio"));
         menuBar = Estilo.menuBarBonito();
-        nombreUsuario = new JLabel(lenguaje.getProperty("nombree"));
+        //nombreUsuario = new JLabel(lenguaje.getProperty("nombree"));
         menuLeng = Estilo.menuBonito(lenguaje.getProperty("menuLeng"));
         itemEsp = Estilo.menuItemBonito(lenguaje.getProperty("itemEsp"));
         itemEngl = Estilo.menuItemBonito(lenguaje.getProperty("itemEngl"));
@@ -74,7 +74,7 @@ class PanelPrincipal extends JPanel {
         buttonPanel.add(btnInicio);
 
         northPanel.add(menuBar, BorderLayout.WEST);
-        northPanel.add(nombreUsuario,BorderLayout.CENTER);
+        //northPanel.add(nombreUsuario,BorderLayout.CENTER);
         northPanel.add(buttonPanel, BorderLayout.EAST);
 
         add(northPanel, BorderLayout.NORTH);
@@ -101,18 +101,15 @@ class PanelPrincipal extends JPanel {
         menuLeng.setText(lenguaje.getProperty("menuLeng"));
         itemEsp.setText(lenguaje.getProperty("itemEsp"));
         itemEngl.setText(lenguaje.getProperty("itemEngl"));
-       // nombreUsuario.setText(lenguaje.getProperty("nombree")+ " "+ InicioSesion.rellenarUsuario.getText());
+        //nombreUsuario.setText(lenguaje.getProperty("nombree"));//+ " "+ InicioSesion.rellenarUsuario.getText());
         OpcionesPanel.btnFct.setText(lenguaje.getProperty("btnFct"));
         OpcionesPanel.btnEmpresas.setText(lenguaje.getProperty("btnEmpresas"));
         OpcionesPanel.btnProfesores.setText(lenguaje.getProperty("btnProfesores"));
         OpcionesPanel.btnTrabajadores.setText(lenguaje.getProperty("btnTrabajadores"));
-        /*
-        InicioSesion.nombree = lenguaje.getProperty("nombree");
-        InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
-        InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
-        InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));
-
-         */
+        //InicioSesion.nombree = lenguaje.getProperty("nombree");
+        //InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
+        //InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
+        //InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));
         OpcionesEmpresa.gestionarEmpresa.setText(lenguaje.getProperty("btnGestionarEmpresas"));
         OpcionesEmpresa.buscarEmpresa.setText(lenguaje.getProperty("btnBuscarEmpresas"));
         OpcionesEmpresa.buscarEmpresaPorPracticas.setText(lenguaje.getProperty("btnEmpresasPorPracticas"));

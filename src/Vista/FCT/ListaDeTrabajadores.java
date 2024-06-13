@@ -17,7 +17,7 @@ public class ListaDeTrabajadores extends JPanel implements ComponentesGridBagLay
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        String[] nombresCampos = new String[]{"CIF Empresa", "Nombre Empresa", "Alumnos Pedidos", "Ciclo"};
+        String[] nombresCampos = new String[]{"Cif Empresa", "Nombre empresa", "Alumnos Pedidos", "Ciclo preferido"};
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         datosFCT = new JTable(modelo);

@@ -101,7 +101,7 @@ public class BuscarEmpresaCurso extends JPanel implements ComponentesGridBagLayo
         Empresa empresa = (Empresa) CBListadoEmpresas.getSelectedItem();
         try {
             for (Consulta6 consulta6 : consultaSeis(empresa.getNombre(), (String)ciclo.getSelectedItem(), (String)cursoEscolar.getSelectedItem())) {
-                Object[] fila = new Object[]{consulta6.getNombreEmpresa(), consulta6.getCantidadAlumnos(), consulta6.getIdCiclo()};
+                Object[] fila = new Object[]{consulta6.getCifEmpresa(), consulta6.getNombreEmpresa(), consulta6.getCantidadAlumnos(), consulta6.getIdCiclo()};
                 ListaDeTrabajadores.modelo.addRow(fila);
             }
         } catch (SQLException e) {

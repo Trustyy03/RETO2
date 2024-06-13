@@ -53,7 +53,7 @@ public class AgregarEmpresa extends JPanel {
         configurarCoordenadas(panelCentral, gbc, nuevoDireccion, nuevoRellenarDireccion, 5);
 
         JPanel panelSur = new JPanel();
-        btnGuardarEmpresa = new JButton(lenguaje.getProperty("btnGuardar"));
+        btnGuardarEmpresa = Estilo.botonBonito(lenguaje.getProperty("btnGuardar"));
         btnGuardarEmpresa.setFont(new Font("Arial", Font.BOLD, 30));
         panelSur.add(btnGuardarEmpresa);
 

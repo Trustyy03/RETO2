@@ -56,7 +56,7 @@ public class AgregarTrabajador extends JPanel{
         configurarCoordenadas(panelCentral, gbc, nuevoTelefonoTrabajador, nuevoRellenarTelefonoTrabajador, 5);
 
         JPanel panelSur = new JPanel();
-        btnGuardarTrabajador = new JButton(lenguaje.getProperty("btnGuardar"));
+        btnGuardarTrabajador = Estilo.botonBonito(lenguaje.getProperty("btnGuardar"));
         btnGuardarTrabajador.setFont(new Font("Arial", Font.BOLD, 30));
         panelSur.add(btnGuardarTrabajador);
 

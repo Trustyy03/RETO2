@@ -47,7 +47,7 @@ public class AgregarFCT extends JPanel{
         configurarCoordenadas(panelCentral, gbc, nuevoNumAlumnos, nuevoRellenarNumAlumnos, 3);
 
         JPanel panelSur = new JPanel();
-        btnGuardarFCT = new JButton(lenguaje.getProperty("btnGuardar"));
+        btnGuardarFCT = Estilo.botonBonito(lenguaje.getProperty("btnGuardar"));
         btnGuardarFCT.setFont(new Font("Arial", Font.BOLD, 30));
         panelSur.add(btnGuardarFCT);
 

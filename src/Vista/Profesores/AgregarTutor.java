@@ -37,7 +37,7 @@ public class AgregarTutor extends JPanel{
         configurarCoordenadas(panelCentral, gbc, nuevoApellidos, nuevoRellenarApellidos, 1);
 
         JPanel panelSur = new JPanel();
-        btnGuardarTutor = new JButton(lenguaje.getProperty("btnGuardar"));
+        btnGuardarTutor = Estilo.botonBonito(lenguaje.getProperty("btnGuardar"));
         btnGuardarTutor.setFont(new Font("Arial", Font.BOLD, 30));
         panelSur.add(btnGuardarTutor);
 

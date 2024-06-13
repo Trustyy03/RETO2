@@ -7,6 +7,8 @@ import Vista.FCT.BuscarEmpresaCurso;
 import Vista.FCT.BuscarFCT;
 import Vista.FCT.OpcionesFCT;
 import Vista.Idioma.Lenguaje;
+import Vista.Profesores.AgregarTutor;
+import Vista.Profesores.GestionarTutores;
 import Vista.Profesores.OpcionesProfesores;
 import Vista.Trabajadores.OpcionesTrabajadores;
 
@@ -174,6 +176,21 @@ class PanelPrincipal extends JPanel {
         BuscarEmpresaCurso.labelCiclo.setText(lenguaje.getProperty("labelCiclo"));
         BuscarEmpresaCurso.labelEmpresa.setText(lenguaje.getProperty("labelEmpresa"));
         BuscarEmpresaCurso.botonListaTrabajadores.setText(lenguaje.getProperty("botonListaTrabajadores"));
+
+
+        GestionarTutores.idTutor.setText(lenguaje.getProperty("idTutor"));
+        GestionarTutores.nombre.setText(lenguaje.getProperty("nombreTutor"));
+        GestionarTutores.apellidos.setText(lenguaje.getProperty("apellidosTutor"));
+        GestionarTutores.btnBorrarTutor.setText(lenguaje.getProperty("btnBorrar"));
+        GestionarTutores.btnAgregarTutor.setText(lenguaje.getProperty("btnAgregar"));
+        GestionarTutores.btnGuardarTutor.setText(lenguaje.getProperty("btnGuardar"));
+
+        AgregarTutor.nuevoIdTutor.setText(lenguaje.getProperty("idTutor"));
+        AgregarTutor.nuevoNombre.setText(lenguaje.getProperty("nombreTutor"));
+        AgregarTutor.nuevoApellidos.setText(lenguaje.getProperty("apellidosTutor"));
+        AgregarTutor.btnGuardarTutor.setText(lenguaje.getProperty("btnGuardar"));
+        AgregarTutor.cartelInformativo.setText(lenguaje.getProperty("cartelInformacaionTutor"));
+
 
 
     }

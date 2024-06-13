@@ -20,7 +20,7 @@ public class DetallesEmpresa extends JPanel {
     Empresa empresaSeleccionada;
 
     JLabel labelEmpresa;
-    JComboBox<String> CBtrabajadores = Estilo.estiloComboBox();
+    JComboBox<Consulta1> CBtrabajadores = Estilo.estiloComboBox();
 
     public DetallesEmpresa() {
 
@@ -62,7 +62,7 @@ public class DetallesEmpresa extends JPanel {
         try {
             for (Consulta1 c1 : consultaUno(empresaSeleccionada.getNombre())) {
                 rellenarDatos(c1);
-                CBtrabajadores.addItem(c1.getNombreTrabajador());
+                CBtrabajadores.addItem(c1);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -70,6 +70,9 @@ public class DetallesEmpresa extends JPanel {
 
        add(panelNorte, BorderLayout.NORTH);
        add(panelCentral, BorderLayout.CENTER);
+
+       CBtrabajadores.addActionListener(e-> {Consulta1 consulta1 = (Consulta1) CBtrabajadores.getSelectedItem();
+       rellenarCorreoTrabajador.setText(consulta1.getCorreoTrabajador());rellenarTelefonoTrabajador.setText(consulta1.getTelefonoTrabajador()); });
 
     }
 
@@ -92,9 +95,6 @@ public class DetallesEmpresa extends JPanel {
     private static void rellenarDatos(Consulta1 consulta1){
         rellenarNombreEmpresa.setText(consulta1.getNombreEmpresa());
         rellenarNombreTutor.setText(consulta1.getNombreTutor());
-        //rellenarNombreTrabajador.setText(consulta1.getNombreTrabajador());
-        rellenarCorreoTrabajador.setText(consulta1.getCorreoTrabajador());
-        rellenarTelefonoTrabajador.setText(consulta1.getTelefonoTrabajador());
     }
 
 

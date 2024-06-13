@@ -59,6 +59,7 @@ public class Consulta1 {
 
     @Override
     public String toString() {
-        return nombreEmpresa + " / " + nombreTutor + " / " + nombreTrabajador + " / " + correoTrabajador + " / " + telefonoTrabajador;
+        return nombreTrabajador;
     }
+
 }

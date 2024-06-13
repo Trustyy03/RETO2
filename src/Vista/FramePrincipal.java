@@ -101,15 +101,18 @@ class PanelPrincipal extends JPanel {
         menuLeng.setText(lenguaje.getProperty("menuLeng"));
         itemEsp.setText(lenguaje.getProperty("itemEsp"));
         itemEngl.setText(lenguaje.getProperty("itemEngl"));
-        nombreUsuario.setText(lenguaje.getProperty("nombree")+ " "+ InicioSesion.rellenarUsuario.getText());
+       // nombreUsuario.setText(lenguaje.getProperty("nombree")+ " "+ InicioSesion.rellenarUsuario.getText());
         OpcionesPanel.btnFct.setText(lenguaje.getProperty("btnFct"));
         OpcionesPanel.btnEmpresas.setText(lenguaje.getProperty("btnEmpresas"));
         OpcionesPanel.btnProfesores.setText(lenguaje.getProperty("btnProfesores"));
         OpcionesPanel.btnTrabajadores.setText(lenguaje.getProperty("btnTrabajadores"));
+        /*
         InicioSesion.nombree = lenguaje.getProperty("nombree");
         InicioSesion.usuario.setText(lenguaje.getProperty("usuarioInicio"));
         InicioSesion.contrasenya.setText(lenguaje.getProperty("contrasenyaInico"));
         InicioSesion.entrar.setText(lenguaje.getProperty("entrarInicio"));
+
+         */
         OpcionesEmpresa.gestionarEmpresa.setText(lenguaje.getProperty("btnGestionarEmpresas"));
         OpcionesEmpresa.buscarEmpresa.setText(lenguaje.getProperty("btnBuscarEmpresas"));
         OpcionesEmpresa.buscarEmpresaPorPracticas.setText(lenguaje.getProperty("btnEmpresasPorPracticas"));

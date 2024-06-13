@@ -16,22 +16,21 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
 
     JComboBox<String> curso;
     JTable incidenciasPorCurso;
-    DefaultTableModel modelo;
-
+    static DefaultTableModel modelo;
+    static String[] nombresCampos;
     public static String idIncidencia,cifEmpresa,descripcion,nombreEmpresa;
 
     public IncidenciasCurso(){
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
-
         idIncidencia = lenguaje.getProperty("idIndicencia");
         cifEmpresa = lenguaje.getProperty("cifEmpresa");
-        descripcion = lenguaje.getProperty("descipcion");
+        descripcion = lenguaje.getProperty("descripcion");
         nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
 
         curso = Estilo.estiloComboBox();
         cargarCursos();
 
-        String[] nombresCampos = new String[]{idIncidencia, cifEmpresa,descripcion,nombreEmpresa};
+        nombresCampos = new String[]{idIncidencia, cifEmpresa,descripcion,nombreEmpresa};
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         incidenciasPorCurso = new JTable(modelo);
@@ -73,5 +72,17 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
             Object[] fila = {incidencia.getIdIncidencia(), incidencia.getCif(), incidencia.getCursoEscolar(), incidencia.getDescripcion()};
             modelo.addRow(fila);
         }
+    }
+
+    public static void actualizarIdiomaCabecera(int newLang){
+        Lenguaje lenguaje = new Lenguaje(newLang);
+
+        idIncidencia = lenguaje.getProperty("idIncidencia");
+        cifEmpresa = lenguaje.getProperty("cifEmpresa");
+        descripcion = lenguaje.getProperty("descripcion");
+        nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+
+        nombresCampos = new String[]{idIncidencia,cifEmpresa,descripcion,nombreEmpresa};
+        modelo.setColumnIdentifiers(nombresCampos);
     }
 }

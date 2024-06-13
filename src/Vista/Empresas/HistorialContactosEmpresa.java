@@ -3,6 +3,7 @@ package Vista.Empresas;
 import Modelo.Consultas.Consulta8;
 import Modelo.Entidades.Empresa;
 import Vista.Estilo;
+import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -15,19 +16,19 @@ import static Modelo.Consultas.OperacionesConsultas.consultaOcho;
 public class HistorialContactosEmpresa extends JPanel {
 
     public static JComboBox<Empresa> CBListadoEmpresas = new JComboBox<>();
+    static String[] nombresCampos;
     JTable contactosPorEmpresa;
-    DefaultTableModel modelo;
+    static DefaultTableModel modelo;
+    public static String headerNombreEmpresa, headerNombreTutor, headerDescripcion, headerFecha;
 
     public HistorialContactosEmpresa(){
-        /*
-        empresas = Estilo.estiloComboBox();
-        for (String empresa : consultarNombresEmpresas()){
-            empresas.addItem(empresa);
-        }
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+        headerNombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        headerNombreTutor = lenguaje.getProperty("nombreTutor");
+        headerDescripcion = lenguaje.getProperty("descripcion");
+        headerFecha = lenguaje.getProperty("fecha");
 
-         */
-
-        String[] nombresCampos = new String[]{"Nombre Empresa", "Nombre Tutor", "Descripción", "Fecha"};
+        nombresCampos = new String[]{headerNombreEmpresa, headerNombreTutor, headerDescripcion, headerFecha};
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         contactosPorEmpresa = new JTable(modelo);
@@ -49,6 +50,18 @@ public class HistorialContactosEmpresa extends JPanel {
             Object[] fila = new Object[]{c8.getNombreEmpresa(), c8.getNombreTutor(), c8.getDescripcion(), c8.getFecha()};
             modelo.addRow(fila);
         }
+    }
+
+    public static void actualizarIdiomaCabecera(int newLang){
+        Lenguaje lenguaje = new Lenguaje(newLang);
+
+        headerNombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        headerNombreTutor = lenguaje.getProperty("nombreTutor");
+        headerDescripcion = lenguaje.getProperty("descripcion");
+        headerFecha = lenguaje.getProperty("fecha");
+
+        nombresCampos = new String[]{headerNombreEmpresa,headerNombreTutor,headerDescripcion,headerFecha};
+        modelo.setColumnIdentifiers(nombresCampos);
     }
 
 }

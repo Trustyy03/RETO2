@@ -149,21 +149,26 @@ class PanelPrincipal extends JPanel {
         BuscarEmpresa.labelEmpresa.setText(lenguaje.getProperty("labelEmpresa"));
         BuscarEmpresa.botonEnviar.setText(lenguaje.getProperty("btnEnviar"));
 
-        try {
-            DetallesEmpresa.nombreEmpresa.setText(lenguaje.getProperty("nombreEmpresa"));
-            DetallesEmpresa.nombreTutor.setText(lenguaje.getProperty("nombreTutor"));
-            DetallesEmpresa.nombreTrabajador.setText(lenguaje.getProperty("nombreTrabajador"));
-            DetallesEmpresa.correoTrabajador.setText(lenguaje.getProperty("correoTrabajador"));
-            DetallesEmpresa.telefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
-            DetallesEmpresa.labelEmpresa.setText(lenguaje.getProperty("cartelInfoEmpresa"));
-        }catch (NullPointerException e){
-            System.out.println("Hola");
-        }
         BuscarEmpresaPorPractica.labelCiclo.setText(lenguaje.getProperty("labelCiclo"));
         BuscarEmpresaPorPractica.labelCurso.setText(lenguaje.getProperty("labelCurso"));
         BuscarEmpresaPorPractica.botonListaEmpresas.setText(lenguaje.getProperty("botonListaEmpresas"));
 
+
+        //DetallesEmpresa.nombreEmpresa.setText(lenguaje.getProperty("nombreEmpresa"));
+        //DetallesEmpresa.nombreTutor.setText(lenguaje.getProperty("nombreTutor"));
+        //DetallesEmpresa.nombreTrabajador.setText(lenguaje.getProperty("nombreTrabajador"));
+        //DetallesEmpresa.correoTrabajador.setText(lenguaje.getProperty("correoTrabajador"));
+        //DetallesEmpresa.telefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
+        //DetallesEmpresa.labelEmpresa.setText(lenguaje.getProperty("cartelInfoEmpresa"));
+
         BuscarEmpresaPorTecnologia.actualizarIdiomaCabecera(newLang);
+
+        IncidenciasCurso.idIncidencia = lenguaje.getProperty("idIndicencia");
+        IncidenciasCurso.cifEmpresa = lenguaje.getProperty("cifEmpresa");
+        IncidenciasCurso.descripcion = lenguaje.getProperty("descipcion");
+        IncidenciasCurso.nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+
+        IncidenciasCurso.actualizarIdiomaCabecera(newLang);
 
         ListaDeEmpresasConPracticas.headerNombreEmpresa = lenguaje.getProperty("nombreEmpresa");
         ListaDeEmpresasConPracticas.headerCifEmpresa = lenguaje.getProperty("cifEmpresa");
@@ -171,7 +176,20 @@ class PanelPrincipal extends JPanel {
         ListaDeEmpresasConPracticas.headerCiclo = lenguaje.getProperty("ciclo");
         ListaDeEmpresasConPracticas.headerNumeroAlumnos = lenguaje.getProperty("numAlumnosFCT");
 
-        ListaDeEmpresasConPracticas.actualizarIdiomaCabecera(newLang);
+        try {
+            ListaDeEmpresasConPracticas.actualizarIdiomaCabecera(newLang);
+        }catch (NullPointerException e){
+
+        }
+
+
+        HistorialContactosEmpresa.headerNombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        HistorialContactosEmpresa.headerNombreTutor = lenguaje.getProperty("nombreTutor");
+        HistorialContactosEmpresa.headerDescripcion = lenguaje.getProperty("descripcion");
+        HistorialContactosEmpresa.headerFecha = lenguaje.getProperty("fecha");
+
+        HistorialContactosEmpresa.actualizarIdiomaCabecera(newLang);
+
 
         GestionarFCT.cif.setText(lenguaje.getProperty("cif"));
         GestionarFCT.idGrupo.setText(lenguaje.getProperty("idGrupoFCT"));

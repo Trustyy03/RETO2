@@ -39,6 +39,6 @@ public class Empresa {
     public String getDireccion(){return direccion;}
     @Override
     public String toString() {
-        return nombre; // Puedes ajustar esto para mostrar más información si es necesario
+        return cif + " - " + nombre; // Puedes ajustar esto para mostrar más información si es necesario
     }
 }

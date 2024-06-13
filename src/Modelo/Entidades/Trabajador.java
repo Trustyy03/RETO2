@@ -18,6 +18,14 @@ public class Trabajador {
         this.cargo = cargo;
         this.telefono = telefono;
     }
+    public Trabajador( String cif, String nombre, String apellidos, String correo, String cargo, String telefono){
+        this.cif = cif;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.cargo = cargo;
+        this.telefono = telefono;
+    }
 
     public int getId() {
         return id;

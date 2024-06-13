@@ -121,7 +121,7 @@ public class TutorController {
             return false;
         }
         try {
-            String insertarTutor = "INSERT INTO TUTOR_FCT (nombre, apellido, idTutor) VALUES (?, ?, ?)";
+            String insertarTutor = "INSERT INTO TUTOR_FCT (nombre, apellidos, idTutor) VALUES (?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(insertarTutor);
             pst.setString(1, tutor.getNombre());
             pst.setString(2, tutor.getApellidos());

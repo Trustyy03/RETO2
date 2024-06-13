@@ -10,8 +10,8 @@ import java.awt.*;
 
 public class AgregarTutor extends JPanel{
 
-    public static JLabel nuevoIdTutor,nuevoNombre,nuevoApellidos,cartelInformativo;
-    public static JTextField nuevoRellenarIdTutor,nuevoRellenarNombre,nuevoRellenarApellidos;
+    public static JLabel nuevoNombre,nuevoApellidos,cartelInformativo;
+    public static JTextField nuevoRellenarNombre,nuevoRellenarApellidos;
     public static JButton btnGuardarTutor;
     static Tutor nuevoTutor;
 
@@ -28,16 +28,13 @@ public class AgregarTutor extends JPanel{
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.BOTH;
 
-        nuevoIdTutor = Estilo.textoBonito(lenguaje.getProperty("idTutor"));
-        nuevoRellenarIdTutor = Estilo.textFieldBonito(20);
         nuevoNombre = Estilo.textoBonito(lenguaje.getProperty("nombreTutor"));
         nuevoRellenarNombre = Estilo.textFieldBonito(20);
         nuevoApellidos = Estilo.textoBonito(lenguaje.getProperty("apellidosTutor"));
         nuevoRellenarApellidos = Estilo.textFieldBonito(20);
 
-        configurarCoordenadas(panelCentral, gbc, nuevoIdTutor, nuevoRellenarIdTutor, 0);
-        configurarCoordenadas(panelCentral, gbc, nuevoNombre, nuevoRellenarNombre, 1);
-        configurarCoordenadas(panelCentral, gbc, nuevoApellidos, nuevoRellenarApellidos, 2);
+        configurarCoordenadas(panelCentral, gbc, nuevoNombre, nuevoRellenarNombre, 0);
+        configurarCoordenadas(panelCentral, gbc, nuevoApellidos, nuevoRellenarApellidos, 1);
 
         JPanel panelSur = new JPanel();
         btnGuardarTutor = new JButton(lenguaje.getProperty("btnGuardar"));
@@ -61,11 +58,11 @@ public class AgregarTutor extends JPanel{
     }
 
     private static void vaciarDatos(){
-        nuevoRellenarIdTutor.setText("");nuevoRellenarNombre.setText("");nuevoRellenarApellidos.setText("");
+        nuevoRellenarNombre.setText("");nuevoRellenarApellidos.setText("");
     }
 
     private static void agregarTutor(){
-        nuevoTutor = new Tutor(Integer.parseInt(nuevoRellenarIdTutor.getText()),nuevoRellenarNombre.getText(),
+        nuevoTutor = new Tutor(nuevoRellenarNombre.getText(),
                 nuevoRellenarApellidos.getText());
         TutorController.agregarTutor(nuevoTutor);
     }

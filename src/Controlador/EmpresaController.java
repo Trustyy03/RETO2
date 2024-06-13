@@ -2,10 +2,12 @@ package Controlador;
 
 import Modelo.ConexionBDD;
 import Modelo.Entidades.Empresa;
+import Vista.Empresas.AgregarEmpresa;
 import Vista.Empresas.BuscarEmpresa;
 import Vista.Empresas.GestionarEmpresas;
 import Vista.Empresas.HistorialContactosEmpresa;
 import Vista.FCT.BuscarEmpresaCurso;
+import Vista.Trabajadores.AgregarTrabajador;
 
 import javax.swing.*;
 import java.sql.*;
@@ -24,6 +26,7 @@ public class EmpresaController {
             BuscarEmpresa.CBListadoEmpresaB.addItem(empresa);
             BuscarEmpresaCurso.CBListadoEmpresas.addItem(empresa);
             HistorialContactosEmpresa.CBListadoEmpresas.addItem(empresa);
+            AgregarTrabajador.CBListadoEmpresas.addItem(empresa);
         }
     }
 
@@ -34,6 +37,8 @@ public class EmpresaController {
             BuscarEmpresa.CBListadoEmpresaB.removeItem(empresa);
             BuscarEmpresaCurso.CBListadoEmpresas.removeItem(empresa);
             HistorialContactosEmpresa.CBListadoEmpresas.removeItem(empresa);
+            AgregarTrabajador.CBListadoEmpresas.removeItem(empresa);
+
         }
     }
 
@@ -57,6 +62,10 @@ public class EmpresaController {
                 HistorialContactosEmpresa.CBListadoEmpresas.removeItemAt(indice);
                 HistorialContactosEmpresa.CBListadoEmpresas.insertItemAt(empresaNueva, indice);
                 HistorialContactosEmpresa.CBListadoEmpresas.setSelectedItem(empresaNueva);
+
+                AgregarTrabajador.CBListadoEmpresas.removeItemAt(indice);
+                AgregarTrabajador.CBListadoEmpresas.insertItemAt(empresaNueva, indice);
+                AgregarTrabajador.CBListadoEmpresas.setSelectedItem(empresaNueva);
             }
         }
     }
@@ -68,6 +77,7 @@ public class EmpresaController {
             BuscarEmpresa.CBListadoEmpresaB.addItem(empresaNueva);
             BuscarEmpresaCurso.CBListadoEmpresas.addItem(empresaNueva);
             HistorialContactosEmpresa.CBListadoEmpresas.addItem(empresaNueva);
+            AgregarTrabajador.CBListadoEmpresas.addItem(empresaNueva);
         }
     }
 

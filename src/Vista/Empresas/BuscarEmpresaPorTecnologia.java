@@ -16,14 +16,16 @@ public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTa
 
     JComboBox<String> tecnologias;
     JTable empresaPorTecnologia;
-    DefaultTableModel modelo;
+    static DefaultTableModel modelo;
 
     public static String nombreEmpresa,cifEmpresa;
 
+   static String[] nombresCampos;
+
 
     public BuscarEmpresaPorTecnologia(){
-        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
         nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
         cifEmpresa = lenguaje.getProperty("cifEmpresa");
 
@@ -33,7 +35,7 @@ public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTa
             tecnologias.addItem(tecnologia);
         }
 
-        String[] nombresCampos = new String[]{nombreEmpresa,cifEmpresa};
+        nombresCampos = new String[]{nombreEmpresa,cifEmpresa};
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         empresaPorTecnologia = new JTable(modelo);
@@ -45,6 +47,7 @@ public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTa
         tecnologias.addActionListener(e -> mostrarTablaDatos());
 
         add(new JScrollPane(empresaPorTecnologia), BorderLayout.CENTER);
+        this.revalidate();
     }
 
     public void mostrarTablaDatos() {
@@ -55,5 +58,15 @@ public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTa
             modelo.addRow(fila);
         }
     }
+
+    public static void actualizarIdiomaCabecera(int newLang){
+        Lenguaje lenguaje = new Lenguaje(newLang);
+
+        nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        cifEmpresa = lenguaje.getProperty("cifEmpresa");
+        nombresCampos = new String[]{nombreEmpresa,cifEmpresa};
+        modelo.setColumnIdentifiers(nombresCampos);
+    }
+
 
 }

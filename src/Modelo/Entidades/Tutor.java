@@ -12,6 +12,11 @@ public class Tutor {
         this.apellidos = apellidos;
     }
 
+    public Tutor(String nombre, String apellidos){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+
     public int getIdTutor() {
         return idTutor;
     }

@@ -163,8 +163,7 @@ class PanelPrincipal extends JPanel {
         BuscarEmpresaPorPractica.labelCurso.setText(lenguaje.getProperty("labelCurso"));
         BuscarEmpresaPorPractica.botonListaEmpresas.setText(lenguaje.getProperty("botonListaEmpresas"));
 
-        BuscarEmpresaPorTecnologia.nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
-        BuscarEmpresaPorTecnologia.cifEmpresa = lenguaje.getProperty("cifEmpresa");
+        BuscarEmpresaPorTecnologia.actualizarIdiomaCabecera(newLang);
 
         ListaDeEmpresasConPracticas.ciclo = lenguaje.getProperty("ciclo");
 
@@ -200,7 +199,6 @@ class PanelPrincipal extends JPanel {
         GestionarTutores.btnAgregarTutor.setText(lenguaje.getProperty("btnAgregar"));
         GestionarTutores.btnGuardarTutor.setText(lenguaje.getProperty("btnGuardar"));
 
-        AgregarTutor.nuevoIdTutor.setText(lenguaje.getProperty("idTutor"));
         AgregarTutor.nuevoNombre.setText(lenguaje.getProperty("nombreTutor"));
         AgregarTutor.nuevoApellidos.setText(lenguaje.getProperty("apellidosTutor"));
         AgregarTutor.btnGuardarTutor.setText(lenguaje.getProperty("btnGuardar"));
@@ -217,7 +215,6 @@ class PanelPrincipal extends JPanel {
         GestionarTrabajadores.btnGuardarTrabajador.setText(lenguaje.getProperty("btnGuardar"));
         GestionarTrabajadores.btnBorrarTrabajador.setText(lenguaje.getProperty("btnBorrar"));
 
-        AgregarTrabajador.nuevoIdTrabajador.setText(lenguaje.getProperty("idTrabajador"));
         AgregarTrabajador.nuevoNombreTrabajador.setText(lenguaje.getProperty("nombreTrabajador"));
         AgregarTrabajador.nuevoApellidosTrabajador.setText(lenguaje.getProperty("apellidosTrabajador"));
         AgregarTrabajador.nuevoCorreoTrabajador.setText(lenguaje.getProperty("correoTrabajador"));

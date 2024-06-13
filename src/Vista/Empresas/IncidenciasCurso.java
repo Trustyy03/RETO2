@@ -4,6 +4,7 @@ import Modelo.Consultas.Consulta5;
 import Modelo.Consultas.ConsultasSimples;
 import Modelo.Consultas.OperacionesConsultas;
 import Vista.Estilo;
+import Vista.Idioma.Lenguaje;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -17,11 +18,20 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
     JTable incidenciasPorCurso;
     DefaultTableModel modelo;
 
+    public static String idIncidencia,cifEmpresa,descripcion,nombreEmpresa;
+
     public IncidenciasCurso(){
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+
+        idIncidencia = lenguaje.getProperty("idIndicencia");
+        cifEmpresa = lenguaje.getProperty("cifEmpresa");
+        descripcion = lenguaje.getProperty("descipcion");
+        nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+
         curso = Estilo.estiloComboBox();
         cargarCursos();
 
-        String[] nombresCampos = new String[]{"ID Incidencia", "CIF Empresa","Descripción","Nombre Empresa"};
+        String[] nombresCampos = new String[]{idIncidencia, cifEmpresa,descripcion,nombreEmpresa};
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         incidenciasPorCurso = new JTable(modelo);
@@ -49,6 +59,7 @@ public class IncidenciasCurso extends JPanel implements MostrarDatosTablas{
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
+
     }
     @Override
     public void mostrarTablaDatos() {

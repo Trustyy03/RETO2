@@ -3,9 +3,7 @@ package Vista;
 import Controlador.*;
 import Modelo.ConexionBDD;
 import Vista.Empresas.*;
-import Vista.FCT.BuscarEmpresaCurso;
-import Vista.FCT.BuscarFCT;
-import Vista.FCT.OpcionesFCT;
+import Vista.FCT.*;
 import Vista.Idioma.Lenguaje;
 import Vista.Profesores.AgregarTutor;
 import Vista.Profesores.GestionarTutores;
@@ -168,6 +166,21 @@ class PanelPrincipal extends JPanel {
 
         ListaDeEmpresasConPracticas.ciclo = lenguaje.getProperty("ciclo");
 
+
+        GestionarFCT.cif.setText(lenguaje.getProperty("cif"));
+        GestionarFCT.idGrupo.setText(lenguaje.getProperty("idGrupoFCT"));
+        GestionarFCT.cursoEscolar.setText(lenguaje.getProperty("cursoEscolarFCT"));
+        GestionarFCT.numAlumnos.setText(lenguaje.getProperty("numAlumnosFCT"));
+        GestionarFCT.btnGuardarFCT.setText(lenguaje.getProperty("btnGuardar"));
+        GestionarFCT.btnAgregarFCT.setText(lenguaje.getProperty("btnAgregar"));
+        GestionarFCT.btnBorrarFCT.setText(lenguaje.getProperty("btnBorrar"));
+
+        AgregarFCT.nuevoCif.setText(lenguaje.getProperty("cif"));
+        AgregarFCT.nuevoIdGrupo.setText(lenguaje.getProperty("idGrupoFCT"));
+        AgregarFCT.nuevoCursoEscolar.setText(lenguaje.getProperty("cursoEscolarFCT"));
+        AgregarFCT.nuevoNumAlumnos.setText(lenguaje.getProperty("numAlumnosFCT"));
+        AgregarFCT.btnGuardarFCT.setText(lenguaje.getProperty("btnGuardar"));
+        AgregarFCT.cartelInformacion.setText(lenguaje.getProperty("cartelInformacaionFCT"));
 
         BuscarFCT.labelCurso.setText(lenguaje.getProperty("labelCurso"));
         BuscarFCT.labelEmpresa.setText(lenguaje.getProperty("labelEmpresa"));

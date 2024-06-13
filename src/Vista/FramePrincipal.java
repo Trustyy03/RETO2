@@ -8,6 +8,8 @@ import Vista.Idioma.Lenguaje;
 import Vista.Profesores.AgregarTutor;
 import Vista.Profesores.GestionarTutores;
 import Vista.Profesores.OpcionesProfesores;
+import Vista.Trabajadores.AgregarTrabajador;
+import Vista.Trabajadores.GestionarTrabajadores;
 import Vista.Trabajadores.OpcionesTrabajadores;
 
 import javax.swing.*;
@@ -205,6 +207,24 @@ class PanelPrincipal extends JPanel {
         AgregarTutor.cartelInformativo.setText(lenguaje.getProperty("cartelInformacaionTutor"));
 
 
+        GestionarTrabajadores.idTrabajador.setText(lenguaje.getProperty("idTrabajador"));
+        GestionarTrabajadores.nombreTrabajador.setText(lenguaje.getProperty("nombreTrabajador"));
+        GestionarTrabajadores.apellidosTrabajador.setText(lenguaje.getProperty("apellidosTrabajador"));
+        GestionarTrabajadores.correoTrabajador.setText(lenguaje.getProperty("correoTrabajador"));
+        GestionarTrabajadores.cargoTrabajador.setText(lenguaje.getProperty("cargoTrabajador"));
+        GestionarTrabajadores.telefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
+        GestionarTrabajadores.btnAgregarTrabajador.setText(lenguaje.getProperty("btnAgregar"));
+        GestionarTrabajadores.btnGuardarTrabajador.setText(lenguaje.getProperty("btnGuardar"));
+        GestionarTrabajadores.btnBorrarTrabajador.setText(lenguaje.getProperty("btnBorrar"));
+
+        AgregarTrabajador.nuevoIdTrabajador.setText(lenguaje.getProperty("idTrabajador"));
+        AgregarTrabajador.nuevoNombreTrabajador.setText(lenguaje.getProperty("nombreTrabajador"));
+        AgregarTrabajador.nuevoApellidosTrabajador.setText(lenguaje.getProperty("apellidosTrabajador"));
+        AgregarTrabajador.nuevoCorreoTrabajador.setText(lenguaje.getProperty("correoTrabajador"));
+        AgregarTrabajador.nuevoCargoTrabajador.setText(lenguaje.getProperty("cargoTrabajador"));
+        AgregarTrabajador.nuevoTelefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
+        AgregarTrabajador.btnGuardarTrabajador.setText(lenguaje.getProperty("btnGuardar"));
+        AgregarTrabajador.cartelInformativo.setText(lenguaje.getProperty("cartelInformacaionTrabajador"));
 
     }
 }

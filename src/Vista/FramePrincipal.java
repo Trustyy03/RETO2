@@ -157,7 +157,7 @@ class PanelPrincipal extends JPanel {
             DetallesEmpresa.telefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
             DetallesEmpresa.labelEmpresa.setText(lenguaje.getProperty("cartelInfoEmpresa"));
         }catch (NullPointerException e){
-
+            System.out.println("Hola");
         }
         BuscarEmpresaPorPractica.labelCiclo.setText(lenguaje.getProperty("labelCiclo"));
         BuscarEmpresaPorPractica.labelCurso.setText(lenguaje.getProperty("labelCurso"));
@@ -165,8 +165,13 @@ class PanelPrincipal extends JPanel {
 
         BuscarEmpresaPorTecnologia.actualizarIdiomaCabecera(newLang);
 
-        ListaDeEmpresasConPracticas.ciclo = lenguaje.getProperty("ciclo");
+        ListaDeEmpresasConPracticas.headerNombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        ListaDeEmpresasConPracticas.headerCifEmpresa = lenguaje.getProperty("cifEmpresa");
+        ListaDeEmpresasConPracticas.headerCursoEscolar = lenguaje.getProperty("cursoEscolarFCT");
+        ListaDeEmpresasConPracticas.headerCiclo = lenguaje.getProperty("ciclo");
+        ListaDeEmpresasConPracticas.headerNumeroAlumnos = lenguaje.getProperty("numAlumnosFCT");
 
+        ListaDeEmpresasConPracticas.actualizarIdiomaCabecera(newLang);
 
         GestionarFCT.cif.setText(lenguaje.getProperty("cif"));
         GestionarFCT.idGrupo.setText(lenguaje.getProperty("idGrupoFCT"));

@@ -13,31 +13,33 @@ import static Modelo.Consultas.OperacionesConsultas.consultaDos;
 public class ListaDeEmpresasConPracticas extends JPanel {
 
     JTable empresasConPracticas;
-    DefaultTableModel modelo;
-
-    public static String ciclo;
+    static DefaultTableModel modelo;
+    static String[] nombresCampos;
+    public static String headerCiclo, headerCursoEscolar, headerCifEmpresa, headerNombreEmpresa, headerNumeroAlumnos;
 
     public ListaDeEmpresasConPracticas() {
-
-
         empresasConPracticas = new JTable();
 
-
         add(mostrarTablaDatos());
-        add(new JScrollPane(empresasConPracticas), BorderLayout.CENTER);
-
+        JScrollPane scrollPane = new JScrollPane(empresasConPracticas);
+        scrollPane.setPreferredSize(new Dimension(700,700));
+        empresasConPracticas.setRowHeight(50);
+        add(scrollPane, BorderLayout.CENTER);
     }
 
     public JPanel mostrarTablaDatos() {
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+        headerNombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        headerCifEmpresa = lenguaje.getProperty("cifEmpresa");
+        headerCursoEscolar = lenguaje.getProperty("cursoEscolarFCT");
+        headerCiclo = lenguaje.getProperty("ciclo");
+        headerNumeroAlumnos = lenguaje.getProperty("numAlumnosFCT");
+
         JPanel panelDatos = new JPanel(new BorderLayout());
 
-        String[] nombresCampos = new String[]{lenguaje.getProperty("ciclo"), "Curso escolar", "CIF empresa", "Nombre empresa", "Numero alumnos"};
-
+        nombresCampos = new String[]{headerNombreEmpresa, headerCifEmpresa, headerCursoEscolar, headerCiclo, headerNumeroAlumnos};
         modelo = new DefaultTableModel();
-
         modelo.setColumnIdentifiers(nombresCampos);
-
         empresasConPracticas = new JTable(modelo);
 
         try {
@@ -55,6 +57,18 @@ public class ListaDeEmpresasConPracticas extends JPanel {
         panelDatos.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 
         return panelDatos;
+    }
+
+    public static void actualizarIdiomaCabecera(int newLang){
+        Lenguaje lenguaje = new Lenguaje(newLang);
+
+        headerNombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        headerCifEmpresa = lenguaje.getProperty("cifEmpresa");
+        headerCursoEscolar = lenguaje.getProperty("cursoEscolarFCT");
+        headerCiclo = lenguaje.getProperty("ciclo");
+        headerNumeroAlumnos = lenguaje.getProperty("numAlumnosFCT");
+        nombresCampos = new String[]{headerNombreEmpresa,headerCifEmpresa,headerCursoEscolar,headerCiclo,headerNumeroAlumnos};
+        modelo.setColumnIdentifiers(nombresCampos);
     }
 
 }

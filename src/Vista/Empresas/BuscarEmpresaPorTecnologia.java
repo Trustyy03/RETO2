@@ -2,6 +2,7 @@ package Vista.Empresas;
 
 import Modelo.Consultas.Consulta7;
 import Vista.Estilo;
+import Vista.Idioma.Lenguaje;
 import Vista.MostrarDatosTablas;
 
 import javax.swing.*;
@@ -17,14 +18,22 @@ public class BuscarEmpresaPorTecnologia extends JPanel implements MostrarDatosTa
     JTable empresaPorTecnologia;
     DefaultTableModel modelo;
 
+    public static String nombreEmpresa,cifEmpresa;
+
 
     public BuscarEmpresaPorTecnologia(){
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+
+        nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        cifEmpresa = lenguaje.getProperty("cifEmpresa");
+
+
         tecnologias = Estilo.estiloComboBox();
         for (String tecnologia : consultarTecnologias()){
             tecnologias.addItem(tecnologia);
         }
 
-        String[] nombresCampos = new String[]{"Nombre Empresa", "CIF Empresa"};
+        String[] nombresCampos = new String[]{nombreEmpresa,cifEmpresa};
         modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(nombresCampos);
         empresaPorTecnologia = new JTable(modelo);

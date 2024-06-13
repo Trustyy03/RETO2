@@ -152,6 +152,14 @@ class PanelPrincipal extends JPanel {
         DetallesEmpresa.telefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
         DetallesEmpresa.labelEmpresa.setText(lenguaje.getProperty("cartelInfoEmpresa"));
 
+        BuscarEmpresaPorPractica.labelCiclo.setText(lenguaje.getProperty("labelCiclo"));
+        BuscarEmpresaPorPractica.labelCurso.setText(lenguaje.getProperty("labelCurso"));
+        BuscarEmpresaPorPractica.botonListaEmpresas.setText(lenguaje.getProperty("botonListaEmpresas"));
+
+        BuscarEmpresaPorTecnologia.nombreEmpresa = lenguaje.getProperty("nombreEmpresa");
+        BuscarEmpresaPorTecnologia.cifEmpresa = lenguaje.getProperty("cifEmpresa");
+
+
         ListaDeEmpresasConPracticas.ciclo = lenguaje.getProperty("ciclo");
 
     }

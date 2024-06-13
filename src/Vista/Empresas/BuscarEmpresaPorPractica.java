@@ -3,6 +3,7 @@ package Vista.Empresas;
 import Controlador.MainPanelController;
 import Vista.ComponentesGridBagLayout;
 import Vista.Estilo;
+import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,32 +13,34 @@ import static Modelo.Consultas.ConsultasSimples.*;
 
 public class BuscarEmpresaPorPractica extends JPanel implements ComponentesGridBagLayout {
 
-    JLabel labelCurso;
+    public static JLabel labelCurso;
     static JComboBox<String> CBCurso,CBCiclo;
-    JLabel labelCiclo;
-    JButton botonListaEmpresas;
+    public static JLabel labelCiclo;
+    public static JButton botonListaEmpresas;
     GridBagConstraints constraints;
 
     public BuscarEmpresaPorPractica() throws SQLException {
 
         setLayout(new GridBagLayout());
 
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
+
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        labelCurso = Estilo.textoBonitoInicioSesion("CURSO");
+        labelCurso = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("labelCurso"));
         CBCurso = Estilo.estiloComboBox();
         for (String curso : consultarCursos()) {
             CBCurso.addItem(curso);
         }
 
-        labelCiclo = Estilo.textoBonitoInicioSesion("CICLO FORMATIVO");
+        labelCiclo = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("labelCiclo"));
         CBCiclo = Estilo.estiloComboBox();
         for (String ciclo: consultarCiclos()) {
             CBCiclo.addItem(ciclo);
         }
 
-        botonListaEmpresas = Estilo.botonBonito("LISTA DE EMPRESAS CON PRACTICAS");
+        botonListaEmpresas = Estilo.botonBonito(lenguaje.getProperty("botonListaEmpresas"));
         botonListaEmpresas.addActionListener( e -> {
             MainPanelController.nuevoPanelActivo(new ListaDeEmpresasConPracticas());
         });

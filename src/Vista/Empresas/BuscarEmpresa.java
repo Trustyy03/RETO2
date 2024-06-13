@@ -5,6 +5,7 @@ import Controlador.MainPanelController;
 import Modelo.Entidades.Empresa;
 import Vista.ComponentesGridBagLayout;
 import Vista.Estilo;
+import Vista.Idioma.Lenguaje;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,8 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
-    JLabel labelEmpresa;
-    JButton botonEnviar;
+    public static JLabel labelEmpresa;
+    public static JButton botonEnviar;
     GridBagConstraints constraints;
 
     DetallesEmpresa detallesEmpresa;
@@ -25,12 +26,13 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
     public BuscarEmpresa() {
 
         setLayout(new GridBagLayout());
+        Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
-        labelEmpresa = Estilo.textoBonitoInicioSesion("EMPRESA");
+        labelEmpresa = Estilo.textoBonitoInicioSesion(lenguaje.getProperty("labelEmpresa"));
 
-        botonEnviar = Estilo.botonBonito("ENVIAR");
+        botonEnviar = Estilo.botonBonito(lenguaje.getProperty("btnEnviar"));
         botonEnviar.addActionListener(e -> {
             empresaSeleccionada = (Empresa) CBListadoEmpresaB.getSelectedItem();
             if (empresaSeleccionada != null) {
@@ -38,7 +40,7 @@ public class BuscarEmpresa extends JPanel implements ComponentesGridBagLayout {
                 MainPanelController.nuevoPanelActivo(detallesEmpresa);
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor, seleccione una empresa.");
+                JOptionPane.showMessageDialog(this, lenguaje.getProperty("mensajeJOptionPane"));
             }
         });
 

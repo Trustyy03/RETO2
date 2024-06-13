@@ -141,6 +141,17 @@ class PanelPrincipal extends JPanel {
         AgregarEmpresa.nuevoSector.setText(lenguaje.getProperty("sectorEmpresa"));
         AgregarEmpresa.nuevoDireccion.setText(lenguaje.getProperty("direccionEmpresa"));
         AgregarEmpresa.cartelInformacion.setText(lenguaje.getProperty("cartelInformacaionEmpresa"));
+
+        BuscarEmpresa.labelEmpresa.setText(lenguaje.getProperty("labelEmpresa"));
+        BuscarEmpresa.botonEnviar.setText(lenguaje.getProperty("btnEnviar"));
+
+        DetallesEmpresa.nombreEmpresa.setText(lenguaje.getProperty("nombreEmpresa"));
+        DetallesEmpresa.nombreTutor.setText(lenguaje.getProperty("nombreTutor"));
+        DetallesEmpresa.nombreTrabajador.setText(lenguaje.getProperty("nombreTrabajador"));
+        DetallesEmpresa.correoTrabajador.setText(lenguaje.getProperty("correoTrabajador"));
+        DetallesEmpresa.telefonoTrabajador.setText(lenguaje.getProperty("telefonoTrabajador"));
+        DetallesEmpresa.labelEmpresa.setText(lenguaje.getProperty("cartelInfoEmpresa"));
+
         ListaDeEmpresasConPracticas.ciclo = lenguaje.getProperty("ciclo");
 
     }

@@ -19,7 +19,7 @@ public class DetallesEmpresa extends JPanel {
             rellenarCorreoTrabajador, rellenarTelefonoTrabajador;
     Empresa empresaSeleccionada;
 
-    JLabel labelEmpresa;
+    public static JLabel labelEmpresa;
     JComboBox<Consulta1> CBtrabajadores = Estilo.estiloComboBox();
 
     public DetallesEmpresa() {
@@ -31,7 +31,7 @@ public class DetallesEmpresa extends JPanel {
         Lenguaje lenguaje = new Lenguaje(Lenguaje.spanish);
 
         JPanel panelNorte = new JPanel();
-        labelEmpresa = new JLabel("INFORMACIÓN DE LA EMPRESA", JLabel.CENTER);
+        labelEmpresa = new JLabel(lenguaje.getProperty("cartelInfoEmpresa"), JLabel.CENTER);
         labelEmpresa.setFont(new Font("Arial", Font.BOLD, 24));
         panelNorte.add(labelEmpresa);
 
